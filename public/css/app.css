@@ -142,11 +142,18 @@ button.btn.btn-secondary:hover {
     border: 1px solid #E9A127;
 }
 
-#main-image h1 {
+#main-image #head-container {
+    width: 100%;
+    height: calc(100% - 300px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-image #head-container h1 {
     color: white;
     font-size: 48px;
     text-align: center;
-    margin-top: 8vw;
 }
 
 #main-image .arrow-down {
