@@ -4,6 +4,7 @@ body {
     background: url("../images/body_bg.svg") no-repeat;
     background-size: cover;
     color: black;
+    margin: 0;
 }
 
 a {
@@ -13,6 +14,29 @@ a {
 
 h1, h2, h3, h4 {
     font-weight: bold;
+}
+
+h1 {
+    margin: 100px 0;
+    font-size: 47px;
+}
+
+h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+p {
+    font-size: 24px;
+}
+
+p.small {
+    font-size: 18px;
 }
 
 button.btn {
@@ -55,8 +79,10 @@ button.btn.btn-secondary:hover {
 }
 
 #main-image {
-    width: 100%;
+    width: 100%;;
     height: 58vw;
+    max-height: 846px;
+    min-height: 351px;
     padding-top: 30px;
     position: relative;
     display: flex;
@@ -67,8 +93,77 @@ button.btn.btn-secondary:hover {
     background-repeat: no-repeat !important;
 }
 
+#hamburger {
+    width: 19px;
+    height: 16px;
+    top: 40px;
+    right: 2.5%;
+    cursor: pointer;
+    position: absolute;
+    background: url(../images/hamburger.svg) no-repeat;
+    background-size: 100% 100%;
+    display: none;
+    z-index: 999;
+}
+
+#hamburger.rotate {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+
+#float-menu {
+    width: 100%;
+    top: -700px;
+    left: 0;
+    display: none;
+    padding: 89px 0 30px 0;
+    position: absolute;
+    background-color: #121524;
+    z-index: 998;
+}
+
+#float-menu .main-menu {
+    padding-left: 0;
+}
+
+#float-menu .main-menu li {
+    text-align: center;
+    font-size: 14px;
+    list-style-type: none;
+    text-transform: uppercase;
+    margin-bottom: 17px;
+}
+
+#float-menu h2 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+
+#float-menu .second-menu {
+    margin-bottom: 30px;
+}
+
+#float-menu .pair-buttons {
+    margin: auto;
+}
+
+#float-menu button.btn.btn-secondary {
+    width: auto !important;
+    margin: 0 auto 6px auto !important;
+}
+
 #main-image.home {
     background: url('../images/home_main_image.jpg');
+}
+
+#menu-container {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: self-start;
 }
 
 #logo {
@@ -76,19 +171,19 @@ button.btn.btn-secondary:hover {
     margin-top: 10px;
 }
 
-#main-image #top-container {
+#top-container {
     width: calc(100% - 220px);
 }
 
-#main-image #top-container #top-line {
+#top-line {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding-bottom: 30px;
     border-bottom: 1px solid grey;
 }
 
-#main-image #top-container #top-line #main-menu {
+#top-line .main-menu {
     width: calc(100% - 250px);
     text-align: left;
     color: white;
@@ -97,7 +192,7 @@ button.btn.btn-secondary:hover {
     padding: 0;
 }
 
-#main-image #top-container #top-line #main-menu li {
+#top-line .main-menu li {
     display: inline-block;
     list-style-type: none;
     letter-spacing: .05em;
@@ -105,54 +200,61 @@ button.btn.btn-secondary:hover {
     text-transform: uppercase;
 }
 
-#main-image #top-container #top-line #main-menu a {
+.main-menu a {
     color: white;
 }
 
-#main-image #top-container #top-line #phone-icon {
+.pair-buttons {
+    width: 235px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.phone-icon {
     width: 49px;
     margin-right: 5px;
 }
 
-#main-image #top-container h2 {
+#top-container h2 {
     font-size: 35px;
     color: white;
     margin-top: 40px;
     margin-bottom: 20px;
 }
 
-#main-image #top-container #second-menu {
-    width: calc(100% - 225px);
+#top-container .second-menu {
+    width: 100%;
     display: flex;
     justify-content: start;
     align-items: center;
 }
 
-
-#main-image #top-container #second-menu button.btn.btn-secondary {
+#float-menu button.btn.btn-secondary,
+#top-container .second-menu button.btn.btn-secondary {
     background: none;
     border: 1px solid grey;
     margin-right: 10px;
 }
 
 
-#main-image #top-container #second-menu button.btn.btn-secondary:focus,
-#main-image #top-container #second-menu button.btn.btn-secondary:hover {
+#top-container .second-menu button.btn.btn-secondary:focus,
+#top-container .second-menu button.btn.btn-secondary:hover {
     color: #E9A127;
     border: 1px solid #E9A127;
 }
 
-#main-image #head-container {
+#head-container {
     width: 100%;
-    height: calc(100% - 300px);
+    height: calc(100% - 320px);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#main-image #head-container h1 {
+#head-container h1 {
+    width: 1000px;
     color: white;
-    font-size: 48px;
+    margin: 0;
     text-align: center;
 }
 
@@ -163,7 +265,7 @@ button.btn.btn-secondary:hover {
     left: 50%;
     transform: translate(-50%,-50%);
     cursor: pointer;
-    z-index: 999;
+    z-index: 990;
 }
 
 #main-image #arch {
@@ -173,5 +275,128 @@ button.btn.btn-secondary:hover {
     position: absolute;
     background: url('../images/arch.svg') no-repeat center center;
     background-size: cover;
-    z-index: 997;
+    z-index: 989;
+}
+
+#content {
+    width: 100%;
+    padding: 0 30px;
+}
+
+#head-text {
+    width: 77vw;
+    max-width: 1120px;
+    min-width: 285px;
+    margin: 0 auto 100px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#head-text .quotes {
+    width: 109px;
+    position: absolute;
+    z-index: 987;
+}
+
+#head-text .quotes:first-child {
+    top: 0;
+    left: 0;
+}
+
+#head-text .quotes:last-child {
+    top: auto;
+    bottom: 0;
+    left: auto;
+    right: 0;
+}
+
+#head-text p {
+    width: 80%;
+    position: relative;
+    text-align: center;
+    z-index: 988;
+}
+
+@media (max-width: 1439px) {
+    #top-line .main-menu {
+        font-size: .8em;
+    }
+
+    #top-line .main-menu li {
+        margin-right: .5em;
+    }
+}
+
+@media (max-width: 1240px) {
+    #menu-container {
+        flex-direction: column;
+    }
+
+    #logo {
+        margin-bottom: 20px;
+    }
+
+    #top-container {
+        width: 100%;
+    }
+
+    #head-container h1 {
+        width: 700px;
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 993px) {
+    #hamburger, #float-menu {
+        display: block;
+    }
+
+    #menu-container {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    #logo {
+        width: 129px;
+    }
+
+    #top-container {
+        display: none;
+    }
+
+    #head-container {
+        height: calc(100% - 100px);
+    }
+
+    #main-image .arrow-down {
+        width: 54px;
+        bottom: -35px;
+    }
+}
+
+@media (max-width: 700px) {
+    #head-container h1 {
+        width: 90%;
+        font-size: 20px;
+    }
+
+    h1, h2 {
+        margin-top: 20px;
+        margin-bottom: 40px;
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    p, p.small {
+        font-size: 14px;
+    }
+
+    #head-text .quotes {
+        width: 56px;
+    }
 }

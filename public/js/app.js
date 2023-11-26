@@ -4,6 +4,14 @@ $(document).ready(function () {
     // sr.reveal('#top-image', {duration:2000});
     // sr.reveal('.container, footer', {duration:2500});
 
+    $('#hamburger').click(function () {
+        $(this).toggleClass('rotate');
+        const floatMenu = $('#float-menu');
+        let floatMenuPos = parseInt(floatMenu.css('top'));
+        if (floatMenuPos < 0) floatMenu.animate({'top':0},'slow');
+        else floatMenu.animate({'top':-700},'slow');
+    });
+
     bindFancybox();
     windowScroll();
 

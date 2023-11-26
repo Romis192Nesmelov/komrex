@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Content;
 use Illuminate\View\View;
 
 class BaseController extends Controller
@@ -15,6 +16,7 @@ class BaseController extends Controller
     {
         $this->activeMainMenu = 'home';
         $this->data['scroll'] = $slug;
+        $this->data['contents'] = Content::all();
         return $this->showView('home');
     }
 
