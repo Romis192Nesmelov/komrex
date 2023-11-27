@@ -1,7 +1,7 @@
 body {
     font-family: 'Montserrat', sans-serif;
     overflow-x: hidden;
-    background: url("../images/body_bg.svg") no-repeat;
+    background: url("../images/body_bg.svg") no-repeat #F7F7F5;
     background-size: cover;
     color: black;
     margin: 0;
@@ -17,7 +17,7 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-    margin: 100px 0;
+    margin: 50px 0;
     font-size: 47px;
 }
 
@@ -31,11 +31,18 @@ h2 {
     margin-bottom: 30px;
 }
 
+h1.main {
+    width: 100%;
+    text-align: center;
+    margin: 100px 0;
+}
+
 p {
     font-size: 24px;
 }
 
 p.small {
+    width: 60%;
     font-size: 18px;
 }
 
@@ -93,68 +100,6 @@ button.btn.btn-secondary:hover {
     background-repeat: no-repeat !important;
 }
 
-#hamburger {
-    width: 19px;
-    height: 16px;
-    top: 40px;
-    right: 2.5%;
-    cursor: pointer;
-    position: absolute;
-    background: url(../images/hamburger.svg) no-repeat;
-    background-size: 100% 100%;
-    display: none;
-    z-index: 999;
-}
-
-#hamburger.rotate {
-    transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
-}
-
-#float-menu {
-    width: 100%;
-    top: -700px;
-    left: 0;
-    display: none;
-    padding: 89px 0 30px 0;
-    position: absolute;
-    background-color: #121524;
-    z-index: 998;
-}
-
-#float-menu .main-menu {
-    padding-left: 0;
-}
-
-#float-menu .main-menu li {
-    text-align: center;
-    font-size: 14px;
-    list-style-type: none;
-    text-transform: uppercase;
-    margin-bottom: 17px;
-}
-
-#float-menu h2 {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    color: white;
-    text-align: center;
-}
-
-#float-menu .second-menu {
-    margin-bottom: 30px;
-}
-
-#float-menu .pair-buttons {
-    margin: auto;
-}
-
-#float-menu button.btn.btn-secondary {
-    width: auto !important;
-    margin: 0 auto 6px auto !important;
-}
-
 #main-image.home {
     background: url('../images/home_main_image.jpg');
 }
@@ -190,6 +135,72 @@ button.btn.btn-secondary:hover {
     font-size: .95em;
     margin: 0;
     padding: 0;
+}
+
+#hamburger {
+    width: 19px;
+    height: 16px;
+    top: 40px;
+    right: 2.5%;
+    cursor: pointer;
+    position: absolute;
+    background: url(../images/hamburger.svg) no-repeat;
+    background-size: 100% 100%;
+    display: none;
+    z-index: 999;
+}
+
+#hamburger.rotate {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+
+#float-menu {
+    width: 100%;
+    top: -700px;
+    left: 0;
+    display: none;
+    padding: 89px 0 30px 0;
+    position: absolute;
+    background-color: #121524;
+    z-index: 998;
+}
+
+.main-menu li.active {
+    font-weight: bold;
+}
+
+#float-menu .main-menu {
+    padding-left: 0;
+}
+
+#float-menu .main-menu li {
+    text-align: center;
+    font-size: 14px;
+    list-style-type: none;
+    text-transform: uppercase;
+    margin-bottom: 17px;
+}
+
+#float-menu h2 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+
+#float-menu .second-menu {
+    margin-bottom: 30px;
+}
+
+#float-menu .pair-buttons {
+    margin: auto;
+}
+
+#float-menu button.btn.btn-secondary {
+    width: auto !important;
+    margin: 0 auto 6px auto !important;
 }
 
 #top-line .main-menu li {
@@ -269,14 +280,19 @@ button.btn.btn-secondary:hover {
 }
 
 #arch {
+    width: 100%;
     bottom: -1px;
     position: absolute;
     z-index: 989;
 }
 
-#content {
+#content-container {
     width: 100%;
     padding: 0 30px;
+}
+
+.content {
+    padding: 0 30px 50px 30px;
 }
 
 #head-text {
@@ -378,9 +394,23 @@ button.btn.btn-secondary:hover {
         font-size: 20px;
     }
 
+    h1.main {
+        margin-top: 30px;
+        margin-bottom: 40px;
+        font-size: 24px;
+    }
+
+    #head-text {
+        margin-bottom: 50px;
+    }
+
+    .content {
+        padding: 0;
+    }
+
     h1, h2 {
         margin-top: 20px;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
         font-size: 24px;
     }
 
@@ -389,6 +419,7 @@ button.btn.btn-secondary:hover {
     }
 
     p, p.small {
+        width: 100%;
         font-size: 14px;
     }
 
