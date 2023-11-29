@@ -1,4 +1,4 @@
-<div id="main-image" class="{{ $className }}">
+<div id="main-image" {{ $mode != 'home' ? 'class='.$mode : '' }}>
     <div id="hamburger"></div>
     <div id="float-menu">
         @include('blocks.main_menu_block')
@@ -15,9 +15,15 @@
             @include('blocks.second_menu_block')
         </div>
     </div>
-    <div id="head-container">
-        <h1>{{ trans('content.main_image_text') }}</h1>
-    </div>
-    <img id="arch" src="{{ asset('images/arch.svg') }}" />
-    <img class="arrow-down" src="{{ asset('images/arrow_cir_to_down_yellow.svg') }}">
+    @if ($mode == 'home')
+        <div id="head-container">
+            <h1>{{ $contents[0]->text }}</h1>
+        </div>
+    @elseif (isset($chapter))
+        <h1 class="chapter">{{ $chapter }}</h1>
+    @endif
+    <img id="arch" class="{{ $mode == 'home' ? '' : 'd-sm-none' }}" src="{{ asset('images/arch.svg') }}" />
+    @if ($mode == 'home')
+        <img class="arrow-down" src="{{ asset('images/arrow_cir_to_down_yellow.svg') }}">
+    @endif
 </div>

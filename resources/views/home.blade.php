@@ -1,17 +1,184 @@
 @extends('layouts.main')
 
 @section('content')
-    @include('blocks.main_image_block',['className' => 'home'])
-    <div id="content-container">
-        <h1 class="main">{{ $contents[0]->head }}</h1>
-        <div id="head-text">
-            <img class="quotes" src="{{ asset('images/quotes_open.svg') }}" />
-            <p>{{ $contents[0]->text }}</p>
-            <img class="quotes" src="{{ asset('images/quotes_close.svg') }}" />
-        </div>
+    @include('blocks.main_image_block',['mode' => 'home'])
+    <div class="content-container">
+        <h1 class="w-100 text-center pt-4">{{ $contents[1]->head }}</h1>
+        @include('blocks.quotes_block',['text' => $contents[1]->text])
         <div class="content">
-            <h1>{{ $contents[1]->head }}</h1>
-            <p class="small">{{ $contents[1]->text }}</p>
+            <h1>{{ $contents[2]->head }}</h1>
+            <p class="small w-60">{{ $contents[2]->text }}</p>
+        </div>
+        <div class="row">
+            <x-offer head="{{ trans('menu.active_monitoring') }}" href="#" text="{{ trans('content.important_tool') }}">
+                @include('blocks.offer_image_block',['image' => 'images/offers/offer1.png'])
+            </x-offer>
+            <x-offer head="{{ trans('menu.technique') }}" href="#">
+                @include('blocks.offer_image_block',[
+                    'image' => 'images/offers/offer2_1.jpg',
+                    'href' => '#',
+                    'hrefText' => trans('content.all_komrex_equipment')
+                ])
+                @include('blocks.offer_image_block',[
+                    'image' => 'images/offers/offer2_2.jpg',
+                    'href' => '#',
+                    'hrefText' => trans('content.current_offer')
+                ])
+            </x-offer>
+            <x-offer head="{{ trans('menu.units_and_components') }}" href="#" text="{{ trans('content.supply_of_individual_units') }}">
+                @include('blocks.offer_image_block',['image' => 'images/offers/offer3.jpg'])
+            </x-offer>
+        </div>
+    </div>
+    @include('blocks.feedback_form_block')
+    <div class="content-container" data-scroll-destination="service_solutions">
+        <div class="content pt-4">
+            <h2>{{ trans('menu.service_solutions') }}</h2>
+            @foreach($solutions as $solution)
+                <div class="row {{ !$loop->last ? 'mb-lg-5 mb-sm-1' : '' }}">
+                    <div class="col-lg-4 col-sm-12 mb-4">
+                        <img class="w-100" src="{{ asset($solution->image) }}" />
+                    </div>
+                    <div class="col-lg-8 col-sm-12">
+                        <h3>{{ $solution->head }}</h3>
+                        <p class="small">{{ $solution->text }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    @include('blocks.feedback_form_block')
+    <div class="content-container">
+        @include('blocks.quotes_block',['text' => $contents[3]->text])
+        <div class="content joint-top">
+            <h2 class="mb-3">{{ $contents[4]->head }}</h2>
+            <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                    <p class="small">{{ $contents[4]->text }}</p>
+                </div>
+                <div class="col-lg-6 col-sm-12 d-flex justify-content-center">
+                    @include('blocks.button_block',[
+                        'primary' => false,
+                        'buttonText' => trans('content.order_consulting'),
+                        'arrowIcon' => 'arrow_cir_to_right_yellow.svg'
+                    ])
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach($consulting as $item)
+                <div class="col-lg-4 col-sm-12 {{ !$loop->last ? 'mb-3 mb-lg-0' : '' }}">
+                    <div class="consulting-block" style="background: url({{ asset($item->image) }})" slideIn="0">
+                        <h3>{{ $item->head }}</h3>
+                        <div class="plate">
+                            <h3>{{ $item->head }}</h3>
+                            <p>{{ $item->text }}</p>
+                            @include('blocks.button_block',[
+                                'primary' => true,
+                                'buttonText' => trans('content.list_of_events'),
+                                'arrowIcon' => 'arrow_cir_to_right_dark.svg'
+                            ])
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <div class="content" data-scroll-destination="about_company">
+            <h1 class="d-block d-lg-none mt-0">{{ $contents[5]->head }}</h1>
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 mb-3 mb-lg-0">
+                    <img class="w-100" src="{{ asset('images/about_company.jpg') }}" />
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div id="about-company-block">
+                        <div>
+                            <h1 class="d-none d-lg-block">{{ $contents[5]->head }}</h1>
+                            {!! $contents[5]->text !!}
+                        </div>
+                        <div>
+                            <div>
+                                @include('blocks.button_block',[
+                                    'primary' => false,
+                                    'buttonText' => trans('content.write_to_the_company'),
+                                    'arrowIcon' => 'arrow_cir_to_right_yellow.svg'
+                                ])
+                            </div>
+                            @include('blocks.download_block',[
+                                'href' => '#',
+                                'icon' => 'download_yellow_icon.svg',
+                                'description' => trans('content.presentation_of_the_company'),
+                                'kb' => 340
+                            ])
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content joint-top">
+            <h2 class="mb-4 pb-3">{{ trans('content.our_values') }}</h2>
+            <div class="row">
+                @foreach($values as $value)
+                    <div class="col-lg-{{ 12 / count($values) }} col-sm-12 mb-3 mb-lg-0">
+                        <div class="our-value">
+                            <img src="{{ asset($value->image) }}">
+                            <h3>{{ $value->head }}</h3>
+                            {{ $value->text }}
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <div class="content-container joint-top bg-white" data-scroll-destination="team">
+        <div class="content">
+            <h2 class="mb-4 pb-3">{{ trans('content.our_team') }}</h2>
+            <div id="our-team" class="owl-carousel">
+                @foreach($team as $person)
+                    <div class="team-person">
+                        <img src="{{ asset($person->image) }}" />
+                        <div class="name">{{ $person->name }}</div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <div class="content-container joint-top" data-scroll-destination="our_projects">
+        <div class="content">
+            <h2 class="mb-4 pb-3">{{ trans('content.our_projects') }}</h2>
+            <div class="row mb-4">
+                @foreach($projects as $type)
+                    <div class="col-lg-2 col-sm-12 mb-2 mb-lg-0">
+                        @include('blocks.button_block',[
+                            'id' => 'button-project-type-'.$type->id,
+                            'addClass' => 'project-type white w-100'.($loop->first ? ' active' : ''),
+                            'primary' => false,
+                            'buttonText' => $type->name
+                        ])
+                    </div>
+                @endforeach
+            </div>
+            @foreach($projects as $type)
+                <div id="project-type-{{ $type->id }}" class="owl-carousel projects {{ $loop->first ? 'active' : 'd-none' }}">
+                    @foreach($projects[0]->projects as $project)
+                        <div class="project" style="background: url({{ asset($project->image) }})">
+                            <h3>{{ $project->head }}</h3>
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
+        </div>
+    </div>
+    <div class="content-container joint-top bg-white" data-scroll-destination="partners">
+        <div class="content">
+            <h2 class="mb-4 pb-3">{{ $contents[6]->head }}</h2>
+            <p class="small w-60">{{ $contents[6]->text }}</p>
+            <div class="row w-60">
+                @foreach($partners as $partner)
+                    <div class="col-lg-6 col-sm-12 mb-2 mb-lg-0">
+                        <img class="w-100" src="{{ asset($partner->image) }}" />
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
     @if ($scroll)

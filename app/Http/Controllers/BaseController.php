@@ -1,7 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Content;
+use App\Models\Consulting;
+use App\Models\Home;
+use App\Models\OurTeam;
+use App\Models\OurValue;
+use App\Models\Partner;
+use App\Models\ProjectType;
+use App\Models\Requisite;
+use App\Models\ServiceSolution;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\View\View;
 
 class BaseController extends Controller
@@ -16,7 +24,13 @@ class BaseController extends Controller
     {
         $this->activeMainMenu = 'home';
         $this->data['scroll'] = $slug;
-        $this->data['contents'] = Content::all();
+        $this->data['contents'] = Home::all();
+        $this->getItem('solutions', new ServiceSolution());
+        $this->data['consulting'] = Consulting::all();
+        $this->getItem('values', new OurValue());
+        $this->getItem('team', new OurTeam());
+        $this->getItem('projects', new ProjectType());
+        $this->getItem('partners', new Partner());
         return $this->showView('home');
     }
 
@@ -41,8 +55,15 @@ class BaseController extends Controller
                 ],
                 'metas' => $this->metas,
                 'activeMainMenu' => $this->activeMainMenu,
-                'activeSecondMenu' => $this->activeSecondMenu
+                'activeSecondMenu' => $this->activeSecondMenu,
+                'mainEmail' => Requisite::find(1),
+                'requisites' => Requisite::where('id','>',1)->where('active',1)->get()
             ]
         ));
+    }
+
+    protected function getItem($itemName, Model $model): void
+    {
+        $this->data[$itemName] = $model->where('active',1)->get();
     }
 }

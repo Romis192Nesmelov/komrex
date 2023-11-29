@@ -13,7 +13,7 @@ $(document).ready(function () {
     });
 
     bindFancybox();
-    windowScroll();
+    // windowScroll();
 
     window.menuScrollFlag = false;
     $('a[data-scroll], div[data-scroll]').click(function (e) {
@@ -28,7 +28,76 @@ $(document).ready(function () {
         window.menuScrollFlag = true;
         gotoScroll(window.scrollAnchor);
     }
+
+    // Consulting block clock or over
+    $('.consulting-block').bind('mouseover', function () {
+        consultingBlockOver($(this), true);
+    }).bind('mouseleave', function () {
+        consultingBlockOver($(this), false);
+    }).bind('click', function () {
+        consultingBlockOver($(this), !parseInt($(this).attr('slideIn')));
+    });
+
+    // Team carousel
+    $('#our-team').owlCarousel(owlSettings(
+        20,
+        5000,
+        {
+            0: {
+                items: 1
+            },
+            992: {
+                items: 3
+            }
+        }
+    ));
+
+    // Projects carousel
+    $('.projects').owlCarousel(owlSettings(
+        20,
+        5000,
+        {
+            0: {
+                items: 1
+            },
+            992: {
+                items: 3
+            }
+        }
+    ));
+
+    // Click to project type button
+    $('button.project-type').click(function () {
+        if (!$(this).hasClass('active')) {
+            let projectsId = $(this).attr('id').replace('button-project-type-','');
+            $('.project-type.active').removeClass('active');
+            $('#button-project-type-'+projectsId).addClass('active');
+            $('.projects.active').animate({'opacity':0}, 'fast', function () {
+                $(this).removeClass('active').addClass('d-none').css('opacity',1);
+                let projects = $('#project-type-'+projectsId);
+                projects.addClass('active').removeClass('d-none').css('opacity',0);
+                setTimeout(() => {
+                    projects.animate({'opacity':1}, 'fast');
+                }, 500);
+            });
+        }
+    });
 });
+
+const consultingBlockOver = (obj, over) => {
+    let plate = obj.find('.plate');
+    if (over) {
+        plate.animate({'top':0},'fast',function () {
+            obj.attr('animation',0);
+            obj.attr('slideIn',1);
+        });
+    } else {
+        plate.animate({'top':obj.height()},'fast',function () {
+            obj.attr('animation',0);
+            obj.attr('slideIn',0);
+        });
+    }
+}
 
 const bindFancybox = () => {
     // Fancybox init
@@ -44,24 +113,24 @@ const bindFancybox = () => {
     });
 }
 
-const  windowScroll = () => {
-    $(window).scroll(function() {
-        let win = $(this);
-        if (win.scrollTop()) {
-            window.menuScrollFlag = true;
-            $('.section').each(function () {
-                let scrollData = $(this).attr('data-scroll-destination');
-                if ($(this).offset().top <= win.scrollTop() + 221 && scrollData) {
-                    resetColorHrefsMenu();
-                    $('a[data-scroll=' + scrollData + ']').parents('li.nav-item').addClass('active');
-                }
-            });
-        } else {
-            resetColorHrefsMenu();
-            $('a[data-scroll=home]').parents('li.nav-item').addClass('active');
-        }
-    });
-}
+// const  windowScroll = () => {
+//     $(window).scroll(function() {
+//         let win = $(this);
+//         if (win.scrollTop()) {
+//             window.menuScrollFlag = true;
+//             $('.section').each(function () {
+//                 let scrollData = $(this).attr('data-scroll-destination');
+//                 if ($(this).offset().top <= win.scrollTop() + 221 && scrollData) {
+//                     resetColorHrefsMenu();
+//                     $('a[data-scroll=' + scrollData + ']').parents('li.nav-item').addClass('active');
+//                 }
+//             });
+//         } else {
+//             resetColorHrefsMenu();
+//             $('a[data-scroll=home]').parents('li.nav-item').addClass('active');
+//         }
+//     });
+// }
 
 const resetColorHrefsMenu = () => {
     $('li.nav-item').removeClass('active').blur();
@@ -69,20 +138,20 @@ const resetColorHrefsMenu = () => {
 
 const gotoScroll = (scroll) => {
     $('html,body').animate({
-        scrollTop: $('div[data-scroll-destination="' + scroll + '"]').offset().top - 221
-    }, 1500, function () {
+        scrollTop: $('div[data-scroll-destination="' + scroll + '"]').offset().top
+    }, 500, function () {
         window.menuScrollFlag = false;
     });
 }
 
-const owlSettings = (margin, nav, timeout, responsive, autoplay) => {
+const owlSettings = (margin, timeout, responsive) => {
     let navButtonBlack1 = '<img src="/images/arrow_left.svg" />',
         navButtonBlack2 = '<img src="/images/arrow_right.svg" />';
     return {
         margin: margin,
-        loop: autoplay,
-        nav: nav,
-        autoplay: autoplay,
+        loop: true,
+        nav: true,
+        autoplay: true,
         autoplayTimeout: timeout,
         dots: false,
         responsive: responsive,

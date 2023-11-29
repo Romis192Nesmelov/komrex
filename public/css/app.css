@@ -7,9 +7,34 @@ body {
     margin: 0;
 }
 
+.owl-nav {
+    width: calc(100% + 30px);
+    height: 56px;
+    display: flex;
+    top: calc(50% - 30px);
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 900;
+}
+
+.owl-nav button {
+    width: 56px;
+    height: 56px;
+}
+
+.w-60 {
+    width: 60%;
+}
+
 a {
-    text-decoration: none;
     color: #E9A127;
+}
+
+a:hover {
+    color: grey;
 }
 
 h1, h2, h3, h4 {
@@ -23,18 +48,12 @@ h1 {
 
 h2 {
     font-size: 40px;
-    margin-bottom: 30px;
+    margin: 40px 0;
 }
 
-h2 {
+h3 {
     font-size: 28px;
     margin-bottom: 30px;
-}
-
-h1.main {
-    width: 100%;
-    text-align: center;
-    margin: 100px 0;
 }
 
 p {
@@ -42,30 +61,69 @@ p {
 }
 
 p.small {
-    width: 60%;
     font-size: 18px;
 }
 
 button.btn {
-    padding: 0 27px;
+    min-width: 280px;
     height: 49px;
+    font-size: 20px;
+    line-height: .9em;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
-    border-radius: 30px;
+    padding: 0;
+    border-radius: 50px;
+}
+
+button.btn.withArrow {
+    position: relative;
+}
+
+button.btn.btn-secondary.withArrow {
+    padding-left: 20px;
+    padding-right: 60px;
+}
+
+button.btn img {
+    height: 41px;
+    position: absolute;
+    right: 3px;
+    top: 3px;
 }
 
 button.btn.btn-primary {
+    background-color: #E9A127;
+    border-color: #E9A127;
+}
+
+button.btn.btn-secondary {
+    background-color: #121524;
+    border-color: #121524;
+}
+
+button.btn.btn-secondary.white {
+    width: 185px;
+    min-width: auto;
+    font-size: 14px;
+    padding: 0;
+    background-color: white;
+    border-color: white;
+    color: black;
+}
+
+.content button.btn.btn-secondary.white {
+    border-color: black;
+}
+
+.second-menu button.btn.btn-secondary {
+    font-size: 14px;
     background-color: white;
     color: black;
 }
 
-button.btn.btn-secondary {
-    background-color: #E9A127;
-    color: white;
-}
-
+input,
 button.btn:focus,
 button.btn:hover {
     outline: none !important;
@@ -74,15 +132,16 @@ button.btn:hover {
 
 button.btn.btn-primary:focus,
 button.btn.btn-primary:hover {
-    background-color: #E9A127;
-    border: 1px solid #E9A127;
+    background-color: #121524;
+    border: 1px solid white;
 }
 
+button.btn.btn-secondary.active,
 button.btn.btn-secondary:focus,
 button.btn.btn-secondary:hover {
-    background-color: white;
-    color: black;
-    border: 1px solid white;
+    background-color: #E9A127;
+    border-color: #E9A127 !important;
+    color: white;
 }
 
 #main-image {
@@ -95,13 +154,14 @@ button.btn.btn-secondary:hover {
     display: flex;
     align-items: center;
     flex-direction: column;
+    background: url('../images/home_main_image.jpg');
     background-size: cover !important;
     background-position: top center !important;
     background-repeat: no-repeat !important;
 }
 
-#main-image.home {
-    background: url('../images/home_main_image.jpg');
+#main-image.slim {
+    height: 293px;
 }
 
 #menu-container {
@@ -213,10 +273,16 @@ button.btn.btn-secondary:hover {
 
 .main-menu a {
     color: white;
+    text-decoration: none;
+}
+
+.main-menu li.active,
+.main-menu a:hover {
+    color: #E9A127;
 }
 
 .pair-buttons {
-    width: 235px;
+    width: 245px;
     display: flex;
     justify-content: space-between;
 }
@@ -245,6 +311,7 @@ button.btn.btn-secondary:hover {
     background: none;
     border: 1px solid grey;
     margin-right: 10px;
+    color: white;
 }
 
 
@@ -262,11 +329,21 @@ button.btn.btn-secondary:hover {
     align-items: center;
 }
 
-#head-container h1 {
+#main-image #head-container h1 {
     width: 1000px;
     color: white;
     margin: 0;
     text-align: center;
+}
+
+#main-image h1.chapter {
+    color: white;
+    position: absolute;
+    font-size: 48px;
+    font-weight: bolder;
+    left: 2.5%;
+    bottom: 2.5%;
+    border-bottom: 8px solid #E9A127;
 }
 
 #main-image .arrow-down {
@@ -280,55 +357,340 @@ button.btn.btn-secondary:hover {
 }
 
 #arch {
-    width: 100%;
+    width: calc(100% + 4px);
+    left: -2px;
     bottom: -1px;
     position: absolute;
     z-index: 989;
 }
 
-#content-container {
+.content-container {
     width: 100%;
-    padding: 0 30px;
+    padding: 0 50px 50px 50px;
 }
 
 .content {
-    padding: 0 30px 50px 30px;
+    padding: 30px;
 }
 
-#head-text {
+.quotes-text {
     width: 77vw;
     max-width: 1120px;
-    min-width: 285px;
-    margin: 0 auto 100px auto;
+    margin: 100px auto 50px auto;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
 }
 
-#head-text .quotes {
+.quotes-text .quotes {
     width: 109px;
     position: absolute;
     z-index: 987;
 }
 
-#head-text .quotes:first-child {
+.quotes-text .quotes:first-child {
     top: 0;
     left: 0;
 }
 
-#head-text .quotes:last-child {
+.quotes-text .quotes:last-child {
     top: auto;
     bottom: 0;
     left: auto;
     right: 0;
 }
 
-#head-text p {
+.quotes-text p {
     width: 80%;
     position: relative;
     text-align: center;
     z-index: 988;
+}
+
+.offer-block {
+    height: 100%;
+    position: relative;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.offer-block .arrow {
+    width: 33px;
+    height: 33px;
+    background: url('../images/arrow_up_dark.svg') no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+}
+
+.offer-block h2 {
+    width: 50%;
+    height: 68px;
+    font-size: 28px;
+    font-weight: normal;
+    margin-bottom: 50px;
+}
+
+.offer-block:hover .arrow {
+    background: url('../images/arrow_up_yellow.svg') no-repeat;
+    top: 35px;
+    right: 35px;
+}
+
+.offer-block h2 a {
+    text-decoration: none;
+    color: black;
+}
+
+.offer-block:hover h2 a {
+    color: #E9A127;
+}
+
+.offer-block img.offer-img {
+    width: 100%;
+    max-width: 318px;
+    margin-bottom: 20px;
+}
+
+.offer-block .offer-href {
+    margin-bottom: 40px;
+}
+
+.offer-block .offer-href:last-child {
+    margin-bottom: 0;
+}
+
+.offer-block p {
+    font-size: 18px;
+}
+
+.feedback-form {
+    width: 100%;
+    padding: 50px 80px;
+    background-color: #121524;
+}
+
+.feedback-form h1 {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.feedback-form p {
+    font-size: 20px;
+    color: white;
+}
+
+.feedback-form input {
+    width: 100%;
+    font-size: 20px;
+    background-color: white;
+    color: #121524;
+    padding: 8px 20px;
+    border-radius: 50px;
+}
+
+.feedback-form button.btn.btn-primary {
+    width: 100%;
+    font-size: 20px;
+}
+
+.consulting-block {
+    overflow: hidden;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    background-size: 100% !important;
+    background-position-y: top !important;
+    background-repeat: no-repeat;
+}
+
+.consulting-block > h3 {
+    padding: 38px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+}
+
+.consulting-block .plate {
+    width: 100%;
+    height: 100%;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    padding: 38px;
+    background-color: #121524;
+}
+
+/*.consulting-block:hover .plate {*/
+/*    animation-duration: 3s;*/
+/*    animation-name: slideIn;*/
+/*    animation-iteration-count: 1;*/
+/*}*/
+
+/*@keyframes slideIn {*/
+/*    from {*/
+/*        top: 100%;*/
+/*    }*/
+
+/*    to {*/
+/*        top: 0;*/
+/*    }*/
+/*}*/
+
+.consulting-block .plate h3 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.consulting-block .plate p {
+    width: 100%;
+    color: white;
+    font-weight: lighter;
+    font-size: 18px;
+}
+
+#about-company-block {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding-bottom: 50px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#about-company-block > div {
+    width: 75%;
+}
+
+.download-block {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.download-block img {
+    width: 56px;
+    margin-right: 10px;
+}
+
+.download-block img:hover {
+    opacity: .7;
+    filter: opacity(70%);
+}
+
+.our-value {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.our-value img {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+.our-value h3 {
+    width: 100%;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.team-person img {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.team-person .name {
+    width: 50%;
+    text-align: left;
+    font-size: 24px;
+}
+
+.project {
+    width: 100%;
+    height: 390px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: bottom !important;
+}
+
+.project h3 {
+    font-size: 24px;
+    text-align: left;
+    font-weight: normal;
+    color: white;
+    margin: 0;
+}
+
+footer {
+    width: 100%;
+    padding: 50px 80px 30px 80px;
+    background-color: #121524;
+    font-size: 16px;
+    color: white;
+}
+
+footer > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .footer-block {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+footer .footer-block.left {
+    width: 407px;
+}
+
+footer .footer-block.right {
+    width: 496px;
+    padding-top: 80px;
+}
+
+footer h1 {
+    color: white;
+    margin-bottom: 80px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer .email a {
+    color: #E9A127;
+    font-size: 34px;
+}
+
+footer .email a:hover {
+    color: gray;
+}
+
+#down-line {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
 }
 
 @media (max-width: 1439px) {
@@ -339,9 +701,23 @@ button.btn.btn-secondary:hover {
     #top-line .main-menu li {
         margin-right: .5em;
     }
+
+    button.btn.withArrow {
+        display: block;
+        padding-right: 40px;
+        font-size: 18px !important;
+    }
+
+    .offer-block h2 {
+        width: 90%;
+    }
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1299px) {
+    .w-60 {
+        width: 100%;
+    }
+
     #menu-container {
         flex-direction: column;
     }
@@ -354,13 +730,51 @@ button.btn.btn-secondary:hover {
         width: 100%;
     }
 
-    #head-container h1 {
+    #main-image #head-container h1 {
         width: 700px;
         font-size: 35px;
     }
+
+    .quotes-text .quotes {
+        width: 56px;
+    }
+
+    .content-container {
+        padding: 30px;
+    }
+
+    button.btn.withArrow {
+        display: flex;
+        padding-right: 0;
+    }
+
+    button.btn.btn-secondary.withArrow {
+        padding: 0 20px;
+    }
+
+    button.btn.withArrow img {
+        display: none;
+    }
+
+    p, p.small {
+        font-size: 14px;
+    }
 }
 
-@media (max-width: 993px) {
+@media (max-width: 991px) {
+    h1, h2 {
+        margin-top: 0;
+    }
+
+    button.btn.withArrow img {
+        display: block;
+    }
+
+    button.btn.btn-secondary.withArrow {
+        padding-left: 20px;
+        padding-right: 60px;
+    }
+
     #hamburger, #float-menu {
         display: block;
     }
@@ -382,34 +796,134 @@ button.btn.btn-secondary:hover {
         height: calc(100% - 100px);
     }
 
+    #main-image h1.chapter {
+        font-size: 24px;
+        left: 50%;
+        bottom: 40%;
+        transform: translate(-50%,50%);
+    }
+
     #main-image .arrow-down {
         width: 54px;
         bottom: -45px;
     }
-}
 
-@media (max-width: 700px) {
-    #head-container h1 {
-        width: 90%;
-        font-size: 20px;
+    .content {
+        padding: 30px 0;
     }
 
-    h1.main {
-        margin-top: 30px;
-        margin-bottom: 40px;
+    .content-container.joint-bottom,
+    .content.joint-bottom {
+        padding-bottom: 0;
+    }
+
+    .content-container.joint-top,
+    .content.joint-top {
+        padding-top: 0;
+    }
+
+    .offer-block {
+        padding: 10px 25px;
+    }
+
+    .offer-block .arrow {
+        width: 28px;
+        height: 28px;
+    }
+
+    .offer-block h2 {
+        height: auto;
+        font-size: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .offer-block p {
+        font-size: 14px;
+    }
+
+    .feedback-form p {
+        font-size: 14px;
+    }
+
+    .consulting-block .plate,
+    .consulting-block > h3 {
+        padding: 20px;
+    }
+
+    .consulting-block .plate h3,
+    .consulting-block > h3 {
+        font-size: 16px;
+    }
+
+    .consulting-block .plate p {
+        font-size: 12px;
+    }
+
+    #about-company-block {
+        padding-bottom: 0;
+    }
+
+    #about-company-block > div {
+        width: 100%;
+    }
+
+    .our-value {
+        font-size: 14px;
+    }
+
+    .our-value img {
+        width: 100px;
+        margin-bottom: 15px;
+    }
+
+    .our-value h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .team-person img {
+        margin-bottom: 15px;
+    }
+
+    .team-person .name {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    footer {
+        font-size: 14px;
+        padding: 30px 20px 10px 30px;
+    }
+
+    footer > div {
+        flex-direction: column;
+    }
+
+    footer .footer-block {
+        width: 100% !important;
+    }
+
+    footer .footer-block.right {
+        padding-top: 30px;
+    }
+
+    footer h1 {
+        margin-bottom: 30px;
+    }
+
+    footer .email a {
         font-size: 24px;
     }
 
-    #head-text {
-        margin-bottom: 50px;
+    #down-line {
+        flex-direction: column;
+        align-items: center;
     }
+}
 
-    .content {
-        padding: 0;
-    }
-
+@media (max-width: 700px) {
     h1, h2 {
-        margin-top: 20px;
         margin-bottom: 20px;
         font-size: 24px;
     }
@@ -418,12 +932,42 @@ button.btn.btn-secondary:hover {
         font-size: 20px;
     }
 
-    p, p.small {
-        width: 100%;
-        font-size: 14px;
+    #main-image #head-container h1 {
+        width: 90%;
+        font-size: 20px;
     }
 
-    #head-text .quotes {
-        width: 56px;
+    .quotes-text {
+        width: 100%;
+        margin: 50px 0;
+    }
+
+    .feedback-form {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 550px) {
+    button.btn.withArrow {
+        font-size: 14px !important;
+        padding-right: 40px;
+    }
+
+    .consulting-block .plate button.btn {
+        min-width: 150px;
+    }
+
+    .project {
+        height: 258px;
+    }
+
+    .project h3 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 350px) {
+    .feedback-form {
+        padding: 20px;
     }
 }

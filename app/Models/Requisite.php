@@ -3,10 +3,11 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
-class Content extends Model
+class Requisite extends Model
 {
     protected $fillable = [
-        'head',
-        'text'
+        'name',
+        'value',
+        'active'
     ];
 }

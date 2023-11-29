@@ -50,5 +50,35 @@
 
 <body>
     @yield('content')
+    <footer data-scroll-destination="contacts">
+        <div>
+            <div class="footer-block left">
+                <h1>{{ trans('content.contact_information') }}</h1>
+                {{ trans('content.email_address') }}
+                <div class="email">
+                    @include('blocks.email_block', ['email' => $mainEmail->value])
+                </div>
+            </div>
+            <div class="footer-block right">
+                @foreach($requisites as $requisite)
+                    @if ($requisite->name)
+                        {{ $requisite->name.': ' }}
+                    @endif
+                    {!! $requisite->value.(!$loop->last ? '<br>' : '') !!}
+                @endforeach
+                @include('blocks.download_block',[
+                    'href' => '#',
+                    'icon' => 'download_white_icon.svg',
+                    'description' => trans('content.download_details'),
+                    'kb' => 340
+                ])
+            </div>
+        </div>
+        <div id="down-line" class="w-60">
+            <div class="mb-2 mb-lg-0"><a href="#">{{ trans('content.copyright') }}</a></div>
+            <div class="mb-2 mb-lg-0"><a href="#">{{ trans('content.processing_of_personal_data') }}</a></div>
+            <div><a href="#">{{ trans('content.terms_of_use') }}</a></div>
+        </div>
+    </footer>
 </body>
 </html>
