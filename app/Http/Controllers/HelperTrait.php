@@ -29,4 +29,9 @@ trait HelperTrait
         'meta_googlebot' => ['name' => 'googlebot', 'property' => false],
         'meta_google_site_verification' => ['name' => 'google-site-verification', 'property' => false],
     ];
+
+    public function saveCompleteMessage()
+    {
+        session()->flash('message', trans('admin.save_complete'));
+    }
 }

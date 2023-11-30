@@ -1,7 +1,9 @@
-<div class="{{ $checkType ?? 'form-check form-switch' }} {{ isset($noGap) && $noGap ? '' : 'mt-3' }} {{ isset($addClass) && $addClass ? $addClass : '' }}">
+<div class="form-group mt-3 {{ isset($addClass) && $addClass ? $addClass : '' }}" @if (isset($attrStr) && $attrStr) {!! $attrStr !!} @endif >
     <label class="checkbox-inline">
-        <input class="form-check-input" id="{{ $id ?? $name.'-checkbox' }}" @error($name) error @enderror" type="checkbox" name="{{ $name }}" {{ isset($value) ? 'value='.$value : '' }} {{ isset($checked) && $checked ? 'checked=checked' : '' }} {{ isset($disabled) && $disabled ? 'disabled=disabled' : '' }}>
-        <label class="form-check-label" for="{{ $id ?? $name.'-checkbox' }}">{!! $label !!}</label>
+        <input class="styled" type="checkbox" name="{{ $name }}" {{ !count($errors) ? (isset($checked) && $checked ? 'checked=checked' : '') : (old($name) == 'on' ? 'checked=checked' : '') }} {{ isset($disabled) && $disabled ? 'disabled=disabled' : '' }}>
+        @if (isset($label) && $label)
+            {!! $label !!}
+        @endif
     </label>
-    @include('blocks.wrap_error_block')
+    @include('blocks.error_block')
 </div>
