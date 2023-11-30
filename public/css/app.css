@@ -114,7 +114,7 @@ button.btn.btn-secondary.white {
 }
 
 .content button.btn.btn-secondary.white {
-    border-color: black;
+    border: 2px solid gray;
 }
 
 .second-menu button.btn.btn-secondary {
@@ -148,9 +148,8 @@ button.btn.btn-secondary:hover,
 
 .content button.btn.btn-secondary.white:not(.active):focus,
 .content button.btn.btn-secondary.white:not(.active):hover {
-    background: none !important;
-    border-color: #E9A127 !important;
-    color: #E9A127;
+    background-color: #121524 !important;
+    border-color: #121524 !important;
 }
 
 #main-image {

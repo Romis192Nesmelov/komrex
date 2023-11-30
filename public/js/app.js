@@ -72,20 +72,36 @@ $(document).ready(function () {
     // Click to project type button
     $('button.project-type').click(function () {
         if (!$(this).hasClass('active')) {
-            let projectsId = $(this).attr('id').replace('button-project-type-','');
+            let projectsId = $(this).attr('id').replace('button-project-type-',''),
+                allProjects = $('#projects');
+
             $('.project-type.active').removeClass('active');
             $('#button-project-type-'+projectsId).addClass('active');
-            $('.projects.active').animate({'opacity':0}, 'fast', function () {
-                $(this).removeClass('active').addClass('d-none').css('opacity',1);
-                let projects = $('#project-type-'+projectsId);
-                projects.addClass('active').removeClass('d-none').css('opacity',0);
-                setTimeout(() => {
-                    projects.animate({'opacity':1}, 'fast');
-                }, 500);
-            });
+
+            if (allProjects.length) {
+                allProjects.animate({'opacity':0}, 'fast', function () {
+                    activatingProjectBlock(allProjects, projectsId, () => {
+                        allProjects.remove();
+                    });
+                });
+            } else {
+                $('.projects.active').animate({'opacity':0}, 'fast', function () {
+                    activatingProjectBlock($(this), projectsId);
+                });
+            }
         }
     });
 });
+
+const activatingProjectBlock = (prevActiveBlock, projectsId, callBack) => {
+    prevActiveBlock.removeClass('active').addClass('d-none').css('opacity',1);
+    let projects = $('#project-type-'+projectsId);
+    projects.addClass('active').removeClass('d-none').css('opacity',0);
+    setTimeout(() => {
+        projects.animate({'opacity':1}, 'fast');
+        if (callBack) callBack();
+    }, 500);
+};
 
 const consultingBlockOver = (obj, over) => {
     let plate = obj.find('.plate');

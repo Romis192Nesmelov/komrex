@@ -52,7 +52,7 @@
         @include('blocks.quotes_block',['text' => $contents[3]->text])
         <div class="content">
             <h2 class="mb-3">{{ $contents[4]->head }}</h2>
-            <div class="row mb-3 mb-lg-0">
+            <div class="row mb-3">
                 <div class="col-lg-6 col-sm-12">
                     <p class="small">{{ $contents[4]->text }}</p>
                 </div>
@@ -149,19 +149,22 @@
                     <div class="col-lg-2 col-sm-12 mb-3 mb-lg-0">
                         @include('blocks.button_block',[
                             'id' => 'button-project-type-'.$type->id,
-                            'addClass' => 'project-type white w-100'.($loop->first ? ' active' : ''),
+                            'addClass' => 'project-type white w-100',
                             'primary' => false,
                             'buttonText' => $type->name
                         ])
                     </div>
                 @endforeach
             </div>
+            <div id="projects" class="owl-carousel projects">
+                @foreach($projects_all as $project)
+                    @include('blocks.project_block',['image' => $project->image])
+                @endforeach
+            </div>
             @foreach($projects as $type)
-                <div id="project-type-{{ $type->id }}" class="owl-carousel projects {{ $loop->first ? 'active' : 'd-none' }}">
+                <div id="project-type-{{ $type->id }}" class="owl-carousel projects d-none">
                     @foreach($projects[0]->projects as $project)
-                        <div class="project" style="background: url({{ asset($project->image) }})">
-                            <h3>{{ $project->head }}</h3>
-                        </div>
+                        @include('blocks.project_block',['image' => $project->image])
                     @endforeach
                 </div>
             @endforeach

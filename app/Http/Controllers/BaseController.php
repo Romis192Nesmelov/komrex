@@ -6,6 +6,7 @@ use App\Models\Home;
 use App\Models\OurTeam;
 use App\Models\OurValue;
 use App\Models\Partner;
+use App\Models\Project;
 use App\Models\ProjectType;
 use App\Models\Requisite;
 use App\Models\ServiceSolution;
@@ -29,7 +30,8 @@ class BaseController extends Controller
         $this->data['consulting'] = Consulting::all();
         $this->getItem('values', new OurValue());
         $this->getItem('team', new OurTeam());
-        $this->getItem('projects', new ProjectType());
+        $this->getItem('projects_all', new Project());
+        $this->getItem('projects', new ProjectType(), 'created_at');
         $this->getItem('partners', new Partner());
         return $this->showView('home');
     }
@@ -62,8 +64,10 @@ class BaseController extends Controller
         ));
     }
 
-    protected function getItem($itemName, Model $model): void
+    protected function getItem($itemName, Model $model, string $orderBy='', string $direction='desc'): void
     {
-        $this->data[$itemName] = $model->where('active',1)->get();
+        $items = $model->where('active',1);
+        if ($orderBy) $items = $items->orderBy($orderBy,$direction);
+        $this->data[$itemName] = $items->get();
     }
 }
