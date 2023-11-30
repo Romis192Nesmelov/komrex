@@ -24,6 +24,6 @@
     @endif
     <img id="arch" class="{{ $mode == 'home' ? '' : 'd-sm-none' }}" src="{{ asset('images/arch.svg') }}" />
     @if ($mode == 'home')
-        <img class="arrow-down" src="{{ asset('images/arrow_cir_to_down_yellow.svg') }}">
+        <a data-scroll="our_offers" href="#"><img class="arrow-down" src="{{ asset('images/arrow_cir_to_down_yellow.svg') }}"></a>
     @endif
 </div>

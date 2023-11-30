@@ -19,6 +19,7 @@ return [
     'request_a_call_back' => 'Заказать обратный звонок',
     'service_solutions' => 'Сервисные решения',
     'order_consulting' => 'Заказать консалтинг',
+    'order_service' => 'Заказать услугу',
     'list_of_events' => 'Список мероприятий',
     'write_to_the_company' => 'Написать в компанию',
     'presentation_of_the_company' => 'Презентация компании',
@@ -31,4 +32,5 @@ return [
     'copyright' => '© ООО «КОМРЭКС»',
     'processing_of_personal_data' => 'Обработка персональных данных',
     'terms_of_use' => 'Пользовательское соглашение',
+    'message' => 'Сообщение!',
 ];

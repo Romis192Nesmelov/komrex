@@ -1,5 +1,5 @@
 <div class="pair-buttons">
-    <img class="phone-icon" src="{{ asset('images/phone_icon.svg') }}" />
+    <img class="phone-icon" src="{{ asset('images/phone_icon_white.svg') }}" />
     @include('blocks.button_block',[
         'addClass' => 'white',
         'primary' => false,

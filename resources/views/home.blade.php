@@ -3,10 +3,10 @@
 @section('content')
     @include('blocks.main_image_block',['mode' => 'home'])
     <div class="content-container">
-        <h1 class="w-100 text-center pt-4">{{ $contents[1]->head }}</h1>
+        <h2 class="w-100 text-center pt-4">{{ $contents[1]->head }}</h2>
         @include('blocks.quotes_block',['text' => $contents[1]->text])
-        <div class="content">
-            <h1>{{ $contents[2]->head }}</h1>
+        <div class="content" data-scroll-destination="our_offers">
+            <h2>{{ $contents[2]->head }}</h2>
             <p class="small w-60">{{ $contents[2]->text }}</p>
         </div>
         <div class="row">
@@ -50,9 +50,9 @@
     @include('blocks.feedback_form_block')
     <div class="content-container">
         @include('blocks.quotes_block',['text' => $contents[3]->text])
-        <div class="content joint-top">
+        <div class="content">
             <h2 class="mb-3">{{ $contents[4]->head }}</h2>
-            <div class="row">
+            <div class="row mb-3 mb-lg-0">
                 <div class="col-lg-6 col-sm-12">
                     <p class="small">{{ $contents[4]->text }}</p>
                 </div>
@@ -64,27 +64,27 @@
                     ])
                 </div>
             </div>
-        </div>
-        <div class="row">
-            @foreach($consulting as $item)
-                <div class="col-lg-4 col-sm-12 {{ !$loop->last ? 'mb-3 mb-lg-0' : '' }}">
-                    <div class="consulting-block" style="background: url({{ asset($item->image) }})" slideIn="0">
-                        <h3>{{ $item->head }}</h3>
-                        <div class="plate">
+            <div class="row">
+                @foreach($consulting as $item)
+                    <div class="col-lg-4 col-sm-12 {{ !$loop->last ? 'mb-3 mb-lg-0' : '' }}">
+                        <div class="consulting-block" style="background: url({{ asset($item->image) }})" slideIn="0">
                             <h3>{{ $item->head }}</h3>
-                            <p>{{ $item->text }}</p>
-                            @include('blocks.button_block',[
-                                'primary' => true,
-                                'buttonText' => trans('content.list_of_events'),
-                                'arrowIcon' => 'arrow_cir_to_right_dark.svg'
-                            ])
+                            <div class="plate">
+                                <h3>{{ $item->head }}</h3>
+                                <p>{{ $item->text }}</p>
+                                @include('blocks.button_block',[
+                                    'primary' => true,
+                                    'buttonText' => $loop->last ? trans('content.list_of_events') : trans('content.order_service'),
+                                    'arrowIcon' => 'arrow_cir_to_right_dark.svg'
+                                ])
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-        <div class="content" data-scroll-destination="about_company">
-            <h1 class="d-block d-lg-none mt-0">{{ $contents[5]->head }}</h1>
+        <div class="content joint-top" data-scroll-destination="about_company">
+            <h2>{{ $contents[5]->head }}</h2>
             <div class="row">
                 <div class="col-lg-6 col-sm-12 mb-3 mb-lg-0">
                     <img class="w-100" src="{{ asset('images/about_company.jpg') }}" />
@@ -92,7 +92,6 @@
                 <div class="col-lg-6 col-sm-12">
                     <div id="about-company-block">
                         <div>
-                            <h1 class="d-none d-lg-block">{{ $contents[5]->head }}</h1>
                             {!! $contents[5]->text !!}
                         </div>
                         <div>
@@ -147,7 +146,7 @@
             <h2 class="mb-4 pb-3">{{ trans('content.our_projects') }}</h2>
             <div class="row mb-4">
                 @foreach($projects as $type)
-                    <div class="col-lg-2 col-sm-12 mb-2 mb-lg-0">
+                    <div class="col-lg-2 col-sm-12 mb-3 mb-lg-0">
                         @include('blocks.button_block',[
                             'id' => 'button-project-type-'.$type->id,
                             'addClass' => 'project-type white w-100'.($loop->first ? ' active' : ''),
@@ -174,7 +173,7 @@
             <p class="small w-60">{{ $contents[6]->text }}</p>
             <div class="row w-60">
                 @foreach($partners as $partner)
-                    <div class="col-lg-6 col-sm-12 mb-2 mb-lg-0">
+                    <div class="col-lg-6 col-sm-12 mb-3 mb-lg-0">
                         <img class="w-100" src="{{ asset($partner->image) }}" />
                     </div>
                 @endforeach

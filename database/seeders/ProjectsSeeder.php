@@ -21,9 +21,9 @@ class ProjectsSeeder extends Seeder
         ];
 
         $projects = [
-            ['image' => 'images/projects/project1.jpg', 'head' => 'Применение экскаватора МН-30 в Амурскрй области', 'active' => 1],
-            ['image' => 'images/projects/project2.jpg', 'head' => 'Применение экскаватора МН-30 в Амурскрй области', 'active' => 1],
-            ['image' => 'images/projects/project3.jpg', 'head' => 'Применение экскаватора МН-30 в Амурскрй области', 'active' => 1],
+            ['image' => 'images/projects/project1.jpg', 'head' => 'Применение экскаватора МН-30 в Амурской области', 'active' => 1],
+            ['image' => 'images/projects/project2.jpg', 'head' => 'Применение экскаватора МН-30 в Амурской области', 'active' => 1],
+            ['image' => 'images/projects/project3.jpg', 'head' => 'Применение экскаватора МН-30 в Амурской области', 'active' => 1],
         ];
 
         foreach ($types as $type) {

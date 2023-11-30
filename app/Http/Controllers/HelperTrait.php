@@ -4,7 +4,15 @@ namespace App\Http\Controllers;
 
 trait HelperTrait
 {
+    public string $validationPhone = 'regex:/^((\+)?(\d)(\s)?(\()?[0-9]{3}(\))?(\s)?([0-9]{3})(\-)?([0-9]{2})(\-)?([0-9]{2}))$/';
     public string $validationPassword = 'required|confirmed|min:3|max:50';
+    public string $validationPasswordConfirmed = 'required|confirmed|min:6|max:20';
+    public string $validationString = 'required|min:3|max:255';
+    public string $validationText = 'nullable|min:5|max:3000';
+    public string $validationSvg = 'required|mimes:svg|max:10';
+    public string $validationJpgAndPng = 'mimes:jpg,png|max:2000';
+    public string $validationJpg = 'mimes:jpg|max:2000';
+    public string $validationPng = 'mimes:png|max:2000';
 
     private $metas = [
         'meta_description' => ['name' => 'description', 'property' => false],

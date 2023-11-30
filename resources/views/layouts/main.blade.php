@@ -41,10 +41,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="{{ asset('js/scrollreveal.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.maskedinput.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/loader.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/feedback.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </head>
 
@@ -53,7 +55,7 @@
     <footer data-scroll-destination="contacts">
         <div>
             <div class="footer-block left">
-                <h1>{{ trans('content.contact_information') }}</h1>
+                <h2>{{ trans('content.contact_information') }}</h2>
                 {{ trans('content.email_address') }}
                 <div class="email">
                     @include('blocks.email_block', ['email' => $mainEmail->value])
@@ -80,5 +82,9 @@
             <div><a href="#">{{ trans('content.terms_of_use') }}</a></div>
         </div>
     </footer>
+
+    <x-modal id="message-modal" head="{{ trans('content.message') }}">
+        <h4 class="text-center p-4">{{ session()->has('message') ? session()->get('message') : '' }}</h4>
+    </x-modal>
 </body>
 </html>

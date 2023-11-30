@@ -7,6 +7,7 @@
         <label for="{{ $name }}">{{ $label }}</label>
     @endif
     <input
+        @error($name) class="error" @enderror
         type="{{ isset($type) && $type ? $type : 'text' }}"
         name="{{ $name }}" {{ isset($step) ? 'step='.$step : '' }}
         value="{{ old($name, ($value ?? '')) }}"

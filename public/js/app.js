@@ -4,6 +4,9 @@ $(document).ready(function () {
     // sr.reveal('#top-image', {duration:2000});
     // sr.reveal('.container, footer', {duration:2500});
 
+    $.mask.definitions['n'] = "[7-8]";
+    $('input[name=phone]').mask("+n(999)999-99-99");
+
     $('#hamburger').click(function () {
         $(this).toggleClass('rotate');
         const floatMenu = $('#float-menu');
