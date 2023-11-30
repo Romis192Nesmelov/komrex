@@ -148,8 +148,9 @@ button.btn.btn-secondary:hover,
 
 .content button.btn.btn-secondary.white:not(.active):focus,
 .content button.btn.btn-secondary.white:not(.active):hover {
-    background-color: #121524 !important;
-    border-color: #121524 !important;
+    background: none !important;
+    border-color: #E9A127 !important;
+    color: #E9A127;
 }
 
 #main-image {
@@ -327,11 +328,11 @@ button.btn.btn-secondary:hover,
     color: white;
 }
 
-
 #top-container .second-menu button.btn.btn-secondary:focus,
 #top-container .second-menu button.btn.btn-secondary:hover {
     color: #E9A127;
     border: 1px solid #E9A127;
+    background: none !important;
 }
 
 #head-container {
