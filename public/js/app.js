@@ -91,6 +91,8 @@ $(document).ready(function () {
             }
         }
     });
+
+    // $('#project-modal').modal('show');
 });
 
 const activatingProjectBlock = (prevActiveBlock, projectsId, callBack) => {

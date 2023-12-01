@@ -76,7 +76,6 @@
             <div><a href="#">{{ trans('content.terms_of_use') }}</a></div>
         </div>
     </footer>
-
     @include('blocks.message_modal_block')
 </body>
 </html>

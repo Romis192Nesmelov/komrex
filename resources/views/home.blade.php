@@ -158,13 +158,15 @@
             </div>
             <div id="projects" class="owl-carousel projects">
                 @foreach($projects_all as $project)
-                    @include('blocks.project_block',['image' => $project->image])
+                    @include('blocks.project_block',['image' => $project->images[0]->image])
                 @endforeach
             </div>
             @foreach($projects as $type)
                 <div id="project-type-{{ $type->id }}" class="owl-carousel projects d-none">
-                    @foreach($projects[0]->projects as $project)
-                        @include('blocks.project_block',['image' => $project->image])
+                    @foreach($type->projects as $project)
+                        @foreach($project->images as $image)
+                            @include('blocks.project_block',['image' => $image->image])
+                        @endforeach
                     @endforeach
                 </div>
             @endforeach
@@ -183,6 +185,17 @@
             </div>
         </div>
     </div>
+{{--    <x-modal class="styled" id="project-modal" no_header="1">--}}
+{{--        <img src="{{ asset('images/close_icon.svg') }}" class="close-icon" data-bs-dismiss="modal" data-dismiss="modal" />--}}
+{{--        <h2 class="mb-0">Применение экскаватора МН-30 в Амурскрй области</h2>--}}
+{{--        <p id="project-date" class="small mb-2">werwe</p>--}}
+{{--        <div id="big-image-project" style="background: url({{ asset('images/projects/project1.jpg') }})"></div>--}}
+{{--        <div id="small-images-project" class="w-100">--}}
+{{--            <img src="{{ asset('images/projects/project1.jpg') }}" />--}}
+{{--            <img src="{{ asset('images/projects/project2.jpg') }}" />--}}
+{{--            <img src="{{ asset('images/projects/project3.jpg') }}" />--}}
+{{--        </div>--}}
+{{--    </x-modal>--}}
     @if ($scroll)
         <script>window.scrollAnchor = "{{ $scroll }}";</script>
     @endif

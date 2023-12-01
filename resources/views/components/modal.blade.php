@@ -1,5 +1,6 @@
 @props([
     'head' => false,
+    'no_header' => false,
     'footer' => false,
     'yes_button' => false,
     'yes_button_id' => null,
@@ -11,12 +12,14 @@
 <div {{ $attributes->class('modal fade') }} tabindex="-1" aria-labelledby="{{ $attributes->get('id') }}Label" aria-hidden="true" {{ $del_function ? 'del_function='.$del_function : ''}}>
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                @if ($head)
-                    <h5 class="modal-title fs-5 text-center w-100">{{ $head }}</h5>
-                @endif
-                <button type="button" class="btn-close" data-bs-dismiss="modal" data-dismiss="modal" aria-label="{{ trans('content.close') }}"></button>
-            </div>
+            @if (!$no_header)
+                <div class="modal-header">
+                    @if ($head)
+                        <h5 class="modal-title fs-5 text-center w-100">{{ $head }}</h5>
+                    @endif
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" data-dismiss="modal" aria-label="{{ trans('content.close') }}"></button>
+                </div>
+            @endif
             <div class="modal-body">
                 {{ $slot }}
             </div>

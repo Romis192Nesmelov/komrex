@@ -113,6 +113,27 @@ button.btn.btn-secondary.white {
     color: black;
 }
 
+.modal.styled .modal-dialog {
+    max-width: 70%;
+    padding: 50px;
+    margin: 5% auto;
+    background: url("../images/body_bg.svg") no-repeat #F7F7F5;
+    background-size: cover;
+}
+
+.modal.styled .modal-content {
+    background: none;
+    border: none;
+}
+
+.modal.styled .modal-content .close-icon {
+    width: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
 .content button.btn.btn-secondary.white {
     border: 2px solid gray;
 }
@@ -589,10 +610,6 @@ button.btn.btn-secondary:hover,
     font-size: 18px;
 }
 
-#about-company-image {
-    /*margin-top: 150px;*/
-}
-
 #about-company-block {
     width: 100%;
     height: 100%;
@@ -657,6 +674,8 @@ footer .download-block img:hover {
     height: 550px;
     padding: 30px;
     display: flex;
+    cursor: pointer;
+    position: relative;
     justify-content: center;
     align-items: end;
     background-size: cover !important;
@@ -664,12 +683,50 @@ footer .download-block img:hover {
     background-position: bottom !important;
 }
 
+.project .grad {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    background: linear-gradient(rgba(18, 21, 36, 0), rgba(18, 21, 36, 0.8));
+    z-index: 800;
+}
+
 .project h3 {
     font-size: 24px;
     text-align: left;
+    position: relative;
     font-weight: normal;
     color: white;
     margin: 0;
+    z-index: 801;
+}
+
+#big-image-project {
+    width: 100%;
+    height: 40vw;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+}
+
+#small-images-project {
+    padding: 10px 0;
+}
+
+#small-images-project img {
+    width: 10%;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#small-images-project img.active,
+#small-images-project img:hover {
+    border: 1px solid #E9A127;
+}
+
+#small-images-project img:first-child {
+    margin-left: 0;
 }
 
 footer {
@@ -830,6 +887,19 @@ footer .email a:hover {
         display: block;
     }
 
+    .modal.styled .modal-dialog {
+        max-width: 95%;
+        padding: 5px;
+    }
+
+    .modal.styled .modal-content .close-icon {
+        width: 25px;
+    }
+
+    .modal.styled .modal-content h2 {
+        font-size: 20px;
+    }
+
     #menu-container {
         justify-content: space-between;
         flex-direction: row;
@@ -926,6 +996,15 @@ footer .email a:hover {
 
     .project {
         height: 931px;
+    }
+
+    #big-image-project {
+        height: 60vw;
+    }
+
+    #small-images-project img {
+        width: 20%;
+        margin-left: 2px;
     }
 
     footer {
