@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('image',50);
+            $table->string('image',50)->nullable();
             $table->string('head');
             $table->foreignIdFor(ProjectType::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->boolean('active');

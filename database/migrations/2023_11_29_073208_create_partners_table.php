@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
-            $table->string('image',50);
+            $table->string('image',50)->nullable();
             $table->boolean('active');
             $table->timestamps();
         });

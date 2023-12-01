@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 class Consulting extends Model
 {
     protected $fillable = [
-        'image',
         'head',
         'text'
     ];

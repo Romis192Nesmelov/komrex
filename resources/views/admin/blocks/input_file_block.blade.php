@@ -1,6 +1,5 @@
 <x-incover
     name="{{ $name }}"
-    required="{{ isset($required) && $required }}"
     error="{{ count($errors) && $errors->has($name) ? $errors->first($name) : '' }}"
     label="{{ isset($label) && $label ? $label : ''  }}"
 >

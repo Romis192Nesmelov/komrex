@@ -6,12 +6,12 @@
         @include('admin.blocks.title_block')
         <div class="panel-body">
             @include('admin.blocks.data_table_block', [
-                'columns' => ['email','created_at'],
-                'items' => $users,
+                'columns' => ['image','name','active','created_at'],
+                'items' => $participants,
                 'useDelete' => true
             ])
         </div>
         @include('admin.blocks.add_button_block')
     </div>
-    <script>window.dtRows = 4;</script>
+    <script>window.dtRows = 6;</script>
 @endsection

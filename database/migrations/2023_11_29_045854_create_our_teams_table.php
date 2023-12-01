@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('our_teams', function (Blueprint $table) {
             $table->id();
-            $table->string('image',50);
+            $table->string('image',50)->nullable();
             $table->string('name',100);
             $table->boolean('active');
             $table->timestamps();

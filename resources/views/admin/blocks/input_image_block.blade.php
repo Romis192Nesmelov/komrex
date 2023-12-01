@@ -5,14 +5,10 @@
         </div>
     @endif
     <div class="panel-body edit-image-preview">
-        @if (isset($preview) && $preview)
-            @if (isset($full) && $full)
-                <a class="img-preview" href="{{ $full }}">
-            @endif
-                <img src="{{ $preview }}?{{ md5(rand(1,100000)*time()) }}" />
-            @if (isset($preview) && $preview)
-                </a>
-            @endif
+        @if ($image)
+            <a class="fancybox" href="{{ asset($image) }}">
+                <img src="{{ asset($image) }}?{{ md5(rand(1,100000)*time()) }}" />
+            </a>
         @else
             <img src="{{ asset('images/placeholder.jpg') }}" />
         @endif

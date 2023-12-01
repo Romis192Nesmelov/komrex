@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 class OurTeam extends Model
 {
     protected $fillable = [
-        'image',
         'name',
         'active'
     ];

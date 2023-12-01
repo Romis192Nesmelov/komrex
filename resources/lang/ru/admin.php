@@ -11,6 +11,7 @@ return [
     'admin_page' => 'Админка',
     'path_to_image' => 'Путь до картинки',
     'icon' => 'Иконка',
+    'status' => 'Статус',
     'active' => 'Активно',
     'not_active' => 'Не активно',
     'title' => 'Название',
@@ -33,15 +34,28 @@ return [
     'save_complete' => 'Сохранение произведено',
     'delete_complete' => 'Удаление произведено',
 
-    'do_you_really_want_delete_this_position' => 'Вы действительно хотите удалить эту позицию?',
     'do_you_really_want_delete_this_user' => 'Вы действительно хотите удалить этого пользователя?',
     'if_you_doesnt_want_to_change_password' => 'Если вы не хотите менять пароль, то оставьте эти поля пустыми',
     'edit_user' => 'Редактирование пользователя',
-    'view_user' => 'Просмотр пользователя',
     'add_user' => 'Добавить пользователя',
     'adding_user' => 'Добавление пользователя',
     'user_password' => 'Пароль пользователя',
     'confirm_password' => 'Подтверждение пароля',
+
+    'do_you_really_want_delete_this_participant' => 'Вы действительно хотите удалить этого участника команды?',
+    'edit_participant' => 'Редактирование участника команды',
+    'add_participant' => 'Добавить участника команды',
+    'adding_participant' => 'Добавление участника команды',
+
+    'do_you_really_want_delete_this_value' => 'Вы действительно хотите удалить эту ценность?',
+    'edit_value' => 'Редактирование ценности',
+    'add_value' => 'Добавить ценность',
+    'adding_value' => 'Добавление ценности',
+
+    'do_you_really_want_delete_this_partner' => 'Вы действительно хотите удалить этого партнера?',
+    'edit_partner' => 'Редактирование партнера',
+    'add_partner' => 'Добавить партнера',
+    'adding_partner' => 'Добавление партнера',
 
     'seo' => 'СЕО',
     'last_edit' => 'Последняя редакция',
@@ -49,5 +63,6 @@ return [
     'image' => 'Картинка',
     'head' => 'Заголовок',
     'name' => 'Наименование',
+    'man_name' => 'Имя',
     'these_fields_are_required' => 'Данные поля обязательны к заполнению',
 ];

@@ -1,5 +1,5 @@
-window.allMonths = ['Янв.', 'Фев.', 'Март', 'Апр.', 'Май', 'Июнь', 'Июль', 'Авг.', 'Сент.', 'Окт.', 'Нояб.', 'Декаб.'];
-window.statisticsData = [];
+// window.allMonths = ['Янв.', 'Фев.', 'Март', 'Апр.', 'Май', 'Июнь', 'Июль', 'Авг.', 'Сент.', 'Окт.', 'Нояб.', 'Декаб.'];
+// window.statisticsData = [];
 $(document).ready(function () {
     // Phone mask
     $.mask.definitions['n'] = "[7-8]";
@@ -8,7 +8,11 @@ $(document).ready(function () {
     CKEDITOR.replaceClass = 'ckeditor';
     $('.styled').uniform();
 
-    const messageModal = $('#message-modal');
+    // File input
+    $(".file-styled").uniform({
+        wrapperClass: 'bg-blue',
+        fileButtonHtml: '<i class="icon-file-plus"></i>'
+    });
 
     // Single picker
     // $('.daterange-single').daterangepicker({
@@ -25,7 +29,7 @@ $(document).ready(function () {
     $.extend( $.fn.dataTable.defaults, {
         autoWidth: false,
         columnDefs: [{
-            targets: [5]
+            targets: [window.dtRows ? window.dtRows : 5]
         }],
         order: [],
         dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
@@ -50,7 +54,10 @@ $(document).ready(function () {
     });
 
     // Basic datatable
-    const dTable = $('.datatable-basic').DataTable();
+    window.dataTable = $('.datatable-basic').DataTable();
+
+    // Message modal
+    window.messageModal = $('#message-modal');
 
     // Alternative pagination
     // $('.datatable-pagination').DataTable({
@@ -85,12 +92,10 @@ $(document).ready(function () {
     window.deleteId = null;
     window.deleteRow = null;
 
-    // Change pagination on data-tables
-    $('table.datatable-basic').on('draw.dt', function () {
-        bindDelete();
-        bindFancybox();
-    });
+    // Events of data-table
+    bindChangePagination();
     bindDelete();
+    bindFancybox();
 
     // Click YES on delete modal
     $('.delete-yes').click(function () {
@@ -103,29 +108,30 @@ $(document).ready(function () {
             'id': window.deleteId,
         }, function (data) {
             // dTable.row(window.deleteRow).remove();
-            window.deleteRow.remove();
+            // window.deleteRow.remove();
+            deleteDataTableRows();
             // dTable.draw();
             bindDelete();
             removeLoader();
-            messageModal.find('h4').html(data.message);
-            messageModal.modal('show');
+            window.messageModal.find('h4').html(data.message);
+            window.messageModal.modal('show');
         });
     });
-    bindFancybox();
-
 });
 
-const bindFancybox = () => {
-    // Fancybox init
-    $('.fancybox').fancybox({
-        'autoScale': true,
-        'touch': false,
-        'transitionIn': 'elastic',
-        'transitionOut': 'elastic',
-        'speedIn': 500,
-        'speedOut': 300,
-        'autoDimensions': true,
-        'centerOnScroll': true
+const deleteDataTableRows = () => {
+    window.dataTable.row(window.deleteRow).remove();
+    window.dataTable.draw();
+    bindChangePagination();
+    bindDelete();
+    bindFancybox();
+}
+
+const bindChangePagination = () => {
+    let paginationEvent = ('draw.dt');
+    window.dataTable.off(paginationEvent);
+    window.dataTable.on(paginationEvent, function () {
+        bindDelete();
     });
 }
 
@@ -140,19 +146,20 @@ const bindDelete = () => {
         window.deleteRow = $(this).parents('tr');
 
         if (inputId.length) inputId.val(window.deleteId);
-
         deleteModal.modal('show');
     });
 }
 
-// function translit(text, engToRus) {
-//     var rus = "щ ш ч ц ю я ё ж ъ ы э а б в г д е з и й к л м н о п р с т у ф х ь".split(/ +/g),
-//         eng = "shh sh ch cz yu ya yo zh `` y' e` a b v g d e z i j k l m n o p r s t u f x `".split(/ +/g);
-//
-//     var x;
-//     for(x=0;x<rus.length; x++) {
-//         text = text.split(engToRus ? eng[x] : rus[x]).join(engToRus ? rus[x] : eng[x]);
-//         text = text.split(engToRus ? eng[x].toUpperCase() : rus[x].toUpperCase()).join(engToRus ? rus[x].toUpperCase() : eng[x].toUpperCase());
-//     }
-//     return text;
-// }
+const bindFancybox = () => {
+    // Fancybox init
+    $('.fancybox').fancybox({
+        'autoScale': true,
+        'touch': false,
+        'transitionIn': 'elastic',
+        'transitionOut': 'elastic',
+        'speedIn': 500,
+        'speedOut': 300,
+        'autoDimensions': true,
+        'centerOnScroll': true
+    });
+}

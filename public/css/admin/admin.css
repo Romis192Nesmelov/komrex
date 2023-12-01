@@ -30,7 +30,6 @@ td.image {
 td.image img,
 .edit-image-preview img {
     width: 100%;
-    border: 2px solid grey;
 }
 
 .table-items td.edit,
@@ -91,18 +90,22 @@ td.image img,
     top: 45px;
 }
 
-/*.form-group {*/
-/*    border-color: #D84315;*/
-/*}*/
-
-/*.form-group.error .cke {*/
-/*    border: 1px solid red;*/
-/*}*/
-
-.form-group div.error {
+div.error {
     color: red;
-    margin-top: 2px;
-    font-size: 12px;
+}
+
+.form-group.error .cke {
+    border: 1px solid red;
+}
+
+.form-group.error {
+    border: 1px solid red;
+}
+
+.form-group.error input,
+.form-group.error textarea,
+.form-group.error select {
+    color: red;
 }
 
 label {

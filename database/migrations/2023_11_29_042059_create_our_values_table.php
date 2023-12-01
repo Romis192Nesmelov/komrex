@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('our_values', function (Blueprint $table) {
             $table->id();
-            $table->string('image',50);
+            $table->string('image',50)->nullable();
             $table->string('head',20);
             $table->string('text');
             $table->boolean('active');

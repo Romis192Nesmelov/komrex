@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\OurTeam;
+use App\Models\OurValue;
+use App\Models\Partner;
 use App\Models\Requisite;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-//use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use Illuminate\View\View;
-
-//use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -24,24 +24,27 @@ class AdminController extends Controller
     {
         $this->menu = [
             'home' => [
-                'id' => 'home',
-                'href' => 'admin.home',
-                'name' => trans('admin_menu.home'),
-                'description' => '',
+                'key' => 'home',
                 'icon' => 'icon-home2',
             ],
             'users' => [
-                'id' => 'users',
-                'href' => 'admin.users',
-                'name' => trans('admin_menu.admins'),
-                'description' => trans('admin_menu.admins_description'),
+                'key' => 'users',
                 'icon' => 'icon-users',
             ],
+            'values' => [
+                'key' => 'values',
+                'icon' => 'icon-safe',
+            ],
+            'participants' => [
+                'key' => 'participants',
+                'icon' => 'icon-users4',
+            ],
+            'partners' => [
+                'key' => 'partners',
+                'icon' => 'icon-shrink7',
+            ],
             'requisites' => [
-                'id' => 'requisites',
-                'href' => 'admin.requisites',
-                'name' => trans('admin_menu.requisites'),
-                'description' => trans('admin_menu.requisites_description'),
+                'key' => 'requisites',
                 'icon' => 'icon-pen',
             ],
         ];
@@ -59,31 +62,9 @@ class AdminController extends Controller
     /**
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function users(Request $request, $slug=null): View
+    public function users($slug=null): View
     {
-        $this->data['menu_key'] = 'users';
-        $this->breadcrumbs[] = $this->menu['users'];
-        if ($request->has('id')) {
-            $this->data['user'] = User::findOrFail($request->input('id'));
-            $this->breadcrumbs[] = [
-                'id' => $this->menu['users']['id'],
-                'href' => $this->menu['users']['href'],
-                'params' => ['id' => $this->data['user']->id],
-                'name' => trans('admin.edit_user', ['user' => $this->data['user']->email]),
-            ];
-            return $this->showView('user');
-        } else if ($slug && $slug == 'add') {
-            $this->breadcrumbs[] = [
-                'id' => $this->menu['users']['id'],
-                'href' => $this->menu['users']['href'],
-                'slug' => 'add',
-                'name' => trans('admin.adding_user'),
-            ];
-            return $this->showView('user');
-        } else {
-            $this->data['users'] = User::all();
-            return $this->showView('users');
-        }
+        return $this->getView('users', new User(), $slug);
     }
 
     /**
@@ -110,6 +91,39 @@ class AdminController extends Controller
         return redirect(route('admin.users'));
     }
 
+    public function values($slug=null): View
+    {
+        return $this->getView('values', new OurValue(), $slug);
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function editValue(Request $request): RedirectResponse
+    {
+        $this->editSomething (
+            $request,
+            new OurValue(),
+            [
+                'head' => 'required|min:3|max:20',
+                'text' => $this->validationText,
+                'image' => $this->validationSvg
+            ],
+            'images/our_values',
+            'home_icon'
+        );
+        $this->saveCompleteMessage();
+        return redirect(route('admin.values'));
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function deleteValue(Request $request): JsonResponse
+    {
+        return $this->deleteSomething($request, new OurValue());
+    }
+
     /**
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -118,12 +132,72 @@ class AdminController extends Controller
         return $this->deleteSomething($request, new User());
     }
 
+    public function participants(Request $request, $slug=null): View
+    {
+        return $this->getView('participants', new OurTeam(), $slug);
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function editParticipant(Request $request): RedirectResponse
+    {
+        $this->editSomething (
+            $request,
+            new OurTeam(),
+            [
+                'name' => 'required|min:3|max:100',
+                'image' => $this->validationJpgAndPng
+            ],
+            'images/our_team/',
+            'person'
+        );
+        $this->saveCompleteMessage();
+        return redirect(route('admin.participants'));
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function deleteParticipant(Request $request): JsonResponse
+    {
+        return $this->deleteSomething($request, new OurTeam());
+    }
+
+    public function partners($slug=null): View
+    {
+        return $this->getView('partners', new Partner(), $slug);
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function editPartner(Request $request): RedirectResponse
+    {
+        $this->editSomething (
+            $request,
+            new Partner(),
+            [
+                'image' => $this->validationJpgAndPng
+            ],
+            'images/partners/',
+            'logo'
+        );
+        $this->saveCompleteMessage();
+        return redirect(route('admin.partners'));
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function deletePartner(Request $request): JsonResponse
+    {
+        return $this->deleteSomething($request, new Partner());
+    }
+
     public function requisites(): View
     {
-        $this->data['menu_key'] = 'requisites';
-        $this->breadcrumbs[] = $this->menu['requisites'];
-        $this->data['requisites'] = Requisite::all();
-        return $this->showView('requisites');
+        return $this->getView('requisites', new Requisite());
     }
 
     /**
@@ -149,99 +223,104 @@ class AdminController extends Controller
         return redirect(route('admin.requisites'));
     }
 
-//    private function getSomething (
-//        Request $request,
-//        Model $model,
-//        string $menuKey,
-//        string $itemName,
-//        string $editNameTitle,
-//        string $addNameTitle,
-//        string $viewForList,
-//        string $viewForOne,
-//        string $slug = null,
-//    ): View
-//    {
-//        $this->data['menu_key'] = $menuKey;
-//        $this->breadcrumbs[] = $this->menu[$menuKey];
-//        if ($request->has('id')) {
-//            if ($itemName != 'news') $itemName = substr($itemName, 0, -1);
-//            $this->data[$itemName] = $model->find($request->input('id'));
-//            $this->breadcrumbs[] = [
-//                'id' => $this->menu[$menuKey]['id'],
-//                'href' => $this->menu[$menuKey]['href'],
-//                'params' => ['id' => $this->data[$itemName]->id],
-//                'name' => trans($editNameTitle, ['id' => $this->data[$itemName]->id]),
-//            ];
-//            return $this->showView($viewForOne);
-//        } else if ($slug && $slug == 'add') {
-//            $this->breadcrumbs[] = [
-//                'id' => $this->menu[$menuKey]['id'],
-//                'href' => $this->menu[$menuKey]['href'],
-//                'slug' => 'add',
-//                'name' => trans($addNameTitle),
-//            ];
-//            return $this->showView($viewForOne);
-//        } else {
-//            if ($model instanceof News) $this->data[$itemName] = $model->where('active',1)->orderBy('time','desc')->get();
-//            else $this->data[$itemName] = $model->all();
-//            return $this->showView($viewForList);
-//        }
-//    }
+    private function getView(string $key, Model $model, $slug=null): View
+    {
+        $this->data['menu_key'] = $key;
+        $this->breadcrumbs[] = $this->menu[$key];
 
-//    private function editSomething (
-//        Request $request,
-//        Model $model,
-//        array $validationArr
-//    ): Model
-//    {
-//        if ($request->has('id')) {
-//            $validationArr['id'] = 'required|integer|exists:'.$model->getTable().',id';
-//
-//            $fields = $this->validate($request, $validationArr);
-//            $fields['active'] = isset($request->active) && $request->active ? 1 : 0;
-//            if (isset($fields['time'])) $fields['time'] = $this->convertTime($fields['time']);
-//
-//            $table = $model->find($request->input('id'));
-//            $table->update($fields);
-//        } else {
-//            $fields = $this->validate($request, $validationArr);
-//            $fields['active'] = $request->active ? 1 : 0;
-//            if (isset($fields['time'])) $fields['time'] = $this->convertTime($fields['time']);
-//
-//            $table = $model->create($fields);
-//
-//            if ($model instanceof News) {
-//                $news = News::where('active',1)->orderBy('time','asc')->get();
-//                if (count($news) > 6) {
-//                    $news[0]->delete();
-//                    unlink(base_path('public/images/news/news' . $news[0]->id . '.jpg'));
-//                }
-//            }
-//        }
-//        $this->saveCompleteMessage();
-//        return $table;
-//    }
+        $this->data['singular_key'] = substr($key, 0, -1);
+        if (request('id')) {
+            $this->data[$this->data['singular_key']] = $model->findOrFail(request('id'));
+
+            if (isset($this->data[$this->data['singular_key']]->email)) $name = $this->data[$this->data['singular_key']]->email;
+            elseif (isset($this->data[$this->data['singular_key']]->name)) $name = $this->data[$this->data['singular_key']]->name;
+            else $name = $this->data[$this->data['singular_key']]->head;
+
+            $this->breadcrumbs[] = [
+                'key' => $this->menu[$key]['key'],
+                'params' => ['id' => $this->data[$this->data['singular_key']]->id],
+                'name' => trans('admin.edit_'.$this->data['singular_key']),
+            ];
+            return $this->showView($this->data['singular_key']);
+        } else if ($slug && $slug == 'add') {
+            $this->breadcrumbs[] = [
+                'key' => $this->menu[$key]['key'],
+                'slug' => 'add',
+                'name' => trans('admin.adding_'.$this->data['singular_key']),
+            ];
+            return $this->showView($this->data['singular_key']);
+        } else {
+            $this->data[$key] = $model->all();
+            return $this->showView($key);
+        }
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    private function editSomething (
+        Request $request,
+        Model $model,
+        array $validationArr,
+        string $pathToImages = null,
+        string $imageName = null
+    ): Model
+    {
+        if ($request->has('id')) {
+            $validationArr['id'] = 'required|integer|exists:'.$model->getTable().',id';
+            if ($imageName) $validationArr['image'] = 'nullable|'.$validationArr['image'];
+
+            $fields = $this->validate($request, $validationArr);
+            $fields = $this->getSpecialFields($model, $fields);
+
+            $model = $model->find($request->input('id'));
+            $model->update($fields);
+            $this->processingImages($request, $model, $pathToImages, $imageName);
+        } else {
+            if ($imageName) $validationArr['image'] = 'required|'.$validationArr['image'];
+
+            $fields = $this->validate($request, $validationArr);
+            $fields = $this->getSpecialFields($model, $fields);
+
+            $model = $model->create($fields);
+            $this->processingImages($request, $model, $pathToImages, $imageName);
+        }
+        $this->saveCompleteMessage();
+        return $model;
+    }
 
     /**
      * @throws \Illuminate\Validation\ValidationException
      */
     private function deleteSomething(Request $request, Model $model): JsonResponse
     {
-        $this->validate($request, ['id' => 'required|integer|exists:'.$model->getTable().',id']);
+        $this->validate($request, ['key' => 'required|integer|exists:'.$model->getTable().',id']);
         $table = $model->find($request->input('id'));
-
-        if (isset($table->image) && $model->image && file_exists(base_path('public/'.$model->image))) {
-            unlink(base_path('public/'.$model->image));
-        } elseif (isset($table->path) && $model->path && file_exists(base_path('public/'.$model->path))) {
-            unlink(base_path('public/'.$model->path));
+        if (isset($table->image) && $table->image) {
+            $this->deleteFile($table->image);
         } elseif (isset($table->images)) {
             foreach ($table->images as $image) {
-                if (file_exists(base_path('public/'.$image->preview))) unlink(base_path('public/'.$image->preview));
-                if (file_exists(base_path('public/'.$image->full))) unlink(base_path('public/'.$image->full));
+                $this->deleteFile($image->image);
             }
         }
         $table->delete();
         return response()->json(['message' => trans('admin.delete_complete')],200);
+    }
+
+    private function getSpecialFields(Model $model, array $fields): array
+    {
+        if (in_array('active',$model->getFillable())) $fields['active'] = request('active') ? 1 : 0;
+        return $fields;
+    }
+
+    private function processingImages(Request $request, Model $model, string $pathToImages, string $imageName): void
+    {
+        if ($pathToImages && $request->hasFile('image')) {
+            $imageName .= $model->id.'.'.$request->file('image')->getClientOriginalExtension();
+            $model->image = $pathToImages.$imageName;
+            $model->save();
+            $request->file('image')->move(base_path('public/'.$pathToImages), $imageName);
+        }
     }
 
     private function showView($view): View

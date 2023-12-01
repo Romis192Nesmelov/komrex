@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Komrex {{ trans('admin.admin_page').' '.$breadcrumbs[count($breadcrumbs)-1]['name'] }}</title>
+    <title>Komrex {{ trans('admin.admin_page').'. '.trans('admin_menu.'.end($breadcrumbs)['key']) }}</title>
     @include('blocks.favicon_block')
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -18,6 +18,7 @@
     <link href="{{ asset('css/admin/components.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/admin/colors.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/loader.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/jquery.fancybox.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/admin/admin.css') }}" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
 
@@ -100,17 +101,8 @@
                 <ul class="navigation navigation-main navigation-accordion">
                     <!-- Main -->
                     @foreach ($menu as $k => $item)
-                        <li {{ $item['id'] == $breadcrumbs[count($breadcrumbs) - (isset($menu['submenu']) && count($menu['submenu']) ?  2 : 1)]['id'] ? 'class=active' : '' }}>
-                            <a href="{{ route($item['href']) }}"><i class="{{ $item['icon'] }}"></i> <span>{{ $item['name'] }}</span></a>
-                            @if (isset($menu['submenu']) && count($menu['submenu']))
-                                <ul>
-                                    @foreach ($menu['submenu'] as $submenu)
-                                        <li {{ $submenu['id'] == $breadcrumbs[count($breadcrumbs)-1]['id'] ? 'class=active' : '' }}>
-                                            <a href="{{ route($submenu['href']) }}">{{ $submenu['name'] }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            @endif
+                        <li {{ $item['key'] == end($breadcrumbs)['key'] ? 'class=active' : '' }}>
+                            <a href="{{ route('admin.'.$item['key']) }}"><i class="{{ $item['icon'] }}"></i> <span>{{ trans('admin_menu.'.$item['key']) }}</span></a>
                         </li>
                     @endforeach
                 </ul>
@@ -130,18 +122,12 @@
                 <h4>
                     @foreach ($breadcrumbs as $breadcrumb)
                         @if ($loop->first)
-                            <a {{ count($breadcrumbs) > 2 ? 'href='.route($breadcrumbs[count($breadcrumbs)-2]['href']) : '' }}><i class="icon-arrow-left52 position-left"></i></a>
+                            <a {{ count($breadcrumbs) > 2 ? 'href='.route('admin.'.$breadcrumbs[count($breadcrumbs)-2]['key']) : '' }}><i class="icon-arrow-left52 position-left"></i></a>
                             <span class="text-semibold">
-                                  @include('admin.blocks.cropped_content_block',[
-                                    'croppingContent' => '- '.$breadcrumb['name'],
-                                    'length' => 30
-                                  ])
+                                  @include('admin.blocks.breadcrumb_name_block')
                             </span>
                         @else
-                            @include('admin.blocks.cropped_content_block',[
-                                'croppingContent' => '- '.$breadcrumb['name'],
-                                'length' => 30
-                              ])
+                            @include('admin.blocks.breadcrumb_name_block')
                         @endif
                     @endforeach
                  </h4>
@@ -152,11 +138,8 @@
             <ul class="breadcrumb">
                 @foreach ($breadcrumbs as $breadcrumb)
                     <li>
-                        <a href="{{ isset($breadcrumb['params']) ? route($breadcrumb['href'],$breadcrumb['params']) : route($breadcrumb['href']) }}{{ isset($breadcrumb['slug']) ? '/'.$breadcrumb['slug'] : '' }}">
-                            @include('admin.blocks.cropped_content_block',[
-                            'croppingContent' => $breadcrumb['name'],
-                            'length' => 40
-                        ])
+                        <a href="{{ isset($breadcrumb['params']) ? route('admin.'.$breadcrumb['key'],$breadcrumb['params']) : route('admin.'.$breadcrumb['key']) }}{{ isset($breadcrumb['slug']) ? '/'.$breadcrumb['slug'] : '' }}">
+                            @include('admin.blocks.breadcrumb_name_block')
                         </a>
                     </li>
                 @endforeach

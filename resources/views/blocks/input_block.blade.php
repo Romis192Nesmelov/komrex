@@ -1,7 +1,8 @@
-<div {{ isset($id) ? 'id='.$id : '' }} class="form-group {{ isset($label) && $label ? 'has-label' : '' }} {{ isset($addClass) && $addClass ? $addClass : '' }}">
-    @if (isset($label) && $label)
-        <label for="{{ $name }}">{{ $label }}</label>
-    @endif
+<x-incover
+    name="{{ $name }}"
+    error="{{ count($errors) && $errors->has($name) ? $errors->first($name) : '' }}"
+    label="{{ isset($label) && $label ? $label : ''  }}"
+>
     <input
         type="{{ isset($type) && $type ? $type : 'text' }}"
         name="{{ $name }}" {{ isset($step) ? 'step='.$step : '' }}
@@ -15,5 +16,4 @@
     @if (isset($icon) && $icon)
         <i class="{{ $icon }}"></i>
     @endif
-    @include('blocks.wrap_error_block')
-</div>
+</x-incover>
