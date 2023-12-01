@@ -2,6 +2,6 @@
     <a href="{{ $href }}"><img src="{{ asset('images/'.$icon) }}" /></a>
     <div>
         <b>{{ $description }}</b><br>
-        PDF, {{ $kb }} kB
+        PDF, <span><{{ $kb }}/span> kB
     </div>
 </div>

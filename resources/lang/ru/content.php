@@ -23,6 +23,7 @@ return [
     'list_of_events' => 'Список мероприятий',
     'write_to_the_company' => 'Написать в компанию',
     'presentation_of_the_company' => 'Презентация компании',
+    'presentation_of_the_project' => 'Презентация проекта',
     'our_values' => 'Наши ценности',
     'our_team' => 'Наша команда',
     'our_projects' => 'Наши проекты',

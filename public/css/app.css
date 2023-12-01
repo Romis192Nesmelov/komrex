@@ -11,7 +11,7 @@ body {
     width: calc(100% + 30px);
     height: 56px;
     display: flex;
-    top: calc(50% - 10px);
+    top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     position: absolute;
@@ -705,28 +705,30 @@ footer .download-block img:hover {
 #big-image-project {
     width: 100%;
     height: 40vw;
+    margin-bottom: 20px;
     background-size: cover !important;
     background-position: center center !important;
     background-repeat: no-repeat !important;
+}
+
+#description-project p {
+    font-size: 18px;
 }
 
 #small-images-project {
     padding: 10px 0;
 }
 
-#small-images-project img {
-    width: 10%;
-    margin-left: 5px;
+#small-images-project .project-small-image {
+    height: 100px;
     cursor: pointer;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
 }
 
-#small-images-project img.active,
-#small-images-project img:hover {
-    border: 1px solid #E9A127;
-}
-
-#small-images-project img:first-child {
-    margin-left: 0;
+#small-images-project .project-small-image:hover {
+    border: 2px solid #E9A127;
 }
 
 footer {
@@ -1000,11 +1002,6 @@ footer .email a:hover {
 
     #big-image-project {
         height: 60vw;
-    }
-
-    #small-images-project img {
-        width: 20%;
-        margin-left: 2px;
     }
 
     footer {

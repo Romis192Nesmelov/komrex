@@ -52,7 +52,8 @@ $(document).ready(function () {
             992: {
                 items: 3
             }
-        }
+        },
+        true
     ));
 
     // Projects carousel
@@ -66,7 +67,8 @@ $(document).ready(function () {
             992: {
                 items: 3
             }
-        }
+        },
+        true
     ));
 
     // Click to project type button
@@ -95,10 +97,60 @@ $(document).ready(function () {
     // Click to project
     $('.project').click(function () {
         let id = parseInt($(this).attr('id').replace('project',''));
-        console.log(id);
-    });
+        $.get(getProjectUrl, {
+            'id': id
+        },(data) => {
+            let projectModal = $('#project-modal'),
+                projectHead = projectModal.find('h2'),
+                projectDate = $('#date-presentation'),
+                projectBigImage = $('#big-image-project'),
+                projectSmallImages = $('#small-images-project'),
+                descriptionProject = $('#description-project'),
+                downloadBlock = projectModal.find('.download-block'),
+                downloadHref = downloadBlock.find('a'),
+                downloadSize = downloadBlock.find('span');
 
-    // $('#project-modal').modal('show');
+            projectHead.html(data.head);
+            if (data.date) {
+                projectHead.removeClass('mb-2').addClass('mb-0');
+                projectDate.html(data.date);
+                projectDate.show();
+            } else {
+                projectHead.removeClass('mb-0').addClass('mb-2');
+                projectDate.hide();
+            }
+            projectBigImage.css('background','url(/' + data.images[0].image +')');
+            descriptionProject.html(data.text);
+
+            if (data.presentation) {
+                downloadHref.attr('href','/' + data.presentation);
+                downloadSize.html(data.size);
+                downloadBlock.show();
+            } else {
+                downloadBlock.hide();
+            }
+
+            projectSmallImages.html('');
+            $.each(data.images, function (k, image) {
+                let smallImage = $('<div></div>').addClass('project-small-image');
+                // if (!k) smallImage.addClass('active');
+                smallImage.css('background-image','url(/' + image.image +')');
+                projectSmallImages.append(smallImage);
+            });
+
+            projectSmallImages.trigger('destroy.owl.carousel');
+            owlCarouselProject(projectSmallImages);
+            $(('.project-small-image')).click(function () {
+                let newBigImage = $(this).css('background-image');
+                projectBigImage.animate({'opacity':0}, 'fast', function () {
+                    projectBigImage.css('background-image',newBigImage);
+                    projectBigImage.animate({'opacity':1}, 'fast');
+                });
+            });
+
+            projectModal.modal('show');
+        });
+    });
 });
 
 const activatingProjectBlock = (prevActiveBlock, projectsId, callBack) => {
@@ -171,17 +223,36 @@ const gotoScroll = (scroll) => {
     });
 }
 
-const owlSettings = (margin, timeout, responsive) => {
+const owlSettings = (margin, timeout, responsive, nav) => {
     let navButtonBlack1 = '<img src="/images/arrow_left.svg" />',
         navButtonBlack2 = '<img src="/images/arrow_right.svg" />';
     return {
         margin: margin,
         loop: true,
-        nav: true,
+        nav: nav,
         autoplay: true,
         autoplayTimeout: timeout,
         dots: false,
         responsive: responsive,
         navText: [navButtonBlack1, navButtonBlack2]
     }
+}
+
+const owlCarouselProject = (container) => {
+    container.owlCarousel(owlSettings(
+        5,
+        5000,
+        {
+            0: {
+                items: 3
+            },
+            992: {
+                items: 6
+            },
+            1024: {
+                items: 8
+            }
+        },
+        false
+    ));
 }

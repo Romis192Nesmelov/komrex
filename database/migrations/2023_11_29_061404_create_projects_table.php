@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('head');
             $table->string('date');
             $table->text('text');
+            $table->string('presentation')->nullable();
             $table->foreignIdFor(ProjectType::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->boolean('active');
             $table->timestamps();

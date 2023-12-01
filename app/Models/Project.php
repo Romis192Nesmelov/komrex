@@ -10,6 +10,8 @@ class Project extends Model
     protected $fillable = [
         'head',
         'date',
+        'text',
+        'presentation',
         'project_type_id',
         'active'
     ];
@@ -26,6 +28,6 @@ class Project extends Model
 
     public function geById(): Project
     {
-        return $this->findOrFail(request('id'));
+        return $this->where('id',request('id'))->with('images')->first();
     }
 }

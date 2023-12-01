@@ -185,18 +185,22 @@
             </div>
         </div>
     </div>
-{{--    <x-modal class="styled" id="project-modal" no_header="1">--}}
-{{--        <img src="{{ asset('images/close_icon.svg') }}" class="close-icon" data-bs-dismiss="modal" data-dismiss="modal" />--}}
-{{--        <h2 class="mb-0">Применение экскаватора МН-30 в Амурскрй области</h2>--}}
-{{--        <p id="project-date" class="small mb-2">werwe</p>--}}
-{{--        <div id="big-image-project" style="background: url({{ asset('images/projects/project1.jpg') }})"></div>--}}
-{{--        <div id="small-images-project" class="w-100">--}}
-{{--            <img src="{{ asset('images/projects/project1.jpg') }}" />--}}
-{{--            <img src="{{ asset('images/projects/project2.jpg') }}" />--}}
-{{--            <img src="{{ asset('images/projects/project3.jpg') }}" />--}}
-{{--        </div>--}}
-{{--    </x-modal>--}}
+    <x-modal class="styled" id="project-modal" no_header="1">
+        <img src="{{ asset('images/close_icon.svg') }}" class="close-icon" data-bs-dismiss="modal" data-dismiss="modal" />
+        <h2 class="mb-0"></h2>
+        <p id="date-presentation" class="small mb-2"></p>
+        <div id="big-image-project"></div>
+        <div id="small-images-project" class="owl-carousel w-100 mb-3"></div>
+        <div id="description-project" class="small"></div>
+        @include('blocks.download_block',[
+            'href' => '#',
+            'icon' => 'download_yellow_icon.svg',
+            'description' => trans('content.presentation_of_the_project'),
+            'kb' => 1
+        ])
+    </x-modal>
     @if ($scroll)
         <script>window.scrollAnchor = "{{ $scroll }}";</script>
     @endif
+    <script> const getProjectUrl = "{{ route('get_project') }}";</script>
 @endsection
