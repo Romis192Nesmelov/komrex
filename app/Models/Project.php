@@ -23,4 +23,9 @@ class Project extends Model
     {
         return $this->hasMany(ProjectImage::class);
     }
+
+    public function geById(): Project
+    {
+        return $this->findOrFail(request('id'));
+    }
 }

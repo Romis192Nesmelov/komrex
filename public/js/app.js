@@ -92,6 +92,12 @@ $(document).ready(function () {
         }
     });
 
+    // Click to project
+    $('.project').click(function () {
+        let id = parseInt($(this).attr('id').replace('project',''));
+        console.log(id);
+    });
+
     // $('#project-modal').modal('show');
 });
 

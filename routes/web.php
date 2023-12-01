@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LoginController;
+use \App\Http\Controllers\ProjectsController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(BaseController::class)->group(function () {
@@ -20,6 +21,9 @@ Route::controller(LoginController::class)->group(function () {
     Route::post('/login', 'login')->name('login');
     Route::get('/logout', 'logout')->name('logout');
 });
+
+Route::get('/get-project', ProjectsController::class)->name('get_project');
+
 Route::prefix('admin')->middleware(['auth'])->controller(AdminController::class)->name('admin.')->group(function () {
     Route::get('/', 'home')->name('home');
 
