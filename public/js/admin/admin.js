@@ -106,14 +106,21 @@ $(document).ready(function () {
         $.post(deleteModal.attr('del_function'), {
             '_token': $('input[name=_token]').val(),
             'id': window.deleteId,
-        }, function (data) {
-            // dTable.row(window.deleteRow).remove();
-            // window.deleteRow.remove();
-            deleteDataTableRows();
-            // dTable.draw();
-            bindDelete();
+        }).done(
+            function (data) {
+                // dTable.row(window.deleteRow).remove();
+                // window.deleteRow.remove();
+                deleteDataTableRows();
+                // dTable.draw();
+                bindDelete();
+                window.messageModal.find('h4').html(data.message);
+            }
+        ).fail(
+            function (data) {
+                window.messageModal.find('h4').html(data.responseJSON.message);
+            }
+        ).always(function() {
             removeLoader();
-            window.messageModal.find('h4').html(data.message);
             window.messageModal.modal('show');
         });
     });
@@ -132,6 +139,7 @@ const bindChangePagination = () => {
     window.dataTable.off(paginationEvent);
     window.dataTable.on(paginationEvent, function () {
         bindDelete();
+        bindFancybox();
     });
 }
 

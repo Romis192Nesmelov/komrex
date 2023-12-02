@@ -4,13 +4,11 @@
     <div class="panel panel-flat">
         @include('admin.blocks.title_block')
         <div class="panel-body">
-            <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.edit_consulting_content') }}" method="post">
+            <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.edit_consulting') }}" method="post">
                 @csrf
-                @if (isset($consulting))
-                    @include('admin.blocks.hidden_id_block',['id' => $consulting->id])
-                @endif
+                @include('admin.blocks.hidden_id_block',['id' => $consulting->id])
                 <div class="col-lg-3 col-ms-12">
-                    @include('admin.blocks.input_image_block',['image' => isset($consulting) ? $consulting->image : null])
+                    @include('admin.blocks.input_image_block',['image' => $consulting->image])
                 </div>
                 <div class="col-lg-9 col-ms-12">
                     <div class="panel panel-flat">
@@ -21,12 +19,12 @@
                                 'type' => 'text',
                                 'max' => 50,
                                 'placeholder' => trans('admin.head'),
-                                'value' => isset($consulting) ? $consulting->head : ''
+                                'value' => $consulting->head
                             ])
                             @include('admin.blocks.textarea_block',[
                                 'name' => 'text',
                                 'label' => trans('admin.text'),
-                                'value' => isset($consulting) ? $consulting->text : '',
+                                'value' => $consulting->text,
                                 'simple' => true
                             ])
                             @include('admin.blocks.save_button_block')

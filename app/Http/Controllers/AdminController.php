@@ -6,6 +6,9 @@ use App\Models\Home;
 use App\Models\OurTeam;
 use App\Models\OurValue;
 use App\Models\Partner;
+use App\Models\Project;
+use App\Models\ProjectImage;
+use App\Models\ProjectType;
 use App\Models\Requisite;
 use App\Models\ServiceSolution;
 use Illuminate\Http\JsonResponse;
@@ -29,34 +32,61 @@ class AdminController extends Controller
             'home' => [
                 'key' => 'home',
                 'icon' => 'icon-home2',
+                'hidden' => false,
             ],
             'users' => [
                 'key' => 'users',
                 'icon' => 'icon-users',
+                'hidden' => false,
+            ],
+            'quotes' => [
+                'key' => 'quotes',
+                'icon' => 'icon-quotes-right',
+                'hidden' => false,
+            ],
+            'contents' => [
+                'key' => 'contents',
+                'icon' => 'icon-pencil6',
+                'hidden' => false,
             ],
             'solutions' => [
                 'key' => 'solutions',
                 'icon' => 'icon-key',
+                'hidden' => false,
             ],
             'consultings' => [
                 'key' => 'consultings',
                 'icon' => 'icon-user-tie',
+                'hidden' => false,
             ],
             'values' => [
                 'key' => 'values',
                 'icon' => 'icon-safe',
+                'hidden' => false,
             ],
             'participants' => [
                 'key' => 'participants',
                 'icon' => 'icon-users4',
+                'hidden' => false,
+            ],
+            'project_types' => [
+                'key' => 'project_types',
+                'icon' => 'icon-archive',
+                'hidden' => false,
+            ],
+            'projects' => [
+                'key' => 'projects',
+                'hidden' => true,
             ],
             'partners' => [
                 'key' => 'partners',
                 'icon' => 'icon-shrink7',
+                'hidden' => false,
             ],
             'requisites' => [
                 'key' => 'requisites',
                 'icon' => 'icon-pen',
+                'hidden' => false,
             ],
         ];
         $this->breadcrumbs[] = $this->menu['home'];
@@ -103,6 +133,83 @@ class AdminController extends Controller
         return redirect(route('admin.users'));
     }
 
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function deleteUser(Request $request): JsonResponse
+    {
+        return $this->deleteSomething($request, new User());
+    }
+
+    public function quotes(): View
+    {
+        $this->data['menu_key'] = 'quotes';
+        $this->breadcrumbs[] = $this->menu['quotes'];
+
+        if (request('id')) {
+            $this->data['quote'] = Home::findOrFail(request('id'));
+            $this->breadcrumbs[] = [
+                'key' => $this->menu['quotes']['key'],
+                'params' => ['id' => $this->data['quote']->id],
+                'name' => trans('admin.edit_quote'),
+            ];
+            return $this->showView('quote');
+        } else {
+            $this->data['quotes'] = Home::whereIn('id',[1,4])->get();
+            return $this->showView('quotes');
+        }
+    }
+
+    public function contents(): View
+    {
+        $this->data['menu_key'] = 'contents';
+        $this->breadcrumbs[] = $this->menu['contents'];
+
+        if (request('id')) {
+            $this->data['content'] = Home::findOrFail(request('id'));
+            $this->breadcrumbs[] = [
+                'key' => $this->menu['contents']['key'],
+                'params' => ['id' => $this->data['content']->id],
+                'name' => trans('admin.edit_content'),
+            ];
+            return $this->showView('content');
+        } else {
+            $this->data['contents'] = Home::whereIn('id',[2,3,6,7])->get();
+            return $this->showView('contents');
+        }
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function editContent(Request $request): RedirectResponse
+    {
+        $this->editSomething (
+            $request,
+            new Home(),
+            [
+                'head' => $this->validationString,
+                'text' => $this->validationText
+            ]
+        );
+        $this->saveCompleteMessage();
+        return redirect(route('admin.contents'));
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function editQuote(Request $request): RedirectResponse
+    {
+        $this->editSomething (
+            $request,
+            new Home(),
+            ['text' => $this->validationText]
+        );
+        $this->saveCompleteMessage();
+        return redirect(route('admin.quotes'));
+    }
+
     public function solutions($slug=null): View
     {
         return $this->getSomething('solutions', new ServiceSolution(), $slug);
@@ -136,10 +243,10 @@ class AdminController extends Controller
         return $this->deleteSomething($request, new ServiceSolution());
     }
 
-    public function consultings($slug=null): View
+    public function consultings(): View
     {
         $this->data['content'] = Home::find(5);
-        return $this->getSomething('consultings', new Consulting(), $slug);
+        return $this->getSomething('consultings', new Consulting(), null);
     }
 
     /**
@@ -210,14 +317,6 @@ class AdminController extends Controller
         return $this->deleteSomething($request, new OurValue());
     }
 
-    /**
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function deleteUser(Request $request): JsonResponse
-    {
-        return $this->deleteSomething($request, new User());
-    }
-
     public function participants(Request $request, $slug=null): View
     {
         return $this->getSomething('participants', new OurTeam(), $slug);
@@ -248,6 +347,103 @@ class AdminController extends Controller
     public function deleteParticipant(Request $request): JsonResponse
     {
         return $this->deleteSomething($request, new OurTeam());
+    }
+
+    public function projectTypes($slug=null): View
+    {
+        $this->getProjectTypesSubMenu();
+        return $this->getSomething('project_types', new ProjectType(), $slug);
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function editProjectType(Request $request): RedirectResponse
+    {
+        $this->editSomething (
+            $request,
+            new ProjectType(),
+            ['name' => 'required|min:3|max:50']
+        );
+        $this->saveCompleteMessage();
+        return redirect(route('admin.project_types'));
+    }
+
+    public function deleteProjectType(Request $request): JsonResponse
+    {
+        $projectType = ProjectType::findOrFail($request->input('id'));
+        if ($projectType->projects->count()) {
+            return response()->json(['message' => trans('admin.error_delete_project_type')],403);
+        } else {
+            $projectType->delete();
+            return response()->json(['message' => trans('admin.delete_complete')],200);
+        }
+    }
+
+    public function projects($slug=null): View
+    {
+        $this->getProjectTypesSubMenu();
+        return $this->getSomething('projects', new Project(), $slug, new ProjectType());
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function editProject(Request $request): RedirectResponse
+    {
+        $project = $this->editSomething (
+            $request,
+            new Project(),
+            [
+                'head' => $this->validationString,
+                'date' => 'nullable|min:3|max:15',
+                'text' => $this->validationText,
+            ],
+        );
+        $this->saveCompleteMessage();
+        return redirect(route('admin.project_types',['id' => $project->project_type_id]));
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function deleteProject(Request $request): JsonResponse
+    {
+        $project = Project::findOrFail($request->input('id'));
+        if ($project->images->count()) {
+            return response()->json(['message' => trans('admin.error_delete_project')],403);
+        } else {
+            $project->delete();
+            return response()->json(['message' => trans('admin.delete_complete')],200);
+        }
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function addProjectImage(Request $request): RedirectResponse
+    {
+        $project = Project::select('id','project_type_id')->where('id',$request->input('project_id'))->first();
+        $this->editSomething (
+            $request,
+            new ProjectImage(),
+            [
+                'image' => $this->validationJpgAndPng,
+                'project_id' => 'required|integer|exists:projects,id'
+            ],
+            'images/projects/project_type'.$project->project_type_id.'/',
+            'project'.$project->id.'_'
+        );
+        $this->saveCompleteMessage();
+        return redirect(route('admin.projects',['id' => $project->id, 'parent_id' => $project->project_type_id]));
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function deleteProjectImage(Request $request): JsonResponse
+    {
+        return $this->deleteSomething($request, new ProjectImage());
     }
 
     public function partners($slug=null): View
@@ -310,12 +506,22 @@ class AdminController extends Controller
         return redirect(route('admin.requisites'));
     }
 
-    private function getSomething(string $key, Model $model, $slug=null): View
+    private function getSomething(string $key, Model $model, $slug=null, Model|null $parentModel=null): View
     {
         $this->data['menu_key'] = $key;
         $this->breadcrumbs[] = $this->menu[$key];
 
-        $this->data['singular_key'] = substr($key, 0, -1);
+        if (request('parent_id')) {
+            $parentItem = $parentModel->findOrFail(request('parent_id'));
+            $this->data['parents'] = $parentModel->all();
+            $this->breadcrumbs[] = [
+                'key' => $this->menu[$this->data['parent_key']]['key'],
+                'params' => ['id' => $parentItem->id],
+                'name' => $parentItem->name ?? $parentItem->head,
+            ];
+        }
+
+        $this->getSingularKey($key);
         if (request('id')) {
             $this->data[$this->data['singular_key']] = $model->findOrFail(request('id'));
             $this->breadcrumbs[] = [
@@ -376,7 +582,7 @@ class AdminController extends Controller
      */
     private function deleteSomething(Request $request, Model $model): JsonResponse
     {
-        $this->validate($request, ['key' => 'required|integer|exists:'.$model->getTable().',id']);
+        $this->validate($request, ['id' => 'required|integer|exists:'.$model->getTable().',id']);
         $table = $model->find($request->input('id'));
         if (isset($table->image) && $table->image) {
             $this->deleteFile($table->image);
@@ -395,7 +601,18 @@ class AdminController extends Controller
         return $fields;
     }
 
-    private function processingImages(Request $request, Model $model, string $pathToImages, string $imageName): void
+    private function getSingularKey($key): void
+    {
+        $this->data['singular_key'] = substr($key, 0, -1);
+    }
+
+    private function getProjectTypesSubMenu(): void
+    {
+        $this->data['submenu'] = ProjectType::select('id','name')->get();
+        $this->data['parent_key'] = 'project_types';
+    }
+
+    private function processingImages(Request $request, Model $model, string|null $pathToImages, string|null $imageName): void
     {
         if ($pathToImages && $request->hasFile('image')) {
             $imageName .= $model->id.'.'.$request->file('image')->getClientOriginalExtension();

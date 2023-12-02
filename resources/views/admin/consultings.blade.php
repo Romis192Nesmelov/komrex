@@ -4,7 +4,7 @@
     <div class="panel panel-flat">
         @include('admin.blocks.title_block')
         <div class="panel-body">
-            <form class="form-horizontal" action="{{ route('admin.edit_consulting') }}" method="post">
+            <form class="form-horizontal" action="{{ route('admin.edit_consulting_content') }}" method="post">
                 @csrf
                 @include('blocks.input_block', [
                     'label' => trans('admin.head'),
@@ -27,9 +27,10 @@
             @include('admin.blocks.data_table_block', [
                 'columns' => ['image','head','text','created_at'],
                 'items' => $consultings,
+                'useEdit' => true,
                 'useDelete' => false
             ])
         </div>
     </div>
-    <script>window.dtRows = 6;</script>
+    <script>window.dtRows = 5;</script>
 @endsection

@@ -8,6 +8,7 @@
             @include('admin.blocks.data_table_block', [
                 'columns' => ['image','head','text','active','created_at'],
                 'items' => $values,
+                'useEdit' => true,
                 'useDelete' => true
             ])
         </div>

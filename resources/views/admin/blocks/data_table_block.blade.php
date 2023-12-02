@@ -12,7 +12,9 @@
                 <th class="text-center">{{ trans('admin.'.$column) }}</th>
             @endif
         @endforeach
-        @include('admin.blocks.th_edit_cell_block')
+        @if ($useEdit)
+            @include('admin.blocks.th_edit_cell_block')
+        @endif
         @if ($useDelete)
             @include('admin.blocks.th_delete_cell_block')
         @endif
@@ -33,7 +35,13 @@
                     <td class="text-center {{ $column == 'head' || $column == 'email' ? 'head' : '' }}">{{ $item[$column] }}</td>
                 @endif
             @endforeach
-            @include('admin.blocks.edit_cell_block', ['href' => route('admin.'.$menu[$menu_key]['key'], ['id' => $item->id])])
+            @if ($useEdit)
+                @if (isset($route))
+                    @include('admin.blocks.edit_cell_block', ['href' => route('admin.'.$route, ['id' => $item->id, 'parent_id' => $parent_id])])
+                @else
+                    @include('admin.blocks.edit_cell_block', ['href' => route('admin.'.$menu[$menu_key]['key'], ['id' => $item->id])])
+                @endif
+            @endif
             @if ($useDelete)
                 @include('admin.blocks.delete_cell_block',['id' => $item->id])
             @endif

@@ -31,6 +31,12 @@ Route::prefix('admin')->middleware(['auth'])->controller(AdminController::class)
     Route::post('/edit-user', 'editUser')->name('edit_user');
     Route::get('/delete-user', 'deleteUser')->name('delete_user');
 
+    Route::get('/quotes', 'quotes')->name('quotes');
+    Route::post('/edit-quote', 'editQuote')->name('edit_quote');
+
+    Route::get('/contents', 'contents')->name('contents');
+    Route::post('/edit-content', 'editContent')->name('edit_content');
+
     Route::get('/solutions/{slug?}', 'solutions')->name('solutions');
     Route::post('/edit-solution', 'editSolution')->name('edit_solution');
     Route::post('/delete-solution', 'deleteSolution')->name('delete_solution');
@@ -42,6 +48,17 @@ Route::prefix('admin')->middleware(['auth'])->controller(AdminController::class)
     Route::get('/values/{slug?}', 'values')->name('values');
     Route::post('/edit-value', 'editValue')->name('edit_value');
     Route::post('/delete-value', 'deleteValue')->name('delete_value');
+
+    Route::get('/project-types/{slug?}', 'projectTypes')->name('project_types');
+    Route::post('/edit-project-type', 'editProjectType')->name('edit_projects_type');
+    Route::post('/delete-project-type', 'deleteProjectType')->name('delete_project_type');
+
+    Route::get('/projects/{slug?}', 'projects')->name('projects');
+    Route::post('/edit-project', 'editProject')->name('edit_project');
+    Route::post('/delete-project', 'deleteProject')->name('delete_project');
+    Route::post('/delete-project', 'deleteProject')->name('delete_project');
+    Route::post('/add-project-image', 'addProjectImage')->name('add_project_image');
+    Route::post('/delete-project-image', 'deleteProjectImage')->name('delete_project_image');
 
     Route::get('/partners/{slug?}', 'partners')->name('partners');
     Route::post('/edit-partner', 'editPartner')->name('edit_partner');

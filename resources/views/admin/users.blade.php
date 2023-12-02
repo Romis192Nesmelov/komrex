@@ -8,6 +8,7 @@
             @include('admin.blocks.data_table_block', [
                 'columns' => ['email','created_at'],
                 'items' => $users,
+                'useEdit' => true,
                 'useDelete' => true
             ])
         </div>

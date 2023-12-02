@@ -5,7 +5,7 @@
         </div>
     @endif
     <div class="panel-body edit-image-preview">
-        @if ($image)
+        @if (isset($image) && $image)
             <a class="fancybox" href="{{ asset($image) }}">
                 <img src="{{ asset($image) }}?{{ md5(rand(1,100000)*time()) }}" />
             </a>

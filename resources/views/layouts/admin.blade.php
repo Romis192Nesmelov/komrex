@@ -100,18 +100,20 @@
             <div class="category-content no-padding">
                 <ul class="navigation navigation-main navigation-accordion">
                     @foreach ($menu as $k => $item)
-                        <li {{ $item['key'] == $menu_key ? 'class=active' : '' }}>
-                            <a href="{{ route('admin.'.$item['key']) }}"><i class="{{ $item['icon'] }}"></i> <span>{{ trans('admin_menu.'.$item['key']) }}</span></a>
-                            @if (isset($submenu))
-                                <ul>
-                                    @foreach ($submenu as $subItem)
-                                        <li {{ $subItem['key'] == $sub_menu_key ? 'class=active' : '' }}>
-                                            <a href="{{ route('admin.'.$subItem['key']) }}">{{ trans('admin_menu.'.$subItem['key']) }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            @endif
-                        </li>
+                        @if (!$item['hidden'])
+                            <li {{ ($item['key'] == $menu_key) || (isset($parent_key) && $item['key'] == $parent_key) ? 'class=active' : '' }}>
+                                <a href="{{ route('admin.'.$item['key']) }}"><i class="{{ $item['icon'] }}"></i> <span>{{ trans('admin_menu.'.$item['key']) }}</span></a>
+                                @if (isset($submenu) && ($item['key'] == $menu_key || $item['key'] == $parent_key))
+                                    <ul>
+                                        @foreach ($submenu as $subItem)
+                                            <li {{ (request('id') && $subItem->id == request('id')) || (request('parent_id') && $subItem->id == request('parent_id')) ? 'class=active' : '' }}>
+                                                <a href="{{ route('admin.'.$parent_key,['id' => $subItem->id]) }}">{{ ($subItem->name ?? $subItem->head) }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @endif
                     @endforeach
                 </ul>
             </div>

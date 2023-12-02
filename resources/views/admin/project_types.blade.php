@@ -6,8 +6,8 @@
         @include('admin.blocks.title_block')
         <div class="panel-body">
             @include('admin.blocks.data_table_block', [
-                'columns' => ['image','active','created_at'],
-                'items' => $partners,
+                'columns' => ['name','active','created_at'],
+                'items' => $project_types,
                 'useEdit' => true,
                 'useDelete' => true
             ])

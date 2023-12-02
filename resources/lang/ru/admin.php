@@ -47,6 +47,8 @@ return [
     'add_solution' => 'Добавить сервисное решение',
     'adding_solution' => 'Добавление сервисного решения',
 
+    'edit_quote' => 'Редактирование цитаты',
+    'edit_content' => 'Редактирование контента',
     'edit_consulting' => 'Редактирование раздела консалтинга',
 
     'do_you_really_want_delete_this_participant' => 'Вы действительно хотите удалить этого участника команды?',
@@ -58,6 +60,21 @@ return [
     'edit_value' => 'Редактирование ценности',
     'add_value' => 'Добавить ценность',
     'adding_value' => 'Добавление ценности',
+
+    'do_you_really_want_delete_this_project_type' => 'Вы действительно хотите удалить этот тип проектов?',
+    'edit_project_type' => 'Редактирование типа проектов',
+    'add_project_type' => 'Добавить тип проектов',
+    'adding_project_type' => 'Добавление типа проектов',
+    'error_delete_project_type' => 'Данный тип проектов содержит неудаленные проекты! Вначале вы должны удалить их!',
+
+    'project_type' => 'Тип проекта',
+    'do_you_really_want_delete_this_project' => 'Вы действительно хотите удалить этот проект?',
+    'edit_project' => 'Редактирование проекта',
+    'add_project' => 'Добавить проект',
+    'adding_project' => 'Добавление проекта',
+    'error_delete_project' => 'Данный проект содержит неудаленные картинки! Вначале вы должны удалить их!',
+    'add_project_image' => 'Добавить картинку в проект',
+    'do_you_really_want_delete_this_project_image' => 'Вы действительно хотите удалить эту картинку?',
 
     'do_you_really_want_delete_this_partner' => 'Вы действительно хотите удалить этого партнера?',
     'edit_partner' => 'Редактирование партнера',

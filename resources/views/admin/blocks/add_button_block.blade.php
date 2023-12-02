@@ -1,5 +1,9 @@
 <div class="panel-body">
-    <a href="{{ route('admin.'.$menu[$menu_key]['key']).'/add', }}">
+    @if (isset($route))
+        <a href="{{ route('admin.'.$route, ['slug' => 'add', 'parent_id' => $parent_id]), }}">
+    @else
+        <a href="{{ route('admin.'.$menu[$menu_key]['key']).'/add', }}">
+    @endif
         @include('blocks.button_block', [
             'primary' => true,
             'buttonType' => 'button',
