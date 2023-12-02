@@ -10,6 +10,6 @@ class ProjectsController extends Controller
 {
     public function __invoke(Project $project) : JsonResponse
     {
-        return response()->json(ProjectResourse::make($project->geById())->resolve(), 200);
+        return response()->json(ProjectResourse::make($project->getById())->resolve(), 200);
     }
 }

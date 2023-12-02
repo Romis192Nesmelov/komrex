@@ -108,7 +108,8 @@ $(document).ready(function () {
                 descriptionProject = $('#description-project'),
                 downloadBlock = projectModal.find('.download-block'),
                 downloadHref = downloadBlock.find('a'),
-                downloadSize = downloadBlock.find('span');
+                downloadSize = downloadBlock.find('span'),
+                activeId = null;
 
             projectHead.html(data.head);
             if (data.date) {
@@ -132,14 +133,16 @@ $(document).ready(function () {
 
             projectSmallImages.html('');
             $.each(data.images, function (k, image) {
-                let smallImage = $('<div></div>').addClass('project-small-image');
-                // if (!k) smallImage.addClass('active');
+                let smallImage = $('<div></div>').addClass('project-small-image').addClass('project' + image.id);
+                if (!k) activeId = image.id;
                 smallImage.css('background-image','url(/' + image.image +')');
                 projectSmallImages.append(smallImage);
             });
 
             projectSmallImages.trigger('destroy.owl.carousel');
             owlCarouselProject(projectSmallImages);
+            projectModal.find('.project' + activeId).addClass('active');
+
             $(('.project-small-image')).click(function () {
                 let newBigImage = $(this).css('background-image');
                 projectBigImage.animate({'opacity':0}, 'fast', function () {
@@ -147,7 +150,6 @@ $(document).ready(function () {
                     projectBigImage.animate({'opacity':1}, 'fast');
                 });
             });
-
             projectModal.modal('show');
         });
     });
@@ -240,7 +242,7 @@ const owlSettings = (margin, timeout, responsive, nav) => {
 
 const owlCarouselProject = (container) => {
     container.owlCarousel(owlSettings(
-        5,
+        10,
         5000,
         {
             0: {
@@ -253,6 +255,6 @@ const owlCarouselProject = (container) => {
                 items: 8
             }
         },
-        false
+        true
     ));
 }

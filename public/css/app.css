@@ -9,7 +9,7 @@ body {
 
 .owl-nav {
     width: calc(100% + 30px);
-    height: 56px;
+    height: 0;
     display: flex;
     top: 50%;
     left: 50%;
@@ -114,7 +114,7 @@ button.btn.btn-secondary.white {
 }
 
 .modal.styled .modal-dialog {
-    max-width: 70%;
+    max-width: 60%;
     padding: 50px;
     margin: 5% auto;
     background: url("../images/body_bg.svg") no-repeat #F7F7F5;
@@ -727,6 +727,7 @@ footer .download-block img:hover {
     background-repeat: no-repeat !important;
 }
 
+#small-images-project .project-small-image.active,
 #small-images-project .project-small-image:hover {
     border: 2px solid #E9A127;
 }

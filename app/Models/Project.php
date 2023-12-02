@@ -26,7 +26,7 @@ class Project extends Model
         return $this->hasMany(ProjectImage::class);
     }
 
-    public function geById(): Project
+    public function getById(): Project
     {
         return $this->where('id',request('id'))->with('images')->first();
     }
