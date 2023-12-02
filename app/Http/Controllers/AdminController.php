@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Consulting;
+use App\Models\Home;
 use App\Models\OurTeam;
 use App\Models\OurValue;
 use App\Models\Partner;
 use App\Models\Requisite;
+use App\Models\ServiceSolution;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -31,6 +34,14 @@ class AdminController extends Controller
                 'key' => 'users',
                 'icon' => 'icon-users',
             ],
+            'solutions' => [
+                'key' => 'solutions',
+                'icon' => 'icon-key',
+            ],
+            'consultings' => [
+                'key' => 'consultings',
+                'icon' => 'icon-user-tie',
+            ],
             'values' => [
                 'key' => 'values',
                 'icon' => 'icon-safe',
@@ -56,6 +67,7 @@ class AdminController extends Controller
      */
     public function home(): View
     {
+        $this->data['menu_key'] = 'home';
         return $this->showView('home');
     }
 
@@ -64,7 +76,7 @@ class AdminController extends Controller
      */
     public function users($slug=null): View
     {
-        return $this->getView('users', new User(), $slug);
+        return $this->getSomething('users', new User(), $slug);
     }
 
     /**
@@ -91,9 +103,83 @@ class AdminController extends Controller
         return redirect(route('admin.users'));
     }
 
+    public function solutions($slug=null): View
+    {
+        return $this->getSomething('solutions', new ServiceSolution(), $slug);
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function editSolution(Request $request): RedirectResponse
+    {
+        $this->editSomething (
+            $request,
+            new ServiceSolution(),
+            [
+                'head' => 'required|min:3|max:50',
+                'text' => $this->validationText,
+                'image' => $this->validationSvg
+            ],
+            'images/service_solutions',
+            'ss'
+        );
+        $this->saveCompleteMessage();
+        return redirect(route('admin.solutions'));
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function deleteSolution(Request $request): JsonResponse
+    {
+        return $this->deleteSomething($request, new ServiceSolution());
+    }
+
+    public function consultings($slug=null): View
+    {
+        $this->data['content'] = Home::find(5);
+        return $this->getSomething('consultings', new Consulting(), $slug);
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function editConsultingContent(Request $request): RedirectResponse
+    {
+        $fields = $this->validate($request, [
+            'head' => $this->validationString,
+            'text' => $this->validationText,
+        ]);
+        $content = Home::find(5);
+        $content->update($fields);
+        $this->saveCompleteMessage();
+        return redirect(route('admin.consultings'));
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function editConsulting(Request $request): RedirectResponse
+    {
+        $this->editSomething (
+            $request,
+            new Consulting(),
+            [
+                'head' => $this->validationString,
+                'text' => $this->validationText,
+                'image' => $this->validationSvg
+            ],
+            'images/consulting',
+            'consulting'
+        );
+        $this->saveCompleteMessage();
+        return redirect(route('admin.consultings'));
+    }
+
     public function values($slug=null): View
     {
-        return $this->getView('values', new OurValue(), $slug);
+        return $this->getSomething('values', new OurValue(), $slug);
     }
 
     /**
@@ -134,7 +220,7 @@ class AdminController extends Controller
 
     public function participants(Request $request, $slug=null): View
     {
-        return $this->getView('participants', new OurTeam(), $slug);
+        return $this->getSomething('participants', new OurTeam(), $slug);
     }
 
     /**
@@ -166,7 +252,7 @@ class AdminController extends Controller
 
     public function partners($slug=null): View
     {
-        return $this->getView('partners', new Partner(), $slug);
+        return $this->getSomething('partners', new Partner(), $slug);
     }
 
     /**
@@ -197,7 +283,7 @@ class AdminController extends Controller
 
     public function requisites(): View
     {
-        return $this->getView('requisites', new Requisite());
+        return $this->getSomething('requisites', new Requisite());
     }
 
     /**
@@ -205,6 +291,7 @@ class AdminController extends Controller
      */
     public function editRequisites(Request $request): RedirectResponse
     {
+        $this->data['menu_key'] = 'requisites';
         $fields = $this->validate($request, [
             'id_1' => 'required|email',
             'id_2' => 'required|size:13',
@@ -223,7 +310,7 @@ class AdminController extends Controller
         return redirect(route('admin.requisites'));
     }
 
-    private function getView(string $key, Model $model, $slug=null): View
+    private function getSomething(string $key, Model $model, $slug=null): View
     {
         $this->data['menu_key'] = $key;
         $this->breadcrumbs[] = $this->menu[$key];
@@ -231,11 +318,6 @@ class AdminController extends Controller
         $this->data['singular_key'] = substr($key, 0, -1);
         if (request('id')) {
             $this->data[$this->data['singular_key']] = $model->findOrFail(request('id'));
-
-            if (isset($this->data[$this->data['singular_key']]->email)) $name = $this->data[$this->data['singular_key']]->email;
-            elseif (isset($this->data[$this->data['singular_key']]->name)) $name = $this->data[$this->data['singular_key']]->name;
-            else $name = $this->data[$this->data['singular_key']]->head;
-
             $this->breadcrumbs[] = [
                 'key' => $this->menu[$key]['key'],
                 'params' => ['id' => $this->data[$this->data['singular_key']]->id],

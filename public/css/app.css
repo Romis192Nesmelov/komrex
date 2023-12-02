@@ -25,6 +25,15 @@ body {
     height: 56px;
 }
 
+.grad {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    background: linear-gradient(rgba(18, 21, 36, 0), rgba(18, 21, 36, 0.8));
+    z-index: 800;
+}
+
 .w-60 {
     width: 60%;
 }
@@ -681,15 +690,6 @@ footer .download-block img:hover {
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-position: bottom !important;
-}
-
-.project .grad {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    position: absolute;
-    background: linear-gradient(rgba(18, 21, 36, 0), rgba(18, 21, 36, 0.8));
-    z-index: 800;
 }
 
 .project h3 {

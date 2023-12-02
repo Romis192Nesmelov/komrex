@@ -141,6 +141,10 @@ textarea {
 }
 
 .icon-object {
+    width: 85px;
+    height: 85px;
+    padding: 23px 10px;
+    text-align: center;
     color: #738aa3;
 }
 

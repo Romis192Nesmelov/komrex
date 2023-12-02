@@ -42,6 +42,13 @@ return [
     'user_password' => 'Пароль пользователя',
     'confirm_password' => 'Подтверждение пароля',
 
+    'do_you_really_want_delete_this_solution' => 'Вы действительно хотите удалить это сервисное решение?',
+    'edit_solution' => 'Редактирование сервисного решения',
+    'add_solution' => 'Добавить сервисное решение',
+    'adding_solution' => 'Добавление сервисного решения',
+
+    'edit_consulting' => 'Редактирование раздела консалтинга',
+
     'do_you_really_want_delete_this_participant' => 'Вы действительно хотите удалить этого участника команды?',
     'edit_participant' => 'Редактирование участника команды',
     'add_participant' => 'Добавить участника команды',

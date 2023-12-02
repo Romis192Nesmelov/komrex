@@ -31,6 +31,14 @@ Route::prefix('admin')->middleware(['auth'])->controller(AdminController::class)
     Route::post('/edit-user', 'editUser')->name('edit_user');
     Route::get('/delete-user', 'deleteUser')->name('delete_user');
 
+    Route::get('/solutions/{slug?}', 'solutions')->name('solutions');
+    Route::post('/edit-solution', 'editSolution')->name('edit_solution');
+    Route::post('/delete-solution', 'deleteSolution')->name('delete_solution');
+
+    Route::get('/consultings', 'consultings')->name('consultings');
+    Route::post('/edit-consulting-content', 'editConsultingContent')->name('edit_consulting_content');
+    Route::post('/edit-consulting', 'editConsulting')->name('edit_consulting');
+
     Route::get('/values/{slug?}', 'values')->name('values');
     Route::post('/edit-value', 'editValue')->name('edit_value');
     Route::post('/delete-value', 'deleteValue')->name('delete_value');

@@ -99,10 +99,18 @@
         <div class="sidebar-category sidebar-category-visible">
             <div class="category-content no-padding">
                 <ul class="navigation navigation-main navigation-accordion">
-                    <!-- Main -->
                     @foreach ($menu as $k => $item)
-                        <li {{ $item['key'] == end($breadcrumbs)['key'] ? 'class=active' : '' }}>
+                        <li {{ $item['key'] == $menu_key ? 'class=active' : '' }}>
                             <a href="{{ route('admin.'.$item['key']) }}"><i class="{{ $item['icon'] }}"></i> <span>{{ trans('admin_menu.'.$item['key']) }}</span></a>
+                            @if (isset($submenu))
+                                <ul>
+                                    @foreach ($submenu as $subItem)
+                                        <li {{ $subItem['key'] == $sub_menu_key ? 'class=active' : '' }}>
+                                            <a href="{{ route('admin.'.$subItem['key']) }}">{{ trans('admin_menu.'.$subItem['key']) }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
                         </li>
                     @endforeach
                 </ul>
