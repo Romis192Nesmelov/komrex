@@ -702,7 +702,7 @@ footer .download-block img:hover {
     z-index: 801;
 }
 
-#big-image-project {
+.big-image {
     width: 100%;
     height: 40vw;
     margin-bottom: 20px;
@@ -711,15 +711,15 @@ footer .download-block img:hover {
     background-repeat: no-repeat !important;
 }
 
-#description-project p {
+.description p {
     font-size: 18px;
 }
 
-#small-images-project {
+.small-images {
     padding: 10px 0;
 }
 
-#small-images-project .project-small-image {
+.small-images .small-image {
     height: 100px;
     cursor: pointer;
     background-size: cover !important;
@@ -727,8 +727,8 @@ footer .download-block img:hover {
     background-repeat: no-repeat !important;
 }
 
-#small-images-project .project-small-image.active,
-#small-images-project .project-small-image:hover {
+.small-images .small-image.active,
+.small-images .small-image:hover {
     border: 2px solid #E9A127;
 }
 
@@ -818,6 +818,10 @@ footer .email a:hover {
     .project {
         height: 413px;
     }
+
+    .modal.styled .modal-dialog {
+        max-width: 80%;
+    }
 }
 
 @media (max-width: 1299px) {
@@ -869,6 +873,10 @@ footer .email a:hover {
 
     .project {
         height: 380px;
+    }
+
+    .modal.styled .modal-dialog {
+        max-width: 90%;
     }
 }
 
@@ -1001,7 +1009,7 @@ footer .email a:hover {
         height: 931px;
     }
 
-    #big-image-project {
+    .big-image {
         height: 60vw;
     }
 

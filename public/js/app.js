@@ -100,28 +100,28 @@ $(document).ready(function () {
         $.get(getProjectUrl, {
             'id': id
         },(data) => {
-            let projectModal = $('#project-modal'),
-                projectHead = projectModal.find('h2'),
-                projectDate = $('#date-presentation'),
-                projectBigImage = $('#big-image-project'),
-                projectSmallImages = $('#small-images-project'),
-                descriptionProject = $('#description-project'),
-                downloadBlock = projectModal.find('.download-block'),
+            let modal = $('#project-modal'),
+                head = modal.find('h2'),
+                date = $('#date-presentation'),
+                bigImage = modal.find('.big-image'),
+                smallImages = modal.find('.small-images'),
+                description = modal.find('.description'),
+                downloadBlock = modal.find('.download-block'),
                 downloadHref = downloadBlock.find('a'),
                 downloadSize = downloadBlock.find('span'),
                 activeId = null;
 
-            projectHead.html(data.head);
+            head.html(data.head);
             if (data.date) {
-                projectHead.removeClass('mb-2').addClass('mb-0');
-                projectDate.html(data.date);
-                projectDate.show();
+                head.removeClass('mb-2').addClass('mb-0');
+                date.html(data.date);
+                date.show();
             } else {
-                projectHead.removeClass('mb-0').addClass('mb-2');
-                projectDate.hide();
+                head.removeClass('mb-0').addClass('mb-2');
+                date.hide();
             }
-            projectBigImage.css('background','url(/' + data.images[0].image +')');
-            descriptionProject.html(data.text);
+            bigImage.css('background','url(/' + data.images[0].image +')');
+            description.html(data.text);
 
             if (data.presentation) {
                 downloadHref.attr('href','/' + data.presentation);
@@ -131,26 +131,32 @@ $(document).ready(function () {
                 downloadBlock.hide();
             }
 
-            projectSmallImages.html('');
+            smallImages.html('');
             $.each(data.images, function (k, image) {
-                let smallImage = $('<div></div>').addClass('project-small-image').addClass('project' + image.id);
+                let smallImage = $('<div></div>').addClass('small-image').addClass('small' + image.id).attr('id','small' + image.id);
                 if (!k) activeId = image.id;
                 smallImage.css('background-image','url(/' + image.image +')');
-                projectSmallImages.append(smallImage);
+                smallImages.append(smallImage);
             });
 
-            projectSmallImages.trigger('destroy.owl.carousel');
-            owlCarouselProject(projectSmallImages);
-            projectModal.find('.project' + activeId).addClass('active');
+            smallImages.trigger('destroy.owl.carousel');
+            owlCarouselModal(smallImages);
+            modal.find('.small' + activeId).addClass('active');
 
-            $(('.project-small-image')).click(function () {
-                let newBigImage = $(this).css('background-image');
-                projectBigImage.animate({'opacity':0}, 'fast', function () {
-                    projectBigImage.css('background-image',newBigImage);
-                    projectBigImage.animate({'opacity':1}, 'fast');
+            setTimeout(() => {
+                $('.small-image').click(function () {
+                    let newBigImage = $(this).css('background-image'),
+                        currentId = parseInt($(this).attr('id').replace('small',''));
+                    modal.find('.small-image.active').removeClass('active');
+                    modal.find('.small' + currentId).addClass('active');
+
+                    bigImage.animate({'opacity':0}, 'fast', function () {
+                        bigImage.css('background-image',newBigImage);
+                        bigImage.animate({'opacity':1}, 'fast');
+                    });
                 });
-            });
-            projectModal.modal('show');
+            },500);
+            modal.modal('show');
         });
     });
 });
@@ -240,13 +246,16 @@ const owlSettings = (margin, timeout, responsive, nav) => {
     }
 }
 
-const owlCarouselProject = (container) => {
+const owlCarouselModal = (container) => {
     container.owlCarousel(owlSettings(
         10,
         5000,
         {
             0: {
-                items: 3
+                items: 2
+            },
+            700: {
+                items: 5
             },
             992: {
                 items: 6
