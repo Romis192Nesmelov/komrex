@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\HelperTrait;
 use App\Models\Event;
+use App\Models\EventPerson;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -96,5 +97,13 @@ class AdminEventsController extends AdminBaseController
     public function deleteEvent(Request $request): JsonResponse
     {
         return $this->deleteSomething($request, new Event());
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function deleteEventPerson(Request $request): JsonResponse
+    {
+        return $this->deleteSomething($request, new EventPerson());
     }
 }

@@ -88,6 +88,8 @@ return [
     'add_event' => 'Добавить мероприятие',
     'adding_event' => 'Добавление мероприятия',
     'event_date' => 'Дата мероприятия',
+    'event_persons' => 'Персоны мероприятия',
+    'do_you_really_want_delete_this_event_person' => 'Вы действительно хотите удалить эту персону?',
 
     'seo' => 'СЕО',
     'last_edit' => 'Последняя редакция',

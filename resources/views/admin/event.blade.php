@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+    @include('admin.blocks.modal_delete_block', ['custom_key' => 'event_person'])
     <div class="panel panel-flat">
         @include('admin.blocks.title_block')
         <div class="panel-body">
@@ -37,4 +38,19 @@
             </form>
         </div>
     </div>
+
+    @if (isset($event))
+        <div class="panel panel-flat">
+            <div class="panel-body">
+                <x-atitle>{{ trans('admin.event_persons') }}</x-atitle>
+                @include('admin.blocks.data_table_block', [
+                    'columns' => ['name','phone','created_at'],
+                    'items' => $event->eventPersons,
+                    'useEdit' => false,
+                    'useDelete' => true
+                ])
+            </div>
+        </div>
+        <script>window.dtRows = 4;</script>
+    @endif
 @endsection

@@ -109,5 +109,6 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
         Route::get('/events/{slug?}', 'events')->name('events');
         Route::post('/edit-event', 'editEvent')->name('edit_event');
         Route::post('/delete-event', 'deleteEvent')->name('delete_event');
+        Route::post('/delete-event-person', 'deleteEventPerson')->name('delete_event_person');
     });
 });
