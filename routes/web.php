@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AdminTeamController;
 use App\Http\Controllers\Admin\AdminProjectsController;
 use App\Http\Controllers\Admin\AdminPartnersController;
 use App\Http\Controllers\Admin\AdminRequisitesController;
+use App\Http\Controllers\Admin\AdminEventsController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(BaseController::class)->group(function () {
@@ -102,5 +103,11 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::controller(AdminRequisitesController::class)->group(function () {
         Route::get('/requisites', 'requisites')->name('requisites');
         Route::post('/edit-requisites', 'editRequisites')->name('edit_requisites');
+    });
+
+    Route::controller(AdminEventsController::class)->group(function () {
+        Route::get('/events/{slug?}', 'events')->name('events');
+        Route::post('/edit-event', 'editEvent')->name('edit_event');
+        Route::post('/delete-event', 'deleteEvent')->name('delete_event');
     });
 });

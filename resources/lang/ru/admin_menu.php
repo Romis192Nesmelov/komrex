@@ -23,4 +23,6 @@ return [
     'partners_description' => 'Добавление, удаление и редактирование партнеров',
     'requisites' => 'Реквизиты',
     'requisites_description' => 'Редактирование реквизитов и E-mail компании',
+    'events' => 'Мероприятия',
+    'events_description' => 'Добавление и редактирование мероприятий',
 ];

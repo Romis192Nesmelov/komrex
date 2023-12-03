@@ -29,6 +29,8 @@
                     <td colspan="text-left">
                         @include('admin.blocks.cropped_content_block',['croppingContent' => $item->text, 'length' => 200])
                     </td>
+                @elseif ($column == 'date')
+                    <td class="text-center">{{ date('d.m.Y',$item->date) }}</td>
                 @elseif ($column == 'active')
                     @include('admin.blocks.status_block',['status' => $item->active])
                 @else

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Event;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ProjectsSeeder::class);
         $this->call(PartnersSeeder::class);
         $this->call(RequisitesSeeder::class);
+        Event::factory(30)->create();
     }
 }

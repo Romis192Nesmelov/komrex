@@ -15,12 +15,42 @@ $(document).ready(function () {
     });
 
     // Single picker
-    // $('.daterange-single').daterangepicker({
-    //     singleDatePicker: true,
-    //     locale: {
-    //         format: 'DD/MM/YYYY'
-    //     }
-    // });
+    $('.daterange-single').daterangepicker({
+        singleDatePicker: true,
+        locale: {
+            "format": "MM/DD/YYYY",
+            "separator": " - ",
+            "applyLabel": "Применить",
+            "cancelLabel": "Отменить",
+            "fromLabel": "С",
+            "toLabel": "До",
+            "customRangeLabel": "Custom",
+            "daysOfWeek": [
+                "Вс",
+                "Пн",
+                "Вт",
+                "Ср",
+                "Чт",
+                "Пт",
+                "Сб"
+            ],
+            "monthNames": [
+                "Январь",
+                "Февраль",
+                "Март",
+                "Апрель",
+                "Май",
+                "Июнь",
+                "Июль",
+                "Август",
+                "Сентябрь",
+                "Октябрь",
+                "Ноябрь",
+                "Декабрь"
+            ],
+            "firstDay": 1
+        }
+    });
 
     // Table setup
     // ------------------------------

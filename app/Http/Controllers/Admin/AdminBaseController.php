@@ -78,6 +78,11 @@ class AdminBaseController extends Controller
                 'icon' => 'icon-pen',
                 'hidden' => false,
             ],
+            'events' => [
+                'key' => 'events',
+                'icon' => 'icon-calendar3',
+                'hidden' => false,
+            ],
         ];
         $this->breadcrumbs[] = $this->menu['home'];
     }
@@ -183,7 +188,14 @@ class AdminBaseController extends Controller
     protected function getSpecialFields(Model $model, array $fields): array
     {
         if (in_array('active',$model->getFillable())) $fields['active'] = request('active') ? 1 : 0;
+        if (in_array('date',$model->getFillable())) $fields['date'] = $this->convertTimestamp(request('date'));
         return $fields;
+    }
+
+    protected function convertTimestamp($time): int
+    {
+        $time = explode('/', $time);
+        return strtotime($time[1].'/'.$time[0].'/'.$time[2]);
     }
 
     protected function getSingularKey($key): void

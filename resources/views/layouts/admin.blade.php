@@ -31,6 +31,14 @@
 {{--    <script type="text/javascript" src="{{ asset('js/plugins/forms/inputs/typeahead/handlebars.min.js') }}"></script>--}}
 
     <script type="text/javascript" src="{{ asset('js/admin/datatables.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/admin/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/admin/daterangepicker.js') }}"></script>
+{{--    <script type="text/javascript" src="{{ asset('js/admin/picker.js') }}"></script>--}}
+{{--    <script type="text/javascript" src="{{ asset('js/admin/picker.date.js') }}"></script>--}}
+{{--    <script type="text/javascript" src="{{ asset('js/admin/picker.time.js') }}"></script>--}}
+{{--    <script type="text/javascript" src="{{ asset('js/admin/legacy.js') }}"></script>--}}
+
     <script type="text/javascript" src="{{ asset('js/admin/styling/uniform.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/admin/styling/switchery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/admin/styling/bootstrap-switch.js') }}"></script>
@@ -106,8 +114,8 @@
                                 @if (isset($submenu) && ($item['key'] == $menu_key || $item['key'] == $parent_key))
                                     <ul>
                                         @foreach ($submenu as $subItem)
-                                            <li {{ (request('id') && $subItem->id == request('id')) || (request('parent_id') && $subItem->id == request('parent_id')) ? 'class=active' : '' }}>
-                                                <a href="{{ route('admin.'.$parent_key,['id' => $subItem->id]) }}">{{ ($subItem->name ?? $subItem->head) }}</a>
+                                            <li {{ (request('id') && $subItem['id'] == request('id')) || (request('parent_id') && $subItem['id'] == request('parent_id')) || (isset($current_sub_item) && $subItem['id'] == $current_sub_item) ? 'class=active' : '' }}>
+                                                <a href="{{ route('admin.'.$parent_key,['id' => $subItem['id']]) }}">{{ ($subItem['name'] ?? $subItem-['head']) }}</a>
                                             </li>
                                         @endforeach
                                     </ul>
