@@ -64,6 +64,7 @@
                 </div>
                 <div class="col-lg-6 col-sm-12 d-flex justify-content-center">
                     @include('blocks.button_block',[
+                        'addClass' => 'consulting-button',
                         'primary' => false,
                         'buttonText' => trans('content.order_consulting'),
                         'arrowIcon' => 'arrow_cir_to_right_yellow.svg'

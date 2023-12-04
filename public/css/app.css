@@ -194,7 +194,7 @@ button.btn.btn-secondary:hover,
     flex-direction: column;
     background: url('../images/main_image.png');
     background-size: cover;
-    background-position: center center !important;
+    background-position: bottom center !important;
     background-repeat: no-repeat !important;
 }
 

@@ -161,7 +161,7 @@ $(document).ready(function () {
     });
 
     // Callback modal
-    $('.pair-buttons .phone-icon, .pair-buttons button, .consulting-button-1, .consulting-button-2, #about-company-block button').click(function () {
+    $('.pair-buttons .phone-icon, .pair-buttons button, .consulting-button, .consulting-button-1, .consulting-button-2, #about-company-block button').click(function () {
         const removingLeftClasses = [
             'btn btn-primary',
             'btn btn-secondary',
@@ -175,6 +175,7 @@ $(document).ready(function () {
             clearId = clearId.replace(className,'');
         });
         clearId = clearId.trim();
+        console.log(clearId);
         feedbackModal.find('input[name=from]').val(clearId);
         feedbackModal.modal('show');
     });
