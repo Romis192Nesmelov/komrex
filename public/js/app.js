@@ -159,6 +159,28 @@ $(document).ready(function () {
             modal.modal('show');
         });
     });
+
+    // Events modal
+    $('#consulting-button-3').click(() => {
+        $('#content-modal').modal('show');
+    });
+
+    // Click to open sign-up fields
+    $('.event-block .sign-up').click(function () {
+        let parent = $(this).parents('.event-block'),
+            arrowImg = $(this).find('img'),
+            rollUp = parent.find('.roll-up');
+
+        if (!parseInt(rollUp.css('height'))) {
+            arrowImg.attr('src','/images/corner_cir_to_up_yellow.svg');
+            rollUp.animate({'height':96}, 'fast', function () {
+                rollUp.css('height','auto');
+            });
+        } else {
+            arrowImg.attr('src','/images/corner_cir_to_down_yellow.svg');
+            rollUp.animate({'height':0}, 'fast')
+        }
+    });
 });
 
 const activatingProjectBlock = (prevActiveBlock, projectsId, callBack) => {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Consulting;
+use App\Models\Event;
 use App\Models\Home;
 use App\Models\OurTeam;
 use App\Models\OurValue;
@@ -33,6 +34,7 @@ class BaseController extends Controller
         $this->getItem('projects_all', new Project());
         $this->getItem('projects', new ProjectType(), 'created_at');
         $this->getItem('partners', new Partner());
+        $this->data['events'] = Event::where('date','>',time())->where('active',1)->get();
         return $this->showView('home');
     }
 

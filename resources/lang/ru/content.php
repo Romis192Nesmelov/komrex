@@ -34,4 +34,7 @@ return [
     'processing_of_personal_data' => 'Обработка персональных данных',
     'terms_of_use' => 'Пользовательское соглашение',
     'message' => 'Сообщение!',
+    'upcoming_events' => 'Ближайшие события',
+    'sign_up' => 'Записаться',
+    'send_request' => 'Отправить заявку',
 ];

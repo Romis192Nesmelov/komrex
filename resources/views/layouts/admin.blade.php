@@ -34,11 +34,6 @@
 
     <script type="text/javascript" src="{{ asset('js/admin/moment.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/admin/daterangepicker.js') }}"></script>
-{{--    <script type="text/javascript" src="{{ asset('js/admin/picker.js') }}"></script>--}}
-{{--    <script type="text/javascript" src="{{ asset('js/admin/picker.date.js') }}"></script>--}}
-{{--    <script type="text/javascript" src="{{ asset('js/admin/picker.time.js') }}"></script>--}}
-{{--    <script type="text/javascript" src="{{ asset('js/admin/legacy.js') }}"></script>--}}
-
     <script type="text/javascript" src="{{ asset('js/admin/styling/uniform.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/admin/styling/switchery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/admin/styling/bootstrap-switch.js') }}"></script>

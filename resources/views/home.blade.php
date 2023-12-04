@@ -73,6 +73,7 @@
                                 <h3>{{ $item->head }}</h3>
                                 <p>{{ $item->text }}</p>
                                 @include('blocks.button_block',[
+                                    'id' => 'consulting-button-'.$item->id,
                                     'primary' => true,
                                     'buttonText' => $loop->last ? trans('content.list_of_events') : trans('content.order_service'),
                                     'arrowIcon' => 'arrow_cir_to_right_dark.svg'
@@ -198,6 +199,40 @@
             'description' => trans('content.presentation_of_the_project'),
             'kb' => 1
         ])
+    </x-modal>
+    <x-modal class="styled" id="content-modal" no_header="1">
+        <img src="{{ asset('images/close_icon.svg') }}" class="close-icon" data-bs-dismiss="modal" data-dismiss="modal" />
+        <h2 class="mb-4">{{ trans('content.upcoming_events') }}</h2>
+
+        @foreach ($events as $event)
+            <div class="event-block row">
+                <div class="col-lg-8 col-sm-12">
+                    <h3>{{ $event->name }}</h3>
+                    <div class="date">
+                        <img src="{{ asset('images/icon_clock.svg') }}" />
+                        {{ date('d.m.Y',$event->date) }}
+                    </div>
+                </div>
+                <div class="sign-up col-lg-4 col-sm-12">
+                    {{ trans('content.sign_up') }}
+                    <img src="{{ asset('images/corner_cir_to_down_yellow.svg') }}" />
+                </div>
+                <div class="roll-up w-100">
+                    <hr>
+                    <form method="POST" action="{{ route('sign_up') }}">
+                        @csrf
+                        <input type="hidden" name="event_id" value="{{ $event->id }}">
+                        @include('blocks.feedback_fields_block',[
+                            'buttonAddClass' => 'withArrow ',
+                            'primary' => false,
+                            'button_text' => trans('content.send_request'),
+                            'arrowIcon' => 'arrow_cir_to_right_yellow.svg'
+                        ])
+                    </form>
+                </div>
+            </div>
+        @endforeach
+
     </x-modal>
     @if ($scroll)
         <script>window.scrollAnchor = "{{ $scroll }}";</script>

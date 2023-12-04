@@ -24,6 +24,7 @@ Route::controller(BaseController::class)->group(function () {
 
 Route::controller(FeedbackController::class)->group(function () {
     Route::post('/callback', 'callback')->name('callback');
+    Route::post('/sign-up', 'signUp')->name('sign_up');
 });
 
 

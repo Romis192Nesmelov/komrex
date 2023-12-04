@@ -41,6 +41,9 @@ $(document).ready(function ($) {
                 form.find('input, textarea').val('');
                 inputError.removeClass('error');
 
+                $('.modal').modal('hide');
+                $('.event-block .roll-up').css('height',0);
+
                 const messageModal = $('#message-modal');
                 messageModal.find('h4').html(data.message);
                 messageModal.modal('show');
@@ -98,7 +101,7 @@ const processingCheckFields = (formData, inputObj) => {
 const unlockAll = (body,form) => {
     form.find('input, select, textarea, button').removeAttr('disabled');
     body.css({
-        'overflow':'auto',
+        'overflow-y':'auto',
         'padding-right':0
     });
 }

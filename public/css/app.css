@@ -538,22 +538,23 @@ button.btn.btn-secondary:hover,
     color: white;
 }
 
-.feedback-form input {
+input {
     width: 100%;
     font-size: 20px;
     background-color: white;
-    color: #121524;
-    padding: 8px 20px;
-    border-radius: 50px;
+    color: #121524 !important;
+    padding: 8px 20px !important;
+    border-radius: 50px !important;
 }
 
-.feedback-form input.error {
+input.error {
     border: 2px solid red;
 }
 
-.feedback-form .error {
+.error {
     color: red;
-    padding-left: 20px;
+    font-size: 14px;
+    padding: 5px 0 0 20px;
 }
 
 .feedback-form button.btn.btn-primary {
@@ -730,6 +731,58 @@ footer .download-block img:hover {
 .small-images .small-image.active,
 .small-images .small-image:hover {
     border: 2px solid #E9A127;
+}
+
+.event-block {
+    width: 100%;
+    padding: 30px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background: white;
+    border: 1px solid #DEDEDE;
+}
+
+.event-block > div {
+    width: calc(100% - 170px);
+}
+
+.event-block h3 {
+    font-size: 28px;
+    margin: 0 0 20px 0;
+}
+
+.event-block .date {
+    font-size: 18px;
+    color: #8D8D8D;
+}
+
+.event-block .date > img {
+    width: 25px;
+    margin-right: 10px;
+}
+
+.event-block .sign-up {
+    width: 165px;
+    flex: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    cursor: pointer;
+    color: #E9A127;
+}
+
+.event-block .sign-up img {
+    width: 25px;
+    margin-left: 10px;
+}
+
+.event-block hr {
+    margin: 20px 0;
+}
+
+.event-block .roll-up {
+    overflow: hidden;
+    height: 0;
 }
 
 footer {
