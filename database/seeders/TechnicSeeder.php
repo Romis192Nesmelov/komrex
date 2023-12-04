@@ -25,7 +25,6 @@ class TechnicSeeder extends Seeder
             $technicType = TechnicType::create($item);
             for ($i=0;$i<rand(2,20);$i++) {
                 Technic::create([
-                    'image' => 'images/technics/technic1.jpg',
                     'name' => Str::random(3).rand(100,500),
                     'weight' => rand(10000,50000),
                     'power' => rand(100,300),
