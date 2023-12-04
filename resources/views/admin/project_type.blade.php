@@ -8,7 +8,7 @@
             <form class="form-horizontal" action="{{ route('admin.edit_projects_type') }}" method="post">
                 @csrf
                 @if (isset($project_type))
-                    @include('admin.blocks.hidden_id_block',['id' => $project_type->id])
+                    @include('blocks.hidden_id_block',['id' => $project_type->id])
                 @endif
                 <div class="panel panel-flat">
                     <div class="panel-body">

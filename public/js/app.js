@@ -160,9 +160,28 @@ $(document).ready(function () {
         });
     });
 
+    // Callback modal
+    $('.pair-buttons .phone-icon, .pair-buttons button, .consulting-button-1, .consulting-button-2, #about-company-block button').click(function () {
+        const removingLeftClasses = [
+            'btn btn-primary',
+            'btn btn-secondary',
+            'white',
+            'withArrow',
+        ];
+        let clearId = $(this).attr('class'),
+            feedbackModal = $('#feedback-modal');
+
+        $.each(removingLeftClasses, function (k, className) {
+            clearId = clearId.replace(className,'');
+        });
+        clearId = clearId.trim();
+        feedbackModal.find('input[name=from]').val(clearId);
+        feedbackModal.modal('show');
+    });
+
     // Events modal
-    $('#consulting-button-3').click(() => {
-        $('#content-modal').modal('show');
+    $('.consulting-button-3').click(() => {
+        $('#event-modal').modal('show');
     });
 
     // Click to open sign-up fields

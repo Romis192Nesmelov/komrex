@@ -6,7 +6,7 @@
         <div class="panel-body">
             <form class="form-horizontal" action="{{ route('admin.edit_content') }}" method="post">
                 @csrf
-                @include('admin.blocks.hidden_id_block',['id' => $content->id])
+                @include('blocks.hidden_id_block',['id' => $content->id])
                 <div class="panel panel-flat">
                     <div class="panel-body">
                         @include('blocks.input_block', [

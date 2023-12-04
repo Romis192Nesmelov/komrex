@@ -7,7 +7,7 @@
             <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.edit_participant') }}" method="post">
                 @csrf
                 @if (isset($participant))
-                    @include('admin.blocks.hidden_id_block',['id' => $participant->id])
+                    @include('blocks.hidden_id_block',['id' => $participant->id])
                 @endif
                 <div class="col-lg-3 col-ms-12">
                     @include('admin.blocks.input_image_block',['image' => isset($participant) ? $participant->image : null])

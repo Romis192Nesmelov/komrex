@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Feedback\CallbackRequest;
 use App\Http\Requests\Feedback\SignUpRequest;
 use App\Models\Event;
+use App\Models\EventPerson;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -23,6 +24,11 @@ class FeedbackController extends Controller
         $fields = $request->validated();
         $fields['event_name'] = $event->name;
         $fields['event_date'] = date('d.m.Y',$event->date);
+        EventPerson::create([
+            'name' => $fields['name'],
+            'phone' => $fields['phone'],
+            'event_id' => $event->id
+        ]);
         return $this->sendMessage('signup', $fields, $request);
     }
 

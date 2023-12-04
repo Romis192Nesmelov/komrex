@@ -6,7 +6,7 @@
         <div class="panel-body">
             <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.edit_consulting') }}" method="post">
                 @csrf
-                @include('admin.blocks.hidden_id_block',['id' => $consulting->id])
+                @include('blocks.hidden_id_block',['id' => $consulting->id])
                 <div class="col-lg-3 col-ms-12">
                     @include('admin.blocks.input_image_block',['image' => $consulting->image])
                 </div>

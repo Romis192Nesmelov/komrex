@@ -30,7 +30,10 @@
             </x-offer>
         </div>
     </div>
-    @include('blocks.feedback_form_block')
+    @include('blocks.feedback_form_block', [
+        'hiddenInputName' => 'from',
+        'hiddenId' => 'page-first-form',
+    ])
     <div class="content-container" data-scroll-destination="service_solutions">
         <div class="content pt-4">
             <h2>{{ trans('menu.service_solutions') }}</h2>
@@ -47,7 +50,10 @@
             @endforeach
         </div>
     </div>
-    @include('blocks.feedback_form_block')
+    @include('blocks.feedback_form_block',[
+        'hiddenInputName' => 'from',
+        'hiddenId' => 'page-second-form',
+    ])
     <div class="content-container">
         @include('blocks.quotes_block',['text' => $contents[3]->text])
         <div class="content">
@@ -73,7 +79,7 @@
                                 <h3>{{ $item->head }}</h3>
                                 <p>{{ $item->text }}</p>
                                 @include('blocks.button_block',[
-                                    'id' => 'consulting-button-'.$item->id,
+                                    'addClass' => 'consulting-button-'.$item->id,
                                     'primary' => true,
                                     'buttonText' => $loop->last ? trans('content.list_of_events') : trans('content.order_service'),
                                     'arrowIcon' => 'arrow_cir_to_right_dark.svg'
@@ -98,6 +104,7 @@
                         <div>
                             <div>
                                 @include('blocks.button_block',[
+                                    'addClass' => 'about-company-button',
                                     'primary' => false,
                                     'buttonText' => trans('content.write_to_the_company'),
                                     'arrowIcon' => 'arrow_cir_to_right_yellow.svg'
@@ -200,10 +207,7 @@
             'kb' => 1
         ])
     </x-modal>
-    <x-modal class="styled" id="content-modal" no_header="1">
-        <img src="{{ asset('images/close_icon.svg') }}" class="close-icon" data-bs-dismiss="modal" data-dismiss="modal" />
-        <h2 class="mb-4">{{ trans('content.upcoming_events') }}</h2>
-
+    <x-smodal id="event-modal" head="{{ trans('content.upcoming_events') }}">
         @foreach ($events as $event)
             <div class="event-block row">
                 <div class="col-lg-8 col-sm-12">
@@ -221,8 +225,9 @@
                     <hr>
                     <form method="POST" action="{{ route('sign_up') }}">
                         @csrf
-                        <input type="hidden" name="event_id" value="{{ $event->id }}">
                         @include('blocks.feedback_fields_block',[
+                            'hiddenInputName' => 'event_id',
+                            'hiddenId' => $event->id,
                             'buttonAddClass' => 'withArrow ',
                             'primary' => false,
                             'button_text' => trans('content.send_request'),
@@ -232,8 +237,20 @@
                 </div>
             </div>
         @endforeach
-
-    </x-modal>
+    </x-smodal>
+    <x-smodal id="feedback-modal" head="{{ trans('content.write_to_the_company') }}">
+        <form method="POST" action="{{ route('callback') }}">
+            @csrf
+            @include('blocks.feedback_fields_block',[
+                'hiddenInputName' => 'from',
+                'hiddenId' => '',
+                'buttonAddClass' => 'withArrow ',
+                'primary' => false,
+                'button_text' => trans('content.send_request'),
+                'arrowIcon' => 'arrow_cir_to_right_yellow.svg'
+            ])
+        </form>
+    </x-smodal>
     @if ($scroll)
         <script>window.scrollAnchor = "{{ $scroll }}";</script>
     @endif

@@ -8,7 +8,7 @@
             <form class="form-horizontal" action="{{ route('admin.edit_project') }}" method="post">
                 @csrf
                 @if (isset($project))
-                    @include('admin.blocks.hidden_id_block',['id' => $project->id])
+                    @include('blocks.hidden_id_block',['id' => $project->id])
                 @endif
                 <div class="panel panel-flat">
                     <div class="panel-body">
@@ -54,7 +54,7 @@
                 <div class="panel-body">
                     <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.add_project_image') }}" method="post">
                         @csrf
-                        @include('admin.blocks.hidden_id_block',['name' => 'project_id', 'id' => $project->id])
+                        @include('blocks.hidden_id_block',['name' => 'project_id', 'id' => $project->id])
                         @include('admin.blocks.input_image_block',['head' => trans('admin.add_project_image')])
                         @include('admin.blocks.save_button_block')
                     </form>

@@ -1,3 +1,4 @@
+@include('blocks.hidden_id_block',['name' => $hiddenInputName, 'id' => $hiddenId])
 <div class="row mt-2">
     <div class="col-lg-4 col-sm-12 mb-2">
         @include('blocks.input_block',[

@@ -8,7 +8,7 @@
             <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.edit_event') }}" method="post">
                 @csrf
                 @if (isset($event))
-                    @include('admin.blocks.hidden_id_block',['id' => $event->id])
+                    @include('blocks.hidden_id_block',['id' => $event->id])
                 @endif
                 <div class="col-lg-3 col-ms-12">
                     @include('admin.blocks.date_block',[

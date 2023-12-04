@@ -6,7 +6,7 @@
         <div class="panel-body">
             <form class="form-horizontal" action="{{ route('admin.edit_quote') }}" method="post">
                 @csrf
-                @include('admin.blocks.hidden_id_block',['id' => $quote->id])
+                @include('blocks.hidden_id_block',['id' => $quote->id])
                 <div class="panel panel-flat">
                     <div class="panel-body">
                         @include('admin.blocks.textarea_block',[
