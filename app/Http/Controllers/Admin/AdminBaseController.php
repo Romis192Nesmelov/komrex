@@ -153,7 +153,8 @@ class AdminBaseController extends Controller
 
             $model = $model->find($request->input('id'));
             $model->update($fields);
-            $this->processingImages($request, $model, $pathToImages, $imageName);
+            $this->processingFiles($request, $model, 'image', $pathToImages, $imageName);
+            $this->processingPdf($request, $model);
         } else {
             if ($imageName) $validationArr['image'] = 'required|'.$validationArr['image'];
 
@@ -161,7 +162,8 @@ class AdminBaseController extends Controller
             $fields = $this->getSpecialFields($model, $fields);
 
             $model = $model->create($fields);
-            $this->processingImages($request, $model, $pathToImages, $imageName);
+            $this->processingFiles($request, $model, 'image', $pathToImages, $imageName);
+            $this->processingPdf($request, $model);
         }
         $this->saveCompleteMessage();
         return $model;
@@ -209,13 +211,20 @@ class AdminBaseController extends Controller
         $this->data['parent_key'] = $parentKey;
     }
 
-    protected function processingImages(Request $request, Model $model, string|null $pathToImages, string|null $imageName): void
+    protected function processingPdf(Request $request, Model $model): void
     {
-        if ($pathToImages && $request->hasFile('image')) {
-            $imageName .= $model->id.'.'.$request->file('image')->getClientOriginalExtension();
-            $model->image = $pathToImages.$imageName;
+        if (in_array('presentation',$model->getFillable())) {
+            $this->processingFiles($request, $model, 'presentation', 'pdfs/', 'presentation');
+        }
+    }
+
+    protected function processingFiles(Request $request, Model $model, string $fileField, string $pathToFile, string $fileName): void
+    {
+        if ($pathToFile && $request->hasFile($fileField)) {
+            $fileName .= $model->id.'.'.$request->file($fileField)->getClientOriginalExtension();
+            $model->image = $pathToFile.$fileName;
             $model->save();
-            $request->file('image')->move(base_path('public/'.$pathToImages), $imageName);
+            $request->file('image')->move(base_path('public/'.$pathToFile), $fileName);
         }
     }
 

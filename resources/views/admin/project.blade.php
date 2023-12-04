@@ -41,6 +41,7 @@
                             'value' => isset($project) ? $project->text : '',
                             'simple' => false
                         ])
+                        @include('admin.blocks.input_file_block', ['label' => 'PDF', 'name' =>  'presentation'])
                         @include('admin.blocks.active_checkbox_block', ['checked' => isset($project) ? $project->active : true])
                         @include('admin.blocks.save_button_block')
                     </div>
@@ -64,7 +65,7 @@
         <div class="col-lg-9 col-ms-12">
             <div class="panel panel-flat">
                 <div class="panel-body">
-                    <x-atitle>{{ trans('admin_menu.projects') }}</x-atitle>
+                    <x-atitle>{{ trans('admin.images') }}</x-atitle>
                     @include('admin.blocks.data_table_block', [
                         'columns' => ['image'],
                         'items' => $project->images,

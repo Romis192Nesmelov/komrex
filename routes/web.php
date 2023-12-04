@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\AdminProjectsController;
 use App\Http\Controllers\Admin\AdminPartnersController;
 use App\Http\Controllers\Admin\AdminRequisitesController;
 use App\Http\Controllers\Admin\AdminEventsController;
+use App\Http\Controllers\Admin\AdminTechnicController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(BaseController::class)->group(function () {
@@ -84,12 +85,11 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
 
     Route::controller(AdminProjectsController::class)->group(function () {
         Route::get('/project-types/{slug?}', 'projectTypes')->name('project_types');
-        Route::post('/edit-project-type', 'editProjectType')->name('edit_projects_type');
+        Route::post('/edit-project-type', 'editProjectType')->name('edit_project_type');
         Route::post('/delete-project-type', 'deleteProjectType')->name('delete_project_type');
 
         Route::get('/projects/{slug?}', 'projects')->name('projects');
         Route::post('/edit-project', 'editProject')->name('edit_project');
-        Route::post('/delete-project', 'deleteProject')->name('delete_project');
         Route::post('/delete-project', 'deleteProject')->name('delete_project');
         Route::post('/add-project-image', 'addProjectImage')->name('add_project_image');
         Route::post('/delete-project-image', 'deleteProjectImage')->name('delete_project_image');
@@ -111,5 +111,15 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
         Route::post('/edit-event', 'editEvent')->name('edit_event');
         Route::post('/delete-event', 'deleteEvent')->name('delete_event');
         Route::post('/delete-event-person', 'deleteEventPerson')->name('delete_event_person');
+    });
+
+    Route::controller(AdminTechnicController::class)->group(function () {
+        Route::get('/technic-types/{slug?}', 'technicTypes')->name('technic_types');
+        Route::post('/edit-technic-type', 'editTechnicType')->name('edit_technic_type');
+        Route::post('/delete-technic-type', 'deleteTechnicType')->name('delete_technic_type');
+
+        Route::get('/technics/{slug?}', 'technics')->name('technics');
+        Route::post('/edit-technic', 'editTechnic')->name('edit_technic');
+        Route::post('/delete-technic', 'deleteTechnic')->name('delete_technic');
     });
 });

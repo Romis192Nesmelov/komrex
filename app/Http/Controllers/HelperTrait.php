@@ -13,6 +13,7 @@ trait HelperTrait
     public string $validationJpgAndPng = 'mimes:jpeg,png|max:2000';
     public string $validationJpg = 'mimes:jpg|max:2000';
     public string $validationPng = 'mimes:png|max:2000';
+    public string $validationPdf = 'nullable|mimes:pdf|max:10000';
 
     private $metas = [
         'meta_description' => ['name' => 'description', 'property' => false],

@@ -171,7 +171,7 @@
             </div>
             @foreach($projects as $type)
                 <div id="project-type-{{ $type->id }}" class="owl-carousel projects d-none">
-                    @foreach($type->projects as $project)
+                    @foreach($type->activeProjects as $project)
                         @foreach($project->images as $image)
                             @include('blocks.project_block',['image' => $image->image])
                         @endforeach

@@ -42,9 +42,8 @@ class AdminProjectsController extends AdminBaseController
     public function deleteProjectType(Request $request): JsonResponse
     {
         $projectType = ProjectType::findOrFail($request->input('id'));
-        if ($projectType->projects->count()) {
-            return response()->json(['message' => trans('admin.error_delete_project_type')],403);
-        } else {
+        if ($projectType->projects->count()) return response()->json(['message' => trans('admin.error_delete_project_type')],403);
+        else {
             $projectType->delete();
             return response()->json(['message' => trans('admin.delete_complete')],200);
         }
@@ -68,6 +67,8 @@ class AdminProjectsController extends AdminBaseController
                 'head' => $this->validationString,
                 'date' => 'nullable|min:3|max:15',
                 'text' => $this->validationText,
+                'presentation' => $this->validationPdf,
+                'project_type_id' => 'nullable|integer|exists:project_types,id',
             ],
         );
         $this->saveCompleteMessage();

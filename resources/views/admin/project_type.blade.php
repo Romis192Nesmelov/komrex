@@ -5,7 +5,7 @@
     <div class="panel panel-flat">
         @include('admin.blocks.title_block')
         <div class="panel-body">
-            <form class="form-horizontal" action="{{ route('admin.edit_projects_type') }}" method="post">
+            <form class="form-horizontal" action="{{ route('admin.edit_project_type') }}" method="post">
                 @csrf
                 @if (isset($project_type))
                     @include('blocks.hidden_id_block',['id' => $project_type->id])

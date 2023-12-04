@@ -25,4 +25,6 @@ return [
     'requisites_description' => 'Редактирование реквизитов и E-mail компании',
     'events' => 'Мероприятия',
     'events_description' => 'Добавление и редактирование мероприятий',
+    'technics' => 'Техника',
+    'technics_description' => 'Добавление, удаление и редактирование техники',
 ];

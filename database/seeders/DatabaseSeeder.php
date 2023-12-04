@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProjectsSeeder::class);
         $this->call(PartnersSeeder::class);
         $this->call(RequisitesSeeder::class);
+        $this->call(TechnicSeeder::class);
         Event::factory(30)->create();
         EventPerson::factory(300)->create();
     }

@@ -30,7 +30,7 @@
                         @include('admin.blocks.cropped_content_block',['croppingContent' => $item->text, 'length' => 200])
                     </td>
                 @elseif ($column == 'date')
-                    <td class="text-center">{{ date('d.m.Y',$item->date) }}</td>
+                    <td class="text-center">{{ is_int($item->date) ? date('d.m.Y',$item->date) : $item->date }}</td>
                 @elseif ($column == 'active')
                     @include('admin.blocks.status_block',['status' => $item->active])
                 @else
