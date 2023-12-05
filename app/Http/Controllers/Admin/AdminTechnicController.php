@@ -145,7 +145,7 @@ class AdminTechnicController extends AdminBaseController
             [
                 'head' => $this->validationString,
                 'text' => $this->validationText,
-                'image' => $this->validationSvg,
+                'image' => 'nullable|'.$this->validationJpgAndPng,
                 'technic_id' => 'nullable|integer|exists:technics,id'
             ],
             'images/tech_images',
