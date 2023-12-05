@@ -123,8 +123,8 @@ $(document).ready(function () {
             bigImage.css('background','url(/' + data.images[0].image +')');
             description.html(data.text);
 
-            if (data.presentation) {
-                downloadHref.attr('href','/' + data.presentation);
+            if (data.pdf) {
+                downloadHref.attr('href','/' + data.pdf);
                 downloadSize.html(data.size);
                 downloadBlock.show();
             } else {

@@ -4,7 +4,7 @@
     error="{{ count($errors) && $errors->has($name) ? $errors->first($name) : '' }}"
     label="{{ isset($label) && $label ? $label : ''  }}"
 >
-    <select name="{{ $name }}" class="select form-control">
+    <select name="{{ $name }}" class="select form-control @error($name) error @enderror">
         @if (is_array($values))
             @foreach ($values as $value => $options)
                 <option value="{{ $value }}" {{ (!count($errors) ? $value == $selected : $value == old($name)) ? 'selected' : '' }}>{{ $options }}</option>

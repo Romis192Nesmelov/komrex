@@ -11,7 +11,7 @@ class Project extends Model
         'head',
         'date',
         'text',
-        'presentation',
+        'pdf',
         'project_type_id',
         'active'
     ];

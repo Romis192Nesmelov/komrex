@@ -2,6 +2,14 @@
     font-weight: bolder;
 }
 
+.page-title i {
+    margin: 0 5px;
+}
+
+.page-title i:first-child {
+    margin-left: 0;
+}
+
 .image img {
     width: 100%;
 }
@@ -9,10 +17,6 @@
 .id {
     width: 20px;
     text-align: center;
-}
-
-td.image {
-    width: 10%;
 }
 
 td.head {
@@ -25,6 +29,10 @@ td.head {
 td.image {
     width: 20%;
     padding: 5px;
+}
+
+td.image.komrex {
+    width: 10%;
 }
 
 td.image img,
@@ -94,18 +102,15 @@ div.error {
     color: red;
 }
 
-.form-group.error .cke {
+.form-group.error .uploader {
     border: 1px solid red;
 }
 
-.form-group.error {
-    border: 1px solid red;
-}
-
-.form-group.error input,
-.form-group.error textarea,
-.form-group.error select {
-    color: red;
+input.error,
+textarea.error,
+select.error {
+    color: red !important;
+    border: 1px solid red !important;
 }
 
 label {

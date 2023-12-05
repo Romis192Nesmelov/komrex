@@ -3,8 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\ConstructiveFeature;
 use App\Models\Event;
 use App\Models\EventPerson;
+use App\Models\TechnicImage;
+use App\Models\TechnicVideo;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,6 +27,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PartnersSeeder::class);
         $this->call(RequisitesSeeder::class);
         $this->call(TechnicSeeder::class);
+        $this->call(TechnicFilesSeeder::class);
+        ConstructiveFeature::factory(100)->create();
+        TechnicImage::factory(50)->create();
+        TechnicVideo::factory(100)->create();
         Event::factory(30)->create();
         EventPerson::factory(300)->create();
     }

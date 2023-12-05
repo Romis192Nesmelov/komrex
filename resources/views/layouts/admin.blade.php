@@ -34,6 +34,7 @@
 
     <script type="text/javascript" src="{{ asset('js/admin/moment.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/admin/daterangepicker.js') }}"></script>
+
     <script type="text/javascript" src="{{ asset('js/admin/styling/uniform.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/admin/styling/switchery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/admin/styling/bootstrap-switch.js') }}"></script>
@@ -135,12 +136,15 @@
                 <h4>
                     @foreach ($breadcrumbs as $breadcrumb)
                         @if ($loop->first)
-                            <a {{ count($breadcrumbs) > 2 ? 'href='.route('admin.'.$breadcrumbs[count($breadcrumbs)-2]['key']) : '' }}><i class="icon-arrow-left52 position-left"></i></a>
+                            <i class="icon-home2"></i>
                             <span class="text-semibold">
                                   @include('admin.blocks.breadcrumb_name_block')
                             </span>
                         @else
                             @include('admin.blocks.breadcrumb_name_block')
+                        @endif
+                        @if (!$loop->last)
+                            <i class="icon-arrow-right7"></i>
                         @endif
                     @endforeach
                  </h4>
@@ -151,7 +155,7 @@
             <ul class="breadcrumb">
                 @foreach ($breadcrumbs as $breadcrumb)
                     <li>
-                        <a href="{{ isset($breadcrumb['params']) ? route('admin.'.$breadcrumb['key'],$breadcrumb['params']) : route('admin.'.$breadcrumb['key']) }}{{ isset($breadcrumb['slug']) ? '/'.$breadcrumb['slug'] : '' }}">
+                        <a href="{{ isset($breadcrumb['params']) ? route('admin.'.$breadcrumb['key'],$breadcrumb['params']) : route('admin.'.$breadcrumb['key']) }}">
                             @include('admin.blocks.breadcrumb_name_block')
                         </a>
                     </li>

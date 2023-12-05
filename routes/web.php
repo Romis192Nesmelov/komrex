@@ -91,6 +91,7 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
         Route::get('/projects/{slug?}', 'projects')->name('projects');
         Route::post('/edit-project', 'editProject')->name('edit_project');
         Route::post('/delete-project', 'deleteProject')->name('delete_project');
+
         Route::post('/add-project-image', 'addProjectImage')->name('add_project_image');
         Route::post('/delete-project-image', 'deleteProjectImage')->name('delete_project_image');
     });
@@ -121,5 +122,19 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
         Route::get('/technics/{slug?}', 'technics')->name('technics');
         Route::post('/edit-technic', 'editTechnic')->name('edit_technic');
         Route::post('/delete-technic', 'deleteTechnic')->name('delete_technic');
+
+        Route::get('/constructive-features/{slug?}', 'constructiveFeatures')->name('constructive_features');
+        Route::post('/edit-constructive-feature', 'editConstructiveFeature')->name('edit_constructive_feature');
+        Route::post('/delete-constructive-feature', 'deleteConstructiveFeature')->name('delete_constructive_feature');
+
+        Route::post('/add-technic-image', 'addTechnicImage')->name('add_technic_image');
+        Route::post('/delete-technic-image', 'deleteTechnicImage')->name('delete_technic_image');
+
+        Route::get('/technic-video/{slug?}', 'technicVideos')->name('technic_videos');
+        Route::post('/edit-technic-video', 'editTechnicVideo')->name('edit_technic_video');
+        Route::post('/delete-technic-video', 'deleteTechnicVideo')->name('delete_technic_video');
+
+        Route::post('/add-technic-file', 'addTechnicFile')->name('add_technic_file');
+        Route::post('/delete-technic-file', 'deleteTechnicFile')->name('delete_technic_file');
     });
 });

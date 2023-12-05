@@ -8,7 +8,7 @@
             'primary' => true,
             'buttonType' => 'button',
             'icon' => 'icon-database-add',
-            'buttonText' => trans('admin.add_'.$singular_key),
+            'buttonText' => trans('admin.add_'.($custom_key ?? $singular_key)),
             'addClass' => (isset($addClass) ? $addClass.' ' : '').'pull-right'
         ])
     </a>

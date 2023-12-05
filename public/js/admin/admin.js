@@ -1,6 +1,7 @@
 // window.allMonths = ['Янв.', 'Фев.', 'Март', 'Апр.', 'Май', 'Июнь', 'Июль', 'Авг.', 'Сент.', 'Окт.', 'Нояб.', 'Декаб.'];
 // window.statisticsData = [];
 $(document).ready(function () {
+    $(".radio-input").bootstrapSwitch();
     // Phone mask
     $.mask.definitions['n'] = "[7-8]";
     $('input[name=phone]').mask("+n(999)999-99-99");
@@ -140,7 +141,8 @@ $(document).ready(function () {
             function (data) {
                 // dTable.row(window.deleteRow).remove();
                 // window.deleteRow.remove();
-                deleteDataTableRows();
+                if (window.deleteRow.parents('table').hasClass('datatable-basic')) deleteDataTableRows();
+                else window.deleteRow.remove();
                 // dTable.draw();
                 bindDelete();
                 window.messageModal.find('h4').html(data.message);

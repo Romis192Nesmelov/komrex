@@ -19,7 +19,7 @@ class ProjectResourse extends JsonResource
             'head' => $this->head,
             'date' => $this->date,
             'text' => $this->text,
-            'presentation' => $this->presentation,
+            'pdf' => $this->pdf,
             'size' => $this->presentation ? filesize(base_path('public/'.$this->presentation)) : 0,
             'images' => $this->images
         ];

@@ -2,6 +2,9 @@
 
 return [
     'images' => 'Картинки',
+    'video' => 'Видео',
+    'files' => 'Файлы',
+    'file' => 'Файл',
     'yes' => 'Да',
     'no' => 'Нет',
     'home_page' => 'Главная страница',
@@ -73,8 +76,9 @@ return [
     'add_project' => 'Добавить проект',
     'adding_project' => 'Добавление проекта',
     'error_delete_project' => 'Данный проект содержит неудаленные картинки! Вначале вы должны удалить их!',
-    'add_project_image' => 'Добавить картинку в проект',
-    'do_you_really_want_delete_this_project_image' => 'Вы действительно хотите удалить эту картинку?',
+
+    'add_image' => 'Добавить картинку',
+    'do_you_really_want_delete_this_project_image' => 'Вы действительно хотите удалить эту картинку из проекта?',
 
     'do_you_really_want_delete_this_partner' => 'Вы действительно хотите удалить этого партнера?',
     'edit_partner' => 'Редактирование партнера',
@@ -102,9 +106,9 @@ return [
     'edit_technic' => 'Редактирование единицы техники',
     'add_technic' => 'Добавить единицу техники',
     'adding_technic' => 'Добавление единицы техники',
-    'error_delete_technic' => 'Данный проект содержит неудаленные конструктивные особенности, картинки или файлы для скачивания! Вначале вы должны удалить их!',
+    'error_delete_technic' => 'Данная единица техники содержит неудаленные конструктивные особенности, картинки или файлы для скачивания! Вначале вы должны удалить их!',
     'add_technic_image' => 'Добавить картинку для данной единицы техники',
-    'do_you_really_want_delete_this_technic_image' => 'Вы действительно хотите удалить эту картинку?',
+    'do_you_really_want_delete_this_technic_image' => 'Вы действительно хотите удалить эту картинку техники?',
 
     'seo' => 'СЕО',
     'last_edit' => 'Последняя редакция',
@@ -114,4 +118,28 @@ return [
     'name' => 'Наименование',
     'man_name' => 'Имя',
     'these_fields_are_required' => 'Данные поля обязательны к заполнению',
+
+    'komrex_technic' => 'Техника КОМРЭКС',
+    'weight' => 'Эксплуатационная масса',
+    'power' => 'Полезная мощность',
+    'engine_model' => 'Модель двигателя',
+    'kg' => 'кг',
+    'kilowatt' => 'кВт',
+    'horse_power' => 'л.с.',
+    'characteristics' => 'Характеристики',
+    'upload_the_characteristics_file' => 'Загрузить файл характеристики (CSV)',
+
+    'constructive_features' => 'Конструктивные особенности',
+    'do_you_really_want_delete_this_constructive_feature' => 'Вы действительно хотите удалить эту конструктивную особенность?',
+    'edit_constructive_feature' => 'Редактирование конструктивной особенности',
+    'add_constructive_feature' => 'Добавить конструктивную особенность',
+    'adding_constructive_feature' => 'Добавление конструктивной особенности',
+
+    'do_you_really_want_delete_this_technic_video' => 'Вы действительно хотите удалить это видео?',
+    'edit_technic_video' => 'Редактирование видео',
+    'add_technic_video' => 'Добавить видео',
+    'adding_technic_video' => 'Добавление видео',
+
+    'do_you_really_want_delete_this_technic_file' => 'Вы действительно хотите удалить этот файл?',
+    'add_file' => 'Добавить файл',
 ];

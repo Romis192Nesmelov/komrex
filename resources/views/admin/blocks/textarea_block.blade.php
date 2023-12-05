@@ -3,7 +3,7 @@
     error="{{ count($errors) && $errors->has($name) ? $errors->first($name) : '' }}"
     label="{{ isset($label) && $label ? $label : ''  }}"
 >
-    <textarea class="form-control {{ isset($simple) && $simple ? 'simple' : '' }}" name="{{ $name }}" {{ isset($disabled) && $disabled ? 'disabled=disabled' : '' }}>{{ count($errors) ? old($name) : (isset($value) ? $value : '') }}</textarea>
+    <textarea class="form-control {{ isset($simple) && $simple ? 'simple' : '' }} @error($name) error @enderror" name="{{ $name }}" {{ isset($disabled) && $disabled ? 'disabled=disabled' : '' }}>{{ count($errors) ? old($name) : (isset($value) ? $value : '') }}</textarea>
 </x-incover>
 @if (!isset($simple) || !$simple)
     <script>

@@ -10,7 +10,7 @@ class ProjectImage extends Model
 
     public $timestamps = false;
 
-    public function projectType(): BelongsTo
+    public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);
     }

@@ -42,6 +42,7 @@
             </div>
             @include('admin.blocks.add_button_block', [
                 'route' => 'projects',
+                'custom_key' => 'project',
                 'parent_id' => $project_type->id,
             ])
         </div>

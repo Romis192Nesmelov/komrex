@@ -8,8 +8,17 @@
                 <th class="text-center">{{ trans('admin.status') }}</th>
             @elseif ($column == 'updated_at')
                 @include('admin.blocks.th_updated_at_cell_block')
+            @elseif ($column == 'komrex')
+                <th class="text-center">{{ trans('admin.komrex_technic') }}</th>
             @else
-                <th class="text-center">{{ trans('admin.'.$column) }}</th>
+                <th class="text-center">
+                    {{ trans('admin.'.$column) }}
+                    @if ($column == 'weight')
+                        ({{ trans('admin.kg') }})
+                    @elseif ($column == 'power')
+                        ({{ trans('admin.kilowatt').'/'.trans('admin.horse_power') }})
+                    @endif
+                </th>
             @endif
         @endforeach
         @if ($useEdit)
@@ -25,16 +34,33 @@
             @foreach ($columns as $column)
                 @if ($column == 'image')
                     @include('admin.blocks.datatable_image_block')
+                @elseif ($column == 'video')
+                    <td class="text-center">
+                        @include('blocks.video_block',['video' => $item->video])
+                    </td>
                 @elseif ($column == 'text')
-                    <td colspan="text-left">
+                    <td class="text-left">
                         @include('admin.blocks.cropped_content_block',['croppingContent' => $item->text, 'length' => 200])
                     </td>
                 @elseif ($column == 'date')
                     <td class="text-center">{{ is_int($item->date) ? date('d.m.Y',$item->date) : $item->date }}</td>
                 @elseif ($column == 'active')
                     @include('admin.blocks.status_block',['status' => $item->active])
+                @elseif ($column == 'komrex')
+                    <td class="text-center image komrex">
+                        @if ($item[$column])
+                            <img src="{{ asset('images/logo_dark.svg') }}" />
+                        @endif
+                    </td>
                 @else
-                    <td class="text-center {{ $column == 'head' || $column == 'email' ? 'head' : '' }}">{{ $item[$column] }}</td>
+                    <td class="text-center {{ $column == 'head' || $column == 'email' ? 'head' : '' }}">
+                        {{ $item[$column] }}
+                        @if ($column == 'weight')
+                            {{ ' '.trans('admin.kg') }}
+                        @elseif ($column == 'power')
+                            {{ ' '.trans('admin.kilowatt').' ('.round($item[$column] * 1.3596).' '.trans('admin.horse_power').')' }}
+                        @endif
+                    </td>
                 @endif
             @endforeach
             @if ($useEdit)

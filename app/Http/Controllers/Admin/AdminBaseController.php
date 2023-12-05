@@ -83,6 +83,23 @@ class AdminBaseController extends Controller
                 'icon' => 'icon-calendar3',
                 'hidden' => false,
             ],
+            'technic_types' => [
+                'key' => 'technic_types',
+                'icon' => 'icon-cogs',
+                'hidden' => false,
+            ],
+            'technics' => [
+                'key' => 'technics',
+                'hidden' => true,
+            ],
+            'constructive_features' => [
+                'key' => 'constructive_features',
+                'hidden' => true,
+            ],
+            'technic_videos' => [
+                'key' => 'technic_videos',
+                'hidden' => true,
+            ],
         ];
         $this->breadcrumbs[] = $this->menu['home'];
     }
@@ -96,34 +113,65 @@ class AdminBaseController extends Controller
         return $this->showView('home');
     }
 
-    protected function getSomething(string $key, Model $model, $slug=null, Model|null $parentModel=null): View
+    protected function getSomething(string $key, Model $model, $slug=null, Model|null $parentModel=null, string|null $parentRelation=null): View
     {
-        $this->data['menu_key'] = $key;
-        $this->breadcrumbs[] = $this->menu[$key];
-
         if (request('parent_id')) {
             $parentItem = $parentModel->findOrFail(request('parent_id'));
             $this->data['parents'] = $parentModel->all();
-            $this->breadcrumbs[] = [
-                'key' => $this->menu[$this->data['parent_key']]['key'],
-                'params' => ['id' => $parentItem->id],
-                'name' => $parentItem->name ?? $parentItem->head,
-            ];
+
+            if ($parentRelation) {
+                $this->data['menu_key'] = $this->data['parent_key'];
+                $this->data['current_sub_item'] = $parentItem[$parentRelation]->id;
+                $this->breadcrumbs[] = [
+                    'key' => $this->menu[$this->data['parent_key']]['key'],
+                    'name' => trans('admin_menu.'.$this->data['parent_key']),
+                ];
+                $this->breadcrumbs[] = [
+                    'key' => $this->menu[$this->data['parent_key']]['key'],
+                    'params' => ['id' => $parentItem[$parentRelation]->id],
+                    'name' => $parentItem[$parentRelation]->name ?? $parentItem[$parentRelation]->head,
+                ];
+                $this->breadcrumbs[] = [
+                    'key' => $this->menu[$this->data['near_parent_key']]['key'],
+                    'params' => ['id' => $parentItem->id, 'parent_id' => $parentItem[$parentRelation]->id],
+                    'name' => $parentItem->name ?? $parentItem->head,
+                ];
+            } else {
+                $this->data['menu_key'] = $this->data['parent_key'];
+                $this->breadcrumbs[] = [
+                    'key' => $this->menu[$this->data['parent_key']]['key'],
+                    'name' => trans('admin_menu.'.$this->data['parent_key']),
+                ];
+                $this->breadcrumbs[] = [
+                    'key' => $this->menu[$this->data['parent_key']]['key'],
+                    'params' => ['id' => $parentItem->id],
+                    'name' => $parentItem->name ?? $parentItem->head,
+                ];
+            }
+        } else {
+            $this->data['menu_key'] = $key;
+            $this->breadcrumbs[] = $this->menu[$key];
         }
 
         $this->getSingularKey($key);
+
+        $breadcrumbsParams = [];
+        if ($parentModel) $breadcrumbsParams['parent_id'] = $parentItem->id;
+
         if (request('id')) {
             $this->data[$this->data['singular_key']] = $model->findOrFail(request('id'));
+            $breadcrumbsParams['id'] = $this->data[$this->data['singular_key']]->id;
             $this->breadcrumbs[] = [
                 'key' => $this->menu[$key]['key'],
-                'params' => ['id' => $this->data[$this->data['singular_key']]->id],
+                'params' => $breadcrumbsParams,
                 'name' => trans('admin.edit_'.$this->data['singular_key']),
             ];
             return $this->showView($this->data['singular_key']);
         } else if ($slug && $slug == 'add') {
+            $breadcrumbsParams['slug'] = 'add';
             $this->breadcrumbs[] = [
                 'key' => $this->menu[$key]['key'],
-                'slug' => 'add',
+                'params' => $breadcrumbsParams,
                 'name' => trans('admin.adding_'.$this->data['singular_key']),
             ];
             return $this->showView($this->data['singular_key']);
@@ -183,6 +231,8 @@ class AdminBaseController extends Controller
                 $this->deleteFile($image->image);
             }
         }
+
+        if (isset($table->pdf) && $table->pdf) $this->deleteFile($table->pdf);
         $table->delete();
         return response()->json(['message' => trans('admin.delete_complete')],200);
     }
@@ -213,18 +263,18 @@ class AdminBaseController extends Controller
 
     protected function processingPdf(Request $request, Model $model): void
     {
-        if (in_array('presentation',$model->getFillable())) {
-            $this->processingFiles($request, $model, 'presentation', 'pdfs/', 'presentation');
+        if (in_array('pdf',$model->getFillable())) {
+            $this->processingFiles($request, $model, 'pdf', 'pdfs/', 'pdf');
         }
     }
 
-    protected function processingFiles(Request $request, Model $model, string $fileField, string $pathToFile, string $fileName): void
+    protected function processingFiles(Request $request, Model $model, string $fileField, string|null $pathToFile=null, string|null $fileName=null): void
     {
         if ($pathToFile && $request->hasFile($fileField)) {
             $fileName .= $model->id.'.'.$request->file($fileField)->getClientOriginalExtension();
-            $model->image = $pathToFile.$fileName;
+            $model[$fileField] = $pathToFile.$fileName;
             $model->save();
-            $request->file('image')->move(base_path('public/'.$pathToFile), $fileName);
+            $request->file($fileField)->move(base_path('public/'.$pathToFile), $fileName);
         }
     }
 

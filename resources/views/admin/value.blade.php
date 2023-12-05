@@ -9,10 +9,10 @@
                 @if (isset($value))
                     @include('blocks.hidden_id_block',['id' => $value->id])
                 @endif
-                <div class="col-lg-3 col-ms-12">
+                <div class="col-lg-3 col-sm-12">
                     @include('admin.blocks.input_image_block',['image' => isset($value) ? $value->image : null])
                 </div>
-                <div class="col-lg-9 col-ms-12">
+                <div class="col-lg-9 col-sm-12">
                     <div class="panel panel-flat">
                         <div class="panel-body">
                             @include('blocks.input_block', [
