@@ -77,5 +77,18 @@
         </div>
     </footer>
     @include('blocks.message_modal_block')
+    <x-smodal id="feedback-modal" head="{{ trans('content.write_to_the_company') }}">
+        <form method="POST" action="{{ route('callback') }}">
+            @csrf
+            @include('blocks.feedback_fields_block',[
+                'hiddenInputName' => 'from',
+                'hiddenId' => '',
+                'buttonAddClass' => 'withArrow ',
+                'primary' => false,
+                'button_text' => trans('content.send_request'),
+                'arrowIcon' => 'arrow_cir_to_right_yellow.svg'
+            ])
+        </form>
+    </x-smodal>
 </body>
 </html>

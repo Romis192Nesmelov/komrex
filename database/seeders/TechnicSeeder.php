@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Technic;
+use App\Models\TechnicImage;
 use App\Models\TechnicType;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
@@ -23,8 +24,8 @@ class TechnicSeeder extends Seeder
 
         foreach ($data as $item) {
             $technicType = TechnicType::create($item);
-            for ($i=0;$i<rand(2,20);$i++) {
-                Technic::create([
+            for ($i=0;$i<rand(10,100);$i++) {
+                $technic = Technic::create([
                     'name' => Str::random(3).rand(100,500),
                     'weight' => rand(10000,50000),
                     'power' => rand(100,300),
@@ -33,6 +34,13 @@ class TechnicSeeder extends Seeder
                     'active' => 1,
                     'technic_type_id' => $technicType->id
                 ]);
+
+                for ($im=1;$im<=3;$im++) {
+                    TechnicImage::create([
+                        'image' => 'images/technics/technic'.$im.'.jpg',
+                        'technic_id' => $technic->id
+                    ]);
+                }
             }
         }
     }

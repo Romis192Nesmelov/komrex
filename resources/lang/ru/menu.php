@@ -8,7 +8,7 @@ return [
     'partners' => 'Партнеры',
     'contacts' => 'Контакты',
     'active_monitoring' => 'Активный мониторинг',
-    'technique' => 'Техника',
+    'technics' => 'Техника',
     'units_and_components' => 'Агрегаты и компоненты',
     'service_solutions_and_consulting' => 'Сервисные решения и консалтинг',
 

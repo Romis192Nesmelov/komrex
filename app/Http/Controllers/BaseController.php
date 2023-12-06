@@ -53,7 +53,7 @@ class BaseController extends Controller
                 ],
                 'secondMenu' => [
                     'active_monitoring'                 => ['href' => false],
-                    'technique'                         => ['href' => false],
+                    'technics'                          => ['href' => true],
                     'units_and_components'              => ['href' => false],
                     'service_solutions_and_consulting'  => ['href' => false],
                 ],

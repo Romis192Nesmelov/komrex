@@ -1,10 +1,3 @@
-<?php if (isset($addAttr) && is_array($addAttr)) {
-    $attrStr = '';
-    foreach ($addAttr as $attr => $value) {
-        $attrStr .= $attr.'="'.$value.'"';
-    }
-}
-?>
 <button {{ isset($id) && $id ? 'id='.$id : '' }} type="{{ isset($buttonType) && $buttonType ? $buttonType : 'button' }}"
     class="btn btn-{{ isset($primary) && $primary ? 'primary' : 'secondary' }} {{ isset($arrowIcon) && $arrowIcon ? 'withArrow' : '' }} {{ isset($addClass) && $addClass ? $addClass : '' }}"
     @if (isset($attrStr) && $attrStr)

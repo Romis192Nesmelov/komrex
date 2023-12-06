@@ -201,6 +201,17 @@ $(document).ready(function () {
             rollUp.animate({'height':0}, 'fast')
         }
     });
+
+    // Open left menu
+    $('.left-menu .dropdown-active').click(function () {
+        const dropDownList = $('.dropdown-list');
+        if (!parseInt(dropDownList.css('height'))) {
+            let items = dropDownList.find('ul li:not(.active)').length;
+            dropDownList.animate({'height':(items * 65)},'fast');
+        } else {
+            dropDownList.animate({'height':0},'fast');
+        }
+    });
 });
 
 const activatingProjectBlock = (prevActiveBlock, projectsId, callBack) => {

@@ -4,6 +4,7 @@ use App\Http\Controllers\BaseController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LoginController;
 use \App\Http\Controllers\ProjectsController;
+use \App\Http\Controllers\TechnicController;
 use App\Http\Controllers\Admin\AdminBaseController;
 use App\Http\Controllers\Admin\AdminUsersController;
 use App\Http\Controllers\Admin\AdminQuotesController;
@@ -36,6 +37,11 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 Route::get('/get-project', ProjectsController::class)->name('get_project');
+
+Route::controller(TechnicController::class)->group(function () {
+    Route::get('/technics/{slug?}', 'technics')->name('technics');
+    Route::get('/technic', 'technic')->name('technic');
+});
 
 Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
 
