@@ -16,6 +16,7 @@ $(document).ready(function () {
     });
 
     bindFancybox();
+    bigTablesScroll();
     // windowScroll();
 
     window.menuScrollFlag = false;
@@ -341,4 +342,27 @@ const owlCarouselModal = (container) => {
         },
         true
     ));
+}
+
+
+const bigTablesScroll = () => {
+    window.bigTable = $('.big-table-container');
+    if (window.bigTable.length && $(window).width() <= 1024) {
+        window.bigTable.mCustomScrollbar({
+            axis: 'x',
+            theme: 'light-3',
+            alwaysShowScrollbar: 2,
+            advanced: {
+                autoExpandHorizontalScroll: true
+            }
+        });
+
+        $(window).scroll(function () {
+            let offset = window.pageYOffset - bigTable.offset().top;
+            offset = offset < 0 ? 0 : offset;
+            $('.mCSB_scrollTools.mCSB_scrollTools_horizontal').css('top',offset);
+        });
+    } else if (window.bigTable) {
+        window.bigTable.mCustomScrollbar('destroy');
+    }
 }

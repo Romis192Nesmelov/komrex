@@ -13,7 +13,7 @@
             <x-offer head="{{ trans('menu.active_monitoring') }}" href="#" text="{{ trans('content.important_tool') }}">
                 @include('blocks.offer_image_block',['image' => 'images/offers/offer1.png'])
             </x-offer>
-            <x-offer head="{{ trans('menu.technique') }}" href="#">
+            <x-offer head="{{ trans('menu.technics') }}" href="#">
                 @include('blocks.offer_image_block',[
                     'image' => 'images/offers/offer2_1.jpg',
                     'href' => '#',
