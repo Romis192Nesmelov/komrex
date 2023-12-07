@@ -28,6 +28,6 @@ class TechnicController extends BaseController
 
     public function technic(): View
     {
-
+        die();
     }
 }

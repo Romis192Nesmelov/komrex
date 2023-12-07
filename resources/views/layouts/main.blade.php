@@ -83,7 +83,7 @@
             @include('blocks.feedback_fields_block',[
                 'hiddenInputName' => 'from',
                 'hiddenId' => '',
-                'buttonAddClass' => 'withArrow ',
+                'buttonAddClass' => 'withArrow',
                 'primary' => false,
                 'button_text' => trans('content.send_request'),
                 'arrowIcon' => 'arrow_cir_to_right_yellow.svg'

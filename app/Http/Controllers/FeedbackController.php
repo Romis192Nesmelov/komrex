@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Feedback\CallbackRequest;
 use App\Http\Requests\Feedback\SignUpRequest;
+use App\Http\Requests\Feedback\TechnicFeedbackRequest;
 use App\Models\Event;
 use App\Models\EventPerson;
+use App\Models\Technic;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -15,7 +17,7 @@ class FeedbackController extends Controller
 {
     public function callback(CallbackRequest $request): JsonResponse
     {
-        return $this->sendMessage('feedback', $request->validated(), $request);
+        return $this->sendMessage('feedback', $request->validated());
     }
 
     public function signUp(SignUpRequest $request): JsonResponse
@@ -29,10 +31,19 @@ class FeedbackController extends Controller
             'phone' => $fields['phone'],
             'event_id' => $event->id
         ]);
-        return $this->sendMessage('signup', $fields, $request);
+        return $this->sendMessage('signup', $fields);
     }
 
-    private function sendMessage(string $template, array $fields, Request $request): JsonResponse
+    public function technicFeedback(TechnicFeedbackRequest $request): JsonResponse
+    {
+        $technic = Technic::find($request->id);
+        $fields = $request->validated();
+        $fields['technic_name'] = $technic->name;
+        $fields['technic_type'] = $technic->technicType->name;
+        return $this->sendMessage('technic_feedback', $fields);
+    }
+
+    private function sendMessage(string $template, array $fields): JsonResponse
     {
         Mail::send('emails.'.$template, $fields, function($message) {
             $message->subject('Сообщение с сайта '.env('APP_NAME'));

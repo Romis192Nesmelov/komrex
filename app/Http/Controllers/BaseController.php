@@ -22,17 +22,17 @@ class BaseController extends Controller
     protected string $activeMainMenu = '';
     protected string $activeSecondMenu = '';
 
-    public function index(string $slug=null): View
+    public function index(): View
     {
         $this->activeMainMenu = 'home';
-        $this->data['scroll'] = $slug;
+        $this->data['scroll'] = request('scroll');
         $this->data['contents'] = Home::all();
         $this->getItem('solutions', new ServiceSolution());
         $this->data['consulting'] = Consulting::all();
         $this->getItem('values', new OurValue());
         $this->getItem('team', new OurTeam());
         $this->getItem('projects_all', new Project());
-        $this->getItem('projects', new ProjectType(), 'created_at');
+        $this->getItem('project_types', new ProjectType(), 'created_at');
         $this->getItem('partners', new Partner());
         $this->data['events'] = Event::where('date','>',time())->where('active',1)->get();
         return $this->showView('home');

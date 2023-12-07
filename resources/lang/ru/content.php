@@ -12,7 +12,7 @@ return [
     'all_komrex_equipment' => 'Вся техника Komrex',
     'komrex_technics' => 'Техника KOMREX',
     'current_offer' => 'Текущее предложение',
-    'supply_of_individual_units' => 'Поставка отдельных узлов и агрегатов пля спецтехники.',
+    'supply_of_individual_units' => 'Поставка отдельных узлов и агрегатов для спецтехники.',
     'you_have_a_question_head' => 'Есть вопрос? Мы вам перезвоним!',
     'you_have_a_question_text' => 'Персональный менеджер готов ответить на все ваши вопросы в удобное для вас время',
     'your_name' => 'Ваше имя',

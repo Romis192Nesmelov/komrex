@@ -154,7 +154,7 @@
         <div class="content">
             <h2 class="mb-4 pb-3">{{ trans('content.our_projects') }}</h2>
             <div class="row mb-4">
-                @foreach($projects as $type)
+                @foreach($project_types as $type)
                     <div class="col-lg-2 col-sm-12 mb-3 mb-lg-0">
                         @include('blocks.button_block',[
                             'id' => 'button-project-type-'.$type->id,
@@ -170,12 +170,10 @@
                     @include('blocks.project_block',['image' => $project->images[0]->image])
                 @endforeach
             </div>
-            @foreach($projects as $type)
+            @foreach($project_types as $type)
                 <div id="project-type-{{ $type->id }}" class="owl-carousel projects d-none">
                     @foreach($type->activeProjects as $project)
-                        @foreach($project->images as $image)
-                            @include('blocks.project_block',['image' => $image->image])
-                        @endforeach
+                        @include('blocks.project_block',['image' => $project->images[0]->image])
                     @endforeach
                 </div>
             @endforeach
@@ -187,7 +185,7 @@
             <p class="small w-60">{{ $contents[6]->text }}</p>
             <div class="row w-60">
                 @foreach($partners as $partner)
-                    <div class="col-lg-6 col-sm-12 mb-3 mb-lg-0">
+                    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 mb-lg-0">
                         <img class="w-100" src="{{ asset($partner->image) }}" />
                     </div>
                 @endforeach

@@ -202,6 +202,14 @@ $(document).ready(function () {
         }
     });
 
+    // Technic feedback modal
+    $('button.technic-button').click(function () {
+        const technicFeedbackModal = $('#technic-feedback-modal');
+        let technicId = parseInt($(this).attr('id').replace('technic',''));
+        technicFeedbackModal.find('input[name=id]').val(technicId);
+        technicFeedbackModal.modal('show');
+    });
+
     // Open left menu
     $('.left-menu .dropdown-active').click(function () {
         const dropDownList = $('.dropdown-list');
@@ -210,6 +218,20 @@ $(document).ready(function () {
             dropDownList.animate({'height':(items * 65)},'fast');
         } else {
             dropDownList.animate({'height':0},'fast');
+        }
+    });
+
+    // Change view in Technics chapter
+    $('.icons-view .icon').click(function () {
+        if (!$(this).hasClass('active')) {
+            $('.icons-view .icon.active').removeClass('active');
+            $(this).addClass('active');
+
+            $('.technics-block > div').toggleClass('col-lg-4 col-lg-12');
+            $('.technics-block .image').toggleClass('col-lg-12 col-lg-3');
+            $('.technics-block .content').toggleClass('col-lg-12 col-lg-9');
+            $('.technics-block .content div').toggleClass('col-lg-12 col-lg-4');
+            $('.technics-block button').toggleClass('m-auto');
         }
     });
 });
