@@ -49,43 +49,45 @@
                 </div>
                 <div class="technics-block row">
                     @foreach ($technics[$relation] as $technic)
-                        <div class="col-lg-4 col-md-12">
-                            <div class="technic-block row">
-                                <div class="image col-lg-12 col-md-12">
-                                    <a href="{{ route('technic',['id' => $technic->id]) }}">
-                                        <img class="w-100" src="{{ asset($technic->images[0]->image) }}" />
-                                    </a>
-                                </div>
-                                <div class="content col-lg-12 col-md-12 p-3">
-                                    <a class="row" href="{{ route('technic',['id' => $technic->id]) }}">
-                                        <div class="head col-lg-12 col-sm-12 p-2">
-                                            <h1>{{ $technic->name }}</h1>
-                                            {{ substr(explode(' ',$technics->name)[0],0,-2) }}
+                        @if ($technic->images->count())
+                            <div class="col-lg-4 col-md-12">
+                                <div class="technic-block row">
+                                    <div class="image col-lg-12 col-md-12">
+                                        <a href="{{ route('technic',['id' => $technic->id]) }}">
+                                            <img class="w-100" src="{{ asset($technic->images[0]->image) }}" />
+                                        </a>
+                                    </div>
+                                    <div class="content col-lg-12 col-md-12 p-3">
+                                        <a class="row" href="{{ route('technic',['id' => $technic->id]) }}">
+                                            <div class="head col-lg-12 col-sm-12 p-2">
+                                                <h1>{{ $technic->name }}</h1>
+                                                {{ substr(explode(' ',$technics->name)[0],0,-2) }}
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 p-2">
+                                                {{ trans('content.operating_weight') }}<br>
+                                                {{ $technic->weight.trans('content.kg') }}
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 p-2">
+                                                {{ trans('content.net_power') }}<br>
+                                                {{ $technic->power.trans('content.kilowatt').' ('.(round($technic->power * 1.3596)).trans('content.horse_power').')' }}
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 p-2">
+                                                {{ trans('content.engine_model') }}<br>
+                                                {{ $technic->engine_model }}
+                                            </div>
+                                        </a>
+                                        <div class="button col-12 pt-2 ps-0 pe-0">
+                                            @include('blocks.button_block',[
+                                                'id' => 'technic'.$technic->id,
+                                                'addClass' => 'technic-button m-auto',
+                                                'primary' => false,
+                                                'buttonText' => trans('content.write_to_the_company')
+                                            ])
                                         </div>
-                                        <div class="col-lg-12 col-sm-12 p-2">
-                                            {{ trans('content.operating_weight') }}<br>
-                                            {{ $technic->weight.trans('content.kg') }}
-                                        </div>
-                                        <div class="col-lg-12 col-sm-12 p-2">
-                                            {{ trans('content.net_power') }}<br>
-                                            {{ $technic->power.trans('content.kilowatt').' ('.(round($technic->power * 1.3596)).trans('content.horse_power').')' }}
-                                        </div>
-                                        <div class="col-lg-12 col-sm-12 p-2">
-                                            {{ trans('content.engine_model') }}<br>
-                                            {{ $technic->engine_model }}
-                                        </div>
-                                    </a>
-                                    <div class="button col-12 pt-2 ps-0 pe-0">
-                                        @include('blocks.button_block',[
-                                            'id' => 'technic'.$technic->id,
-                                            'addClass' => 'technic-button m-auto',
-                                            'primary' => false,
-                                            'buttonText' => trans('content.write_to_the_company')
-                                        ])
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
                     @endforeach
                 </div>
             </div>
