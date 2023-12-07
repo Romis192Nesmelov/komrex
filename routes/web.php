@@ -30,7 +30,6 @@ Route::controller(FeedbackController::class)->group(function () {
     Route::post('/technic-feedback', 'technicFeedback')->name('technic_feedback');
 });
 
-
 Route::get('/login', function () {return view('admin.login');})->name('login');
 Route::controller(LoginController::class)->group(function () {
     Route::post('/login', 'login')->name('login');

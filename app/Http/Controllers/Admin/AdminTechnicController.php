@@ -76,6 +76,7 @@ class AdminTechnicController extends AdminBaseController
                 'engine_model' => $this->validationString,
                 'komrex'  => $this->validationInteger.'|in:0,1',
                 'characteristics' => $this->validationText,
+                'description' => $this->validationText,
                 'csv' => $this->validationCsv,
                 'technic_type_id' => 'nullable|integer|exists:technic_types,id'
             ],

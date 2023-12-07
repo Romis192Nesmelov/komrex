@@ -142,4 +142,5 @@ return [
 
     'do_you_really_want_delete_this_technic_file' => 'Вы действительно хотите удалить этот файл?',
     'add_file' => 'Добавить файл',
+    'description' => 'Общее описание',
 ];

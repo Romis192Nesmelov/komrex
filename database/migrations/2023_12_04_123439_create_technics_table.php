@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('engine_model');
             $table->boolean('komrex')->nullable();
             $table->text('characteristics')->nullable();
+            $table->text('description')->nullable();
             $table->boolean('active');
             $table->foreignIdFor(TechnicType::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();

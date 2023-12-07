@@ -82,6 +82,7 @@
                                     'value' => isset($technic) ? $technic->power : 10000
                                 ])
                             </div>
+                            @include('admin.blocks.input_file_block', ['label' => trans('admin.upload_the_characteristics_file'), 'name' =>  'csv'])
                             @if (isset($technic) && $technic->characteristics)
                                 @include('admin.blocks.textarea_block',[
                                     'name' => 'characteristics',
@@ -90,7 +91,12 @@
                                     'simple' => false
                                 ])
                             @endif
-                            @include('admin.blocks.input_file_block', ['label' => trans('admin.upload_the_characteristics_file'), 'name' =>  'csv'])
+                            @include('admin.blocks.textarea_block',[
+                                'name' => 'description',
+                                'label' => trans('admin.description'),
+                                'value' => isset($technic) ? $technic->description : '',
+                                'simple' => false
+                            ])
                             @include('admin.blocks.save_button_block')
                         </div>
                     </div>

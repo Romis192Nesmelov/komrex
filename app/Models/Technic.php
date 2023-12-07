@@ -14,6 +14,7 @@ class Technic extends Model
         'engine_model',
         'komrex',
         'characteristics',
+        'description',
         'active',
         'technic_type_id'
     ];
