@@ -121,6 +121,8 @@ $(document).ready(function () {
                 head.removeClass('mb-0').addClass('mb-2');
                 date.hide();
             }
+
+            bigImage.html('');
             bigImage.append($('<img>').attr('src',data.images[0].image));
             description.html(data.text);
 
