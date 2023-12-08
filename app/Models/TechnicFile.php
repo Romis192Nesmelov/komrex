@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TechnicFile extends Model
 {
-    protected $fillable = ['technic_id'];
-
-    public $timestamps = false;
+    protected $fillable = ['pdf','name','technic_id','active'];
 
     public function technic(): BelongsTo
     {

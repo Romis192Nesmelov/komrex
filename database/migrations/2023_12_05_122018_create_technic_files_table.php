@@ -14,8 +14,11 @@ return new class extends Migration
     {
         Schema::create('technic_files', function (Blueprint $table) {
             $table->id();
-            $table->string('file',50)->nullable();
+            $table->string('pdf',50)->nullable();
+            $table->string('name');
             $table->foreignIdFor(Technic::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->boolean('active');
+            $table->timestamps();
         });
     }
 

@@ -91,7 +91,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="content joint-top" data-scroll-destination="about_company">
+        <div class="content pt-0" data-scroll-destination="about_company">
             <h2>{{ $contents[5]->head }}</h2>
             <div class="row">
                 <div class="col-lg-6 col-sm-12 mb-3 mb-lg-0">
@@ -122,7 +122,7 @@
                 </div>
             </div>
         </div>
-        <div class="content joint-top">
+        <div class="content pt-0">
             <h2 class="mb-4 pb-3">{{ trans('content.our_values') }}</h2>
             <div class="row">
                 @foreach($values as $value)
@@ -137,7 +137,7 @@
             </div>
         </div>
     </div>
-    <div class="content-container joint-top bg-white" data-scroll-destination="team">
+    <div class="content-container pt-0 bg-white" data-scroll-destination="team">
         <div class="content">
             <h2 class="mb-4 pb-3">{{ trans('content.our_team') }}</h2>
             <div id="our-team" class="owl-carousel">
@@ -150,7 +150,7 @@
             </div>
         </div>
     </div>
-    <div class="content-container joint-top" data-scroll-destination="our_projects">
+    <div class="content-container pt-0" data-scroll-destination="our_projects">
         <div class="content">
             <h2 class="mb-4 pb-3">{{ trans('content.our_projects') }}</h2>
             <div class="row mb-4">
@@ -179,7 +179,7 @@
             @endforeach
         </div>
     </div>
-    <div class="content-container joint-top bg-white" data-scroll-destination="partners">
+    <div class="content-container pt-0 bg-white" data-scroll-destination="partners">
         <div class="content">
             <h2 class="mb-4 pb-3">{{ $contents[6]->head }}</h2>
             <p class="small w-60">{{ $contents[6]->text }}</p>

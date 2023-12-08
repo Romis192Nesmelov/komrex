@@ -9,7 +9,7 @@ trait HelperTrait
     public string $validationPassword = 'required|confirmed|min:3|max:50';
     public string $validationInteger = 'required|integer';
     public string $validationString = 'required|min:3|max:255';
-    public string $validationText = 'nullable|min:5|max:2000';
+    public string $validationText = 'nullable|min:5|max:3000';
     public string $validationSvg = 'mimes:svg|max:10';
     public string $validationJpgAndPng = 'mimes:jpeg,png|max:2000';
     public string $validationJpg = 'mimes:jpg|max:2000';

@@ -141,7 +141,7 @@ $(document).ready(function () {
             });
 
             smallImages.trigger('destroy.owl.carousel');
-            owlCarouselModal(smallImages);
+            owlCarouselSmallImages(smallImages);
             modal.find('.small' + activeId).addClass('active');
 
             setTimeout(() => {
@@ -204,10 +204,14 @@ $(document).ready(function () {
     });
 
     // Technic feedback modal
+    const technicFeedbackModal = $('#technic-feedback-modal');
     $('button.technic-button').click(function () {
-        const technicFeedbackModal = $('#technic-feedback-modal');
         let technicId = parseInt($(this).attr('id').replace('technic',''));
         technicFeedbackModal.find('input[name=id]').val(technicId);
+        technicFeedbackModal.modal('show');
+    });
+
+    $('#technic-button').click(() => {
         technicFeedbackModal.modal('show');
     });
 
@@ -233,6 +237,41 @@ $(document).ready(function () {
             $('.technics-block .content').toggleClass('col-lg-12 col-lg-9');
             $('.technics-block .content div').toggleClass('col-lg-12 col-lg-4');
             $('.technics-block button').toggleClass('m-auto');
+        }
+    });
+
+    // Owl carousel for small images in technic page
+    owlCarouselSmallImages($('#small-technic-images'));
+
+    // Click on small images technic carousel
+    $('#small-technic-images img').click(function () {
+        if (!$(this).hasClass('active')) {
+            const bigTechnicImage = $('#big-technic-image > img');
+            $('img.active').removeClass('active');
+            let activeClassName = $(this).attr('class'),
+                newBigImage = $(this).attr('src');
+            $('.' + activeClassName).addClass('active');
+            bigTechnicImage.animate({'opacity':0}, 'fast', function () {
+                bigTechnicImage.attr('src',newBigImage);
+                bigTechnicImage.animate({'opacity':1}, 'fast');
+            });
+        }
+    });
+
+    // Click on technic-stuff buttons
+    $('button.technic-stuff').click(function () {
+        if (!$(this).hasClass('active')) {
+            let stuffId = $(this).attr('id').replace('button-stuff-',''),
+                newActiveContent = $('#stuff-content-' + stuffId),
+                currentActiveContent = $('.stuff-content.active');
+
+            $('button.technic-stuff.active').removeClass('active');
+            $(this).addClass('active');
+            currentActiveContent.animate({'opacity':0}, 'fast', function () {
+                currentActiveContent.removeClass('active').addClass('d-none');
+                newActiveContent.css('opacity',0).removeClass('d-none').addClass('active');
+                newActiveContent.animate({'opacity':1}, 'fast');
+            });
         }
     });
 });
@@ -322,7 +361,7 @@ const owlSettings = (margin, timeout, responsive, nav) => {
     }
 }
 
-const owlCarouselModal = (container) => {
+const owlCarouselSmallImages = (container) => {
     container.owlCarousel(owlSettings(
         10,
         5000,

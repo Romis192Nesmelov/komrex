@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Technic;
 use App\Models\TechnicType;
 use Illuminate\View\View;
 
@@ -28,6 +29,9 @@ class TechnicController extends BaseController
 
     public function technic(): View
     {
-        die();
+        $this->activeSecondMenu = 'technics';
+        if (!request('id') || !$this->data['technic'] = Technic::where('id',request('id'))->where('active',1)->first()) abort(404);
+        $this->data['buttons'] = ['design_features','characteristics','video','files_for_download'];
+        return $this->showView('technic');
     }
 }

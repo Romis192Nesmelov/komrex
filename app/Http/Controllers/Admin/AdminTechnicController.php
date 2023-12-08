@@ -75,13 +75,12 @@ class AdminTechnicController extends AdminBaseController
                 'power' => $this->validationInteger,
                 'engine_model' => $this->validationString,
                 'komrex'  => $this->validationInteger.'|in:0,1',
-                'characteristics' => $this->validationText,
+                'characteristics' => 'nullable|min:5|max:10000',
                 'description' => $this->validationText,
                 'csv' => $this->validationCsv,
                 'technic_type_id' => 'nullable|integer|exists:technic_types,id'
             ],
         );
-
         if ($request->hasFile('csv')) {
             $allCapsRegExp = '/^(([А-Я]+(\s)?)+)$/ui';
             $fileName = 'characteristics'.$technic->id.'.csv';
@@ -97,8 +96,8 @@ class AdminTechnicController extends AdminBaseController
                 else {
                     $prevCellsCount = count($cells);
                     foreach ($cells as $c => $cell) {
-                        $cellClassName = (!$r && preg_match($allCapsRegExp,$cell)) || ($c && !preg_match($allCapsRegExp,$cell)) ? 'text-center' : 'text-left';
-                        $cellClassName .= ' w-25';
+                        $cellClassName = !$c ? 'text-start' : 'text-center';
+//                        $cellClassName .= ' w-25';
                         $resultTable .= '<td class="'.$cellClassName.'">'.$cell.'</td>';
                     }
                 }
@@ -224,19 +223,28 @@ class AdminTechnicController extends AdminBaseController
         return $this->deleteSomething($request, new TechnicVideo());
     }
 
+    public function technicFiles($slug=null): View
+    {
+        $this->getSubMenu(new TechnicType(), 'technic_types', 'name');
+        $this->data['near_parent_key'] = 'technics';
+        return $this->getSomething('technic_files', new TechnicFile(), $slug, new Technic(), 'technicType');
+    }
+
     /**
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function addTechnicFile(Request $request): RedirectResponse
+    public function editTechnicFile(Request $request): RedirectResponse
     {
-        $this->validate($request, [
-            'id' => 'required|integer|exists:technics,id',
-            'file' => $this->validationPdf
-        ]);
-        $technicFile = TechnicFile::create(['technic_id' => $request->id]);
-        $this->processingFiles($request, $technicFile, 'file', 'technic_files/', 'technic');
+        $file = $this->editSomething (
+            $request,
+            new TechnicFile(),
+            [
+                'name' => $this->validationString,
+                'pdf' => $this->validationPdf
+            ],
+        );
         $this->saveCompleteMessage();
-        return redirect(route('admin.technics',['id' => $technicFile->technic_id, 'parent_id' => $technicFile->technic->technic_type_id]));
+        return redirect(route('admin.technics',['id' => $file->technic_id, 'parent_id' => $file->technic->technic_type_id]));
     }
 
     /**

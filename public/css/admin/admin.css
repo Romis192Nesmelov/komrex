@@ -195,3 +195,8 @@ textarea {
 .dataTables_length > label > span:first-child {
     margin: 0 15px;
 }
+
+iframe {
+    width: 100%;
+    height: 300px;
+}

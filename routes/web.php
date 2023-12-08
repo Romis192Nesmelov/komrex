@@ -140,7 +140,8 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
         Route::post('/edit-technic-video', 'editTechnicVideo')->name('edit_technic_video');
         Route::post('/delete-technic-video', 'deleteTechnicVideo')->name('delete_technic_video');
 
-        Route::post('/add-technic-file', 'addTechnicFile')->name('add_technic_file');
+        Route::get('/technic-files/{slug?}', 'technicFiles')->name('technic_files');
+        Route::post('/edit-technic-file', 'editTechnicFile')->name('edit_technic_file');
         Route::post('/delete-technic-file', 'deleteTechnicFile')->name('delete_technic_file');
     });
 });

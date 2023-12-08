@@ -34,6 +34,11 @@
             @foreach ($columns as $column)
                 @if ($column == 'image')
                     @include('admin.blocks.datatable_image_block')
+                @elseif ($column == 'pdf')
+                    <td>
+                        <i class="icon-file-pdf"></i>
+                        <a href="{{ asset($item->pdf) }}" target="_blank">{{ pathinfo($item->pdf)['basename'] }}</a>
+                    </td>
                 @elseif ($column == 'video')
                     <td class="text-center">
                         @include('blocks.video_block',['video' => $item->video])

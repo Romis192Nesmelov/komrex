@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\HelperTrait;
 use App\Http\Controllers\Controller;
+use App\Models\TechnicFile;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
@@ -98,6 +99,10 @@ class AdminBaseController extends Controller
             ],
             'technic_videos' => [
                 'key' => 'technic_videos',
+                'hidden' => true,
+            ],
+            'technic_files' => [
+                'key' => 'technic_files',
                 'hidden' => true,
             ],
         ];
@@ -205,6 +210,7 @@ class AdminBaseController extends Controller
             $this->processingPdf($request, $model);
         } else {
             if ($imageName) $validationArr['image'] = 'required|'.$validationArr['image'];
+            if ($model instanceof TechnicFile) $validationArr['pdf'] = 'required|'.$validationArr['pdf'];
 
             $fields = $this->validate($request, $validationArr);
             $fields = $this->getSpecialFields($model, $fields);
@@ -241,6 +247,7 @@ class AdminBaseController extends Controller
     {
         if (in_array('active',$model->getFillable())) $fields['active'] = request('active') ? 1 : 0;
         if (in_array('date',$model->getFillable())) $fields['date'] = $this->convertTimestamp(request('date'));
+        if (in_array('video',$model->getFillable())) $fields['video'] = preg_replace('/(\swidth=\"(\d{3})\" height=\"(\d{3})\")/', '', $fields['video']);
         return $fields;
     }
 
@@ -264,7 +271,7 @@ class AdminBaseController extends Controller
     protected function processingPdf(Request $request, Model $model): void
     {
         if (in_array('pdf',$model->getFillable())) {
-            $this->processingFiles($request, $model, 'pdf', 'pdfs/', 'pdf');
+            $this->processingFiles($request, $model, 'pdf', 'pdfs/', 'pdf'.$model->getTable().'_');
         }
     }
 

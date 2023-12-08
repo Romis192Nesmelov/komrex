@@ -16,8 +16,10 @@ class TechnicFilesSeeder extends Seeder
         $technics = Technic::all();
         foreach ($technics as $technic) {
             TechnicFile::create([
-                'file' => 'technic_files/technic1.pdf',
-                'technic_id' => $technic->id
+                'pdf' => 'pdfs/technic1.pdf',
+                'name' => 'Файл '.$technic->name,
+                'technic_id' => $technic->id,
+                'active' => 1
             ]);
         }
     }

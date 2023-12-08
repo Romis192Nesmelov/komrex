@@ -31,7 +31,7 @@
                             'placeholder' => trans('admin.head'),
                             'value' => isset($technic_video) ? $technic_video->head : ''
                         ])
-                        @include('admin.blocks.active_checkbox_block', ['checked' => isset($technic_videos) ? $technic_videos->active : true])
+                        @include('admin.blocks.active_checkbox_block', ['checked' => isset($technic_video) ? $technic_video->active : true])
                         @include('admin.blocks.save_button_block')
                     </div>
                 </div>

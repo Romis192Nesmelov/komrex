@@ -44,4 +44,11 @@ return [
     'kg' => 'кг',
     'kilowatt' => 'кВт',
     'horse_power' => 'л.с.',
+    'all_technics' => 'Вся техника',
+    'specifications' => 'Технические<br>характеристики:',
+    'design_features' => 'Конструктивные особенности',
+    'characteristics' => 'Характеристики',
+    'video' => 'Видео',
+    'files_for_download' => 'Файлы для скачивания',
+    'general_description' => 'Общее описание',
 ];

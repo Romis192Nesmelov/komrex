@@ -9,7 +9,7 @@
     <div class="panel panel-flat">
         @include('admin.blocks.title_block')
         <div class="panel-body">
-            <form class="form-horizontal" action="{{ route('admin.edit_technic') }}" method="post">
+            <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.edit_technic') }}" method="post">
                 @csrf
                 @if (isset($technic))
                     @include('blocks.hidden_id_block',['id' => $technic->id])
@@ -158,34 +158,20 @@
         <div class="panel panel-flat">
             <x-atitle>{{ trans('admin.files') }}</x-atitle>
             <div class="panel-body">
-                <table class="table table-striped table-items">
-                    <tr>
-                        <th>{{ trans('admin.file') }}</th>
-                        @include('admin.blocks.th_delete_cell_block')
-                    </tr>
-                    @foreach ($technic->files as $file)
-                        <tr role="row">
-                            <td class="id"><i class="icon-file-pdf"></i></td>
-                            <td><a href="{{ asset($file->file) }}" target="_blank">{{ pathinfo($file->file)['basename'] }}</a></td>
-                            @include('admin.blocks.delete_cell_block',[
-                                'id' => $file->id,
-                                'deleteModal' => 'delete-file-modal'
-                            ])
-                        </tr>
-                    @endforeach
-                </table>
-                <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.add_technic_file') }}" method="post">
-                    @csrf
-                    @include('blocks.hidden_id_block',['id' => $technic->id])
-                    @include('admin.blocks.input_file_block', ['label' => 'PDF', 'name' =>  'file'])
-                    @include('blocks.button_block', [
-                        'primary' => true,
-                        'buttonType' => 'submit',
-                        'icon' => ' icon-floppy-disk',
-                        'buttonText' => trans('admin.add_file'),
-                        'addClass' => 'pull-right'
-                    ])
-                </form>
+                @include('admin.blocks.data_table_block', [
+                    'columns' => ['pdf', 'name','active','created_at'],
+                    'items' => $technic->files,
+                    'route' => 'technic_files',
+                    'parent_id' => $technic->id,
+                    'deleteModal' => 'delete-file-modal',
+                    'useEdit' => true,
+                    'useDelete' => true
+                ])
+                @include('admin.blocks.add_button_block', [
+                    'route' => 'technic_files',
+                    'custom_key' => 'technic_file',
+                    'parent_id' => $technic->id,
+                ])
             </div>
         </div>
     @endif

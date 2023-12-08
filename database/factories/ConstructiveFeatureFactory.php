@@ -23,7 +23,7 @@ class ConstructiveFeatureFactory extends Factory
         return [
             'image' => 'images/tech_images/temp'.self::$counter.'.jpg',
             'head' => fake()->text(50),
-            'text' => fake()->text(300),
+            'text' => '<p>'.fake()->text(1000).'</p>',
             'technic_id' => Technic::all()->random()->id,
             'active' => 1
         ];

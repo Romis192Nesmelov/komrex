@@ -141,6 +141,9 @@ return [
     'adding_technic_video' => 'Добавление видео',
 
     'do_you_really_want_delete_this_technic_file' => 'Вы действительно хотите удалить этот файл?',
-    'add_file' => 'Добавить файл',
+    'edit_technic_file' => 'Редактирование файла',
+    'add_technic_file' => 'Добавить файл',
+    'adding_technic_file' => 'Добавление файла',
+
     'description' => 'Общее описание',
 ];

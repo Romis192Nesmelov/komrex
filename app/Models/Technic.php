@@ -53,4 +53,9 @@ class Technic extends Model
     {
         return $this->hasMany(TechnicFile::class);
     }
+
+    public function filesActive(): HasMany
+    {
+        return $this->hasMany(TechnicFile::class)->where('active',1);
+    }
 }

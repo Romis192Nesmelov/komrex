@@ -71,7 +71,7 @@ h2 {
 }
 
 h3 {
-    font-size: 28px;
+    font-size: 24px;
     margin-bottom: 30px;
 }
 
@@ -216,6 +216,11 @@ button.btn.btn-secondary:hover,
 #main-image.slim {
     height: 564px;
     background-position: center center !important;
+}
+
+#main-image.super-slim {
+    height: 293px;
+    background-position: center top !important;
 }
 
 #menu-container {
@@ -430,11 +435,6 @@ button.btn.btn-secondary:hover,
     padding: 30px;
 }
 
-.content-container.joint-top,
-.content.joint-top {
-    padding-top: 0;
-}
-
 .quotes-text {
     width: 77vw;
     max-width: 1120px;
@@ -588,7 +588,6 @@ input.error {
     padding: 38px;
     position: absolute;
     color: white;
-    font-size: 24px;
 }
 
 .consulting-block .plate {
@@ -621,7 +620,6 @@ input.error {
 
 .consulting-block .plate h3 {
     color: white;
-    font-size: 24px;
     margin-bottom: 20px;
 }
 
@@ -676,7 +674,6 @@ footer .download-block img:hover {
 
 .our-value h3 {
     width: 100%;
-    font-size: 24px;
     margin-bottom: 15px;
 }
 
@@ -706,7 +703,6 @@ footer .download-block img:hover {
 }
 
 .project h3 {
-    font-size: 24px;
     text-align: left;
     position: relative;
     font-weight: normal;
@@ -759,7 +755,6 @@ footer .download-block img:hover {
 }
 
 .event-block h3 {
-    font-size: 28px;
     margin: 0 0 20px 0;
 }
 
@@ -944,6 +939,110 @@ footer .download-block img:hover {
     text-transform: uppercase;
 }
 
+.back-line-href {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    font-size: 20px;
+    justify-content: start;
+    align-items: center;
+}
+
+.back-line-href img {
+    width: 26px;
+    margin-right: 10px;
+}
+
+.back-line-href a {
+    color: black;
+    text-decoration: none;
+}
+
+.back-line-href a:hover {
+    color: #E9A127;
+}
+
+.back-line-href a:hover img {
+    content: url('../images/arrow_left_simple_yellow.svg');
+}
+
+#big-technic-image img {
+    width: 100%;
+}
+
+#small-technic-images img {
+    cursor: pointer;
+}
+
+#small-technic-images img.active,
+#small-technic-images img.hover {
+    border: 2px solid #E9A127;
+}
+
+.specifications p {
+    font-size: 16px;
+}
+
+.specifications h1 {
+    font-size: 48px;
+    text-transform: uppercase;
+}
+
+.specifications .technic-type {
+    font-size: 20px;
+}
+
+.specifications h1 span {
+    width: auto;
+    border-bottom: 8px solid #E9A127;
+}
+
+.specifications h2 {
+    font-size: 28px;
+    font-weight: normal;
+}
+
+#stuff-content {
+    border-top: 2px solid black;
+}
+
+#stuff-content h2 {
+    font-weight: normal;
+}
+
+#stuff-content h3 {
+    font-weight: normal;
+}
+
+#stuff-content p {
+    font-size: 18px;
+}
+
+#stuff-content hr {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#stuff-content table img {
+    width: 25px;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+#stuff-content table a {
+    text-decoration: none;
+    color: black;
+}
+
+#stuff-content table a:hover {
+    color: #E9A127;
+}
+
+#stuff-content iframe {
+    width: 100%;
+    height: 12vw;
+}
+
 footer {
     width: 100%;
     padding: 50px 80px 30px 80px;
@@ -998,6 +1097,8 @@ footer .email a:hover {
     justify-content: space-between;
     margin-top: 60px;
 }
+
+
 
 @media (max-width: 1439px) {
     #top-line .main-menu {
@@ -1116,6 +1217,12 @@ footer .email a:hover {
         width: calc(100% - 250px);
     }
 
+    #stuff-content hr {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+
     .modal.styled .modal-dialog {
         max-width: 90%;
     }
@@ -1172,6 +1279,11 @@ footer .email a:hover {
     #main-image.slim {
         min-height: 300px;
         max-height: 300px;
+    }
+
+    #main-image.super-slim {
+        min-height: 113px;
+        max-height: 113px;
     }
 
     #main-image h1.chapter {
@@ -1296,6 +1408,37 @@ footer .email a:hover {
         padding: 0;
     }
 
+    #down-line {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .specifications p {
+        font-size: 14px;
+    }
+
+    .specifications h1 {
+        font-size: 24px;
+    }
+
+    .specifications .technic-type {
+        font-size: 14px;
+    }
+
+    .specifications h2 {
+        font-size: 20px;
+    }
+
+    #stuff-content hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #stuff-content iframe {
+        width: 100%;
+        height: 26vw;
+    }
+
     footer {
         font-size: 14px;
         padding: 30px 20px 10px 30px;
@@ -1320,10 +1463,12 @@ footer .email a:hover {
     footer .email a {
         font-size: 24px;
     }
+}
 
-    #down-line {
-        flex-direction: column;
-        align-items: center;
+@media (max-width: 767px) {
+    #stuff-content iframe {
+        width: 100%;
+        height: 50vw;
     }
 }
 

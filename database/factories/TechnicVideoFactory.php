@@ -19,11 +19,11 @@ class TechnicVideoFactory extends Factory
     public function definition(): array
     {
         $data = [
-            'https://youtu.be/jc8GRRx91M0?si=SUtYFqWvESsmEOU4',
-            'https://youtu.be/2FQ2poFX3sA?si=4E_EQhjcsYzZSjc8',
-            'https://youtu.be/H11EpIgW47c?si=153eOaykaNR7gkAa',
-            'https://youtu.be/XaTwnKLQi4A?si=HHbAIuoytEX447LP',
-            'https://youtu.be/QgzBDZwanWA?si=iErBP2tgnZHMh5Si'
+            '<iframe src="https://www.youtube.com/embed/jc8GRRx91M0?si=EwFx2JiLA2g8jA5V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+            '<iframe src="https://www.youtube.com/embed/2FQ2poFX3sA?si=rxShzZSUvkFqS21T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+            '<iframe src="https://www.youtube.com/embed/H11EpIgW47c?si=7v5sAMOyFsd0EdQt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+            '<iframe src="https://www.youtube.com/embed/XaTwnKLQi4A?si=7r5uHVWuab_Ls9wb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+            '<iframe src="https://www.youtube.com/embed/QgzBDZwanWA?si=2XP5pgMnbW5JoEvF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
         ];
         if (self::$counter == 4) self::$counter = 0;
         self::$counter++;
