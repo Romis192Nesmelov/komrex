@@ -104,9 +104,9 @@ $(document).ready(function () {
             let modal = $('#project-modal'),
                 head = modal.find('h2'),
                 date = $('#date-presentation'),
-                bigImage = modal.find('.big-image'),
-                smallImages = modal.find('.small-images'),
-                description = modal.find('.description'),
+                bigImage = $('#big-image'),
+                smallImages = $('#small-images'),
+                description = $('#description'),
                 downloadBlock = modal.find('.download-block'),
                 downloadHref = downloadBlock.find('a'),
                 downloadSize = downloadBlock.find('span'),
@@ -121,7 +121,7 @@ $(document).ready(function () {
                 head.removeClass('mb-0').addClass('mb-2');
                 date.hide();
             }
-            bigImage.css('background','url(/' + data.images[0].image +')');
+            bigImage.append($('<img>').attr('src',data.images[0].image));
             description.html(data.text);
 
             if (data.pdf) {
@@ -134,28 +134,15 @@ $(document).ready(function () {
 
             smallImages.html('');
             $.each(data.images, function (k, image) {
-                let smallImage = $('<div></div>').addClass('small-image').addClass('small' + image.id).attr('id','small' + image.id);
-                if (!k) activeId = image.id;
-                smallImage.css('background-image','url(/' + image.image +')');
-                smallImages.append(smallImage);
+                smallImages.append($('<img>').attr('src','/' + image.image).addClass('image' + image.id));
             });
 
             smallImages.trigger('destroy.owl.carousel');
             owlCarouselSmallImages(smallImages);
-            modal.find('.small' + activeId).addClass('active');
+            smallImages.find('.image' + activeId).addClass('active');
 
             setTimeout(() => {
-                $('.small-image').click(function () {
-                    let newBigImage = $(this).css('background-image'),
-                        currentId = parseInt($(this).attr('id').replace('small',''));
-                    modal.find('.small-image.active').removeClass('active');
-                    modal.find('.small' + currentId).addClass('active');
-
-                    bigImage.animate({'opacity':0}, 'fast', function () {
-                        bigImage.css('background-image',newBigImage);
-                        bigImage.animate({'opacity':1}, 'fast');
-                    });
-                });
+                bingSmallImagesCarouselClick();
             },500);
             modal.modal('show');
         });
@@ -240,23 +227,10 @@ $(document).ready(function () {
         }
     });
 
-    // Owl carousel for small images in technic page
-    owlCarouselSmallImages($('#small-technic-images'));
-
-    // Click on small images technic carousel
-    $('#small-technic-images img').click(function () {
-        if (!$(this).hasClass('active')) {
-            const bigTechnicImage = $('#big-technic-image > img');
-            $('img.active').removeClass('active');
-            let activeClassName = $(this).attr('class'),
-                newBigImage = $(this).attr('src');
-            $('.' + activeClassName).addClass('active');
-            bigTechnicImage.animate({'opacity':0}, 'fast', function () {
-                bigTechnicImage.attr('src',newBigImage);
-                bigTechnicImage.animate({'opacity':1}, 'fast');
-            });
-        }
-    });
+    // Owl carousel for small images
+    owlCarouselSmallImages($('#small-images'));
+    // Click on small images on carousel images
+    bingSmallImagesCarouselClick();
 
     // Click on technic-stuff buttons
     $('button.technic-stuff').click(function () {
@@ -334,15 +308,31 @@ const bindFancybox = () => {
 //     });
 // }
 
-const resetColorHrefsMenu = () => {
-    $('li.nav-item').removeClass('active').blur();
-}
+// const resetColorHrefsMenu = () => {
+//     $('li.nav-item').removeClass('active').blur();
+// }
 
 const gotoScroll = (scroll) => {
     $('html,body').animate({
         scrollTop: $('div[data-scroll-destination="' + scroll + '"]').offset().top
     }, 500, function () {
         window.menuScrollFlag = false;
+    });
+}
+
+const bingSmallImagesCarouselClick = () => {
+    $('#small-images img').click(function () {
+        if (!$(this).hasClass('active')) {
+            const bigTechnicImage = $('#big-image > img');
+            $('img.active').removeClass('active');
+            let activeClassName = $(this).attr('class'),
+                newBigImage = $(this).attr('src');
+            $('.' + activeClassName).addClass('active');
+            bigTechnicImage.animate({'opacity':0}, 'fast', function () {
+                bigTechnicImage.attr('src',newBigImage);
+                bigTechnicImage.animate({'opacity':1}, 'fast');
+            });
+        }
     });
 }
 

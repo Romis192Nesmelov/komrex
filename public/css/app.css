@@ -711,34 +711,8 @@ footer .download-block img:hover {
     z-index: 801;
 }
 
-.big-image {
-    width: 100%;
-    height: 35vw;
-    margin-bottom: 20px;
-    background-size: cover !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
-}
-
-.description p {
+#description p {
     font-size: 18px;
-}
-
-.small-images {
-    padding: 10px 0;
-}
-
-.small-images .small-image {
-    height: 100px;
-    cursor: pointer;
-    background-size: cover !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
-}
-
-.small-images .small-image.active,
-.small-images .small-image:hover {
-    border: 2px solid #E9A127;
 }
 
 .event-block {
@@ -966,16 +940,16 @@ footer .download-block img:hover {
     content: url('../images/arrow_left_simple_yellow.svg');
 }
 
-#big-technic-image img {
+#big-image img {
     width: 100%;
 }
 
-#small-technic-images img {
+#small-images img {
     cursor: pointer;
 }
 
-#small-technic-images img.active,
-#small-technic-images img.hover {
+#small-images img.active,
+#small-images img.hover {
     border: 2px solid #E9A127;
 }
 
@@ -1369,10 +1343,6 @@ footer .email a:hover {
 
     .project {
         height: 931px;
-    }
-
-    .big-image {
-        height: 60vw;
     }
 
     .technic-container {

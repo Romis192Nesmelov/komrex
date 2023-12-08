@@ -11,9 +11,9 @@
                 </a>
             </div>
             <div class="row">
-                <div id="big-technic-image" class="mb-4 col-lg-8 col-md-6 col-sm-12">
+                <div id="big-image" class="mb-4 col-lg-8 col-md-6 col-sm-12">
                     <img src="{{ asset($technic->images[0]->image) }}"/>
-                    <div id="small-technic-images" class="owl-carousel w-100 mt-3">
+                    <div id="small-images" class="owl-carousel w-100 mt-3">
                         @foreach ($technic->images as $image)
                             <img class="image{{ $image->id }} {{ $loop->first ? 'active' : '' }}" src="{{ asset($image->image) }}" />
                         @endforeach

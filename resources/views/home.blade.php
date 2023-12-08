@@ -196,9 +196,9 @@
         <img src="{{ asset('images/close_icon.svg') }}" class="close-icon" data-bs-dismiss="modal" data-dismiss="modal" />
         <h2 class="mb-0"></h2>
         <p id="date-presentation" class="small mb-2"></p>
-        <div class="big-image"></div>
-        <div class="small-images owl-carousel w-100 mb-3"></div>
-        <div class="description"></div>
+        <div id="big-image"></div>
+        <div id="small-images" class="owl-carousel w-100 mt-3 mb-3"></div>
+        <div id="description"></div>
         @include('blocks.download_block',[
             'href' => '#',
             'icon' => 'download_yellow_icon.svg',
