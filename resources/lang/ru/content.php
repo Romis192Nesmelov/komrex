@@ -51,4 +51,8 @@ return [
     'video' => 'Видео',
     'files_for_download' => 'Файлы для скачивания',
     'general_description' => 'Общее описание',
+    'active_m_system_provides' => 'Система «Актив-м» обеспечивает:',
+    'how_it_works' => 'Как это работает',
+    'step' => 'Шаг :step',
+    'reviews_from_our_clients' => 'Отзывы наших клиентов',
 ];

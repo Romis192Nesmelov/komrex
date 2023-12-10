@@ -2,12 +2,9 @@
     <tr>
         <th class="id">id</th>
         @foreach ($columns as $column)
-            @if ($column == 'created_at')
-                @include('admin.blocks.th_created_at_cell_block')
+            @if (!$column) <th class="text-center"></th>
             @elseif ($column == 'active')
                 <th class="text-center">{{ trans('admin.status') }}</th>
-            @elseif ($column == 'updated_at')
-                @include('admin.blocks.th_updated_at_cell_block')
             @elseif ($column == 'komrex')
                 <th class="text-center">{{ trans('admin.komrex_technic') }}</th>
             @else
@@ -70,7 +67,7 @@
             @endforeach
             @if ($useEdit)
                 @if (isset($route))
-                    @include('admin.blocks.edit_cell_block', ['href' => route('admin.'.$route, ['id' => $item->id, 'parent_id' => $parent_id])])
+                    @include('admin.blocks.edit_cell_block', ['href' => route('admin.'.$route, ['id' => $item->id, 'parent_id' => ($parent_id ?? '')])])
                 @else
                     @include('admin.blocks.edit_cell_block', ['href' => route('admin.'.$menu[$menu_key]['key'], ['id' => $item->id])])
                 @endif

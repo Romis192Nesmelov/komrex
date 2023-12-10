@@ -3,10 +3,13 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\ActiveMonitoring;
+use App\Models\ActiveMonitoringProvide;
+use App\Models\ActiveMonitoringStep;
 use App\Models\ConstructiveFeature;
 use App\Models\Event;
 use App\Models\EventPerson;
-use App\Models\TechnicImage;
+//use App\Models\TechnicImage;
 use App\Models\TechnicVideo;
 use Illuminate\Database\Seeder;
 
@@ -33,5 +36,10 @@ class DatabaseSeeder extends Seeder
         TechnicVideo::factory(100)->create();
         Event::factory(30)->create();
         EventPerson::factory(300)->create();
+        $this->call(ActiveMonitoringSeeder::class);
+        $this->call(ActiveMonitoringProvidesSeeder::class);
+        $this->call(ActiveMonitoringIconsSeeder::class);
+        ActiveMonitoringStep::factory(4)->create();
+        $this->call(ReviewsSeeder::class);
     }
 }

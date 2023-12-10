@@ -148,7 +148,7 @@ class AdminTechnicController extends AdminBaseController
                 'image' => 'nullable|'.$this->validationJpgAndPng,
                 'technic_id' => 'nullable|integer|exists:technics,id'
             ],
-            'images/tech_images',
+            'images/tech_images/',
             'tech_image',
         );
         $this->saveCompleteMessage();

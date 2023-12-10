@@ -26,6 +26,7 @@ return [
     'delete' => 'Удалить',
     'edit' => 'Редактировать',
     'created_at' => 'Создан',
+    'updated_at' => 'Изменено',
     'return_back' => 'Вернуться назад',
 
     'hello' => 'Добрый день!',
@@ -146,4 +147,18 @@ return [
     'adding_technic_file' => 'Добавление файла',
 
     'description' => 'Общее описание',
+
+    'edit_active_monitoring_provide' => 'Редактирование «Актив-М позволяет»',
+
+    'do_you_really_want_delete_this_active_monitoring_icon' => 'Вы действительно хотите удалить эту иконку?',
+    'edit_active_monitoring_icon' => 'Редактирование иконки',
+    'add_active_monitoring_icon' => 'Добавить иконку',
+    'adding_active_monitoring_icon' => 'Добавление иконки',
+
+    'active_monitoring_steps' => 'Как это работает',
+    'do_you_really_want_delete_this_active_monitoring_step' => 'Вы действительно хотите удалить этот шаг?',
+    'edit_active_monitoring_step' => 'Редактирование шага',
+    'add_active_monitoring_step' => 'Добавить шаг',
+    'adding_active_monitoring_step' => 'Добавление шага',
+
 ];

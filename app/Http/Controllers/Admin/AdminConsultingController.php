@@ -17,7 +17,7 @@ class AdminConsultingController extends AdminBaseController
         parent::__construct();
     }
 
-    public function consultings(): View
+    public function consulting(): View
     {
         $this->data['content'] = Home::find(5);
         $this->getSubMenu(new Consulting(), 'consultings');
@@ -52,7 +52,7 @@ class AdminConsultingController extends AdminBaseController
                 'text' => $this->validationText,
                 'image' => $this->validationSvg
             ],
-            'images/consulting',
+            'images/consulting/',
             'consulting'
         );
         $this->saveCompleteMessage();

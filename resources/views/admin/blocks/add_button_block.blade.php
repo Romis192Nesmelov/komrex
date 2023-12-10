@@ -1,6 +1,6 @@
 <div class="panel-body">
     @if (isset($route))
-        <a href="{{ route('admin.'.$route, ['slug' => 'add', 'parent_id' => $parent_id]), }}">
+        <a href="{{ route('admin.'.$route, ['slug' => 'add', 'parent_id' => ($parent_id ?? '')]), }}">
     @else
         <a href="{{ route('admin.'.$menu[$menu_key]['key']).'/add', }}">
     @endif

@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminPartnersController;
 use App\Http\Controllers\Admin\AdminRequisitesController;
 use App\Http\Controllers\Admin\AdminEventsController;
 use App\Http\Controllers\Admin\AdminTechnicController;
+use App\Http\Controllers\Admin\AdminActiveMonitoringController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(BaseController::class)->group(function () {
@@ -72,7 +73,7 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     });
 
     Route::controller(AdminConsultingController::class)->group(function () {
-        Route::get('/consultings', 'consultings')->name('consultings');
+        Route::get('/consulting', 'consulting')->name('consultings');
         Route::post('/edit-consulting-content', 'editConsultingContent')->name('edit_consulting_content');
         Route::post('/edit-consulting', 'editConsulting')->name('edit_consulting');
     });
@@ -143,5 +144,21 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
         Route::get('/technic-files/{slug?}', 'technicFiles')->name('technic_files');
         Route::post('/edit-technic-file', 'editTechnicFile')->name('edit_technic_file');
         Route::post('/delete-technic-file', 'deleteTechnicFile')->name('delete_technic_file');
+    });
+
+    Route::controller(AdminActiveMonitoringController::class)->group(function () {
+        Route::get('/active-monitoring', 'activeMonitoring')->name('active_monitorings');
+        Route::post('/edit-active-monitoring', 'editActiveMonitoringContent')->name('edit_active_monitoring');
+
+        Route::get('/active-monitoring-provides', 'activeMonitoringProvides')->name('active_monitoring_provides');
+        Route::post('/edit-active-monitoring-provide', 'editActiveMonitoringProvide')->name('edit_active_monitoring_provide');
+
+        Route::get('/active-monitoring-icons/{slug?}', 'activeMonitoringIcons')->name('active_monitoring_icons');
+        Route::post('/edit-active-monitoring-icon', 'editActiveMonitoringIcon')->name('edit_active_monitoring_icon');
+        Route::post('/delete-active-monitoring-icon', 'deleteActiveMonitoringIcon')->name('delete_active_monitoring_icon');
+
+        Route::get('/active-monitoring-steps/{slug?}', 'activeMonitoringSteps')->name('active_monitoring_steps');
+        Route::post('/edit-active-monitoring-step', 'editActiveMonitoringStep')->name('edit_active_monitoring_step');
+        Route::post('/delete-active-monitoring-step', 'deleteActiveMonitoringStep')->name('delete_active_monitoring_step');
     });
 });

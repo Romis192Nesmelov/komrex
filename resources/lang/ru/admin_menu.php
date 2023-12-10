@@ -28,4 +28,6 @@ return [
     'technic_types' => 'Типы техники',
     'technic_types_description' => 'Добавление, удаление и редактирование техники',
     'technics' => 'Техника',
+    'active_monitorings' => 'Активный мониторинг',
+    'active_monitorings_description' => 'Редактирование раздела «Актив мониторинг»',
 ];

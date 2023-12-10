@@ -36,7 +36,7 @@ class AdminSolutionsController extends AdminBaseController
                 'text' => $this->validationText,
                 'image' => $this->validationSvg
             ],
-            'images/service_solutions',
+            'images/service_solutions/',
             'ss'
         );
         $this->saveCompleteMessage();

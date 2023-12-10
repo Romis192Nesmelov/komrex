@@ -165,7 +165,6 @@ $(document).ready(function () {
             clearId = clearId.replace(className,'');
         });
         clearId = clearId.trim();
-        console.log(clearId);
         feedbackModal.find('input[name=from]').val(clearId);
         feedbackModal.modal('show');
     });

@@ -36,7 +36,7 @@ class AdminValuesController extends AdminBaseController
                 'text' => $this->validationText,
                 'image' => $this->validationSvg
             ],
-            'images/our_values',
+            'images/our_values/',
             'home_icon'
         );
         $this->saveCompleteMessage();

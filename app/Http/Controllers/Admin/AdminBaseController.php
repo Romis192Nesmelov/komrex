@@ -105,6 +105,23 @@ class AdminBaseController extends Controller
                 'key' => 'technic_files',
                 'hidden' => true,
             ],
+            'active_monitorings' => [
+                'key' => 'active_monitorings',
+                'icon' => 'icon-satellite-dish2',
+                'hidden' => false,
+            ],
+            'active_monitoring_provides' => [
+                'key' => 'active_monitoring_provides',
+                'hidden' => true,
+            ],
+            'active_monitoring_icons' => [
+                'key' => 'active_monitoring_icons',
+                'hidden' => true,
+            ],
+            'active_monitoring_steps' => [
+                'key' => 'active_monitoring_steps',
+                'hidden' => true,
+            ],
         ];
         $this->breadcrumbs[] = $this->menu['home'];
     }
@@ -153,7 +170,7 @@ class AdminBaseController extends Controller
                     'name' => $parentItem->name ?? $parentItem->head,
                 ];
             }
-        } else {
+        } else if (!$this->menu[$key]['hidden']) {
             $this->data['menu_key'] = $key;
             $this->breadcrumbs[] = $this->menu[$key];
         }
@@ -278,6 +295,7 @@ class AdminBaseController extends Controller
     protected function processingFiles(Request $request, Model $model, string $fileField, string|null $pathToFile=null, string|null $fileName=null): void
     {
         if ($pathToFile && $request->hasFile($fileField)) {
+            if ($model[$fileField]) $this->deleteFile($model[$fileField]);
             $fileName .= $model->id.'.'.$request->file($fileField)->getClientOriginalExtension();
             $model[$fileField] = $pathToFile.$fileName;
             $model->save();

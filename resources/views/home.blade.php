@@ -4,10 +4,10 @@
     @include('blocks.main_image_block',['mode' => 'home'])
     <div class="content-container">
         <h2 class="w-100 text-center pt-4">{{ $contents[1]->head }}</h2>
-        @include('blocks.quotes_block',['text' => $contents[1]->text])
+        @include('blocks.quotes_block',['text' => $contents[1]->text, 'use_quotes' => true])
         <div class="content" data-scroll-destination="our_offers">
             <h2>{{ $contents[2]->head }}</h2>
-            <p class="small w-60">{{ $contents[2]->text }}</p>
+            <p class="w-60">{{ $contents[2]->text }}</p>
         </div>
         <div class="row">
             <x-offer head="{{ trans('menu.active_monitoring') }}" href="#" text="{{ trans('content.important_tool') }}">
@@ -44,7 +44,7 @@
                     </div>
                     <div class="col-lg-8 col-sm-12">
                         <h3>{{ $solution->head }}</h3>
-                        <p class="small">{{ $solution->text }}</p>
+                        <p>{{ $solution->text }}</p>
                     </div>
                 </div>
             @endforeach
@@ -55,12 +55,12 @@
         'hiddenId' => 'page-second-form',
     ])
     <div class="content-container">
-        @include('blocks.quotes_block',['text' => $contents[3]->text])
+        @include('blocks.quotes_block',['text' => $contents[3]->text, 'use_quotes' => true])
         <div class="content">
             <h2 class="mb-3">{{ $contents[4]->head }}</h2>
             <div class="row mb-3">
                 <div class="col-lg-6 col-sm-12">
-                    <p class="small">{{ $contents[4]->text }}</p>
+                    <p>{{ $contents[4]->text }}</p>
                 </div>
                 <div class="col-lg-6 col-sm-12 d-flex justify-content-center">
                     @include('blocks.button_block',[
@@ -124,17 +124,7 @@
         </div>
         <div class="content pt-0">
             <h2 class="mb-4 pb-3">{{ trans('content.our_values') }}</h2>
-            <div class="row">
-                @foreach($values as $value)
-                    <div class="col-lg-{{ 12 / count($values) }} col-sm-12 mb-3 mb-lg-0">
-                        <div class="our-value">
-                            <img src="{{ asset($value->image) }}">
-                            <h3>{{ $value->head }}</h3>
-                            {{ $value->text }}
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+            @include('blocks.icons_block',['items' => $values, 'col' => 3])
         </div>
     </div>
     <div class="content-container pt-0 bg-white" data-scroll-destination="team">
@@ -182,7 +172,7 @@
     <div class="content-container pt-0 bg-white" data-scroll-destination="partners">
         <div class="content">
             <h2 class="mb-4 pb-3">{{ $contents[6]->head }}</h2>
-            <p class="small w-60">{{ $contents[6]->text }}</p>
+            <p class="w-60">{{ $contents[6]->text }}</p>
             <div class="row w-60">
                 @foreach($partners as $partner)
                     <div class="col-lg-3 col-md-4 col-sm-12 mb-3 mb-lg-0">

@@ -50,6 +50,7 @@ body {
 
 a {
     color: #E9A127;
+    text-decoration: none;
 }
 
 a:hover {
@@ -65,6 +66,11 @@ h1 {
     font-size: 47px;
 }
 
+h1.underline span {
+    width: auto;
+    border-bottom: 8px solid #E9A127;
+}
+
 h2 {
     font-size: 40px;
     margin: 40px 0;
@@ -76,11 +82,11 @@ h3 {
 }
 
 p {
-    font-size: 24px;
+    font-size: 18px;
 }
 
-p.small {
-    font-size: 18px;
+p.big {
+    font-size: 24px;
 }
 
 button.btn {
@@ -205,8 +211,8 @@ button.btn.btn-secondary:hover,
     padding-top: 30px;
     position: relative;
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
     background: url('../images/main_image.png');
     background-size: cover;
     background-position: center bottom !important;
@@ -221,6 +227,12 @@ button.btn.btn-secondary:hover,
 #main-image.super-slim {
     height: 293px;
     background-position: center top !important;
+}
+
+#main-image.empty {
+    background: #121524;
+    padding-bottom: 30px;
+    justify-content: space-between;
 }
 
 #menu-container {
@@ -333,7 +345,6 @@ button.btn.btn-secondary:hover,
 
 .main-menu a {
     color: white;
-    text-decoration: none;
 }
 
 .main-menu li.active,
@@ -405,7 +416,6 @@ button.btn.btn-secondary:hover,
 #main-image h1.chapter {
     color: white;
     position: absolute;
-    font-size: 48px;
     font-weight: bolder;
     left: 2.5%;
     bottom: 2.5%;
@@ -465,6 +475,7 @@ button.btn.btn-secondary:hover,
 
 .quotes-text p {
     width: 80%;
+    font-size: 24px;
     position: relative;
     text-align: center;
     z-index: 988;
@@ -505,12 +516,7 @@ button.btn.btn-secondary:hover,
 }
 
 .offer-block h2 a {
-    text-decoration: none;
     color: black;
-}
-
-.offer-block:hover h2 a {
-    color: #E9A127;
 }
 
 .offer-block img.offer-img {
@@ -527,10 +533,6 @@ button.btn.btn-secondary:hover,
     margin-bottom: 0;
 }
 
-.offer-block p {
-    font-size: 18px;
-}
-
 .feedback-form {
     width: 100%;
     padding: 50px 80px;
@@ -544,7 +546,6 @@ button.btn.btn-secondary:hover,
 }
 
 .feedback-form p {
-    font-size: 20px;
     color: white;
 }
 
@@ -627,7 +628,6 @@ input.error {
     width: 100%;
     color: white;
     font-weight: lighter;
-    font-size: 18px;
 }
 
 #about-company-block {
@@ -661,18 +661,18 @@ footer .download-block img:hover {
     content: url('../images/download_yellow_icon.svg');
 }
 
-.our-value {
+.icon-block{
     width: 100%;
     text-align: center;
     font-size: 20px;
 }
 
-.our-value img {
+.icon-block img {
     width: 120px;
     margin-bottom: 20px;
 }
 
-.our-value h3 {
+.icon-block h3 {
     width: 100%;
     margin-bottom: 15px;
 }
@@ -709,10 +709,6 @@ footer .download-block img:hover {
     color: white;
     margin: 0;
     z-index: 801;
-}
-
-#description p {
-    font-size: 18px;
 }
 
 .event-block {
@@ -820,7 +816,6 @@ footer .download-block img:hover {
 
 .left-menu ul li a {
     color: black;
-    text-decoration: none;
 }
 
 .left-menu ul li img {
@@ -887,7 +882,6 @@ footer .download-block img:hover {
 }
 
 .technic-block a {
-    text-decoration: none;
     color: black;
 }
 
@@ -929,7 +923,6 @@ footer .download-block img:hover {
 
 .back-line-href a {
     color: black;
-    text-decoration: none;
 }
 
 .back-line-href a:hover {
@@ -958,17 +951,11 @@ footer .download-block img:hover {
 }
 
 .specifications h1 {
-    font-size: 48px;
     text-transform: uppercase;
 }
 
 .specifications .technic-type {
     font-size: 20px;
-}
-
-.specifications h1 span {
-    width: auto;
-    border-bottom: 8px solid #E9A127;
 }
 
 .specifications h2 {
@@ -988,10 +975,6 @@ footer .download-block img:hover {
     font-weight: normal;
 }
 
-#stuff-content p {
-    font-size: 18px;
-}
-
 #stuff-content hr {
     margin-top: 50px;
     margin-bottom: 50px;
@@ -1004,7 +987,6 @@ footer .download-block img:hover {
 }
 
 #stuff-content table a {
-    text-decoration: none;
     color: black;
 }
 
@@ -1015,6 +997,12 @@ footer .download-block img:hover {
 #stuff-content iframe {
     width: 100%;
     height: 12vw;
+}
+
+#down-line {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
 }
 
 footer {
@@ -1054,7 +1042,6 @@ footer h1 {
 
 footer a {
     color: white;
-    text-decoration: none;
 }
 
 footer .email a {
@@ -1065,14 +1052,6 @@ footer .email a {
 footer .email a:hover {
     color: gray;
 }
-
-#down-line {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 60px;
-}
-
-
 
 @media (max-width: 1439px) {
     #top-line .main-menu {
@@ -1204,7 +1183,16 @@ footer .email a:hover {
 
 @media (max-width: 991px) {
     h1, h2 {
+        font-size: 24px;
         margin-top: 0;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
     }
 
     button.btn.withArrow img {
@@ -1261,7 +1249,6 @@ footer .email a:hover {
     }
 
     #main-image h1.chapter {
-        font-size: 24px;
         left: 50%;
         bottom: 40%;
         transform: translate(-50%,50%);
@@ -1297,14 +1284,6 @@ footer .email a:hover {
         margin-bottom: 20px;
     }
 
-    .offer-block p {
-        font-size: 14px;
-    }
-
-    .feedback-form p {
-        font-size: 14px;
-    }
-
     .consulting-block {
         height: 500px;
     }
@@ -1317,10 +1296,6 @@ footer .email a:hover {
     .consulting-block .plate h3,
     .consulting-block > h3 {
         font-size: 16px;
-    }
-
-    .consulting-block .plate p {
-        font-size: 12px;
     }
 
     #about-company-block {
@@ -1383,14 +1358,6 @@ footer .email a:hover {
         align-items: center;
     }
 
-    .specifications p {
-        font-size: 14px;
-    }
-
-    .specifications h1 {
-        font-size: 24px;
-    }
-
     .specifications .technic-type {
         font-size: 14px;
     }
@@ -1445,11 +1412,6 @@ footer .email a:hover {
 @media (max-width: 700px) {
     h1, h2 {
         margin-bottom: 20px;
-        font-size: 24px;
-    }
-
-    h3 {
-        font-size: 20px;
     }
 
     #main-image #head-container h1 {

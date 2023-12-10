@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="specifications col-lg-4 col-md-6 col-sm-12 ps-0 ps-lg-3">
-                    <h1 class="mt-4 mb-3 mt-lg-0 mb-lg-4"><span>{{ $technic->name }}</span></h1>
+                    @include('blocks.h_underline_block',['h' => 1, 'addClass' => 'mt-4 mb-3 mt-lg-0 mb-lg-4', 'head' => $technic->name])
                     <div class="technic-type">{{ $technic->technicType->name }}</div>
                     <h2 class="mt-3 mt-lg-5">{!! trans('content.specifications') !!}</h2>
                     <p>{{ trans('content.operating_weight').': '.$technic->weight.trans('content.kg') }}</p>

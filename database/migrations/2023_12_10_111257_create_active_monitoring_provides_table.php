@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('homes', function (Blueprint $table) {
+        Schema::create('active_monitoring_provides', function (Blueprint $table) {
             $table->id();
-            $table->string('head')->nullable();
-            $table->text('text');
+            $table->string('text');
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('homes');
+        Schema::dropIfExists('active_monitoring_provides');
     }
 };
