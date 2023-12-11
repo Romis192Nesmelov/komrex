@@ -45,7 +45,7 @@ body {
 }
 
 .w-60 {
-    width: 60%;
+    width: 60% !important;
 }
 
 a {
@@ -208,7 +208,7 @@ button.btn.btn-secondary:hover,
     height: 60vw;
     min-height: 351px;
     max-height: 1024px;
-    padding-top: 30px;
+    padding: 30px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -221,6 +221,7 @@ button.btn.btn-secondary:hover,
 
 #main-image.slim {
     height: 564px;
+    justify-content: space-between;
     background-position: center center !important;
 }
 
@@ -230,13 +231,23 @@ button.btn.btn-secondary:hover,
 }
 
 #main-image.empty {
+    min-height: 760px;
     background: #121524;
     padding-bottom: 30px;
     justify-content: space-between;
 }
 
+#main-image.empty .provide {
+    width: 100%;
+    height: 150px;
+    padding: 20px;
+    display: flex;
+    align-items: end;
+    border: 1px solid #2c2c2c;
+}
+
 #menu-container {
-    width: 95%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: self-start;
@@ -398,6 +409,11 @@ button.btn.btn-secondary:hover,
     background: none !important;
 }
 
+#main-image h1 {
+    color: white;
+    margin: 0;
+}
+
 #head-container {
     width: 100%;
     height: calc(100% - 320px);
@@ -408,18 +424,7 @@ button.btn.btn-secondary:hover,
 
 #main-image #head-container h1 {
     width: 1000px;
-    color: white;
-    margin: 0;
     text-align: center;
-}
-
-#main-image h1.chapter {
-    color: white;
-    position: absolute;
-    font-weight: bolder;
-    left: 2.5%;
-    bottom: 2.5%;
-    border-bottom: 8px solid #E9A127;
 }
 
 #main-image .arrow-down {
@@ -655,6 +660,28 @@ input.error {
 
 .download-block img:hover {
     content: url('../images/download_dark_icon.svg');
+}
+
+.step {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.step h2,
+.step h3 {
+    margin-top: 0;
+    font-size: 28px;
+}
+
+.step h2 {
+    color: #E9A127;
+    margin-bottom: 50px;
+}
+
+#active-m-logo {
+    width: 20vw;
+    min-width: 300px;
+    margin-top: 100px;
 }
 
 footer .download-block img:hover {
@@ -1113,7 +1140,7 @@ footer .email a:hover {
 
 @media (max-width: 1299px) {
     .w-60 {
-        width: 100%;
+        width: 100% !important;
     }
 
     #menu-container {
@@ -1175,6 +1202,14 @@ footer .email a:hover {
         margin-bottom: 30px;
     }
 
+    #active-m-logo {
+        margin-top: 30px;
+    }
+
+    .step h2 {
+        margin-bottom: 20px;
+        font-weight: normal;
+    }
 
     .modal.styled .modal-dialog {
         max-width: 90%;
@@ -1243,15 +1278,10 @@ footer .email a:hover {
         max-height: 300px;
     }
 
-    #main-image.super-slim {
+    #main-image.super-slim,
+    #main-image.empty {
         min-height: 113px;
         max-height: 113px;
-    }
-
-    #main-image h1.chapter {
-        left: 50%;
-        bottom: 40%;
-        transform: translate(-50%,50%);
     }
 
     #main-image .arrow-down {
@@ -1374,6 +1404,10 @@ footer .email a:hover {
     #stuff-content iframe {
         width: 100%;
         height: 26vw;
+    }
+
+    .step {
+        flex-direction: column;
     }
 
     footer {

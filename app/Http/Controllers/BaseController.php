@@ -52,7 +52,7 @@ class BaseController extends Controller
                     'contacts'                          => ['href' => false]
                 ],
                 'secondMenu' => [
-                    'active_monitoring'                 => ['href' => false],
+                    'active_monitoring'                 => ['href' => true],
                     'technics'                          => ['href' => true],
                     'units_and_components'              => ['href' => false],
                     'service_solutions_and_consulting'  => ['href' => false],

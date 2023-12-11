@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('callback') }}" class="feedback-form">
+<form method="POST" action="{{ route('callback') }}" class="feedback-form {{ $addClass ?? '' }}">
     @csrf
     <h2>{{ trans('content.you_have_a_question_head') }}</h2>
     <p>{{ trans('content.you_have_a_question_text') }}</p>

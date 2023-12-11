@@ -21,7 +21,7 @@ class AdminProjectsController extends AdminBaseController
 
     public function projectTypes($slug=null): View
     {
-        $this->getSubMenu(new ProjectType(), 'project_types', 'name');
+        $this->getProjectsMenu();
         return $this->getSomething('project_types', new ProjectType(), $slug);
     }
 
@@ -51,7 +51,7 @@ class AdminProjectsController extends AdminBaseController
 
     public function projects($slug=null): View
     {
-        $this->getSubMenu(new ProjectType(), 'project_types', 'name');
+        $this->getProjectsMenu();
         return $this->getSomething('projects', new Project(), $slug, new ProjectType());
     }
 
@@ -115,5 +115,10 @@ class AdminProjectsController extends AdminBaseController
     public function deleteProjectImage(Request $request): JsonResponse
     {
         return $this->deleteSomething($request, new ProjectImage());
+    }
+
+    private function getProjectsMenu(): void
+    {
+        $this->getSubMenu(new ProjectType(), 'project_types', 'name');
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 
 class ProjectsController extends Controller
 {
-    public function __invoke(Project $project) : JsonResponse
+    public function __invoke(Project $project): JsonResponse
     {
         return response()->json(ProjectResourse::make($project->getById())->resolve(), 200);
     }

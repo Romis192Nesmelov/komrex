@@ -15,10 +15,6 @@ $(document).ready(function () {
         else floatMenu.animate({'top':-700},'slow');
     });
 
-    bindFancybox();
-    bigTablesScroll();
-    // windowScroll();
-
     window.menuScrollFlag = false;
     $('a[data-scroll], div[data-scroll]').click(function (e) {
         e.preventDefault();
@@ -67,6 +63,21 @@ $(document).ready(function () {
             },
             992: {
                 items: 3
+            }
+        },
+        true
+    ));
+
+    // Reviews carousel
+    $('.reviews').owlCarousel(owlSettings(
+        20,
+        5000,
+        {
+            0: {
+                items: 1
+            },
+            992: {
+                items: 4
             }
         },
         true
@@ -249,6 +260,10 @@ $(document).ready(function () {
             });
         }
     });
+
+    bindFancybox();
+    bigTablesScroll();
+    // windowScroll();
 });
 
 const activatingProjectBlock = (prevActiveBlock, projectsId, callBack) => {

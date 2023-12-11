@@ -155,10 +155,13 @@ return [
     'add_active_monitoring_icon' => 'Добавить иконку',
     'adding_active_monitoring_icon' => 'Добавление иконки',
 
-    'active_monitoring_steps' => 'Как это работает',
+    'how_it_works' => 'Как это работает',
     'do_you_really_want_delete_this_active_monitoring_step' => 'Вы действительно хотите удалить этот шаг?',
     'edit_active_monitoring_step' => 'Редактирование шага',
     'add_active_monitoring_step' => 'Добавить шаг',
     'adding_active_monitoring_step' => 'Добавление шага',
 
+    'reviews' => 'Отзывы наших клиентов',
+    'do_you_really_want_delete_this_review' => 'Вы действительно хотите удалить этот отзыв?',
+    'add_review' => 'Добавить отзыв',
 ];

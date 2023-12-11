@@ -1,7 +1,10 @@
 @extends('layouts.main')
 
 @section('content')
-    @include('blocks.main_image_block',['mode' => 'home'])
+    <x-main_image :mainMenu="$mainMenu" :secondMenu="$secondMenu" :activeMainMenu="$activeMainMenu" :activeSecondMenu="$activeSecondMenu">
+        <div id="head-container"><h1>{{ $contents[0]->text }}</h1></div>
+        <a data-scroll="our_offers" href="#"><img class="arrow-down" src="{{ asset('images/arrow_cir_to_down_yellow.svg') }}"></a>
+    </x-main_image>
     <div class="content-container">
         <h2 class="w-100 text-center pt-4">{{ $contents[1]->head }}</h2>
         @include('blocks.quotes_block',['text' => $contents[1]->text, 'use_quotes' => true])

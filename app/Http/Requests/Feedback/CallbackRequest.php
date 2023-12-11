@@ -25,7 +25,7 @@ class CallbackRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'from' => 'in:page-first-form,page-second-form,phone-icon,get-a-service,consulting-button,consulting-button-1,consulting-button-2,about-company-button',
+            'from' => 'in:page-first-form,page-second-form,phone-icon,get-a-service,consulting-button,consulting-button-1,consulting-button-2,about-company-button,active-monitoring-form',
             'name' => $this->validationString,
             'phone' => $this->validationPhone
         ];

@@ -3,6 +3,7 @@
 @section('content')
     @include('admin.blocks.modal_delete_block', ['id' => 'delete-icon-modal','custom_key' => 'active_monitoring_icon'])
     @include('admin.blocks.modal_delete_block', ['id' => 'delete-step-modal','custom_key' => 'active_monitoring_step'])
+    @include('admin.blocks.modal_delete_block', ['id' => 'delete-review-modal','custom_key' => 'review'])
 
     <div class="panel panel-flat">
         @include('admin.blocks.title_block')
@@ -99,6 +100,32 @@
                 'route' => 'active_monitoring_steps',
                 'custom_key' => 'active_monitoring_step'
             ])
+        </div>
+    </div>
+    <div class="panel panel-flat">
+        <x-atitle>{{ trans('admin.reviews') }}</x-atitle>
+        <div class="panel-body">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="panel panel-flat">
+                    <div class="panel-body">
+                        <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.add_review') }}" method="post">
+                            @csrf
+                            @include('admin.blocks.input_image_block',['head' => trans('admin.add_review')])
+                            @include('admin.blocks.save_button_block')
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-6 col-sm-12">
+                <div class="panel panel-flat">
+                    <div class="panel-body">
+                        @include('admin.blocks.data_table_images_block', [
+                            'items' => $reviews,
+                            'deleteImageModal' => 'delete-review-modal'
+                        ])
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script>window.dtRows = 6;</script>

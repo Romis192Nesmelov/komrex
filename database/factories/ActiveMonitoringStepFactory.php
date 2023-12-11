@@ -21,7 +21,7 @@ class ActiveMonitoringStepFactory extends Factory
         return [
             'image' => 'images/am_images/am_step'.self::$counter.'.jpg',
             'head' => fake()->text(50),
-            'text' => fake()->text(150),
+            'text' => '<p>'.fake()->text(150).'</p>',
             'active' => 1
         ];
     }

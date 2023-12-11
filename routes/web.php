@@ -5,6 +5,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LoginController;
 use \App\Http\Controllers\ProjectsController;
 use \App\Http\Controllers\TechnicController;
+use App\Http\Controllers\ActiveMonitoringController;
 use App\Http\Controllers\Admin\AdminBaseController;
 use App\Http\Controllers\Admin\AdminUsersController;
 use App\Http\Controllers\Admin\AdminQuotesController;
@@ -44,8 +45,9 @@ Route::controller(TechnicController::class)->group(function () {
     Route::get('/technic', 'technic')->name('technic');
 });
 
-Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
+Route::get('/active-monitoring', ActiveMonitoringController::class)->name('active_monitoring');
 
+Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
     Route::controller(AdminBaseController::class)->group(function () {
         Route::get('/', 'home')->name('home');
     });
@@ -160,5 +162,8 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
         Route::get('/active-monitoring-steps/{slug?}', 'activeMonitoringSteps')->name('active_monitoring_steps');
         Route::post('/edit-active-monitoring-step', 'editActiveMonitoringStep')->name('edit_active_monitoring_step');
         Route::post('/delete-active-monitoring-step', 'deleteActiveMonitoringStep')->name('delete_active_monitoring_step');
+
+        Route::post('/add-review', 'addReview')->name('add_review');
+        Route::post('/delete-review', 'deleteReview')->name('delete_review');
     });
 });

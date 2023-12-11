@@ -6,6 +6,7 @@ use App\Models\ActiveMonitoring;
 use App\Models\ActiveMonitoringIcon;
 use App\Models\ActiveMonitoringProvide;
 use App\Models\ActiveMonitoringStep;
+use App\Models\Review;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,16 +19,16 @@ class AdminActiveMonitoringController extends AdminBaseController
     public function __construct()
     {
         parent::__construct();
-        $this->data['menu_key'] = 'active_monitorings';
-        $this->breadcrumbs[] = $this->menu['active_monitorings'];
     }
 
     public function activeMonitoring(): View
     {
+        $this->getActiveMonitoringMenu();
         $this->data['content'] = ActiveMonitoring::all();
         $this->data['provides'] = ActiveMonitoringProvide::all();
         $this->data['icons'] = ActiveMonitoringIcon::all();
         $this->data['steps'] = ActiveMonitoringStep::all();
+        $this->data['reviews'] = Review::all();
         return $this->showView('active_monitoring');
     }
 
@@ -70,6 +71,7 @@ class AdminActiveMonitoringController extends AdminBaseController
 
     public function activeMonitoringProvides(): View
     {
+        $this->getActiveMonitoringMenu();
         return $this->getSomething('active_monitoring_provides', new ActiveMonitoringProvide(), null);
     }
 
@@ -91,6 +93,7 @@ class AdminActiveMonitoringController extends AdminBaseController
 
     public function activeMonitoringIcons($slug=null): View
     {
+        $this->getActiveMonitoringMenu();
         return $this->getSomething('active_monitoring_icons', new ActiveMonitoringIcon(), $slug);
     }
 
@@ -122,6 +125,7 @@ class AdminActiveMonitoringController extends AdminBaseController
 
     public function activeMonitoringSteps($slug=null): View
     {
+        $this->getActiveMonitoringMenu();
         return $this->getSomething('active_monitoring_steps', new ActiveMonitoringStep(), $slug);
     }
 
@@ -151,5 +155,34 @@ class AdminActiveMonitoringController extends AdminBaseController
     public function deleteActiveMonitoringStep(Request $request): JsonResponse
     {
         return $this->deleteSomething($request, new ActiveMonitoringStep());
+    }
+
+    public function addReview(Request $request): RedirectResponse
+    {
+        $this->editSomething (
+            $request,
+            new Review(),
+            [
+                'image' => $this->validationJpgAndPng
+            ],
+            'images/reviews/reviews/',
+            'review'
+        );
+        $this->saveCompleteMessage();
+        return redirect(route('admin.edit_active_monitoring'));
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function deleteReview(Request $request): JsonResponse
+    {
+        return $this->deleteSomething($request, new Review());
+    }
+
+    private function getActiveMonitoringMenu(): void
+    {
+        $this->data['menu_key'] = 'active_monitorings';
+        $this->breadcrumbs[] = $this->menu['active_monitorings'];
     }
 }

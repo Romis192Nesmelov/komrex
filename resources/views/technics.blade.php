@@ -1,10 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
-    @include('blocks.main_image_block',[
-        'mode' => 'slim',
-        'chapter' => trans('menu.technics')
-    ])
+    <x-main_image class="slim" :mainMenu="$mainMenu" :secondMenu="$secondMenu" :activeMainMenu="$activeMainMenu" :activeSecondMenu="$activeSecondMenu">
+        @include('blocks.h_underline_block',['h' => 1, 'addClass' => 'align-self-lg-start mt-0 mb-5 mb-lg-3', 'head' => trans('menu.technics')])
+    </x-main_image>
     <div class="content-container pt-3">
         <div class="content ps-0 pe-0 pt-2 pt-lg-5">
             <div class="buttons row mb-4 justify-content-center justify-content-lg-between">

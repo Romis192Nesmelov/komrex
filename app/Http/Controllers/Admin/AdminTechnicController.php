@@ -129,8 +129,7 @@ class AdminTechnicController extends AdminBaseController
 
     public function constructiveFeatures($slug=null): View
     {
-        $this->getSubMenu(new TechnicType(), 'technic_types', 'name');
-        $this->data['near_parent_key'] = 'technics';
+        $this->getTechnicsMenu();
         return $this->getSomething('constructive_features', new ConstructiveFeature(), $slug, new Technic(), 'technicType');
     }
 
@@ -192,8 +191,7 @@ class AdminTechnicController extends AdminBaseController
 
     public function technicVideos($slug=null): View
     {
-        $this->getSubMenu(new TechnicType(), 'technic_types', 'name');
-        $this->data['near_parent_key'] = 'technics';
+        $this->getTechnicsMenu();
         return $this->getSomething('technic_videos', new TechnicVideo(), $slug, new Technic(), 'technicType');
     }
 
@@ -225,8 +223,7 @@ class AdminTechnicController extends AdminBaseController
 
     public function technicFiles($slug=null): View
     {
-        $this->getSubMenu(new TechnicType(), 'technic_types', 'name');
-        $this->data['near_parent_key'] = 'technics';
+        $this->getTechnicsMenu();
         return $this->getSomething('technic_files', new TechnicFile(), $slug, new Technic(), 'technicType');
     }
 
@@ -253,5 +250,11 @@ class AdminTechnicController extends AdminBaseController
     public function deleteTechnicFile(Request $request): JsonResponse
     {
         return $this->deleteSomething($request, new TechnicFile());
+    }
+
+    private function getTechnicsMenu(): void
+    {
+        $this->getSubMenu(new TechnicType(), 'technic_types', 'name');
+        $this->data['near_parent_key'] = 'technics';
     }
 }

@@ -122,6 +122,10 @@ class AdminBaseController extends Controller
                 'key' => 'active_monitoring_steps',
                 'hidden' => true,
             ],
+            'reviews' => [
+                'key' => 'reviews',
+                'hidden' => true,
+            ],
         ];
         $this->breadcrumbs[] = $this->menu['home'];
     }

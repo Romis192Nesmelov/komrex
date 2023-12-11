@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-    @include('blocks.main_image_block',['mode' => 'super-slim'])
+    <x-main_image class="super-slim" :mainMenu="$mainMenu" :secondMenu="$secondMenu" :activeMainMenu="$activeMainMenu" :activeSecondMenu="$activeSecondMenu">
+    </x-main_image>
     <div class="content-container pt-0">
         <div class="content">
             <div class="back-line-href mb-4">

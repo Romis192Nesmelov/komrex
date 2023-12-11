@@ -8,7 +8,7 @@
             @include('admin.blocks.datatable_image_block', ['column' => 'image'])
             @include('admin.blocks.delete_cell_block',[
                 'id' => $item->id,
-                'deleteModal' => 'delete-image-modal'
+                'deleteModal' => $deleteImageModal ?? 'delete-image-modal'
             ])
         </tr>
     @endforeach
