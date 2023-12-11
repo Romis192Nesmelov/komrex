@@ -684,10 +684,6 @@ input.error {
     margin-top: 100px;
 }
 
-footer .download-block img:hover {
-    content: url('../images/download_yellow_icon.svg');
-}
-
 .icon-block{
     width: 100%;
     text-align: center;
@@ -1032,6 +1028,14 @@ footer .download-block img:hover {
     margin-top: 60px;
 }
 
+.reviews .owl-item {
+    height: 580px;
+}
+
+.reviews .image {
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
 footer {
     width: 100%;
     padding: 50px 80px 30px 80px;
@@ -1060,6 +1064,10 @@ footer .footer-block.left {
 footer .footer-block.right {
     width: 496px;
     padding-top: 80px;
+}
+
+footer .download-block img:hover {
+    content: url('../images/download_yellow_icon.svg');
 }
 
 footer h1 {
