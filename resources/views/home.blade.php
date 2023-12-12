@@ -13,10 +13,10 @@
             <p class="w-60">{{ $contents[2]->text }}</p>
         </div>
         <div class="row">
-            <x-offer head="{{ trans('menu.active_monitoring') }}" href="#" text="{{ trans('content.important_tool') }}">
+            <x-offer head="{{ trans('menu.active_monitoring') }}" href="{{ route('active_monitoring') }}" text="{{ trans('content.important_tool') }}">
                 @include('blocks.offer_image_block',['image' => 'images/offers/offer1.png'])
             </x-offer>
-            <x-offer head="{{ trans('menu.technics') }}" href="#">
+            <x-offer head="{{ trans('menu.technics') }}" href="{{ route('technics') }}">
                 @include('blocks.offer_image_block',[
                     'image' => 'images/offers/offer2_1.jpg',
                     'href' => '#',

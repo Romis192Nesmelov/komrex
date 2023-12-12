@@ -65,7 +65,7 @@
                     {!! $requisite->value.(!$loop->last ? '<br>' : '') !!}
                 @endforeach
                 @include('blocks.download_block',[
-                    'href' => '#',
+                    'href' => asset('pdfs/requisites.pdf'),
                     'icon' => 'download_white_icon.svg',
                     'description' => trans('content.download_details'),
                     'kb' => 340

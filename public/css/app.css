@@ -675,7 +675,11 @@ input.error {
 
 .step h2 {
     color: #E9A127;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+}
+
+.step h3 {
+    margin-bottom: 20px;
 }
 
 #active-m-logo {
@@ -1215,7 +1219,7 @@ footer .email a:hover {
     }
 
     .step h2 {
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         font-weight: normal;
     }
 

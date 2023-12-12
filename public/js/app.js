@@ -16,7 +16,7 @@ $(document).ready(function () {
     });
 
     window.menuScrollFlag = false;
-    $('a[data-scroll], div[data-scroll]').click(function (e) {
+    $('a[data-scroll], div[data-scroll], button[data-scroll]').click(function (e) {
         e.preventDefault();
         let self = $(this);
         if (!window.menuScrollFlag) {

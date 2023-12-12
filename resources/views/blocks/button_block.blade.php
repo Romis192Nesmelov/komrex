@@ -1,7 +1,7 @@
 <button {{ isset($id) && $id ? 'id='.$id : '' }} type="{{ isset($buttonType) && $buttonType ? $buttonType : 'button' }}"
     class="btn btn-{{ isset($primary) && $primary ? 'primary' : 'secondary' }} {{ isset($arrowIcon) && $arrowIcon ? 'withArrow' : '' }} {{ isset($addClass) && $addClass ? $addClass : '' }}"
-    @if (isset($attrStr) && $attrStr)
-        {!! $attrStr !!}
+    @if (isset($dataScroll) && $dataScroll)
+        data-scroll="{{ $dataScroll }}"
     @endif
 
     @if (isset($dataTarget) && $dataTarget)
