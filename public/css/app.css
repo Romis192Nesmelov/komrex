@@ -231,7 +231,7 @@ button.btn.btn-secondary:hover,
 }
 
 #main-image.empty {
-    min-height: 760px;
+    min-height: 930px;
     background: #121524;
     padding-bottom: 30px;
     justify-content: space-between;
@@ -735,6 +735,7 @@ input.error {
 
 #active-m-logo {
     width: 20vw;
+    margin-top: 30px;
     min-width: 300px;
 }
 
@@ -1203,10 +1204,6 @@ footer .email a:hover {
 
     .modal.styled .modal-dialog {
         max-width: 80%;
-    }
-
-    #active-m-logo {
-        display: none;
     }
 
     .step {

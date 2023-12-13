@@ -2,7 +2,7 @@
 
 @section('content')
     <x-main_image class="empty" :mainMenu="$mainMenu" :secondMenu="$secondMenu" :activeMainMenu="$activeMainMenu" :activeSecondMenu="$activeSecondMenu">
-        <img id="active-m-logo" src="{{ asset('images/active_m.svg') }}"/>
+        <img id="active-m-logo" class="d-none d-lg-block" src="{{ asset('images/active_m.svg') }}"/>
         <div class="w-100 d-none d-lg-block">
             <div class="align-self-start w-60">
                 @include('blocks.h_underline_block',[
@@ -63,7 +63,7 @@
                                 <div class="num me-4">{{ $k + 1 }}</div>
                                 <h3 class="mt-lg-3 mt-ms-0 mb-3">{{ $step->head }}</h3>
                             </div>
-                            <p class="ms-5 ms-lg-0 pt-3 ps-2 ps-lg-0 border-top border-light">{{ $step->text }}</p>
+                            <p class="ms-5 ms-lg-0 pt-3 ps-2 ps-lg-0">{{ $step->text }}</p>
                         </div>
                     </div>
                 @endforeach
