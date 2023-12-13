@@ -142,8 +142,8 @@ class AdminActiveMonitoringController extends AdminBaseController
                 'head' => $this->validationString,
                 'text' => $this->validationText
             ],
-            'images/am_images/',
-            'am_step'
+//            'images/am_images/',
+//            'am_step'
         );
         $this->saveCompleteMessage();
         return redirect(route('admin.active_monitorings'));

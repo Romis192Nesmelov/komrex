@@ -89,7 +89,7 @@
         <x-atitle>{{ trans('admin.how_it_works') }}</x-atitle>
         <div class="panel-body">
             @include('admin.blocks.data_table_block', [
-                'columns' => ['image','head','text','active'],
+                'columns' => ['head','text','created_at','active'],
                 'items' => $steps,
                 'route' => 'active_monitoring_steps',
                 'deleteModal' => 'delete-step-modal',

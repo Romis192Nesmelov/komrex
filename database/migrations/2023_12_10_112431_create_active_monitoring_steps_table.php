@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('active_monitoring_steps', function (Blueprint $table) {
             $table->id();
-            $table->string('image',50);
+//            $table->string('image',50);
             $table->string('head');
             $table->text('text');
             $table->boolean('active');

@@ -54,19 +54,35 @@
     <div class="content-container">
         <div class="content">
             <h2>{{ trans('content.how_it_works') }}</h2>
-            @foreach ($steps as $k => $step)
-                <div class="row step pt-lg-4">
-                    <div class="col-lg-4 col-sm-12 pb-lg-5">
-                        <h2>{{ trans('content.step',['step' => $k+1]) }}</h2>
-                        <h3>{{ $step->head }}</h3>
-                        {!! $step->text !!}
+            <div class="row mb-lg-5 mb-2">
+                @foreach ($steps as $k => $step)
+                    <div class="col-lg-{{ 12/count($steps) }} col-md-12 col-sm-12 mb-3 mb-lg-0 position-relative">
+                        <div class="step">
+                            <div class="d-flex d-lg-block align-items-sm-start">
+                                @if (!$loop->last)
+                                    <div class="dashed-line"></div>
+                                @endif
+                                <div class="num me-4">{{ $k + 1 }}</div>
+                                <h3 class="mt-lg-3 mt-ms-0 mb-3">{{ $step->head }}</h3>
+                            </div>
+                            <p class="ms-5 ms-lg-0 pt-3 ps-2 ps-lg-0 border-top border-light">{{ $step->text }}</p>
+                        </div>
                     </div>
-                    <div class="col-lg-4 col-sm-12 pb-lg-5">
-                        <img class="w-100" src="{{ asset($step->image) }}" />
-                    </div>
-                </div>
-                @if (!$loop->last)<hr>@endif
-            @endforeach
+                @endforeach
+            </div>
+{{--            @foreach ($steps as $k => $step)--}}
+{{--                <div class="row step pt-lg-4">--}}
+{{--                    <div class="col-lg-4 col-sm-12 pb-lg-5">--}}
+{{--                        <h2>{{ trans('content.step',['step' => $k+1]) }}</h2>--}}
+{{--                        <h3>{{ $step->head }}</h3>--}}
+{{--                        {!! $step->text !!}--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-4 col-sm-12 pb-lg-5">--}}
+{{--                        <img class="w-100" src="{{ asset($step->image) }}" />--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                @if (!$loop->last)<hr>@endif--}}
+{{--            @endforeach--}}
             <h2>{{ trans('content.reviews_from_our_clients') }}</h2>
             <div class="owl-carousel reviews">
                 @foreach ($reviews as $review)
