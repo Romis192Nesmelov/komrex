@@ -736,7 +736,6 @@ input.error {
 #active-m-logo {
     width: 20vw;
     min-width: 300px;
-    margin-top: 100px;
 }
 
 .icon-block{
@@ -1204,6 +1203,10 @@ footer .email a:hover {
 
     .modal.styled .modal-dialog {
         max-width: 80%;
+    }
+
+    #active-m-logo {
+        display: none;
     }
 
     .step {

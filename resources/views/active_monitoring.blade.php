@@ -2,6 +2,7 @@
 
 @section('content')
     <x-main_image class="empty" :mainMenu="$mainMenu" :secondMenu="$secondMenu" :activeMainMenu="$activeMainMenu" :activeSecondMenu="$activeSecondMenu">
+        <img id="active-m-logo" src="{{ asset('images/active_m.svg') }}"/>
         <div class="w-100 d-none d-lg-block">
             <div class="align-self-start w-60">
                 @include('blocks.h_underline_block',[
@@ -24,9 +25,6 @@
         </div>
     </x-main_image>
     <div class="content-container">
-        <div class="w-100 text-center">
-            <img id="active-m-logo" src="{{ asset('images/active_m.svg') }}"/>
-        </div>
         @include('blocks.quotes_block',['text' => $content[1]->text, 'use_quotes' => false])
         @include('blocks.quotes_block',['text' => $content[2]->text, 'use_quotes' => true])
         <div class="content">
