@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <x-main_image class="empty" :mainMenu="$mainMenu" :secondMenu="$secondMenu" :activeMainMenu="$activeMainMenu" :activeSecondMenu="$activeSecondMenu">
+    <x-main_image class="active-m" :mainMenu="$mainMenu" :secondMenu="$secondMenu" :activeMainMenu="$activeMainMenu" :activeSecondMenu="$activeSecondMenu">
         <img id="active-m-logo" class="d-none d-lg-block" src="{{ asset('images/active_m.svg') }}"/>
         <div class="w-100 d-none d-lg-block">
             <div class="align-self-start w-60">
@@ -10,8 +10,8 @@
                     'addClass' => 'align-self-lg-start mt-0 mb-5',
                     'head' => trans('menu.active_monitoring')
                 ])
-                <p class="text-white mb-5">{{ $content[0]->head }}</p>
-                <p class="text-white-50 fw-bolder fs-5">{{ trans('content.active_m_system_provides') }}</p>
+{{--                <p class="text-white mb-5">{{ $content[0]->head }}</p>--}}
+{{--                <p class="text-white-50 fw-bolder fs-5">{{ trans('content.active_m_system_provides') }}</p>--}}
             </div>
             <div class="row">
                 @foreach ($provides as $provide)
@@ -25,23 +25,23 @@
         </div>
     </x-main_image>
     <div class="content-container">
-        @include('blocks.quotes_block',['text' => $content[1]->text, 'use_quotes' => false])
-        @include('blocks.quotes_block',['text' => $content[2]->text, 'use_quotes' => true])
+        @include('blocks.quotes_block',['text' => $content[0]->text, 'use_quotes' => false])
+        @include('blocks.quotes_block',['text' => $content[1]->text, 'use_quotes' => true])
         <div class="content">
             <div class="row">
                 <div class="col-lg-6 col-sm-12">
-                    <img class="w-100" src="{{ asset($content[3]->image) }}" />
+                    <img class="w-100" src="{{ asset($content[2]->image) }}" />
                 </div>
                 <div class="col-lg-6 col-sm-12 ps-lg-5">
-                    <h2 class="mt-4 mt-lg-0">{{ $content[3]->head }}</h2>
-                    {!! $content[3]->text !!}
+                    <h2 class="mt-4 mt-lg-0">{{ $content[2]->head }}</h2>
+                    {!! $content[2]->text !!}
                 </div>
             </div>
         </div>
     </div>
     <div class="content-container bg-white pt-3 pb-3">
         <div class="content">
-            <p class="big w-60 mb-5">{{ $content[4]->text }}</p>
+            <p class="big w-60 mb-5">{{ $content[3]->text }}</p>
             @include('blocks.icons_block',[
                 'items' => $icons,
                 'col' => 3,

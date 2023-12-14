@@ -12,20 +12,20 @@
                 @csrf
                 <div class="panel panel-flat">
                     <div class="panel-body">
-                        @include('blocks.input_block', [
-                            'name' => 'content1_head',
-                            'type' => 'text',
-                            'max' => 255,
-                            'value' => $content[0]->head
+{{--                        @include('blocks.input_block', [--}}
+{{--                            'name' => 'content1_head',--}}
+{{--                            'type' => 'text',--}}
+{{--                            'max' => 255,--}}
+{{--                            'value' => $content[0]->head--}}
+{{--                        ])--}}
+                        @include('admin.blocks.textarea_block',[
+                            'name' => 'content1_text',
+                            'value' => $content[0]->text,
+                            'simple' => true
                         ])
                         @include('admin.blocks.textarea_block',[
                             'name' => 'content2_text',
                             'value' => $content[1]->text,
-                            'simple' => true
-                        ])
-                        @include('admin.blocks.textarea_block',[
-                            'name' => 'content3_text',
-                            'value' => $content[2]->text,
                             'simple' => true
                         ])
                         <div class="row">
@@ -34,21 +34,21 @@
                             </div>
                             <div class="col-lg-8 col-md-6 col-sm-12">
                                 @include('blocks.input_block', [
-                                    'name' => 'content4_head',
+                                    'name' => 'content3_head',
                                     'type' => 'text',
                                     'max' => 255,
-                                    'value' => $content[3]->head
+                                    'value' => $content[2]->head
                                 ])
                                 @include('admin.blocks.textarea_block',[
-                                    'name' => 'content4_text',
-                                    'value' => $content[3]->text,
+                                    'name' => 'content3_text',
+                                    'value' => $content[2]->text,
                                     'simple' => false
                                 ])
                             </div>
                         </div>
                         @include('admin.blocks.textarea_block',[
-                            'name' => 'content5_text',
-                            'value' => $content[4]->text,
+                            'name' => 'content4_text',
+                            'value' => $content[3]->text,
                             'simple' => true
                         ])
                         @include('admin.blocks.save_button_block')

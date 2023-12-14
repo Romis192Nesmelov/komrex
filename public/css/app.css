@@ -230,14 +230,15 @@ button.btn.btn-secondary:hover,
     background-position: center top !important;
 }
 
-#main-image.empty {
-    min-height: 930px;
+#main-image.active-m {
+    min-height: 760px;
+    height: 50vw;
     background: #121524;
     padding-bottom: 30px;
     justify-content: space-between;
 }
 
-#main-image.empty .provide {
+#main-image.active-m .provide {
     width: 100%;
     height: 150px;
     padding: 20px;
@@ -1365,7 +1366,7 @@ footer .email a:hover {
     }
 
     #main-image.super-slim,
-    #main-image.empty {
+    #main-image.active-m {
         min-height: 113px;
         max-height: 113px;
     }

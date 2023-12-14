@@ -39,12 +39,11 @@ class AdminActiveMonitoringController extends AdminBaseController
     {
         $fields = $this->validate($request, [
             'image' => 'nullable|'.$this->validationJpgAndPng,
-            'content1_head' => $this->validationString,
+            'content1_text' => $this->validationText,
             'content2_text' => $this->validationText,
+            'content3_head' => $this->validationString,
             'content3_text' => $this->validationText,
-            'content4_head' => $this->validationString,
             'content4_text' => $this->validationText,
-            'content5_text' => $this->validationText,
         ]);
 
         $activeMonitoring = ActiveMonitoring::all();
@@ -58,10 +57,10 @@ class AdminActiveMonitoringController extends AdminBaseController
         }
 
         if ($request->hasFile('image')) {
-            $this->deleteFile($activeMonitoring[4]->image);
+            $this->deleteFile($activeMonitoring[2]->image);
             $pathToFile = 'images/am_images/';
             $fileName = 'am_big.'.$request->file('image')->getClientOriginalExtension();
-            $activeMonitoring[4]->image = $pathToFile.$fileName;
+            $activeMonitoring[2]->image = $pathToFile.$fileName;
             $request->file('images')->move(base_path('public/'.$pathToFile), $fileName);
         }
 
