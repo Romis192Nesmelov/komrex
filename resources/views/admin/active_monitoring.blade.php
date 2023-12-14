@@ -30,7 +30,7 @@
                         ])
                         <div class="row">
                             <div class="col-lg-4 col-md-6 col-sm-12">
-                                @include('admin.blocks.input_image_block',['image' => $content[3]->image])
+                                @include('admin.blocks.input_image_block',['image' => $content[2]->image])
                             </div>
                             <div class="col-lg-8 col-md-6 col-sm-12">
                                 @include('blocks.input_block', [
