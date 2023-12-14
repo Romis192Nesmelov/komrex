@@ -162,7 +162,7 @@ $(document).ready(function () {
     });
 
     // Callback modal
-    $('.pair-buttons .phone-icon, .pair-buttons button, .consulting-button, .consulting-button-1, .consulting-button-2, #about-company-block button').click(function () {
+    $('.phone-icon, .pair-buttons button, .consulting-button, .consulting-button-1, .consulting-button-2, #about-company-block button').click(function () {
         const removingLeftClasses = [
             'btn btn-primary',
             'btn btn-secondary',

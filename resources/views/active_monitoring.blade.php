@@ -63,7 +63,7 @@
                                 <div class="num me-4">{{ $k + 1 }}</div>
                                 <h3 class="mt-lg-3 mt-ms-0 mb-3">{{ $step->head }}</h3>
                             </div>
-                            <p class="ms-5 ms-lg-0 pt-3 ps-2 ps-lg-0">{{ $step->text }}</p>
+                            <p class="ms-5 ms-lg-0 ps-2 ps-lg-0">{{ $step->text }}</p>
                         </div>
                     </div>
                 @endforeach
