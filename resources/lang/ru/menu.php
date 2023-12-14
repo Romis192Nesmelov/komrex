@@ -11,4 +11,5 @@ return [
     'technics' => 'Техника',
     'units_and_components' => 'Агрегаты и компоненты',
     'service_solutions_and_consulting' => 'Сервисные решения и консалтинг',
+    'privacy' => 'Политика конфиденциальности',
 ];

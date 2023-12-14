@@ -24,7 +24,7 @@
         ])
 
         <div class="form-group login-options">
-            @include('blocks.checkbox_block', [
+            @include('admin.blocks.checkbox_block', [
                 'name' => 'remember',
                 'checked' => true,
                 'label' => trans('auth.remember_me')

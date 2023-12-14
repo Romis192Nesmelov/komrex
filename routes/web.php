@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(BaseController::class)->group(function () {
     Route::get('/', 'index')->name('home');
+    Route::get('/privacy', 'privacy')->name('privacy');
 });
 
 Route::controller(FeedbackController::class)->group(function () {

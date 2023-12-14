@@ -28,6 +28,7 @@ return [
     'created_at' => 'Создан',
     'updated_at' => 'Изменено',
     'return_back' => 'Вернуться назад',
+    'city' => 'Город',
 
     'hello' => 'Добрый день!',
     'warning' => 'Внимание!',

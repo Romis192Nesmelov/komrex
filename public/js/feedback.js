@@ -1,19 +1,20 @@
 $(document).ready(function ($) {
 
-    const body = $('body');
-        // agree = $('input[name=i_agree]');
+    const body = $('body'),
+        agree = $('input[name=i_agree]');
 
-    // agree.change(function () {
-    //     let button = $(this).parents('form.useAjax').find('button[type=submit]');
-    //     if (agree.is(':checked')) button.removeAttr('disabled');
-    //     else button.attr('disabled','disabled');
-    // });
+    agree.change(function () {
+        let button = $(this).parents('form').find('button[type=submit]');
+        if (agree.is(':checked')) button.removeAttr('disabled');
+        else button.attr('disabled','disabled');
+    });
 
     $('form').on('submit', function(e) {
         e.preventDefault();
         let form = $(this),
             formData = new FormData,
-            inputError = $('input.error');
+            inputError = form.find('input.error'),
+            textError = form.find('.error');
 
         // if (!agree.is(':checked')) return false;
 
@@ -26,6 +27,7 @@ $(document).ready(function ($) {
 
         $('div.error').css('display','none').html('');
         inputError.removeClass('error');
+        textError.html('');
         form.find('input, select, textarea, button').attr('disabled','disabled');
         // addLoader();
 

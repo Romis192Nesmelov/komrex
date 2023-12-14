@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <x-main_image class="slim" :mainMenu="$mainMenu" :secondMenu="$secondMenu" :activeMainMenu="$activeMainMenu" :activeSecondMenu="$activeSecondMenu">
+    <x-main_image class="slim" :mainMenu="$mainMenu" :secondMenu="$secondMenu" :activeMainMenu="$activeMainMenu" :activeSecondMenu="$activeSecondMenu" :mainPhone="$mainPhone">
         @include('blocks.h_underline_block',['h' => 1, 'addClass' => 'align-self-lg-start mt-0 mb-5 mb-lg-3', 'head' => trans('menu.technics')])
     </x-main_image>
     <div class="content-container pt-3">

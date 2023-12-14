@@ -1,4 +1,5 @@
 @props([
+    'labelClass' => '',
     'name' => '',
     'error' => null,
     'label' => null,
@@ -6,7 +7,7 @@
 ])
 
 @if ($label)
-    <label for="{{ $name }}">{{ $label }}</label>
+    <label {{ $labelClass ? 'class='.$labelClass : '' }} for="{{ $name }}">{{ $label }}</label>
 @endif
 <div class="form-group {{ $error ? "error" : '' }}">
     {!! $slot !!}

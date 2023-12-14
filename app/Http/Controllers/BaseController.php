@@ -38,6 +38,12 @@ class BaseController extends Controller
         return $this->showView('home');
     }
 
+    public function privacy(): View
+    {
+        $this->activeMainMenu = 'home';
+        return $this->showView('privacy');
+    }
+
     protected function showView($view) :View
     {
         return view($view, array_merge(
@@ -60,8 +66,9 @@ class BaseController extends Controller
                 'metas' => $this->metas,
                 'activeMainMenu' => $this->activeMainMenu,
                 'activeSecondMenu' => $this->activeSecondMenu,
-                'mainEmail' => Requisite::find(1),
-                'requisites' => Requisite::where('id','>',1)->where('active',1)->get()
+                'mainPhone' => Requisite::find(1),
+                'mainEmail' => Requisite::find(2),
+                'requisites' => Requisite::where('id','>',2)->where('active',1)->get()
             ]
         ));
     }

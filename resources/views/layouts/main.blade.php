@@ -55,6 +55,12 @@
                 {{ trans('content.email_address') }}
                 <div class="email">
                     @include('blocks.email_block', ['email' => $mainEmail->value])
+                    @include('blocks.button_block',[
+                        'addClass' => 'footer-button',
+                        'primary' => true,
+                        'buttonText' => trans('content.order_service'),
+                        'arrowIcon' => 'arrow_cir_to_right_dark.svg'
+                    ])
                 </div>
             </div>
             <div class="footer-block right">
@@ -91,6 +97,9 @@
                 'arrowIcon' => 'arrow_cir_to_right_yellow.svg'
             ])
         </form>
+    </x-smodal>
+    <x-smodal id="personal-data-modal" head="{{ trans('content.transfer_and_processing_of_personal_data') }}">
+
     </x-smodal>
 </body>
 </html>

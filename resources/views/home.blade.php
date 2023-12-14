@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <x-main_image :mainMenu="$mainMenu" :secondMenu="$secondMenu" :activeMainMenu="$activeMainMenu" :activeSecondMenu="$activeSecondMenu">
+    <x-main_image :mainMenu="$mainMenu" :secondMenu="$secondMenu" :activeMainMenu="$activeMainMenu" :activeSecondMenu="$activeSecondMenu" :mainPhone="$mainPhone">
         <div id="head-container"><h1>{{ $contents[0]->text }}</h1></div>
         <a data-scroll="our_offers" href="#"><img class="arrow-down" src="{{ asset('images/arrow_cir_to_down_yellow.svg') }}"></a>
     </x-main_image>
@@ -53,10 +53,10 @@
             @endforeach
         </div>
     </div>
-    @include('blocks.feedback_form_block',[
-        'hiddenInputName' => 'from',
-        'hiddenId' => 'page-second-form',
-    ])
+{{--    @include('blocks.feedback_form_block',[--}}
+{{--        'hiddenInputName' => 'from',--}}
+{{--        'hiddenId' => 'page-second-form',--}}
+{{--    ])--}}
     <div class="content-container">
         @include('blocks.quotes_block',['text' => $contents[3]->text, 'use_quotes' => true])
         <div class="content">
@@ -105,22 +105,12 @@
                         <div>
                             {!! $contents[5]->text !!}
                         </div>
-                        <div>
-                            <div>
-                                @include('blocks.button_block',[
-                                    'addClass' => 'about-company-button',
-                                    'primary' => false,
-                                    'buttonText' => trans('content.write_to_the_company'),
-                                    'arrowIcon' => 'arrow_cir_to_right_yellow.svg'
-                                ])
-                            </div>
-                            @include('blocks.download_block',[
-                                'href' => '#',
-                                'icon' => 'download_yellow_icon.svg',
-                                'description' => trans('content.presentation_of_the_company'),
-                                'kb' => 340
-                            ])
-                        </div>
+                        @include('blocks.download_block',[
+                            'href' => '#',
+                            'icon' => 'download_yellow_icon.svg',
+                            'description' => trans('content.presentation_of_the_company'),
+                            'kb' => 340
+                        ])
                     </div>
                 </div>
             </div>

@@ -111,7 +111,7 @@
                                     <ul>
                                         @foreach ($submenu as $subItem)
                                             <li {{ (request('id') && $subItem['id'] == request('id')) || (request('parent_id') && $subItem['id'] == request('parent_id')) || (isset($current_sub_item) && $subItem['id'] == $current_sub_item) ? 'class=active' : '' }}>
-                                                <a href="{{ route('admin.'.$parent_key,['id' => $subItem['id']]) }}">{{ ($subItem['name'] ?? $subItem-['head']) }}</a>
+                                                <a href="{{ route('admin.'.$parent_key,['id' => $subItem['id']]) }}">{{ ($subItem['name'] ?? $subItem['head']) }}</a>
                                             </li>
                                         @endforeach
                                     </ul>

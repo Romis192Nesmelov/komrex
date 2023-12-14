@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <x-main_image class="super-slim" :mainMenu="$mainMenu" :secondMenu="$secondMenu" :activeMainMenu="$activeMainMenu" :activeSecondMenu="$activeSecondMenu">
+    <x-main_image class="super-slim" :mainMenu="$mainMenu" :secondMenu="$secondMenu" :activeMainMenu="$activeMainMenu" :activeSecondMenu="$activeSecondMenu" :mainPhone="$mainPhone">
     </x-main_image>
     <div class="content-container pt-0">
         <div class="content">

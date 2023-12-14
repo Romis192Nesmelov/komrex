@@ -14,6 +14,7 @@ class RequisitesSeeder extends Seeder
     public function run(): void
     {
         $data = [
+            ['name' => 'телефон', 'value' => '+7(495)134-03-07', 'active' => 1],
             ['name' => 'email', 'value' => 'info@komrex.ru', 'active' => 1],
             ['name' => 'ОГРН', 'value' => '1235000000465', 'active' => 1],
             ['name' => 'ИНН', 'value' => '5017131064', 'active' => 1],

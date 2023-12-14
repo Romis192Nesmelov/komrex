@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <x-main_image class="active-m" :mainMenu="$mainMenu" :secondMenu="$secondMenu" :activeMainMenu="$activeMainMenu" :activeSecondMenu="$activeSecondMenu">
+    <x-main_image class="active-m" :mainMenu="$mainMenu" :secondMenu="$secondMenu" :activeMainMenu="$activeMainMenu" :activeSecondMenu="$activeSecondMenu" :mainPhone="$mainPhone">
         <img id="active-m-logo" class="d-none d-lg-block" src="{{ asset('images/active_m.svg') }}"/>
         <div class="w-100 d-none d-lg-block">
             <div class="align-self-start w-60">

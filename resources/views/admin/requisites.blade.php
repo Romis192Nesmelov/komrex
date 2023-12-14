@@ -8,9 +8,9 @@
             @csrf
                 @foreach($requisites as $requisite)
                     @include('blocks.input_block', [
-                        'label' => ucfirst($requisite->name) ? $requisite->name : trans('admin.city'),
+                        'label' => $requisite->name ? ucfirst($requisite->name) : trans('admin.city'),
                         'name' => 'id_'.$requisite->id,
-                        'type' => $requisite->id == 1 ? 'email' : 'text',
+                        'type' => $requisite->id == 2 ? 'email' : 'text',
                         'max' => 30,
                         'placeholder' => $requisite->name ? $requisite->name : trans('admin.city'),
                         'value' => $requisite->value

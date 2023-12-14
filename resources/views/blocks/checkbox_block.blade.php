@@ -1,9 +1,6 @@
-<div class="form-group mt-3 {{ isset($addClass) && $addClass ? $addClass : '' }}" @if (isset($attrStr) && $attrStr) {!! $attrStr !!} @endif >
-    <label class="checkbox-inline">
-        <input class="styled" type="checkbox" name="{{ $name }}" {{ !count($errors) ? (isset($checked) && $checked ? 'checked=checked' : '') : (old($name) == 'on' ? 'checked=checked' : '') }} {{ isset($disabled) && $disabled ? 'disabled=disabled' : '' }}>
-        @if (isset($label) && $label)
-            {!! $label !!}
-        @endif
-    </label>
-    @include('blocks.error_block')
+@php $id = md5($name.rand(0,10000)) @endphp
+<div class="form-check form-switch">
+    <input class="form-check-input" name="{{ $name }}" type="checkbox" id="{{ $id }}">
+    <label class="form-check-label" for="{{ $id }}">{!! $label ?? ''  !!}</label>
+    @include('blocks.wrap_error_block', ['ajax' => $ajax ?? false])
 </div>
