@@ -12,7 +12,10 @@ use App\Models\ProjectType;
 use App\Models\Requisite;
 use App\Models\ServiceSolution;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Cookie;
 
 class BaseController extends Controller
 {
@@ -46,6 +49,11 @@ class BaseController extends Controller
 
     protected function showView($view) :View
     {
+//        if (!isset($_COOKIE['cookie_info'])) {
+//            setcookie('cookie_info', true, time() + 3600);
+//            $cookieInfo = true;
+//        } else $cookieInfo = false;
+
         return view($view, array_merge(
             $this->data,
             [
@@ -68,7 +76,8 @@ class BaseController extends Controller
                 'activeSecondMenu' => $this->activeSecondMenu,
                 'mainPhone' => Requisite::find(1),
                 'mainEmail' => Requisite::find(2),
-                'requisites' => Requisite::where('id','>',2)->where('active',1)->get()
+                'requisites' => Requisite::where('id','>',2)->where('active',1)->get(),
+                'cookieInfo' => true
             ]
         ));
     }

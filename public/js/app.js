@@ -261,6 +261,18 @@ $(document).ready(function () {
         }
     });
 
+    // Cookie modal
+    const cookieInfoModal = $('#cookie-info-modal');
+    cookieInfoModal.find('button#agree_all').click(() => {
+        cookieInfoModal.find('input[name=cookie1]').prop('checked', true);
+        cookieInfoModal.find('input[name=cookie2]').prop('checked', true);
+    });
+    if (window.showCookieInfo) {
+        setTimeout(() => {
+            cookieInfoModal.modal('show');
+        }, 30000);
+    }
+
     bindFancybox();
     bigTablesScroll();
     // windowScroll();

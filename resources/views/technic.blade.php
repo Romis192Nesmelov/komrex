@@ -32,7 +32,7 @@
                             'id' => 'technic-button',
                             'addClass' => 'mt-4 mt-lg-5',
                             'primary' => false,
-                            'buttonText' => trans('content.write_to_the_company'),
+                            'buttonText' => trans('content.request_a_price'),
                             'arrowIcon' => 'arrow_cir_to_right_yellow.svg'
                         ])
                     </div>

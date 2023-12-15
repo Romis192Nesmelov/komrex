@@ -578,6 +578,10 @@ input:not(.form-check-input) {
     border-color: #E9A127;
 }
 
+.form-check-input:focus {
+    border-color: #e3aa53;
+}
+
 input.error {
     border: 2px solid red;
 }
@@ -1165,6 +1169,18 @@ footer .email a:hover {
     color: gray;
 }
 
+#cookie-info-modal img.logo {
+    width: 250px;
+    margin-bottom: 15px;
+}
+
+#cookie-info-modal button {
+    width: 250px !important;
+    font-size: 12px !important;
+    float: right;
+    margin-right: 5px;
+}
+
 @media (max-width: 1649px) {
     .step {
         height: 400px;
@@ -1574,6 +1590,22 @@ footer .email a:hover {
     }
 
     footer .footer-block button > span {
+        margin-right: 0;
+    }
+
+    #cookie-info-modal img.logo {
+        width: 150px;
+    }
+
+    #cookie-info-modal p {
+        font-size: 12px;
+    }
+
+    #cookie-info-modal button {
+        width: 100% !important;
+        min-width: 100% !important;
+        font-size: 12px !important;
+        float: none;
         margin-right: 0;
     }
 }

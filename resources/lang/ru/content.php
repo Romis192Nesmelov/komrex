@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'welcome_to_komreks' => 'Добро пожаловать в КОМРЭКС!',
+    'confirm_my_choice' => 'Подтвердить мой выбор',
+    'cookie_files1' => 'Эксплуатационные файлы cookie',
+    'cookie_files2' => 'Функциональные файлы cookie',
+    'agree_all' => 'Принять все',
     'yes' => 'Да',
     'no' => 'Нет',
     'close' => 'Закрыть',
@@ -55,4 +60,5 @@ return [
     'step' => 'Шаг :step',
     'reviews_from_our_clients' => 'Отзывы наших клиентов',
     'transfer_and_processing_of_personal_data' => 'Передача и обработка персональных данных',
+    'request_a_price' => 'Запросить цену',
 ];

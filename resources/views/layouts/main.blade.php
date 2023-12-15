@@ -101,5 +101,42 @@
     <x-smodal id="personal-data-modal" head="{{ trans('content.transfer_and_processing_of_personal_data') }}">
 
     </x-smodal>
+    @if ($cookieInfo)
+        <x-smodal id="cookie-info-modal" head="{{ trans('content.welcome_to_komreks') }}">
+            <img class="logo" src="{{ asset('images/logo_dark.svg') }}" />
+            <p>Мы используем данные, собранные через файлы cookie, чтобы обеспечить вам наилучший пользовательский опыт на нашем веб-сайте, распознавать повторные посещения и предпочтения, а также измерять и анализировать трафик. Принимая все или некоторые наши файлы cookie, вы позволяете нам анализировать поведение пользователей, предоставлять функции социальных медиа и делиться этой информацией с нашими партнерами по рекламе и аналитике, что помогает представлять вам рекламу и контент, соответствующие вашим интересам. Если вы не принимаете все наши файлы cookie, мы будем использовать только строго необходимые файлы cookie, которые необходимы для функционирования веб-сайта, или те, которые вы принимаете (через вариант «управление выбором»). Вы сможете в любое время управлять предпочтениями файлов cookie. Чтобы получить дополнительную информацию об использовании файлов cookie, пожалуйста, ознакомьтесь с нашей <a href="{{ route('privacy') }}">Политикой в отношении файлов cookie.</a></p>
+            <div class="w-100">
+                @include('blocks.checkbox_block', [
+                    'name' => 'cookie1',
+                    'label' => trans('content.cookie_files1'),
+                    'checked' => true,
+                    'ajax' => false
+                ])
+                @include('blocks.checkbox_block', [
+                    'name' => 'cookie2',
+                    'label' => trans('content.cookie_files2'),
+                    'checked' => true,
+                    'ajax' => false
+                ])
+            </div>
+            <div class="w-100 mt-3">
+                @include('blocks.button_block',[
+                    'dataDismiss' => true,
+                    'primary' => true,
+                    'buttonType' => 'button',
+                    'buttonText' => trans('content.confirm_my_choice'),
+                    'arrowIcon' => 'arrow_cir_to_right_dark.svg'
+               ])
+                @include('blocks.button_block',[
+                    'id' => 'agree_all',
+                    'primary' => true,
+                    'buttonType' => 'button',
+                    'buttonText' => trans('content.agree_all'),
+                    'arrowIcon' => 'arrow_cir_to_right_dark.svg'
+               ])
+            </div>
+        </x-smodal>
+        <script>window.showCookieInfo = true;</script>
+    @endif
 </body>
 </html>

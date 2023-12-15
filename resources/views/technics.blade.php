@@ -80,7 +80,7 @@
                                                 'id' => 'technic'.$technic->id,
                                                 'addClass' => 'technic-button m-auto',
                                                 'primary' => false,
-                                                'buttonText' => trans('content.write_to_the_company')
+                                                'buttonText' => trans('content.request_a_price')
                                             ])
                                         </div>
                                     </div>

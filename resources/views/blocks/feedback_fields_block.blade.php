@@ -28,7 +28,6 @@
     </div>
     <div class="col-12 ps-4 pt-3">
         @include('blocks.checkbox_block', [
-            'id' => 'agree',
             'name' => 'i_agree',
             'label' => 'Я выражаю <a href="#" data-bs-toggle="modal" data-bs-target="#personal-data-modal">согласие на передачу и обработку персональных данных</a> в соответствии с <a href="'.route('privacy').'" target="_blank">Политикой конфиденциальности*</a>',
             'ajax' => true
