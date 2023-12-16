@@ -1,8 +1,5 @@
 $(document).ready(function () {
-    // let sr = ScrollReveal();
-    // sr.reveal('#top-line', {duration:1500});
-    // sr.reveal('#top-image', {duration:2000});
-    // sr.reveal('.container, footer', {duration:2500});
+    new WOW().init();
 
     $.mask.definitions['n'] = "[7-8]";
     $('input[name=phone]').mask("+n(999)999-99-99");
@@ -30,7 +27,8 @@ $(document).ready(function () {
     }
 
     // Consulting block clock or over
-    $('.consulting-block').bind('mouseover', function () {
+    const consultingBlock = $('.consulting-block');
+    consultingBlock.bind('mouseover', function () {
         consultingBlockOver($(this), true);
     }).bind('mouseleave', function () {
         consultingBlockOver($(this), false);

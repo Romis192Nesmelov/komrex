@@ -7,6 +7,10 @@ body {
     margin: 0;
 }
 
+.wow {
+    visibility: hidden;
+}
+
 .big-table-container {
     width: 100%;
     overflow-x: scroll;

@@ -29,17 +29,17 @@
         @include('blocks.quotes_block',['text' => $content[1]->text, 'use_quotes' => true])
         <div class="content">
             <div class="row">
-                <div class="col-lg-6 col-sm-12">
+                <div class="col-lg-6 col-sm-12 wow animate__animated animate__slideInLeft" data-wow-offset="10">
                     <img class="w-100" src="{{ asset($content[2]->image) }}" />
                 </div>
-                <div class="col-lg-6 col-sm-12 ps-lg-5">
+                <div class="col-lg-6 col-sm-12 ps-lg-5 wow animate__animated animate__slideInRight" data-wow-offset="10">
                     <h2 class="mt-4 mt-lg-0">{{ $content[2]->head }}</h2>
                     {!! $content[2]->text !!}
                 </div>
             </div>
         </div>
     </div>
-    <div class="content-container bg-white pt-3 pb-3">
+    <div class="content-container bg-white pt-3 pb-3 wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay=".5s">
         <div class="content">
             <p class="big w-60 mb-5">{{ $content[3]->text }}</p>
             @include('blocks.icons_block',[
@@ -54,7 +54,7 @@
             <h2>{{ trans('content.how_it_works') }}</h2>
             <div class="row mb-lg-5 mb-2">
                 @foreach ($steps as $k => $step)
-                    <div class="col-lg-{{ 12/count($steps) }} col-md-12 col-sm-12 mb-3 mb-lg-0 position-relative">
+                    <div class="col-lg-{{ 12/count($steps) }} col-md-12 col-sm-12 mb-3 mb-lg-0 position-relative wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.3 }}s">
                         <div class="step">
                             <div class="d-flex d-lg-block align-items-sm-start">
                                 @if (!$loop->last)
@@ -83,8 +83,10 @@
 {{--            @endforeach--}}
             <h2>{{ trans('content.reviews_from_our_clients') }}</h2>
             <div class="owl-carousel reviews">
-                @foreach ($reviews as $review)
-                    @include('blocks.fancybox_block',['image' => $review->image])
+                @foreach ($reviews as $k => $review)
+                    <div class="wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.3 }}s">
+                        @include('blocks.fancybox_block',['image' => $review->image])
+                    </div>
                 @endforeach
             </div>
         </div>

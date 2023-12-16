@@ -7,7 +7,7 @@
     <div class="content-container pt-3">
         <div class="content ps-0 pe-0 pt-2 pt-lg-5">
             <div class="buttons row mb-4 justify-content-center justify-content-lg-between">
-                <div class="row col-lg-4 col-md-12">
+                <div class="row col-lg-4 col-md-12 wow animate__animated animate__slideInLeft" data-wow-offset="10">
                     <div class="col-lg-6 col-md-12 ps-1 pe-1 mb-2 mb-lg-0">
                         <a href="{{ route('technics',['slug' => 'komrex', 'id' => request('id')]) }}">
                             @include('blocks.button_block',[
@@ -27,7 +27,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="icons-view col-1 d-none d-lg-flex align-items-center justify-content-end">
+                <div class="icons-view col-1 d-none d-lg-flex align-items-center justify-content-end wow animate__animated animate__slideInRight" data-wow-offset="10">
                     <img id="view-columns" class="icon active me-1" src="{{ asset('images/icon_columns.svg') }}">
                     <img id="view-rows" class="icon" src="{{ asset('images/icon_rows.svg') }}">
                 </div>
@@ -42,14 +42,14 @@
                             @include('blocks.left_menu_block', ['hideActive' => true])
                         </div>
                     </div>
-                    <div class="advertising">
+                    <div class="advertising wow animate__animated animate__slideInLeft" data-wow-offset="10">
                         <img class="w-100" src="{{ asset('images/advertising.png') }}" />
                     </div>
                 </div>
                 <div class="technics-block row">
-                    @foreach ($technics[$relation] as $technic)
+                    @foreach ($technics[$relation] as $k => $technic)
                         @if ($technic->images->count())
-                            <div class="col-lg-4 col-md-12">
+                            <div class="col-lg-4 col-md-12 wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.1 }}s">
                                 <div class="technic-block row">
                                     <div class="image col-lg-12 col-md-12">
                                         <a href="{{ route('technic',['id' => $technic->id]) }}">

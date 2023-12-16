@@ -1,10 +1,11 @@
 @props([
     'head' => '',
     'text' => '',
-    'href' => ''
+    'href' => '',
+    'delay' => 1,
 ])
 
-<div class="col-lg-4 col-sm-12">
+<div class="col-lg-4 col-sm-12 wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ $delay }}s">
     <div class="offer-block">
         <div class="arrow"></div>
         <div class="d-block">

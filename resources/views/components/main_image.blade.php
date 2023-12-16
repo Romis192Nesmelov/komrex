@@ -6,7 +6,7 @@
     'mainPhone' => ''
 ])
 
-<div id="main-image" {{ $attributes->class('') }}>
+<div id="main-image" {{ $attributes->class('wow animate__animated animate__fadeIn') }}>
     <div id="hamburger"></div>
     <div id="float-menu">
         @include('blocks.main_menu_block', ['mainMenu' => $mainMenu, 'activeMainMenu' => $activeMainMenu])

@@ -8,15 +8,15 @@
     <div class="content-container">
         <h2 class="w-100 text-center pt-4">{{ $contents[1]->head }}</h2>
         @include('blocks.quotes_block',['text' => $contents[1]->text, 'use_quotes' => true])
-        <div class="content" data-scroll-destination="our_offers">
+        <div class="content wow animate__animated animate__slideInLeft" data-wow-offset="10" data-scroll-destination="our_offers">
             <h2>{{ $contents[2]->head }}</h2>
             <p class="w-60">{{ $contents[2]->text }}</p>
         </div>
         <div class="row">
-            <x-offer head="{{ trans('menu.active_monitoring') }}" href="{{ route('active_monitoring') }}" text="{{ trans('content.important_tool') }}">
+            <x-offer head="{{ trans('menu.active_monitoring') }}" href="{{ route('active_monitoring') }}" text="{{ trans('content.important_tool') }}" delay=".5">
                 @include('blocks.offer_image_block',['image' => 'images/offers/offer1.png'])
             </x-offer>
-            <x-offer head="{{ trans('menu.technics') }}" href="{{ route('technics') }}">
+            <x-offer head="{{ trans('menu.technics') }}" href="{{ route('technics') }}" delay="1">
                 @include('blocks.offer_image_block',[
                     'image' => 'images/offers/offer2_1.jpg',
                     'href' => '#',
@@ -28,7 +28,7 @@
                     'hrefText' => trans('content.current_offer')
                 ])
             </x-offer>
-            <x-offer head="{{ trans('menu.units_and_components') }}" href="#" text="{{ trans('content.supply_of_individual_units') }}">
+            <x-offer head="{{ trans('menu.units_and_components') }}" href="#" text="{{ trans('content.supply_of_individual_units') }}" delay="1.5">
                 @include('blocks.offer_image_block',['image' => 'images/offers/offer3.jpg'])
             </x-offer>
         </div>
@@ -39,9 +39,9 @@
     ])
     <div class="content-container" data-scroll-destination="service_solutions">
         <div class="content pt-4">
-            <h2>{{ trans('menu.service_solutions') }}</h2>
-            @foreach($solutions as $solution)
-                <div class="row {{ !$loop->last ? 'mb-lg-5 mb-sm-1' : '' }}">
+            <h2 class="content wow animate__animated animate__slideInLeft" data-wow-offset="10">{{ trans('menu.service_solutions') }}</h2>
+            @foreach($solutions as $k => $solution)
+                <div class="row {{ !$loop->last ? 'mb-lg-5 mb-sm-1' : '' }} wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.3 }}s">
                     <div class="col-lg-4 col-sm-12 mb-4">
                         <img class="w-100" src="{{ asset($solution->image) }}" />
                     </div>
@@ -60,8 +60,8 @@
     <div class="content-container">
         @include('blocks.quotes_block',['text' => $contents[3]->text, 'use_quotes' => true])
         <div class="content">
-            <h2 class="mb-3">{{ $contents[4]->head }}</h2>
-            <div class="row mb-3">
+            <h2 class="mb-3 content wow animate__animated animate__slideInLeft" data-wow-offset="10">{{ $contents[4]->head }}</h2>
+            <div class="row mb-3 content wow animate__animated animate__slideInRight" data-wow-offset="10">
                 <div class="col-lg-6 col-sm-12">
                     <p>{{ $contents[4]->text }}</p>
                 </div>
@@ -75,8 +75,8 @@
                 </div>
             </div>
             <div class="row">
-                @foreach($consulting as $item)
-                    <div class="col-lg-4 col-sm-12 {{ !$loop->last ? 'mb-3 mb-lg-0' : '' }}">
+                @foreach($consulting as $k => $item)
+                    <div class="col-lg-4 col-sm-12 {{ !$loop->last ? 'mb-3 mb-lg-0' : '' }} wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.3 }}s">
                         <div class="consulting-block" style="background: url({{ asset($item->image) }})" slideIn="0">
                             <h3>{{ $item->head }}</h3>
                             <div class="plate">
@@ -95,12 +95,12 @@
             </div>
         </div>
         <div class="content pt-0" data-scroll-destination="about_company">
-            <h2>{{ $contents[5]->head }}</h2>
+            <h2 class="wow animate__animated animate__slideInLeft" data-wow-offset="10">{{ $contents[5]->head }}</h2>
             <div class="row">
-                <div class="col-lg-6 col-sm-12 mb-3 mb-lg-0">
+                <div class="col-lg-6 col-sm-12 mb-3 mb-lg-0 wow animate__animated animate__slideInLeft" data-wow-offset="10">
                     <img class="w-100" src="{{ asset('images/about_company.jpg') }}" />
                 </div>
-                <div class="col-lg-6 col-sm-12">
+                <div class="col-lg-6 col-sm-12 wow animate__animated animate__slideInRight" data-wow-offset="10">
                     <div id="about-company-block">
                         <div>
                             {!! $contents[5]->text !!}
@@ -116,16 +116,16 @@
             </div>
         </div>
         <div class="content pt-0">
-            <h2 class="mb-4 pb-3">{{ trans('content.our_values') }}</h2>
+            <h2 class="mb-4 pb-3 wow animate__animated animate__slideInLeft" data-wow-offset="10">{{ trans('content.our_values') }}</h2>
             @include('blocks.icons_block',['items' => $values, 'col' => 3])
         </div>
     </div>
     <div class="content-container pt-0 bg-white" data-scroll-destination="team">
         <div class="content">
-            <h2 class="mb-4 pb-3">{{ trans('content.our_team') }}</h2>
+            <h2 class="mb-4 pb-3 wow animate__animated animate__slideInLeft" data-wow-offset="10">{{ trans('content.our_team') }}</h2>
             <div id="our-team" class="owl-carousel">
-                @foreach($team as $person)
-                    <div class="team-person">
+                @foreach($team as $k => $person)
+                    <div class="team-person wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.3 }}s">
                         <img src="{{ asset($person->image) }}" />
                         <div class="name">{{ $person->name }}</div>
                     </div>
@@ -135,8 +135,8 @@
     </div>
     <div class="content-container pt-0" data-scroll-destination="our_projects">
         <div class="content">
-            <h2 class="mb-4 pb-3">{{ trans('content.our_projects') }}</h2>
-            <div class="row mb-4">
+            <h2 class="mb-4 pb-3 wow animate__animated animate__slideInLeft" data-wow-offset="10">{{ trans('content.our_projects') }}</h2>
+            <div class="row mb-4 wow animate__animated animate__slideInRight" data-wow-offset="10">
                 @foreach($project_types as $type)
                     <div class="col-lg-2 col-sm-12 mb-3 mb-lg-0">
                         @include('blocks.button_block',[
@@ -149,14 +149,14 @@
                 @endforeach
             </div>
             <div id="projects" class="owl-carousel projects">
-                @foreach($projects_all as $project)
-                    @include('blocks.project_block',['image' => $project->images[0]->image])
+                @foreach($projects_all as $k => $project)
+                    @include('blocks.project_block',['image' => $project->images[0]->image, 'k' => $k])
                 @endforeach
             </div>
             @foreach($project_types as $type)
                 <div id="project-type-{{ $type->id }}" class="owl-carousel projects d-none">
-                    @foreach($type->activeProjects as $project)
-                        @include('blocks.project_block',['image' => $project->images[0]->image])
+                    @foreach($type->activeProjects as $k => $project)
+                        @include('blocks.project_block',['image' => $project->images[0]->image, 'k' => $k])
                     @endforeach
                 </div>
             @endforeach
@@ -164,11 +164,11 @@
     </div>
     <div class="content-container pt-0 bg-white" data-scroll-destination="partners">
         <div class="content">
-            <h2 class="mb-4 pb-3">{{ $contents[6]->head }}</h2>
-            <p class="w-60">{{ $contents[6]->text }}</p>
+            <h2 class="mb-4 pb-3 wow animate__animated animate__slideInLeft" data-wow-offset="10">{{ $contents[6]->head }}</h2>
+            <p class="w-60 wow animate__animated animate__slideInRight" data-wow-offset="10">{{ $contents[6]->text }}</p>
             <div class="row w-60">
-                @foreach($partners as $partner)
-                    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 mb-lg-0">
+                @foreach($partners as $k => $partner)
+                    <div class="col-lg-3 col-md-4 col-sm-12 mb-3 mb-lg-0 wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.3 }}s">
                         <img class="w-100" src="{{ asset($partner->image) }}" />
                     </div>
                 @endforeach
