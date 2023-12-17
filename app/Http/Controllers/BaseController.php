@@ -12,10 +12,8 @@ use App\Models\ProjectType;
 use App\Models\Requisite;
 use App\Models\ServiceSolution;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Cookie;
 
 class BaseController extends Controller
 {
@@ -37,7 +35,7 @@ class BaseController extends Controller
         $this->getItem('projects_all', new Project());
         $this->getItem('project_types', new ProjectType(), 'created_at');
         $this->getItem('partners', new Partner());
-        $this->data['events'] = Event::where('date','>',time())->where('active',1)->get();
+        $this->data['events'] = Event::where('date','>',time())->orWhere('date',null)->where('active',1)->get();
         return $this->showView('home');
     }
 
@@ -49,10 +47,10 @@ class BaseController extends Controller
 
     protected function showView($view) :View
     {
-//        if (!isset($_COOKIE['cookie_info'])) {
-//            setcookie('cookie_info', true, time() + 3600);
-//            $cookieInfo = true;
-//        } else $cookieInfo = false;
+        if (!Session::has('cookie_info')) {
+            Session::put('cookie_info', true);
+            $cookieInfo = true;
+        } else $cookieInfo = false;
 
         return view($view, array_merge(
             $this->data,
@@ -77,7 +75,7 @@ class BaseController extends Controller
                 'mainPhone' => Requisite::find(1),
                 'mainEmail' => Requisite::find(2),
                 'requisites' => Requisite::where('id','>',2)->where('active',1)->get(),
-                'cookieInfo' => true
+                'cookieInfo' => $cookieInfo
             ]
         ));
     }

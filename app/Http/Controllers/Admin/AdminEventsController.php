@@ -46,7 +46,7 @@ class AdminEventsController extends AdminBaseController
                 'name' => trans('admin.future_events'),
             ];
             $this->data['current_sub_item'] = 'future';
-            $this->data['events'] = Event::where('date','>',time())->orderBy('date')->get();
+            $this->data['events'] = Event::where('date','>',time())->orwhere('date',null)->orderBy('date')->get();
             return $this->showView('events');
         } else if (request('id') == 'past') {
             $this->breadcrumbs[] = [
@@ -84,11 +84,11 @@ class AdminEventsController extends AdminBaseController
             new Event(),
             [
                 'name' => $this->validationString,
-                'date' => $this->validationDate
+//                'date' => $this->validationDate
             ]
         );
         $this->saveCompleteMessage();
-        return redirect(route('admin.events',['id' => ($event->date > time() ? 'future' : 'past' )]));
+        return redirect(route('admin.events',['id' => (!isset($event->date) || $event->date > time() ? 'future' : 'past' )]));
     }
 
     /**

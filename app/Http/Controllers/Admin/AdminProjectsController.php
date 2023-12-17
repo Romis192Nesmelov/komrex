@@ -65,9 +65,9 @@ class AdminProjectsController extends AdminBaseController
             new Project(),
             [
                 'head' => $this->validationString,
-                'date' => 'nullable|min:3|max:15',
+                'date' => $this->validationDate,
                 'text' => $this->validationText,
-                'presentation' => $this->validationPdf,
+                'pdf' => $this->validationPdf,
                 'project_type_id' => 'nullable|integer|exists:project_types,id',
             ],
         );

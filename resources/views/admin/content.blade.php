@@ -4,7 +4,7 @@
     <div class="panel panel-flat">
         @include('admin.blocks.title_block')
         <div class="panel-body">
-            <form class="form-horizontal" action="{{ route('admin.edit_content') }}" method="post">
+            <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.edit_content') }}" method="post">
                 @csrf
                 @include('blocks.hidden_id_block',['id' => $content->id])
                 <div class="panel panel-flat">
@@ -17,12 +17,15 @@
                             'placeholder' => trans('admin.head'),
                             'value' => $content->head
                         ])
-                        @include('admin.blocks.textarea_block',[
+                        @include('blocks.textarea_block',[
                             'name' => 'text',
                             'label' => trans('admin.text'),
                             'value' => $content->text,
                             'simple' => $content->id != 6
                         ])
+                        @if ($content->id == 6)
+                            @include('admin.blocks.input_file_block', ['label' => 'PDF', 'name' =>  'pdf'])
+                        @endif
                         @include('admin.blocks.save_button_block')
                     </div>
                 </div>

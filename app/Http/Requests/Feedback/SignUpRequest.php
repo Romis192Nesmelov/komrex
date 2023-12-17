@@ -28,6 +28,7 @@ class SignUpRequest extends FormRequest
             'event_id' => 'required|integer|exists:events,id',
             'name' => $this->validationString,
             'phone' => $this->validationPhone,
+            'comments' => $this->validationText,
             'i_agree' => 'accepted'
         ];
     }

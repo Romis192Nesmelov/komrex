@@ -7,6 +7,7 @@ class Home extends Model
 {
     protected $fillable = [
         'head',
-        'text'
+        'text',
+        'pdf'
     ];
 }

@@ -5,5 +5,7 @@
     <p>От пользователя с именем: {{ $name }}</p>
     <p>Телефон: {{ $phone }}</p>
     <h3>Запись на мероприятие «{{ $event_name }}»</h3>
-    <p>Дата мероприятия: {{ $event_date }}</p>
+    @if ($event_date)
+        <p>Дата мероприятия: {{ $event_date }}</p>
+    @endif
 @endsection

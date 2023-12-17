@@ -14,7 +14,7 @@
                     'placeholder' => trans('admin.head'),
                     'value' => $content->head
                 ])
-                @include('admin.blocks.textarea_block',[
+                @include('blocks.textarea_block',[
                     'name' => 'text',
                     'label' => trans('admin.text'),
                     'value' => $content->text,

@@ -14,17 +14,17 @@
         </div>
         <div class="row">
             <x-offer head="{{ trans('menu.active_monitoring') }}" href="{{ route('active_monitoring') }}" text="{{ trans('content.important_tool') }}" delay=".5">
-                @include('blocks.offer_image_block',['image' => 'images/offers/offer1.png'])
+                @include('blocks.offer_image_block',['image' => 'images/offers/offer1.jpg'])
             </x-offer>
             <x-offer head="{{ trans('menu.technics') }}" href="{{ route('technics') }}" delay="1">
                 @include('blocks.offer_image_block',[
                     'image' => 'images/offers/offer2_1.jpg',
-                    'href' => '#',
+                    'href' => route('technics',['slug' => 'komrex']),
                     'hrefText' => trans('content.all_komrex_equipment')
                 ])
                 @include('blocks.offer_image_block',[
                     'image' => 'images/offers/offer2_2.jpg',
-                    'href' => '#',
+                    'href' => route('technics',['slug' => 'current-offer']),
                     'hrefText' => trans('content.current_offer')
                 ])
             </x-offer>
@@ -106,7 +106,7 @@
                             {!! $contents[5]->text !!}
                         </div>
                         @include('blocks.download_block',[
-                            'href' => '#',
+                            'href' => $contents[5]->pdf,
                             'icon' => 'download_yellow_icon.svg',
                             'description' => trans('content.presentation_of_the_company'),
                             'kb' => 340
@@ -194,10 +194,12 @@
             <div class="event-block row">
                 <div class="col-lg-8 col-sm-12">
                     <h3>{{ $event->name }}</h3>
-                    <div class="date">
-                        <img src="{{ asset('images/icon_clock.svg') }}" />
-                        {{ date('d.m.Y',$event->date) }}
-                    </div>
+                    @if ($event->date)
+                        <div class="date">
+                            <img src="{{ asset('images/icon_clock.svg') }}" />
+                            {{ date('d.m.Y',$event->date) }}
+                        </div>
+                    @endif
                 </div>
                 <div class="sign-up col-lg-4 col-sm-12">
                     {{ trans('content.sign_up') }}

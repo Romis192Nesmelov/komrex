@@ -61,7 +61,7 @@ class AdminActiveMonitoringController extends AdminBaseController
             $pathToFile = 'images/am_images/';
             $fileName = 'am_big.'.$request->file('image')->getClientOriginalExtension();
             $activeMonitoring[2]->image = $pathToFile.$fileName;
-            $request->file('images')->move(base_path('public/'.$pathToFile), $fileName);
+            $request->file('image')->move(base_path('public/'.$pathToFile), $fileName);
         }
 
         $this->saveCompleteMessage();

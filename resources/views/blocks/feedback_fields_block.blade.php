@@ -18,12 +18,20 @@
     </div>
     <div class="col-lg-4 col-sm-12">
         @include('blocks.button_block',[
-            'addClass' => $buttonAddClass,
+            'addClass' => 'w-100 '.$buttonAddClass,
             'disabled' => true,
             'primary' => $primary,
             'buttonType' => 'submit',
             'buttonText' => $button_text,
             'arrowIcon' => $arrowIcon
+        ])
+    </div>
+    <div class="col-12 pt-3">
+        @include('blocks.textarea_block',[
+            'name' => 'comments',
+            'placeholder' => trans('content.comments'),
+            'value' => '',
+            'simple' => true
         ])
     </div>
     <div class="col-12 ps-4 pt-3">

@@ -23,7 +23,7 @@
                                 'placeholder' => trans('admin.head'),
                                 'value' => isset($active_monitoring_step) ? $active_monitoring_step->head : ''
                             ])
-                            @include('admin.blocks.textarea_block',[
+                            @include('blocks.textarea_block',[
                                 'name' => 'text',
                                 'label' => trans('admin.text'),
                                 'value' => isset($active_monitoring_step) ? $active_monitoring_step->text : '',

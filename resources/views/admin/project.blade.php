@@ -5,7 +5,7 @@
     <div class="panel panel-flat">
         @include('admin.blocks.title_block')
         <div class="panel-body">
-            <form class="form-horizontal" action="{{ route('admin.edit_project') }}" method="post">
+            <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.edit_project') }}" method="post">
                 @csrf
                 @if (isset($project))
                     @include('blocks.hidden_id_block',['id' => $project->id])
@@ -19,13 +19,10 @@
                             'option' => 'name',
                             'selected' => request('parent_id')
                         ])
-                        @include('blocks.input_block', [
-                            'label' => trans('admin.date'),
+                        @include('admin.blocks.date_block',[
+                            'label' => trans('admin.event_date'),
                             'name' => 'date',
-                            'type' => 'text',
-                            'max' => 15,
-                            'placeholder' => trans('admin.date'),
-                            'value' => isset($project) ? $project->date : ''
+                            'value' => isset($project) ? $project->date : time()
                         ])
                         @include('blocks.input_block', [
                             'label' => trans('admin.head'),
@@ -35,7 +32,7 @@
                             'placeholder' => trans('admin.head'),
                             'value' => isset($project) ? $project->head : ''
                         ])
-                        @include('admin.blocks.textarea_block',[
+                        @include('blocks.textarea_block',[
                             'name' => 'text',
                             'label' => trans('admin.text'),
                             'value' => isset($project) ? $project->text : '',

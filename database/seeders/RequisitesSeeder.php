@@ -14,14 +14,14 @@ class RequisitesSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['name' => 'телефон', 'value' => '+7(495)134-03-07', 'active' => 1],
+            ['name' => 'телефон', 'value' => '+7(499)705-22-90', 'active' => 1],
             ['name' => 'email', 'value' => 'info@komrex.ru', 'active' => 1],
             ['name' => 'ОГРН', 'value' => '1235000000465', 'active' => 1],
             ['name' => 'ИНН', 'value' => '5017131064', 'active' => 1],
             ['name' => 'Расчетный счет', 'value' => '40702810038000354709 в ПАО «Сбербанк»', 'active' => 1],
             ['name' => 'БИК', 'value' => '044525225', 'active' => 1],
             ['name' => 'Корр. счет', 'value' => '30101810400000000225', 'active' => 1],
-            ['value' => 'г. Москва', 'active' => 1],
+            ['name' => 'Город', 'value' => 'г. Москва', 'active' => 1],
         ];
 
         foreach ($data as $item) {

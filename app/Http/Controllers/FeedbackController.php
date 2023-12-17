@@ -25,7 +25,7 @@ class FeedbackController extends Controller
         $event = Event::find($request->event_id);
         $fields = $request->validated();
         $fields['event_name'] = $event->name;
-        $fields['event_date'] = date('d.m.Y',$event->date);
+        $fields['event_date'] = $event->date ? date('d.m.Y',$event->date) : null;
         EventPerson::create([
             'name' => $fields['name'],
             'phone' => $fields['phone'],

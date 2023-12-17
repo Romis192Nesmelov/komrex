@@ -142,9 +142,13 @@ button.btn.btn-secondary.white {
     color: black;
 }
 
+.modal-dialog {
+    border-radius: 30px;
+}
+
 .modal.styled .modal-dialog {
     max-width: 60%;
-    padding: 50px;
+    padding: 30px;
     margin: 5% auto;
     background: url("../images/body_bg.svg") no-repeat #F7F7F5;
     background-size: cover;
@@ -304,10 +308,10 @@ button.btn.btn-secondary:hover,
 
 #float-menu {
     width: 100%;
-    top: -700px;
+    top: -750px;
     left: 0;
     display: none;
-    padding: 89px 0 30px 0;
+    padding: 30px 0;
     position: absolute;
     background-color: #121524;
     z-index: 998;
@@ -359,6 +363,16 @@ button.btn.btn-secondary:hover,
     text-transform: uppercase;
 }
 
+.main-menu li img {
+    width: 18px;
+    position: relative;
+    margin-top: -5px;
+}
+
+.main-menu li a:hover img {
+    content: url('../images/icon_home_yellow.svg');
+}
+
 .main-menu a {
     color: white;
 }
@@ -379,6 +393,13 @@ button.btn.btn-secondary:hover,
 
 .pair a {
     color: white;
+}
+
+.pair .number_for {
+    padding-right: 5px;
+    color: white;
+    font-size: 10px;
+    text-align: center;
 }
 
 .phone-icon {
@@ -543,7 +564,7 @@ button.btn.btn-secondary:hover,
 }
 
 .offer-block .offer-href {
-    margin-bottom: 40px;
+    margin-bottom: 57px;
 }
 
 .offer-block .offer-href:last-child {
@@ -575,6 +596,11 @@ input:not(.form-check-input) {
     color: #121524 !important;
     padding: 8px 20px !important;
     border-radius: 50px !important;
+}
+
+textarea {
+    border-radius: 50px !important;
+    padding: 20px !important;
 }
 
 .form-check-input:checked {
@@ -1113,7 +1139,7 @@ input.error {
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-footer {
+.footer {
     width: 100%;
     padding: 50px 80px 30px 80px;
     background-color: #121524;
@@ -1121,56 +1147,71 @@ footer {
     color: white;
 }
 
-footer > div {
+.footer > div {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-footer .footer-block {
+.footer .footer-block {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-footer .footer-block.left {
+.footer .footer-block.left {
     width: 407px;
 }
 
-footer .footer-block.right {
+.footer .footer-block.right {
     width: 496px;
     padding-top: 80px;
 }
 
-footer .footer-block button {
+.footer .footer-block button {
     margin-top: 20px;
 }
 
-footer .footer-block button > span {
+.footer .footer-block button > span {
     margin-right: 20px;
 }
 
-footer .download-block img:hover {
+.footer .download-block img:hover {
     content: url('../images/download_yellow_icon.svg');
 }
 
-footer h1 {
+.footer h1 {
     color: white;
     margin-bottom: 80px;
 }
 
-footer a {
+.footer a {
     color: white;
 }
 
-footer .email a {
+.footer .contacts a.mail-block {
     color: #E9A127;
     font-size: 34px;
 }
 
-footer .email a:hover {
+.footer .contacts a:hover {
     color: gray;
+}
+
+.footer .contacts .pair {
+    width: 272px;
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+.footer .contacts .pair .number_for {
+    font-size: 12px;
+}
+
+.footer #ru-tube-href {
+    width: 120px;
+    margin-top: 20px;
 }
 
 #cookie-info-modal img.logo {
@@ -1193,7 +1234,7 @@ footer .email a:hover {
 
 @media (max-width: 1439px) {
     #top-line .main-menu {
-        font-size: .8em;
+        font-size: .75em;
     }
 
     #top-line .main-menu li {
@@ -1564,36 +1605,36 @@ footer .email a:hover {
     /*    flex-direction: column;*/
     /*}*/
 
-    footer {
+    .footer {
         font-size: 14px;
         padding: 30px 20px 10px 30px;
     }
 
-    footer > div {
+    .footer > div {
         flex-direction: column;
     }
 
-    footer .footer-block {
+    .footer .footer-block {
         width: 100% !important;
     }
 
-    footer .footer-block.right {
+    .footer .footer-block.right {
         padding-top: 30px;
     }
 
-    footer h1 {
+    .footer h1 {
         margin-bottom: 30px;
     }
 
-    footer .email a {
+    .footer .email a {
         font-size: 24px;
     }
 
-    footer .footer-block button {
+    .footer .footer-block button {
         min-width: 200px;
     }
 
-    footer .footer-block button > span {
+    .footer .footer-block button > span {
         margin-right: 0;
     }
 

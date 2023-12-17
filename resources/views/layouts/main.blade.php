@@ -48,13 +48,14 @@
 
 <body>
     @yield('content')
-    <footer class="wow animate__animated animate__fadeIn" data-scroll-destination="contacts">
+    <div class="footer wow animate__animated animate__fadeIn" data-scroll-destination="contacts">
         <div>
             <div class="footer-block left">
                 <h2>{{ trans('content.contact_information') }}</h2>
                 {{ trans('content.email_address') }}
-                <div class="email">
+                <div class="contacts">
                     @include('blocks.email_block', ['email' => $mainEmail->value])
+                    @include('blocks.menu_buttons_pair_block', ['mainPhone' => $mainPhone])
                     @include('blocks.button_block',[
                         'addClass' => 'footer-button',
                         'primary' => true,
@@ -70,6 +71,9 @@
                     @endif
                     {!! $requisite->value.(!$loop->last ? '<br>' : '') !!}
                 @endforeach
+                <a href="https://rutube.ru/channel/32381551/" target="_blank">
+                    <img id="ru-tube-href" src="{{ asset('images/ru_tube.png') }}" />
+                </a>
                 @include('blocks.download_block',[
                     'href' => asset('pdfs/requisites.pdf'),
                     'icon' => 'download_white_icon.svg',
@@ -80,11 +84,13 @@
         </div>
         <div id="down-line" class="w-60">
             <div class="mb-2 mb-lg-0"><a href="#">{{ trans('content.copyright') }}</a></div>
-            <div class="mb-2 mb-lg-0"><a href="#">{{ trans('content.processing_of_personal_data') }}</a></div>
+            <div class="mb-2 mb-lg-0"><a href="{{ route('privacy') }}">{{ trans('content.privacy') }}</a></div>
             <div><a href="#">{{ trans('content.terms_of_use') }}</a></div>
         </div>
-    </footer>
+    </div>
+
     @include('blocks.message_modal_block')
+
     <x-smodal id="feedback-modal" head="{{ trans('content.write_to_the_company') }}">
         <form method="POST" action="{{ route('callback') }}">
             @csrf
@@ -98,9 +104,11 @@
             ])
         </form>
     </x-smodal>
+
     <x-smodal id="personal-data-modal" head="{{ trans('content.transfer_and_processing_of_personal_data') }}">
 
     </x-smodal>
+
     @if ($cookieInfo)
         <x-smodal id="cookie-info-modal" head="{{ trans('content.welcome_to_komreks') }}">
             <img class="logo" src="{{ asset('images/logo_dark.svg') }}" />

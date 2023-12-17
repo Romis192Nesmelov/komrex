@@ -14,13 +14,28 @@ class ProjectResourse extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $months = [
+            'Январь',
+            'Февраль',
+            'Март',
+            'Апрель',
+            'Май',
+            'Июнь',
+            'Июль',
+            'Август',
+            'Сентябрь',
+            'Октябрь',
+            'Ноябрь',
+            'Декабрь'
+        ];
+
         return [
             'id' => $this->id,
             'head' => $this->head,
-            'date' => $this->date,
+            'date' => $months[(int)date('n', $this->date)-1].' '.date('Y',$this->date),
             'text' => $this->text,
-            'pdf' => $this->pdf,
-            'size' => $this->presentation ? filesize(base_path('public/'.$this->presentation)) : 0,
+            'pdf' => asset($this->pdf),
+            'size' => $this->pdf ? filesize(base_path('public/'.$this->pdf)) : 0,
             'images' => $this->images
         ];
     }

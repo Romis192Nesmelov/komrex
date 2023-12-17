@@ -9,7 +9,7 @@
                 @include('blocks.hidden_id_block',['id' => $quote->id])
                 <div class="panel panel-flat">
                     <div class="panel-body">
-                        @include('admin.blocks.textarea_block',[
+                        @include('blocks.textarea_block',[
                             'name' => 'text',
                             'label' => trans('admin.text'),
                             'value' => $quote->text,

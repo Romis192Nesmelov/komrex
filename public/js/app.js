@@ -136,7 +136,7 @@ $(document).ready(function () {
             description.html(data.text);
 
             if (data.pdf) {
-                downloadHref.attr('href','/' + data.pdf);
+                downloadHref.attr('href', data.pdf);
                 downloadSize.html(data.size);
                 downloadBlock.show();
             } else {
@@ -268,7 +268,7 @@ $(document).ready(function () {
     if (window.showCookieInfo) {
         setTimeout(() => {
             cookieInfoModal.modal('show');
-        }, 30000);
+        }, 1000);
     }
 
     bindFancybox();

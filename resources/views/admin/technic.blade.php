@@ -84,14 +84,14 @@
                             </div>
                             @include('admin.blocks.input_file_block', ['label' => trans('admin.upload_the_characteristics_file'), 'name' =>  'csv'])
                             @if (isset($technic) && $technic->characteristics)
-                                @include('admin.blocks.textarea_block',[
+                                @include('blocks.textarea_block',[
                                     'name' => 'characteristics',
                                     'label' => trans('admin.characteristics'),
                                     'value' => $technic->characteristics,
                                     'simple' => false
                                 ])
                             @endif
-                            @include('admin.blocks.textarea_block',[
+                            @include('blocks.textarea_block',[
                                 'name' => 'description',
                                 'label' => trans('admin.description'),
                                 'value' => isset($technic) ? $technic->description : '',

@@ -18,7 +18,7 @@ class EventFactory extends Factory
     {
         return [
             'name' => fake()->jobTitle(),
-            'date' => time() * (rand(0,1) ? 1 : -1) + (60 * 60 * 24 * (rand(5,50))),
+//            'date' => time() * (rand(0,1) ? 1 : -1) + (60 * 60 * 24 * (rand(5,50))),
             'active' => 1
         ];
     }

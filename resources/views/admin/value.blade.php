@@ -23,7 +23,7 @@
                                 'placeholder' => trans('admin.head'),
                                 'value' => isset($value) ? $value->head : ''
                             ])
-                            @include('admin.blocks.textarea_block',[
+                            @include('blocks.textarea_block',[
                                 'name' => 'text',
                                 'label' => trans('admin.text'),
                                 'value' => isset($value) ? $value->text : '',

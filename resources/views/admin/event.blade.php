@@ -10,14 +10,14 @@
                 @if (isset($event))
                     @include('blocks.hidden_id_block',['id' => $event->id])
                 @endif
-                <div class="col-lg-3 col-md-4 col-sm-12">
-                    @include('admin.blocks.date_block',[
-                        'label' => trans('admin.event_date'),
-                        'name' => 'date',
-                        'value' => isset($event) ? $event->date : (time() + (24 * 3))
-                    ])
-                </div>
-                <div class="col-lg-9 col-md-8 col-sm-12">
+{{--                <div class="col-lg-3 col-md-4 col-sm-12">--}}
+{{--                    @include('admin.blocks.date_block',[--}}
+{{--                        'label' => trans('admin.event_date'),--}}
+{{--                        'name' => 'date',--}}
+{{--                        'value' => isset($event) ? $event->date : (time() + (24 * 3))--}}
+{{--                    ])--}}
+{{--                </div>--}}
+                <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="panel panel-flat">
                         <div class="panel-body">
                             @include('blocks.input_block', [
@@ -28,9 +28,9 @@
                                 'placeholder' => trans('admin.name'),
                                 'value' => isset($event) ? $event->name : ''
                             ])
-                            @if ($current_sub_item == 'future')
+{{--                            @if ($current_sub_item == 'future')--}}
                                 @include('admin.blocks.active_checkbox_block', ['checked' => isset($event) ? $event->active : true])
-                            @endif
+{{--                            @endif--}}
                             @include('admin.blocks.save_button_block')
                         </div>
                     </div>

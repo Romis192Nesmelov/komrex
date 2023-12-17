@@ -45,7 +45,8 @@ class AdminContentController extends AdminBaseController
             new Home(),
             [
                 'head' => $this->validationString,
-                'text' => $this->validationText
+                'text' => $this->validationText,
+                'pdf' => $this->validationPdf,
             ]
         );
         $this->saveCompleteMessage();

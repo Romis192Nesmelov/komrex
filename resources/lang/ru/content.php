@@ -61,4 +61,7 @@ return [
     'reviews_from_our_clients' => 'Отзывы наших клиентов',
     'transfer_and_processing_of_personal_data' => 'Передача и обработка персональных данных',
     'request_a_price' => 'Запросить цену',
+    'number_for_incoming_calls' => 'Номер для входящих звонков КОМРЭКС',
+    'comments' => 'Комментарии',
+    'privacy' => 'Политика конфиденциальности',
 ];

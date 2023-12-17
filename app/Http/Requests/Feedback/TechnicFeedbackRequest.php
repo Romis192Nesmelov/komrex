@@ -28,6 +28,7 @@ class TechnicFeedbackRequest extends FormRequest
             'id' => 'required|integer|exists:technics,id',
             'name' => $this->validationString,
             'phone' => $this->validationPhone,
+            'comments' => $this->validationText,
             'i_agree' => 'accepted'
         ];
     }

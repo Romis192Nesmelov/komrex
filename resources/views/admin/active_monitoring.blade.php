@@ -18,12 +18,12 @@
 {{--                            'max' => 255,--}}
 {{--                            'value' => $content[0]->head--}}
 {{--                        ])--}}
-                        @include('admin.blocks.textarea_block',[
+                        @include('blocks.textarea_block',[
                             'name' => 'content1_text',
                             'value' => $content[0]->text,
                             'simple' => true
                         ])
-                        @include('admin.blocks.textarea_block',[
+                        @include('blocks.textarea_block',[
                             'name' => 'content2_text',
                             'value' => $content[1]->text,
                             'simple' => true
@@ -39,14 +39,14 @@
                                     'max' => 255,
                                     'value' => $content[2]->head
                                 ])
-                                @include('admin.blocks.textarea_block',[
+                                @include('blocks.textarea_block',[
                                     'name' => 'content3_text',
                                     'value' => $content[2]->text,
                                     'simple' => false
                                 ])
                             </div>
                         </div>
-                        @include('admin.blocks.textarea_block',[
+                        @include('blocks.textarea_block',[
                             'name' => 'content4_text',
                             'value' => $content[3]->text,
                             'simple' => true

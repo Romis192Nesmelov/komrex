@@ -1,4 +1,5 @@
 <ul class="main-menu">
+    <li><a href="{{ route('home') }}"><img src="{{ asset('images/icon_home_white.svg') }}" /></a></li>
     @foreach($mainMenu as $menuKey => $itemMenu)
         <li {{ $menuKey == $activeMainMenu ? 'class=active' : '' }}>
             @if (request()->path() != '/' && !$itemMenu['href'])

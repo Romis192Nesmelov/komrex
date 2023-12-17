@@ -32,16 +32,25 @@ class AdminRequisitesController extends AdminBaseController
             'id_2' => 'required|email',
             'id_3' => 'required|size:13',
             'id_4' => 'required|size:10',
-            'id_5' => 'required|min:3|max:255',
+            'id_5' => $this->validationString,
             'id_6' => 'required|size:9',
             'id_7' => 'required|size:20',
+            'id_8' => $this->validationString,
+            'pdf' => $this->validationPdf,
         ]);
         foreach ($fields as $field => $value) {
-            $id = (int)str_replace('id_','',$field);
-            $requisite = Requisite::find($id);
-            $requisite->value = $value;
-            $requisite->save();
+            if ($field !== 'pdf') {
+                $id = (int)str_replace('id_','',$field);
+                $requisite = Requisite::find($id);
+                $requisite->value = $value;
+                $requisite->save();
+            }
         }
+
+        if ($request->hasFile('pdf')) {
+            $request->file('pdf')->move(base_path('public/pdfs'), 'requisites.pdf');
+        }
+
         $this->saveCompleteMessage();
         return redirect(route('admin.requisites'));
     }

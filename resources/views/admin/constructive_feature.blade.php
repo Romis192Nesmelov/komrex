@@ -27,7 +27,7 @@
                                 'placeholder' => trans('admin.head'),
                                 'value' => isset($constructive_feature) ? $constructive_feature->head : ''
                             ])
-                            @include('admin.blocks.textarea_block',[
+                            @include('blocks.textarea_block',[
                                 'name' => 'text',
                                 'label' => trans('admin.text'),
                                 'value' => isset($constructive_feature) ? $constructive_feature->text : '',
