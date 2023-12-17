@@ -14,7 +14,9 @@
         </div>
         <div class="row">
             <x-offer head="{{ trans('menu.active_monitoring') }}" href="{{ route('active_monitoring') }}" text="{{ trans('content.important_tool') }}" delay=".5">
-                @include('blocks.offer_image_block',['image' => 'images/offers/offer1.jpg'])
+                <a href="{{ route('active_monitoring') }}">
+                    @include('blocks.offer_image_block',['image' => 'images/offers/offer1.jpg'])
+                </a>
             </x-offer>
             <x-offer head="{{ trans('menu.technics') }}" href="{{ route('technics') }}" delay="1">
                 @include('blocks.offer_image_block',[
@@ -29,7 +31,9 @@
                 ])
             </x-offer>
             <x-offer head="{{ trans('menu.units_and_components') }}" href="#" text="{{ trans('content.supply_of_individual_units') }}" delay="1.5">
-                @include('blocks.offer_image_block',['image' => 'images/offers/offer3.jpg'])
+                <a href="#">
+                    @include('blocks.offer_image_block',['image' => 'images/offers/offer3.jpg'])
+                </a>
             </x-offer>
         </div>
     </div>

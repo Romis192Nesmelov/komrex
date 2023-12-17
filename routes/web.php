@@ -67,6 +67,7 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::controller(AdminContentController::class)->group(function () {
         Route::get('/contents', 'contents')->name('contents');
         Route::post('/edit-content', 'editContent')->name('edit_content');
+        Route::post('/edit-home-image', 'editHomeImage')->name('edit_home_image');
     });
 
     Route::controller(AdminSolutionsController::class)->group(function () {

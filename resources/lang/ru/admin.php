@@ -165,4 +165,6 @@ return [
     'reviews' => 'Отзывы наших клиентов',
     'do_you_really_want_delete_this_review' => 'Вы действительно хотите удалить этот отзыв?',
     'add_review' => 'Добавить отзыв',
+
+    'image_on_the_main_page' => 'Картинка на главной',
 ];
