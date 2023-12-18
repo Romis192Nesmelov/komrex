@@ -148,5 +148,6 @@
         </x-smodal>
         <script>window.showCookieInfo = true;</script>
     @endif
+    <script crossorigin="anonymous" async type="text/javascript" src="//api.pozvonim.com/widget/callback/v3/5745b171b14971eea5f8d09e30aa2c02/connect" id="check-code-pozvonim" charset="UTF-8"></script>
 </body>
 </html>
