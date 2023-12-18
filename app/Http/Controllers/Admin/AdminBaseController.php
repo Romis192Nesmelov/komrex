@@ -105,6 +105,15 @@ class AdminBaseController extends Controller
                 'key' => 'technic_files',
                 'hidden' => true,
             ],
+            'unit_types' => [
+                'key' => 'unit_types',
+                'icon' => 'icon-cog6',
+                'hidden' => false,
+            ],
+            'units' => [
+                'key' => 'units',
+                'hidden' => true,
+            ],
             'active_monitorings' => [
                 'key' => 'active_monitorings',
                 'icon' => 'icon-satellite-dish2',

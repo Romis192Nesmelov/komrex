@@ -160,12 +160,15 @@ $(document).ready(function () {
     });
 
     // Callback modal
-    $('.phone-icon, .pair-buttons button, .consulting-button, .consulting-button-1, .consulting-button-2, .footer-button').click(function () {
+    $('.phone-icon, .pair-buttons button, .consulting-button, .consulting-button-1, .consulting-button-2, .units-button, .footer-button').click(function () {
         const removingLeftClasses = [
             'btn btn-primary',
             'btn btn-secondary',
             'white',
             'withArrow',
+            'me-lg-2',
+            'mb-2',
+            'mb-lg-0'
         ];
         let clearId = $(this).attr('class'),
             feedbackModal = $('#feedback-modal');
@@ -212,6 +215,14 @@ $(document).ready(function () {
         technicFeedbackModal.modal('show');
     });
 
+    // Unit feedback modal
+    const unitFeedbackModal = $('#unit-feedback-modal');
+    $('button.unit-button').click(function () {
+        let technicId = parseInt($(this).attr('id').replace('unit',''));
+        unitFeedbackModal.find('input[name=id]').val(technicId);
+        unitFeedbackModal.modal('show');
+    });
+
     // Open left menu
     $('.left-menu .dropdown-active').click(function () {
         const dropDownList = $('.dropdown-list');
@@ -229,11 +240,11 @@ $(document).ready(function () {
             $('.icons-view .icon.active').removeClass('active');
             $(this).addClass('active');
 
-            $('.technics-block > div').toggleClass('col-lg-4 col-lg-12');
-            $('.technics-block .image').toggleClass('col-lg-12 col-lg-3');
-            $('.technics-block .content').toggleClass('col-lg-12 col-lg-9');
-            $('.technics-block .content div').toggleClass('col-lg-12 col-lg-4');
-            $('.technics-block button').toggleClass('m-auto');
+            $('.tech-block > div').toggleClass('col-lg-4 col-lg-12');
+            $('.tech-block .image').toggleClass('col-lg-12 col-lg-3');
+            $('.tech-block .content').toggleClass('col-lg-12 col-lg-9');
+            $('.tech-block .content div').toggleClass('col-lg-12 col-lg-4');
+            $('.tech-block button').toggleClass('m-auto');
         }
     });
 

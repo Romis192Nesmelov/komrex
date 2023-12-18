@@ -14,13 +14,8 @@
                 @if (isset($technic))
                     @include('blocks.hidden_id_block',['id' => $technic->id])
                 @endif
-                @include('blocks.hidden_id_block',[
-                    'name' => 'technic_type_id',
-                    'id' => request('parent_id')
-                ])
                 <div class="col-lg-3 col-md-4 col-sm-12">
                     <div class="panel panel-flat">
-                        <x-atitle>{{ trans('admin.komrex_technic') }}</x-atitle>
                         <div class="panel-body">
                             @include('admin.blocks.select_block',[
                                 'name' => 'technic_type_id',
@@ -29,6 +24,11 @@
                                 'option' => 'name',
                                 'selected' => request('parent_id')
                             ])
+                        </div>
+                    </div>
+                    <div class="panel panel-flat">
+                        <x-atitle>{{ trans('admin.komrex_technic') }}</x-atitle>
+                        <div class="panel-body">
                             @include('admin.blocks.radio_button_block',[
                                 'name' => 'komrex',
                                 'values' => [
@@ -37,6 +37,10 @@
                                 ],
                                 'activeValue' => isset($technic) ? $technic->komrex : 1
                             ])
+                        </div>
+                    </div>
+                    <div class="panel panel-flat">
+                        <div class="panel-body">
                             @include('admin.blocks.active_checkbox_block', ['checked' => isset($technic) ? $technic->active : true])
                         </div>
                     </div>

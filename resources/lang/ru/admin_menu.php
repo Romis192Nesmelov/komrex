@@ -30,4 +30,7 @@ return [
     'technics' => 'Техника',
     'active_monitorings' => 'Активный мониторинг',
     'active_monitorings_description' => 'Редактирование раздела «Актив мониторинг»',
+    'unit_types' => 'Типы агрегатов',
+    'unit_types_description' => 'Добавление, удаление и редактирование агрегатов',
+    'units' => 'Агрегаты и компоненты',
 ];

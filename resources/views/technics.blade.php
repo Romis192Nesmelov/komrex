@@ -32,21 +32,18 @@
                     <img id="view-rows" class="icon" src="{{ asset('images/icon_rows.svg') }}">
                 </div>
             </div>
-            <div class="technic-container">
+            <div class="tech-container">
                 <div class="left-menu">
-                    @include('blocks.left_menu_block', ['hideActive' => false])
-                    <div class="dropdown-active">
-                        <span>{{ $current_type->name }}</span>
-                        <img src="{{ asset('images/arrow_cir_to_down_yellow.svg') }}" />
-                        <div class="dropdown-list">
-                            @include('blocks.left_menu_block', ['hideActive' => true])
-                        </div>
-                    </div>
-                    <div class="advertising wow animate__animated animate__slideInLeft" data-wow-offset="10">
-                        <img class="w-100" src="{{ asset('images/advertising.png') }}" />
-                    </div>
+                    @include('blocks.left_menu_block', [
+                        'types' => $technic_types,
+                        'hideActive' => false
+                    ])
+                    @include('blocks.dropdown_left_menu_block',[
+                        'types' => $technic_types
+                    ])
+                    @include('blocks.advertising_block')
                 </div>
-                <div class="technics-block row">
+                <div class="tech-block row">
                     @foreach ($technics[$relation] as $k => $technic)
                         @if ($technic->images->count())
                             <div class="col-lg-4 col-md-12 wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.1 }}s">
@@ -60,7 +57,8 @@
                                         <a class="row" href="{{ route('technic',['id' => $technic->id]) }}">
                                             <div class="head col-lg-12 col-sm-12 p-2">
                                                 <h1>{{ $technic->name }}</h1>
-                                                {{ substr(explode(' ',$technics->name)[0],0,-2) }}
+{{--                                                {{ substr(explode(' ',$technics->name)[0],0,-2) }}--}}
+                                                {{ $technics->name }}
                                             </div>
                                             <div class="col-lg-12 col-sm-12 p-2">
                                                 {{ trans('content.operating_weight') }}<br>

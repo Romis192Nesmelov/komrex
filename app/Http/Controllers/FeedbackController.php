@@ -8,6 +8,7 @@ use App\Http\Requests\Feedback\TechnicFeedbackRequest;
 use App\Models\Event;
 use App\Models\EventPerson;
 use App\Models\Technic;
+use App\Models\Unit;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -41,6 +42,15 @@ class FeedbackController extends Controller
         $fields['technic_name'] = $technic->name;
         $fields['technic_type'] = $technic->technicType->name;
         return $this->sendMessage('technic_feedback', $fields);
+    }
+
+    public function unitFeedback(TechnicFeedbackRequest $request): JsonResponse
+    {
+        $unit = Unit::find($request->id);
+        $fields = $request->validated();
+        $fields['unit_name'] = $unit->name;
+        $fields['unit_type'] = $unit->unitType->name;
+        return $this->sendMessage('unit_feedback', $fields);
     }
 
     private function sendMessage(string $template, array $fields): JsonResponse

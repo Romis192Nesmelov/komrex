@@ -82,7 +82,7 @@ class AdminTechnicController extends AdminBaseController
             ],
         );
         if ($request->hasFile('csv')) {
-            $allCapsRegExp = '/^(([А-Я]+(\s)?)+)$/ui';
+//            $allCapsRegExp = '/^(([А-Я]+(\s)?)+)$/ui';
             $fileName = 'characteristics'.$technic->id.'.csv';
             $request->file('csv')->move(base_path('public/temp/'), $fileName);
             $content = file_get_contents(base_path('public/temp/'.$fileName));

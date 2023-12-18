@@ -21,7 +21,7 @@ return [
     'you_have_a_question_head' => 'Есть вопрос? Мы вам перезвоним!',
     'your_name' => 'Ваше имя',
     'phone' => 'Телефон',
-    'request_a_call_back' => 'Заказать обратный звонок',
+    'request_a_call_back' => 'Обратный звонок',
     'service_solutions' => 'Сервисные решения',
     'order_consulting' => 'Заказать консалтинг',
     'order_service' => 'Заказать услугу',

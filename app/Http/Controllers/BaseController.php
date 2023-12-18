@@ -66,7 +66,7 @@ class BaseController extends Controller
                 'secondMenu' => [
                     'active_monitoring'                 => ['href' => true],
                     'technics'                          => ['href' => true],
-                    'units_and_components'              => ['href' => false],
+                    'units_and_components'              => ['href' => true],
                     'service_solutions_and_consulting'  => ['href' => false],
                 ],
                 'metas' => $this->metas,

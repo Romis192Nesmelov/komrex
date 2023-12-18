@@ -42,5 +42,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ActiveMonitoringStepsSeeder::class);
 //        ActiveMonitoringStep::factory(4)->create();
         $this->call(ReviewsSeeder::class);
+        $this->call(UnitSeeder::class);
     }
 }

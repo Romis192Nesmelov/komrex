@@ -23,7 +23,7 @@ class TechnicController extends BaseController
 
         $this->data['current_id'] = request('id') ? request('id') : 1;
         $this->data['current_type'] = $technicType->select('name')->where('id',$this->data['current_id'])->first();
-        $this->data['technics'] = $technicType->where('id',$this->data['current_id'])->where('active',1)->with($this->data['relation'])->first();
+        if (!$this->data['technics'] = $technicType->where('id',$this->data['current_id'])->where('active',1)->with($this->data['relation'])->first()) abort(404);
         return $this->showView('technics');
     }
 

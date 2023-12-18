@@ -40,9 +40,9 @@
                     <td class="text-center">
                         @include('blocks.video_block',['video' => $item->video])
                     </td>
-                @elseif ($column == 'text')
+                @elseif ($column == 'text' || $column == 'description')
                     <td class="text-left">
-                        @include('admin.blocks.cropped_content_block',['croppingContent' => $item->text, 'length' => 200])
+                        @include('admin.blocks.cropped_content_block',['croppingContent' => $item[$column], 'length' => 200])
                     </td>
                 @elseif ($column == 'date')
                     <td class="text-center">{{ is_int($item->date) ? date('d.m.Y',$item->date) : $item->date }}</td>

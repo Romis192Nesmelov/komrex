@@ -5,6 +5,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LoginController;
 use \App\Http\Controllers\ProjectsController;
 use \App\Http\Controllers\TechnicController;
+use \App\Http\Controllers\UnitController;
 use App\Http\Controllers\ActiveMonitoringController;
 use App\Http\Controllers\Admin\AdminBaseController;
 use App\Http\Controllers\Admin\AdminUsersController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\Admin\AdminRequisitesController;
 use App\Http\Controllers\Admin\AdminEventsController;
 use App\Http\Controllers\Admin\AdminTechnicController;
 use App\Http\Controllers\Admin\AdminActiveMonitoringController;
+use App\Http\Controllers\Admin\AdminUnitController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(BaseController::class)->group(function () {
@@ -31,6 +33,7 @@ Route::controller(FeedbackController::class)->group(function () {
     Route::post('/callback', 'callback')->name('callback');
     Route::post('/sign-up', 'signUp')->name('sign_up');
     Route::post('/technic-feedback', 'technicFeedback')->name('technic_feedback');
+    Route::post('/unit-feedback', 'unitFeedback')->name('unit_feedback');
 });
 
 Route::get('/login', function () {return view('admin.login');})->name('login');
@@ -45,6 +48,8 @@ Route::controller(TechnicController::class)->group(function () {
     Route::get('/technics/{slug?}', 'technics')->name('technics');
     Route::get('/technic', 'technic')->name('technic');
 });
+
+Route::get('/units-and-components', UnitController::class)->name('units_and_components');
 
 Route::get('/active-monitoring', ActiveMonitoringController::class)->name('active_monitoring');
 
@@ -167,5 +172,15 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
 
         Route::post('/add-review', 'addReview')->name('add_review');
         Route::post('/delete-review', 'deleteReview')->name('delete_review');
+    });
+
+    Route::controller(AdminUnitController::class)->group(function () {
+        Route::get('/unit-types/{slug?}', 'unitTypes')->name('unit_types');
+        Route::post('/edit-unit-type', 'editUnitType')->name('edit_unit_type');
+        Route::post('/delete-unit-type', 'deleteUnitType')->name('delete_unit_type');
+
+        Route::get('/units/{slug?}', 'units')->name('units');
+        Route::post('/edit-unit', 'editUnit')->name('edit_unit');
+        Route::post('/delete-unit', 'deleteUnit')->name('delete_unit');
     });
 });
