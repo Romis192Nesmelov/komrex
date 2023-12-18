@@ -4,16 +4,16 @@
     @include('admin.blocks.modal_delete_block', ['id' => 'delete-icon-modal','custom_key' => 'active_monitoring_icon'])
     @include('admin.blocks.modal_delete_block', ['id' => 'delete-step-modal','custom_key' => 'active_monitoring_step'])
     @include('admin.blocks.modal_delete_block', ['id' => 'delete-review-modal','custom_key' => 'review'])
-    <div class="panel panel-flat">
-        <x-atitle>{{ trans('admin.image_on_the_active_m') }}</x-atitle>
-        <div class="panel-body">
-            <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.edit_active_monitoring_image') }}" method="post">
-                @csrf
-                @include('admin.blocks.input_image_block',['image' => 'images/active_m_image.jpg'])
-                @include('admin.blocks.save_button_block')
-            </form>
-        </div>
-    </div>
+{{--    <div class="panel panel-flat">--}}
+{{--        <x-atitle>{{ trans('admin.image_on_the_active_m') }}</x-atitle>--}}
+{{--        <div class="panel-body">--}}
+{{--            <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.edit_active_monitoring_image') }}" method="post">--}}
+{{--                @csrf--}}
+{{--                @include('admin.blocks.input_image_block',['image' => 'images/active_m_image.jpg'])--}}
+{{--                @include('admin.blocks.save_button_block')--}}
+{{--            </form>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="panel panel-flat">
         @include('admin.blocks.title_block')
         <div class="panel-body">

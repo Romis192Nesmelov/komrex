@@ -17,7 +17,7 @@ class ProjectsSeeder extends Seeder
         $types = [
             ['name' => 'Активный мониторинг', 'active' => 1],
             ['name' => 'КТО', 'active' => 1],
-            ['name' => 'Консалтинг', 'active' => 1],
+            ['name' => 'Консалтинг', 'active' => 0],
             ['name' => 'Поставки', 'active' => 1],
         ];
 

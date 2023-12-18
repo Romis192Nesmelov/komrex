@@ -12,7 +12,6 @@ class TechnicController extends BaseController
     public function technics(TechnicType $technicType, $slug=null): View
     {
         $this->activeSecondMenu = 'technics';
-        $this->data['technic_types'] = $technicType->select('id','name')->where('active',1)->get();
         if (!$slug || $slug == 'komrex') {
             $this->data['slug'] = 'komrex';
             $this->data['relation'] = 'technicsKomrex';
@@ -20,10 +19,15 @@ class TechnicController extends BaseController
             $this->data['slug'] = 'current-offer';
             $this->data['relation'] = 'technicsCurrentOffer';
         } else abort(404);
+        $this->data['technic_types'] = $technicType->select('id','name')->where('active',1)->with($this->data['relation'])->get();
+        $this->data['current_id'] = request('id') ? request('id') : 0;
 
-        $this->data['current_id'] = request('id') ? request('id') : 1;
-        $this->data['current_type'] = $technicType->select('name')->where('id',$this->data['current_id'])->first();
-        if (!$this->data['technics'] = $technicType->where('id',$this->data['current_id'])->where('active',1)->with($this->data['relation'])->first()) abort(404);
+        do {
+            $this->data['current_id']++;
+            if (!$this->data['technics'] = $technicType->where('id',$this->data['current_id'])->where('active',1)->with($this->data['relation'])->first()) abort(404);
+            $this->data['current_type'] = $technicType->select('name')->where('id',$this->data['current_id'])->first();
+        } while (!$this->data['technics'][$this->data['relation']]->count());
+
         return $this->showView('technics');
     }
 

@@ -56,11 +56,11 @@ class AdminContentController extends AdminBaseController
     /**
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function editHomeImage(Request $request): RedirectResponse
-    {
-        $this->validate($request, ['image' => $this->validationPng]);
-        $request->file('image')->move(base_path('public/images/'), 'main_image.png');
-        $this->saveCompleteMessage();
-        return redirect(route('admin.contents'));
-    }
+//    public function editHomeImage(Request $request): RedirectResponse
+//    {
+//        $this->validate($request, ['image' => $this->validationPng]);
+//        $request->file('image')->move(base_path('public/images/'), 'main_image.png');
+//        $this->saveCompleteMessage();
+//        return redirect(route('admin.contents'));
+//    }
 }

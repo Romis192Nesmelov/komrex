@@ -71,15 +71,15 @@
                     @endif
                     {!! $requisite->value.(!$loop->last ? '<br>' : '') !!}
                 @endforeach
-                <a href="https://rutube.ru/channel/32381551/" target="_blank">
-                    <img id="ru-tube-href" src="{{ asset('images/ru_tube.png') }}" />
-                </a>
                 @include('blocks.download_block',[
                     'href' => asset('pdfs/requisites.pdf'),
                     'icon' => 'download_white_icon.svg',
                     'description' => trans('content.download_details'),
                     'kb' => 340
                 ])
+                <a href="https://rutube.ru/channel/32381551/" target="_blank">
+                    <img id="ru-tube-href" src="{{ asset('images/ru_tube.png') }}" />
+                </a>
             </div>
         </div>
         <div id="down-line" class="w-60">
@@ -88,6 +88,8 @@
             <div><a href="#">{{ trans('content.terms_of_use') }}</a></div>
         </div>
     </div>
+
+    <div id="on-top-button" data-scroll="home"></div>
 
     @include('blocks.message_modal_block')
 

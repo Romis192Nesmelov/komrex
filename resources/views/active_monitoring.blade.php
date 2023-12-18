@@ -39,6 +39,11 @@
             </div>
         </div>
     </div>
+    @include('blocks.feedback_form_block',[
+        'addClass' => 'border-bottom border-white',
+        'hiddenInputName' => 'from',
+        'hiddenId' => 'active-monitoring-form',
+    ])
     <div class="content-container bg-white pt-3 pb-3 wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay=".5s">
         <div class="content">
             <p class="big w-60 mb-5">{{ $content[3]->text }}</p>
@@ -81,19 +86,14 @@
 {{--                </div>--}}
 {{--                @if (!$loop->last)<hr>@endif--}}
 {{--            @endforeach--}}
-            <h2>{{ trans('content.reviews_from_our_clients') }}</h2>
-            <div class="owl-carousel reviews">
-                @foreach ($reviews as $k => $review)
-                    <div class="wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.3 }}s">
-                        @include('blocks.fancybox_block',['image' => $review->image])
-                    </div>
-                @endforeach
-            </div>
+{{--            <h2>{{ trans('content.reviews_from_our_clients') }}</h2>--}}
+{{--            <div class="owl-carousel reviews">--}}
+{{--                @foreach ($reviews as $k => $review)--}}
+{{--                    <div class="wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.3 }}s">--}}
+{{--                        @include('blocks.fancybox_block',['image' => $review->image])--}}
+{{--                    </div>--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
         </div>
     </div>
-    @include('blocks.feedback_form_block',[
-        'addClass' => 'border-bottom border-white',
-        'hiddenInputName' => 'from',
-        'hiddenId' => 'active-monitoring-form',
-    ])
 @endsection

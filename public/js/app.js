@@ -284,7 +284,7 @@ $(document).ready(function () {
 
     bindFancybox();
     bigTablesScroll();
-    // windowScroll();
+    windowScroll();
 });
 
 const activatingProjectBlock = (prevActiveBlock, projectsId, callBack) => {
@@ -326,24 +326,29 @@ const bindFancybox = () => {
     });
 }
 
-// const  windowScroll = () => {
-//     $(window).scroll(function() {
-//         let win = $(this);
-//         if (win.scrollTop()) {
-//             window.menuScrollFlag = true;
-//             $('.section').each(function () {
-//                 let scrollData = $(this).attr('data-scroll-destination');
-//                 if ($(this).offset().top <= win.scrollTop() + 221 && scrollData) {
-//                     resetColorHrefsMenu();
-//                     $('a[data-scroll=' + scrollData + ']').parents('li.nav-item').addClass('active');
-//                 }
-//             });
-//         } else {
-//             resetColorHrefsMenu();
-//             $('a[data-scroll=home]').parents('li.nav-item').addClass('active');
-//         }
-//     });
-// }
+const  windowScroll = () => {
+    const onTopButton = $('#on-top-button');
+    $(window).scroll(function() {
+        let windowScroll = $(window).scrollTop();
+        // let win = $(this);
+        // if (win.scrollTop()) {
+        //     window.menuScrollFlag = true;
+        //     $('.section').each(function () {
+        //         let scrollData = $(this).attr('data-scroll-destination');
+        //         if ($(this).offset().top <= win.scrollTop() + 221 && scrollData) {
+        //             resetColorHrefsMenu();
+        //             $('a[data-scroll=' + scrollData + ']').parents('li.nav-item').addClass('active');
+        //         }
+        //     });
+        // } else {
+        //     resetColorHrefsMenu();
+        //     $('a[data-scroll=home]').parents('li.nav-item').addClass('active');
+        // }
+        if (windowScroll > $(window).height()) {
+            onTopButton.fadeIn();
+        } else onTopButton.fadeOut();
+    });
+}
 
 // const resetColorHrefsMenu = () => {
 //     $('li.nav-item').removeClass('active').blur();
