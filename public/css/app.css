@@ -227,6 +227,10 @@ button.btn.btn-secondary:hover,
     background-repeat: no-repeat !important;
 }
 
+#main-image.units-image {
+    background: url('../images/units_image.jpg');
+}
+
 #main-image.slim {
     height: 564px;
     justify-content: space-between;
@@ -243,6 +247,7 @@ button.btn.btn-secondary:hover,
     height: 51vw;
     background: #121524;
     padding-bottom: 30px;
+    background: url('../images/active_m_image.jpg');
     justify-content: space-between;
 }
 
@@ -252,7 +257,7 @@ button.btn.btn-secondary:hover,
     padding: 20px;
     display: flex;
     align-items: end;
-    border: 1px solid #2c2c2c;
+    border: 1px solid white;
 }
 
 #menu-container {

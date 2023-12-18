@@ -179,6 +179,17 @@ class AdminActiveMonitoringController extends AdminBaseController
         return $this->deleteSomething($request, new Review());
     }
 
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function editActiveMonitoringImage(Request $request): RedirectResponse
+    {
+        $this->validate($request, ['image' => $this->validationJpg]);
+        $request->file('image')->move(base_path('public/images/'), 'active_m_image.jpg');
+        $this->saveCompleteMessage();
+        return redirect(route('admin.active_monitoring'));
+    }
+
     private function getActiveMonitoringMenu(): void
     {
         $this->data['menu_key'] = 'active_monitorings';

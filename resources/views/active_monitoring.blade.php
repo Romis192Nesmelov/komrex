@@ -17,7 +17,7 @@
                 @foreach ($provides as $provide)
                     <div class="col-{{ round(12/count($provides)) }}">
                         <div class="provide">
-                            <p class="m-0 text-white-50 w-60">{{ $provide->text }}</p>
+                            <p class="m-0 text-white w-60">{{ $provide->text }}</p>
                         </div>
                     </div>
                 @endforeach

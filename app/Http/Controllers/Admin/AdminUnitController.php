@@ -87,4 +87,15 @@ class AdminUnitController extends AdminBaseController
     {
         return $this->deleteSomething($request, new Unit());
     }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function editUnitImage(Request $request): RedirectResponse
+    {
+        $this->validate($request, ['image' => $this->validationJpg]);
+        $request->file('image')->move(base_path('public/images/'), 'units_image.jpg');
+        $this->saveCompleteMessage();
+        return redirect(route('admin.unit_types'));
+    }
 }

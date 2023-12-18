@@ -172,6 +172,8 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
 
         Route::post('/add-review', 'addReview')->name('add_review');
         Route::post('/delete-review', 'deleteReview')->name('delete_review');
+
+        Route::post('/edit-active-monitoring-image', 'editActiveMonitoringImage')->name('edit_active_monitoring_image');
     });
 
     Route::controller(AdminUnitController::class)->group(function () {
@@ -182,5 +184,6 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
         Route::get('/units/{slug?}', 'units')->name('units');
         Route::post('/edit-unit', 'editUnit')->name('edit_unit');
         Route::post('/delete-unit', 'deleteUnit')->name('delete_unit');
+        Route::post('/edit-unit-image', 'editUnitImage')->name('edit_unit_image');
     });
 });
