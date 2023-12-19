@@ -157,7 +157,7 @@ button.btn.btn-secondary.white {
 }
 
 .modal-dialog {
-    border-radius: 30px;
+    border-radius: 20px;
 }
 
 .modal.styled .modal-dialog {
@@ -267,11 +267,22 @@ button.btn.btn-secondary:hover,
 
 #main-image.active-m .provide {
     width: 100%;
-    height: 150px;
+    height: 160px;
     padding: 20px;
     display: flex;
-    align-items: end;
-    border: 1px solid white;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #E9A127;
+    border-radius: 24px;
+}
+
+#main-image.active-m .provide img {
+    width: 43px;
+    height: 43px;
+}
+
+#main-image.active-m .provide p {
+    color: #E9A127;
 }
 
 #menu-container {
@@ -614,12 +625,14 @@ input:not(.form-check-input) {
     background-color: white;
     color: #121524 !important;
     padding: 8px 20px !important;
-    border-radius: 50px !important;
+    border-radius: 20px !important;
 }
 
 textarea {
-    border-radius: 50px !important;
-    padding: 20px !important;
+    height: 150px;
+    border-radius: 20px !important;
+    padding: 10px !important;
+    font-size: 20px !important;
 }
 
 .form-check-input:checked {
