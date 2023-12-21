@@ -35,13 +35,15 @@ class ProjectsSeeder extends Seeder
             ProjectType::create($type);
         }
 
+        $imagesCounter = 1;
         foreach ($projects as $k => $project) {
             $item = Project::create($project);
             for ($i=1;$i<=$projectsImages[$k];$i++) {
                 ProjectImage::create([
-                    'image' => 'images/projects/project_type'.$item->project_type_id.'/project'.$item->id.'_'.$i.'.jpg',
+                    'image' => 'images/projects/project_type'.$item->project_type_id.'/project'.$item->id.'_'.$imagesCounter.'.jpg',
                     'project_id' => $item->id
                 ]);
+                $imagesCounter++;
             }
         }
     }
