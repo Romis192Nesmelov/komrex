@@ -40,14 +40,14 @@
             </div>
         </div>
     </div>
-    @include('blocks.feedback_form_block',[
-        'addClass' => 'border-bottom border-white',
-        'hiddenInputName' => 'from',
-        'hiddenId' => 'active-monitoring-form',
-    ])
-    <div class="content-container bg-white pt-3 pb-3 wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay=".5s">
+{{--    @include('blocks.feedback_form_block',[--}}
+{{--        'addClass' => 'border-bottom border-white',--}}
+{{--        'hiddenInputName' => 'from',--}}
+{{--        'hiddenId' => 'active-monitoring-form',--}}
+{{--    ])--}}
+    <div class="content-container bg-white pt-3 pb-3">
         <div class="content">
-            <p class="big w-60 mb-5">{{ $content[3]->text }}</p>
+            <p class="w-60 mb-5">{{ $content[3]->text }}</p>
             @include('blocks.icons_block',[
                 'items' => $icons,
                 'col' => 3,
@@ -56,6 +56,20 @@
         </div>
     </div>
     <div class="content-container">
+        <div class="content">
+            <h2>{{ trans('content.what_can_we_track') }}</h2>
+            @foreach ($tracking as $k => $item)
+                @include('blocks.accordion_block',[
+                    'parentId' => 'faq',
+                    'itemId' => $item->id,
+                    'itemHead' => $item->head,
+                    'itemText' => $item->text,
+                ])
+            @endforeach
+            <p>{{ trans('content.the_list_of_monitored_parameters_depends') }}</p>
+        </div>
+    </div>
+    <div class="content-container bg-white">
         <div class="content">
             <h2>{{ trans('content.how_it_works') }}</h2>
             <div class="row mb-lg-5 mb-2">
@@ -74,27 +88,6 @@
                     </div>
                 @endforeach
             </div>
-{{--            @foreach ($steps as $k => $step)--}}
-{{--                <div class="row step pt-lg-4">--}}
-{{--                    <div class="col-lg-4 col-sm-12 pb-lg-5">--}}
-{{--                        <h2>{{ trans('content.step',['step' => $k+1]) }}</h2>--}}
-{{--                        <h3>{{ $step->head }}</h3>--}}
-{{--                        {!! $step->text !!}--}}
-{{--                    </div>--}}
-{{--                    <div class="col-lg-4 col-sm-12 pb-lg-5">--}}
-{{--                        <img class="w-100" src="{{ asset($step->image) }}" />--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                @if (!$loop->last)<hr>@endif--}}
-{{--            @endforeach--}}
-{{--            <h2>{{ trans('content.reviews_from_our_clients') }}</h2>--}}
-{{--            <div class="owl-carousel reviews">--}}
-{{--                @foreach ($reviews as $k => $review)--}}
-{{--                    <div class="wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.3 }}s">--}}
-{{--                        @include('blocks.fancybox_block',['image' => $review->image])--}}
-{{--                    </div>--}}
-{{--                @endforeach--}}
-{{--            </div>--}}
         </div>
     </div>
 @endsection

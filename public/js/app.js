@@ -282,6 +282,32 @@ $(document).ready(function () {
         }, 1000);
     }
 
+    // Custom accordion tracking
+    $('.tracking-header.clickable').click(function () {
+        if (!$(this).hasClass('open')) {
+            let id = $(this).attr('id').replace('tracking-header-','');
+
+            $(this).addClass('open');
+            $(this).find('img').animate({'opacity':0}, 'fast', function () {
+                $(this).attr('src','/images/arrow_up_yellow_simple.svg').removeClass('down').addClass('up');
+                $(this).animate({'opacity':1});
+            });
+
+            $('#tracking-body-' + id).animate({'height':50,'margin-top':20}, 'fast', function () {
+                $(this).addClass('open').css('height','auto');
+            });
+        }
+
+        $('.tracking-header.open').removeClass('open');
+        $('.tracking-header img.up').animate({'opacity':0}, 'fast', function () {
+            $(this).attr('src','/images/arrow_down_yellow_simple.svg').removeClass('up').addClass('down');
+            $(this).animate({'opacity':1});
+        });
+        $('.tracking-body.open').animate({'height':0,'margin-top':0}, 'fast', function () {
+            $(this).removeClass('open');
+        });
+    });
+
     bindFancybox();
     bigTablesScroll();
     windowScroll();

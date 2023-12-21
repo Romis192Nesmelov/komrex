@@ -127,6 +127,10 @@ class AdminBaseController extends Controller
                 'key' => 'active_monitoring_icons',
                 'hidden' => true,
             ],
+            'active_monitoring_trackings' => [
+                'key' => 'active_monitoring_trackings',
+                'hidden' => true,
+            ],
             'active_monitoring_steps' => [
                 'key' => 'active_monitoring_steps',
                 'hidden' => true,

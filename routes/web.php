@@ -166,6 +166,10 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
         Route::post('/edit-active-monitoring-icon', 'editActiveMonitoringIcon')->name('edit_active_monitoring_icon');
         Route::post('/delete-active-monitoring-icon', 'deleteActiveMonitoringIcon')->name('delete_active_monitoring_icon');
 
+        Route::get('/active-monitoring-trackings/{slug?}', 'activeMonitoringTrackings')->name('active_monitoring_trackings');
+        Route::post('/edit-active-monitoring-tracking', 'editActiveMonitoringTracking')->name('edit_active_monitoring_tracking');
+        Route::post('/delete-active-monitoring-tracking', 'deleteActiveMonitoringTracking')->name('delete_active_monitoring_tracking');
+
         Route::get('/active-monitoring-steps/{slug?}', 'activeMonitoringSteps')->name('active_monitoring_steps');
         Route::post('/edit-active-monitoring-step', 'editActiveMonitoringStep')->name('edit_active_monitoring_step');
         Route::post('/delete-active-monitoring-step', 'deleteActiveMonitoringStep')->name('delete_active_monitoring_step');

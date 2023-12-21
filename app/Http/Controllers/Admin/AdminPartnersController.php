@@ -31,7 +31,8 @@ class AdminPartnersController extends AdminBaseController
             $request,
             new Partner(),
             [
-                'image' => $this->validationJpgAndPng
+                'image' => $this->validationJpgAndPng,
+                'href' => 'nullable|max:255'
             ],
             'images/partners/',
             'logo'

@@ -7,6 +7,7 @@ use App\Models\ActiveMonitoringIcon;
 use App\Models\ActiveMonitoringProvide;
 use App\Models\ActiveMonitoringStep;
 use App\Models\Review;
+use App\Models\Tracking;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -21,12 +22,16 @@ class AdminActiveMonitoringController extends AdminBaseController
         parent::__construct();
     }
 
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function activeMonitoring(): View
     {
         $this->getActiveMonitoringMenu();
         $this->data['content'] = ActiveMonitoring::all();
         $this->data['provides'] = ActiveMonitoringProvide::all();
         $this->data['icons'] = ActiveMonitoringIcon::all();
+        $this->data['tracking'] = Tracking::all();
         $this->data['steps'] = ActiveMonitoringStep::all();
         $this->data['reviews'] = Review::all();
         return $this->showView('active_monitoring');
@@ -68,6 +73,9 @@ class AdminActiveMonitoringController extends AdminBaseController
         return redirect(route('admin.active_monitorings'));
     }
 
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function activeMonitoringProvides(): View
     {
         $this->getActiveMonitoringMenu();
@@ -90,6 +98,9 @@ class AdminActiveMonitoringController extends AdminBaseController
         return redirect(route('admin.active_monitorings'));
     }
 
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function activeMonitoringIcons($slug=null): View
     {
         $this->getActiveMonitoringMenu();
@@ -122,6 +133,43 @@ class AdminActiveMonitoringController extends AdminBaseController
         return $this->deleteSomething($request, new ActiveMonitoringIcon());
     }
 
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function activeMonitoringTrackings($slug=null): View
+    {
+        $this->getActiveMonitoringMenu();
+        return $this->getSomething('active_monitoring_trackings', new Tracking(), $slug);
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function editActiveMonitoringTracking(Request $request): RedirectResponse
+    {
+        $this->editSomething (
+            $request,
+            new Tracking(),
+            [
+                'head' => $this->validationString,
+                'text' => $this->validationText
+            ],
+        );
+        $this->saveCompleteMessage();
+        return redirect(route('admin.active_monitorings'));
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function deleteActiveMonitoringTracking(Request $request): JsonResponse
+    {
+        return $this->deleteSomething($request, new Tracking());
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function activeMonitoringSteps($slug=null): View
     {
         $this->getActiveMonitoringMenu();

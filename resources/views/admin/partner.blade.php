@@ -15,6 +15,13 @@
                 <div class="col-lg-9 col-md-8 col-sm-12">
                     <div class="panel panel-flat">
                         <div class="panel-body">
+                            @include('blocks.input_block', [
+                                'label' => trans('admin.href'),
+                                'name' => 'href',
+                                'type' => 'text',
+                                'placeholder' => trans('admin.href'),
+                                'value' => isset($participant) ? $participant->href : ''
+                            ])
                             @include('admin.blocks.active_checkbox_block', ['checked' => isset($partner) ? $partner->active : true])
                             @include('admin.blocks.save_button_block')
                         </div>

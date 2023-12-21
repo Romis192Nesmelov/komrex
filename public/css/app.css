@@ -90,8 +90,8 @@ h1.underline span {
 }
 
 h2 {
-    font-size: 40px;
-    margin: 40px 0;
+    font-size: 30px;
+    margin: 20px 0;
 }
 
 h3 {
@@ -100,11 +100,7 @@ h3 {
 }
 
 p {
-    font-size: 18px;
-}
-
-p.big {
-    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-size: 16px;
 }
 
 button.btn {
@@ -272,7 +268,7 @@ button.btn.btn-secondary:hover,
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid #E9A127;
+    border: 2px solid white;
     border-radius: 24px;
 }
 
@@ -282,7 +278,9 @@ button.btn.btn-secondary:hover,
 }
 
 #main-image.active-m .provide p {
-    color: #E9A127;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
 }
 
 #menu-container {
@@ -443,7 +441,6 @@ button.btn.btn-secondary:hover,
 }
 
 #top-container h2 {
-    font-size: 35px;
     color: white;
     margin-top: 40px;
     margin-bottom: 20px;
@@ -517,34 +514,31 @@ button.btn.btn-secondary:hover,
     width: 77vw;
     max-width: 1120px;
     margin: 100px auto 50px auto;
-    display: flex;
+    display: table;
     justify-content: center;
     align-items: center;
     position: relative;
 }
 
 .quotes-text .quotes {
-    width: 109px;
-    position: absolute;
-    z-index: 987;
+    width: 10%;
+    display: table-cell;
 }
 
 .quotes-text .quotes:first-child {
-    top: 0;
-    left: 0;
+    padding-right: 10px;
+    vertical-align: top;
 }
 
 .quotes-text .quotes:last-child {
-    top: auto;
-    bottom: 0;
-    left: auto;
-    right: 0;
+    padding-left: 10px;
+    vertical-align: bottom;
 }
 
 .quotes-text p {
-    width: 80%;
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    position: relative;
+    width: 80% !important;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    display: table-cell;
     text-align: center;
     z-index: 988;
 }
@@ -552,7 +546,7 @@ button.btn.btn-secondary:hover,
 .offer-block {
     height: 100%;
     position: relative;
-    padding: 40px;
+    padding: 30px 40px 10px 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -574,7 +568,8 @@ button.btn.btn-secondary:hover,
     height: 68px;
     font-size: 28px;
     font-weight: normal;
-    margin-bottom: 50px;
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 
 .offer-block:hover .arrow {
@@ -621,7 +616,7 @@ button.btn.btn-secondary:hover,
 input:not(.form-check-input) {
     width: 100%;
     min-height: 49px;
-    font-size: 20px;
+    font-size: 16px;
     background-color: white;
     color: #121524 !important;
     padding: 8px 20px !important;
@@ -632,7 +627,7 @@ textarea {
     height: 150px;
     border-radius: 20px !important;
     padding: 10px !important;
-    font-size: 20px !important;
+    font-size: 16px !important;
 }
 
 .form-check-input:checked {
@@ -808,7 +803,6 @@ input.error {
 }
 
 .step p {
-    font-size: 15px;
     color: grey;
     margin-bottom: 0;
 }
@@ -822,7 +816,7 @@ input.error {
 .icon-block{
     width: 100%;
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .icon-block img {
@@ -1104,10 +1098,6 @@ input.error {
     border: 2px solid #E9A127;
 }
 
-.specifications p {
-    font-size: 16px;
-}
-
 .specifications h1 {
     text-transform: uppercase;
 }
@@ -1117,7 +1107,6 @@ input.error {
 }
 
 .specifications h2 {
-    font-size: 28px;
     font-weight: normal;
 }
 
@@ -1169,6 +1158,35 @@ input.error {
 
 .reviews .image {
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.tracking-item {
+    width: 100%;
+    padding: 20px;
+    background: white;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+}
+
+.tracking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+}
+
+.tracking-header img {
+    width: 20px;
+    height: 25px;
+}
+
+.tracking-header.clickable {
+    cursor: pointer;
+}
+
+.tracking-body {
+    height: 0;
+    overflow: hidden;
 }
 
 .footer {
@@ -1330,7 +1348,6 @@ input.error {
     }
 
     .step p {
-        font-size: 14px;
         line-height: 1.2em;
     }
 }
@@ -1355,14 +1372,6 @@ input.error {
     #main-image #head-container h1 {
         width: 700px;
         font-size: 35px;
-    }
-
-    .quotes-text .quotes {
-        width: 56px;
-    }
-
-    .quotes-text p {
-        width: 100%;
     }
 
     .content-container {
@@ -1427,7 +1436,7 @@ input.error {
 
 @media (max-width: 991px) {
     h1, h2 {
-        font-size: 24px;
+        font-size: 22px;
         margin-top: 0;
     }
 
@@ -1436,7 +1445,7 @@ input.error {
     }
 
     p {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     button.btn.withArrow img {
@@ -1462,7 +1471,7 @@ input.error {
     }
 
     .modal.styled .modal-content h2 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     #menu-container {
@@ -1507,6 +1516,14 @@ input.error {
         padding-bottom: 0;
     }
 
+    .quotes-text .quotes {
+        width: 15%;
+    }
+
+    .quotes-text p {
+        width: 70% !important;
+    }
+
     .offer-block {
         padding: 10px 25px;
     }
@@ -1518,7 +1535,6 @@ input.error {
 
     .offer-block h2 {
         height: auto;
-        font-size: 20px;
         margin-top: 20px;
         margin-bottom: 20px;
     }
@@ -1599,10 +1615,6 @@ input.error {
 
     .specifications .technic-type {
         font-size: 14px;
-    }
-
-    .specifications h2 {
-        font-size: 20px;
     }
 
     #stuff-content hr {
@@ -1762,6 +1774,12 @@ input.error {
     }
 }
 
+@media (max-width: 449px) {
+    .step {
+        height: 280px;
+    }
+}
+
 @media (max-width: 350px) {
     .feedback-form {
         padding: 20px;
@@ -1774,12 +1792,6 @@ input.error {
     button.technic-button {
         min-width: 180px;
         padding: 0 5px;
-    }
-}
-
-@media (max-width: 449px) {
-    .step {
-        height: 280px;
     }
 }
 

@@ -12,11 +12,13 @@ class PartnersSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i=1;$i<=2;$i++) {
-            Partner::create([
-                'image' => 'images/partners/logo'.$i.'.jpg',
-                'active' => 1
-            ]);
+        $data = [
+            ['image' => 'images/partners/logo1.jpg', 'active' => 1],
+            ['image' => 'images/partners/logo2.jpg', 'href' => 'https://лизингуй.рф/', 'active' => 1],
+        ];
+
+        foreach ($data as $item) {
+            Partner::create($item);
         }
     }
 }

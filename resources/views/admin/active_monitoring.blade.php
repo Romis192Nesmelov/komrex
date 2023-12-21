@@ -2,6 +2,7 @@
 
 @section('content')
     @include('admin.blocks.modal_delete_block', ['id' => 'delete-icon-modal','custom_key' => 'active_monitoring_icon'])
+    @include('admin.blocks.modal_delete_block', ['id' => 'delete-tracking-modal','custom_key' => 'active_monitoring_tracking'])
     @include('admin.blocks.modal_delete_block', ['id' => 'delete-step-modal','custom_key' => 'active_monitoring_step'])
     @include('admin.blocks.modal_delete_block', ['id' => 'delete-review-modal','custom_key' => 'review'])
 {{--    <div class="panel panel-flat">--}}
@@ -91,6 +92,23 @@
             @include('admin.blocks.add_button_block', [
                 'route' => 'active_monitoring_icons',
                 'custom_key' => 'active_monitoring_icon'
+            ])
+        </div>
+    </div>
+    <div class="panel panel-flat">
+        <x-atitle>{{ trans('admin.what_can_we_track') }}</x-atitle>
+        <div class="panel-body">
+            @include('admin.blocks.data_table_block', [
+                'columns' => ['head','text','created_at','active'],
+                'items' => $tracking,
+                'route' => 'active_monitoring_trackings',
+                'deleteModal' => 'delete-tracking-modal',
+                'useEdit' => true,
+                'useDelete' => true
+            ])
+            @include('admin.blocks.add_button_block', [
+                'route' => 'active_monitoring_trackings',
+                'custom_key' => 'active_monitoring_tracking'
             ])
         </div>
     </div>

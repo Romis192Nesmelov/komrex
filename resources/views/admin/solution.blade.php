@@ -27,7 +27,7 @@
                                 'name' => 'text',
                                 'label' => trans('admin.text'),
                                 'value' => isset($solution) ? $solution->text : '',
-                                'simple' => true
+                                'simple' => false
                             ])
                             @include('admin.blocks.active_checkbox_block', ['checked' => isset($solution) ? $solution->active : true])
                             @include('admin.blocks.save_button_block')

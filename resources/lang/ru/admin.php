@@ -162,6 +162,12 @@ return [
     'add_active_monitoring_step' => 'Добавить шаг',
     'adding_active_monitoring_step' => 'Добавление шага',
 
+    'what_can_we_track' => 'Что мы можем отслеживать?',
+    'do_you_really_want_delete_this_active_monitoring_tracking' => 'Вы действительно хотите удалить эту позицию?',
+    'edit_active_monitoring_tracking' => 'Редактирование позиции отслеживания',
+    'add_active_monitoring_tracking' => 'Добавить позицию отслеживания',
+    'adding_active_monitoring_tracking' => 'Добавление позиции отслеживания',
+
     'reviews' => 'Отзывы наших клиентов',
     'do_you_really_want_delete_this_review' => 'Вы действительно хотите удалить этот отзыв?',
     'add_review' => 'Добавить отзыв',
@@ -182,4 +188,5 @@ return [
     'add_unit' => 'Добавить агрегат или компонент',
     'adding_unit' => 'Добавление агрегата или компонента',
     'price' => 'Цена',
+    'href' => 'Ссылка',
 ];

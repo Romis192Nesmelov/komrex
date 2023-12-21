@@ -6,6 +6,7 @@ use App\Models\ActiveMonitoringIcon;
 use App\Models\ActiveMonitoringProvide;
 use App\Models\ActiveMonitoringStep;
 use App\Models\Review;
+use App\Models\Tracking;
 use Illuminate\View\View;
 
 class ActiveMonitoringController extends BaseController
@@ -18,6 +19,7 @@ class ActiveMonitoringController extends BaseController
         $this->getItem('icons', new ActiveMonitoringIcon());
         $this->getItem('steps', new ActiveMonitoringStep());
         $this->getItem('reviews', new Review());
+        $this->getItem('tracking', new Tracking());
         return $this->showView('active_monitoring');
     }
 }

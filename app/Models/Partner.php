@@ -5,5 +5,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Partner extends Model
 {
-    protected $fillable = ['active'];
+    protected $fillable = ['href','active'];
 }

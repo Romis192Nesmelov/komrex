@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-lg-8 col-sm-12">
                         <h3>{{ $solution->head }}</h3>
-                        <p>{{ $solution->text }}</p>
+                        {!! $solution->text !!}
                     </div>
                 </div>
             @endforeach
@@ -173,7 +173,11 @@
             <div class="row w-60">
                 @foreach($partners as $k => $partner)
                     <div class="col-lg-3 col-md-4 col-sm-12 mb-3 mb-lg-0 wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.3 }}s">
-                        <img class="w-100" src="{{ asset($partner->image) }}" />
+                        @if ($partner->href)
+                            <a href="{!! $partner->href !!}" target="_blank"><img class="w-100" src="{{ asset($partner->image) }}" /></a>
+                        @else
+                            <img class="w-100" src="{{ asset($partner->image) }}" />
+                        @endif
                     </div>
                 @endforeach
             </div>
