@@ -835,7 +835,6 @@ input.error {
 }
 
 .team-person .name {
-    width: 50%;
     text-align: left;
     font-size: 24px;
 }
@@ -1311,7 +1310,6 @@ input.error {
     }
 
     .team-person .name {
-        width: 100%;
         font-size: 18px;
     }
 

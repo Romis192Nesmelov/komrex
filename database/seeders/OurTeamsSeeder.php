@@ -14,7 +14,7 @@ class OurTeamsSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['image' => 'images/our_team/person1.jpg', 'name' => 'Денис Шелудько', 'active' => 1],
+            ['image' => 'images/our_team/person1.jpg', 'name' => 'Шелудько Денис', 'active' => 1],
             ['image' => 'images/our_team/person2.jpg', 'name' => 'Шишакин Александр', 'active' => 1],
             ['image' => 'images/our_team/person3.jpg', 'name' => 'Нечаев Максим', 'active' => 1],
         ];
