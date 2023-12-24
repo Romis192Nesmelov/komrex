@@ -84,7 +84,11 @@ class AdminEventsController extends AdminBaseController
             new Event(),
             [
                 'name' => $this->validationString,
-//                'date' => $this->validationDate
+//                'date' => $this->validationDate,
+                'target_audience' => $this->validationString,
+                'course_objectives' => $this->validationString,
+                'description' => 'required|min:5|max:3000',
+                'duration' => 'required|min:1|max:20',
             ]
         );
         $this->saveCompleteMessage();

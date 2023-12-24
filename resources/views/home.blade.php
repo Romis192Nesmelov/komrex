@@ -73,7 +73,7 @@
                     @include('blocks.button_block',[
                         'addClass' => 'consulting-button',
                         'primary' => false,
-                        'buttonText' => trans('content.order_consulting'),
+                        'buttonText' => trans('content.order_consultation'),
                         'arrowIcon' => 'arrow_cir_to_right_yellow.svg'
                     ])
                 </div>
@@ -85,7 +85,7 @@
                             <h3>{{ $item->head }}</h3>
                             <div class="plate">
                                 <h3>{{ $item->head }}</h3>
-                                <p>{{ $item->text }}</p>
+                                {!! $item->text !!}
                                 @include('blocks.button_block',[
                                     'addClass' => 'consulting-button-'.$item->id,
                                     'primary' => true,
@@ -200,7 +200,7 @@
     <x-smodal id="event-modal" head="{{ trans('content.upcoming_events') }}">
         @foreach ($events as $event)
             <div class="event-block row">
-                <div class="col-lg-8 col-sm-12">
+                <div class="col-lg-9 col-sm-12">
                     <h3>{{ $event->name }}</h3>
                     @if ($event->date)
                         <div class="date">
@@ -209,12 +209,21 @@
                         </div>
                     @endif
                 </div>
-                <div class="sign-up col-lg-4 col-sm-12">
-                    {{ trans('content.sign_up') }}
+                <div class="col-lg-3 col-sm-12 description">
+                    {{ trans('content.course_description') }}
                     <img src="{{ asset('images/corner_cir_to_down_yellow.svg') }}" />
                 </div>
                 <div class="roll-up w-100">
                     <hr>
+                    <p><b>{{ trans('content.target_audience') }}: </b>{{ $event->target_audience }}</p>
+                    <p><b>{{ trans('content.course_objectives') }}: </b>{{ $event->course_objectives }}</p>
+                    <p class="mb-0"><b>{{ trans('content.course_description') }}:</b></p>
+                    {!! $event->description !!}
+                    <p><b>{{ trans('content.duration') }}: </b>{{ $event->duration }}</p>
+                    <hr>
+
+
+
                     <form method="POST" action="{{ route('sign_up') }}">
                         @csrf
                         @include('blocks.feedback_fields_block',[

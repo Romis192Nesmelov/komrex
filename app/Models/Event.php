@@ -13,6 +13,10 @@ class Event extends Model
     protected $fillable = [
         'name',
         'date',
+        'target_audience',
+        'course_objectives',
+        'description',
+        'duration',
         'active'
     ];
 

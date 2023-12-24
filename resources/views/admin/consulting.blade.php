@@ -25,7 +25,7 @@
                                 'name' => 'text',
                                 'label' => trans('admin.text'),
                                 'value' => $consulting->text,
-                                'simple' => true
+                                'simple' => false
                             ])
                             @include('admin.blocks.save_button_block')
                         </div>

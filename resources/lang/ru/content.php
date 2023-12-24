@@ -24,6 +24,7 @@ return [
     'request_a_call_back' => 'Обратный звонок',
     'service_solutions' => 'Сервисные решения',
     'order_consulting' => 'Заказать консалтинг',
+    'order_consultation' => 'Заказать консультацию',
     'order_service' => 'Заказать услугу',
     'order_callback' => 'Заказать обратный звонок',
     'list_of_events' => 'Список мероприятий',
@@ -68,4 +69,9 @@ return [
     'agree' => 'Я выражаю <a href="#" data-bs-toggle="modal" data-bs-target="#personal-data-modal">согласие на передачу и обработку персональных данных</a> в соответствии с <a href="'.route('privacy').'" target="_blank">Политикой конфиденциальности*</a>',
     'what_can_we_track' => 'Что мы можем отслеживать?',
     'the_list_of_monitored_parameters_depends' => 'Список отслеживаемых параметров зависит от конфигурации машины, ее технических возможностей, а также от потребностей, целей и задач клиента.',
+    'target_audience' => 'Целевая аудитория',
+    'course_objectives' => 'Задачи курса',
+    'description_short' => 'Описание',
+    'course_description' => 'Описание курса',
+    'duration' => 'Длительность',
 ];

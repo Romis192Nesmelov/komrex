@@ -28,8 +28,38 @@
                                 'placeholder' => trans('admin.name'),
                                 'value' => isset($event) ? $event->name : ''
                             ])
+                            @include('blocks.input_block', [
+                                'label' => trans('admin.target_audience'),
+                                'name' => 'target_audience',
+                                'type' => 'text',
+                                'max' => 255,
+                                'placeholder' => trans('admin.target_audience'),
+                                'value' => isset($event) ? $event->target_audience : ''
+                            ])
+                            @include('blocks.input_block', [
+                                'label' => trans('admin.course_objectives'),
+                                'name' => 'course_objectives',
+                                'type' => 'text',
+                                'max' => 255,
+                                'placeholder' => trans('admin.course_objectives'),
+                                'value' => isset($event) ? $event->course_objectives : ''
+                            ])
+                            @include('blocks.textarea_block',[
+                                'name' => 'description',
+                                'label' => trans('admin.description'),
+                                'value' => isset($event) ? $event->description : '',
+                                'simple' => false
+                            ])
+                            @include('blocks.input_block', [
+                                'label' => trans('admin.duration'),
+                                'name' => 'duration',
+                                'type' => 'text',
+                                'max' => 20,
+                                'placeholder' => trans('admin.duration'),
+                                'value' => isset($event) ? $event->duration : ''
+                            ])
 {{--                            @if ($current_sub_item == 'future')--}}
-                                @include('admin.blocks.active_checkbox_block', ['checked' => isset($event) ? $event->active : true])
+                            @include('admin.blocks.active_checkbox_block', ['checked' => isset($event) ? $event->active : true])
 {{--                            @endif--}}
                             @include('admin.blocks.save_button_block')
                         </div>

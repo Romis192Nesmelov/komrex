@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('date')->nullable();
+            $table->string('target_audience');
+            $table->string('course_objectives');
+            $table->text('description');
+            $table->string('duration',20);
             $table->boolean('active');
             $table->timestamps();
         });

@@ -187,7 +187,7 @@ $(document).ready(function () {
     });
 
     // Click to open sign-up fields
-    $('.event-block .sign-up').click(function () {
+    $('.event-block .description').click(function () {
         let parent = $(this).parents('.event-block'),
             arrowImg = $(this).find('img'),
             rollUp = parent.find('.roll-up');

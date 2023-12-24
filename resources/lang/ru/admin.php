@@ -97,6 +97,12 @@ return [
     'event_persons' => 'Персоны мероприятия',
     'do_you_really_want_delete_this_event_person' => 'Вы действительно хотите удалить эту персону?',
 
+    'target_audience' => 'Целевая аудитория',
+    'course_objectives' => 'Задачи курса',
+    'description_short' => 'Описание',
+    'duration' => 'Длительность',
+    'hours' => 'часов',
+
     'do_you_really_want_delete_this_technic_type' => 'Вы действительно хотите удалить этот тип техники?',
     'edit_technic_type' => 'Редактирование типа техники',
     'add_technic_type' => 'Добавить тип техники',

@@ -236,7 +236,7 @@ class AdminBaseController extends Controller
             if ($imageName) $validationArr['image'] = 'nullable|'.$validationArr['image'];
 
             $fields = $this->validate($request, $validationArr);
-            $fields = $this->getSpecialFields($model, $fields);
+            $fields = $this->getSpecialFields($model, $validationArr, $fields);
 
             $model = $model->find($request->input('id'));
             $model->update($fields);
@@ -247,7 +247,7 @@ class AdminBaseController extends Controller
             if ($model instanceof TechnicFile) $validationArr['pdf'] = 'required|'.$validationArr['pdf'];
 
             $fields = $this->validate($request, $validationArr);
-            $fields = $this->getSpecialFields($model, $fields);
+            $fields = $this->getSpecialFields($model, $validationArr, $fields);
 
             $model = $model->create($fields);
             $this->processingFiles($request, $model, 'image', $pathToImages, $imageName);
@@ -277,11 +277,11 @@ class AdminBaseController extends Controller
         return response()->json(['message' => trans('admin.delete_complete')],200);
     }
 
-    protected function getSpecialFields(Model $model, array $fields): array
+    protected function getSpecialFields(Model $model, array $validationArr, array $fields): array
     {
         if (in_array('active',$model->getFillable())) $fields['active'] = request('active') ? 1 : 0;
-        if (in_array('date',$model->getFillable())) $fields['date'] = $this->convertTimestamp(request('date'));
-        if (in_array('video',$model->getFillable())) $fields['video'] = preg_replace('/(\swidth=\"(\d{3})\" height=\"(\d{3})\")/', '', $fields['video']);
+        if (in_array('date',$model->getFillable()) && array_key_exists('date',$validationArr)) $fields['date'] = $this->convertTimestamp(request('date'));
+        if (in_array('video',$model->getFillable()) && array_key_exists('video',$validationArr)) $fields['video'] = preg_replace('/(\swidth=\"(\d{3})\" height=\"(\d{3})\")/', '', $fields['video']);
         return $fields;
     }
 

@@ -34,8 +34,9 @@ class DatabaseSeeder extends Seeder
         ConstructiveFeature::factory(400)->create();
 //        TechnicImage::factory(300)->create();
         TechnicVideo::factory(100)->create();
-        Event::factory(30)->create();
-        EventPerson::factory(300)->create();
+//        Event::factory(30)->create();
+        $this->call(EventsSeeder::class);
+        EventPerson::factory(200)->create();
         $this->call(ActiveMonitoringSeeder::class);
         $this->call(ActiveMonitoringProvidesSeeder::class);
         $this->call(ActiveMonitoringIconsSeeder::class);

@@ -704,7 +704,7 @@ input.error {
     margin-bottom: 20px;
 }
 
-.consulting-block .plate p {
+.consulting-block .plate {
     width: 100%;
     color: white;
     font-weight: lighter;
@@ -871,10 +871,6 @@ input.error {
     border: 1px solid #DEDEDE;
 }
 
-.event-block > div {
-    width: calc(100% - 170px);
-}
-
 .event-block h3 {
     margin: 0 0 20px 0;
 }
@@ -889,17 +885,16 @@ input.error {
     margin-right: 10px;
 }
 
-.event-block .sign-up {
-    width: 165px;
+.event-block .description {
     flex: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: start;
     cursor: pointer;
     color: #E9A127;
 }
 
-.event-block .sign-up img {
+.event-block .description img {
     width: 25px;
     margin-left: 10px;
 }
@@ -911,6 +906,11 @@ input.error {
 .event-block .roll-up {
     overflow: hidden;
     height: 0;
+}
+
+.event-block .roll-up textarea {
+    height: 80px;
+    resize: none;
 }
 
 .icons-view .icon {
@@ -1773,6 +1773,11 @@ input.error {
 }
 
 @media (max-width: 449px) {
+    button.btn {
+        width: 100%;
+        min-width: 100%;
+    }
+
     .step {
         height: 280px;
     }
