@@ -221,9 +221,6 @@
                     {!! $event->description !!}
                     <p><b>{{ trans('content.duration') }}: </b>{{ $event->duration }}</p>
                     <hr>
-
-
-
                     <form method="POST" action="{{ route('sign_up') }}">
                         @csrf
                         @include('blocks.feedback_fields_block',[

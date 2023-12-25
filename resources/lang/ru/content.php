@@ -14,7 +14,7 @@ return [
     'get_service' => 'Получить услугу',
     'komrex_offers' => 'КОМРЭКС предлагает',
     'important_tool' => 'Важный инструмент для снижения затрат на владение техникой.',
-    'all_komrex_equipment' => 'Вся техника Komrex',
+    'all_komrex_equipment' => 'Вся техника KOMREX',
     'komrex_technics' => 'Техника KOMREX',
     'current_offer' => 'Текущее предложение',
     'supply_of_individual_units' => 'Поставка отдельных узлов и агрегатов для спецтехники.',
