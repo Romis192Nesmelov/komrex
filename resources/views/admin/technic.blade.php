@@ -48,7 +48,7 @@
                 <div class="col-lg-9 col-md-8 col-sm-12">
                     <div class="panel panel-flat">
                         <div class="panel-body">
-                            <div class="col-lg-6 col-sm-12">
+                            <div class="col-12">
                                 @include('blocks.input_block', [
                                     'label' => trans('admin.name'),
                                     'name' => 'name',
@@ -60,6 +60,26 @@
                             </div>
                             <div class="col-lg-6 col-sm-12">
                                 @include('blocks.input_block', [
+                                    'label' => trans('admin.engine_model'),
+                                    'name' => 'engine_model',
+                                    'type' => 'text',
+                                    'max' => 255,
+                                    'placeholder' => trans('admin.engine_model'),
+                                    'value' => isset($technic) && $technic->engine_model ? $technic->engine_model : ''
+                                ])
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                @include('blocks.input_block', [
+                                    'label' => trans('admin.power').'('.trans('admin.kilowatt').')',
+                                    'name' => 'power',
+                                    'type' => 'text',
+                                    'placeholder' => trans('admin.power').'('.trans('admin.kilowatt').')',
+                                    'value' => isset($technic) ? $technic->power : 10000
+                                ])
+                            </div>
+
+                            <div class="col-lg-6 col-sm-12">
+                                @include('blocks.input_block', [
                                     'label' => trans('admin.weight').'('.trans('admin.kg').')',
                                     'name' => 'weight',
                                     'type' => 'number',
@@ -69,23 +89,35 @@
                             </div>
                             <div class="col-lg-6 col-sm-12">
                                 @include('blocks.input_block', [
-                                    'label' => trans('admin.engine_model'),
-                                    'name' => 'engine_model',
-                                    'type' => 'text',
-                                    'max' => 255,
-                                    'placeholder' => trans('admin.engine_model'),
-                                    'value' => isset($technic) ? $technic->weight : 1000
+                                    'label' => trans('admin.load_capacity'),
+                                    'name' => 'load_capacity',
+                                    'type' => 'number',
+                                    'max' => 30000,
+                                    'placeholder' => trans('admin.load_capacity'),
+                                    'value' => isset($technic) && $technic->load_capacity ? $technic->load_capacity : 0
                                 ])
                             </div>
                             <div class="col-lg-6 col-sm-12">
                                 @include('blocks.input_block', [
-                                    'label' => trans('admin.power').'('.trans('admin.kilowatt').')',
-                                    'name' => 'power',
+                                    'label' => trans('admin.traction_force'),
+                                    'name' => 'traction_force',
                                     'type' => 'number',
-                                    'placeholder' => trans('admin.power').'('.trans('admin.kilowatt').')',
-                                    'value' => isset($technic) ? $technic->power : 10000
+                                    'max' => 3000,
+                                    'placeholder' => trans('admin.traction_force'),
+                                    'value' => isset($technic) && $technic->traction_force ? $technic->traction_force : 0
                                 ])
                             </div>
+                            <div class="col-lg-6 col-sm-12">
+                                @include('blocks.input_block', [
+                                    'label' => trans('admin.drum_static_pressure'),
+                                    'name' => 'drum_static_pressure',
+                                    'type' => 'number',
+                                    'max' => 3000,
+                                    'placeholder' => trans('admin.drum_static_pressure'),
+                                    'value' => isset($technic) && $technic->drum_static_pressure ? $technic->drum_static_pressure : 0
+                                ])
+                            </div>
+
                             @include('admin.blocks.input_file_block', ['label' => trans('admin.upload_the_characteristics_file'), 'name' =>  'csv'])
                             @if (isset($technic) && $technic->characteristics)
                                 @include('blocks.textarea_block',[

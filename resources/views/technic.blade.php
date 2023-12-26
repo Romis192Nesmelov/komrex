@@ -24,9 +24,13 @@
                     @include('blocks.h_underline_block',['h' => 1, 'addClass' => 'mt-4 mb-3 mt-lg-0 mb-lg-4', 'head' => $technic->name])
                     <div class="technic-type">{{ $technic->technicType->name }}</div>
                     <h2 class="mt-3 mt-lg-5">{!! trans('content.specifications') !!}</h2>
-                    <p>{{ trans('content.operating_weight').': '.$technic->weight.trans('content.kg') }}</p>
+                    <p>{{ ($technic->technic_type_id == 4 ? trans('content.weight_in_basic_configuration') : trans('content.operating_weight')).': '.$technic->weight.trans('content.kg') }}</p>
                     <p>{{ trans('content.net_power').': '.$technic->power.trans('content.kilowatt').' ('.(round($technic->power * 1.3596)).trans('content.horse_power').')' }}</p>
-                    <p>{{ trans('content.engine_model').': '.$technic->engine_model }}</p>
+                    @foreach (['engine_model','load_capacity','traction_force','drum_static_pressure'] as $param)
+                        @if ($technic[$param])
+                            <p>{{ trans('content.'.$param).': '.$technic[$param] }}</p>
+                        @endif
+                    @endforeach
                     <div class="w-100 d-flex justify-content-center justify-content-lg-start">
                         @include('blocks.button_block',[
                             'id' => 'technic-button',

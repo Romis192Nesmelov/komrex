@@ -72,8 +72,11 @@ class AdminTechnicController extends AdminBaseController
             [
                 'name' => $this->validationString,
                 'weight' => $this->validationInteger,
-                'power' => $this->validationInteger,
-                'engine_model' => $this->validationString,
+                'power' => $this->validationDouble,
+                'engine_model' => $this->validationNullableString,
+                'load_capacity' => $this->validationNullableInteger,
+                'traction_force' => $this->validationNullableInteger,
+                'drum_static_pressure' => $this->validationNullableInteger,
                 'komrex'  => $this->validationInteger.'|in:0,1',
                 'characteristics' => 'nullable|min:5|max:10000',
                 'description' => $this->validationText,
@@ -167,6 +170,7 @@ class AdminTechnicController extends AdminBaseController
      */
     public function addTechnicImage(Request $request): RedirectResponse
     {
+        $technic = Technic::findOrFail($request->technic_id);
         $image = $this->editSomething (
             $request,
             new TechnicImage(),
@@ -175,7 +179,7 @@ class AdminTechnicController extends AdminBaseController
                 'technic_id' => 'required|integer|exists:projects,id'
             ],
             'images/technics/',
-            'technic'.$request->technic_id.'_'
+            'technic_'.str_replace(' ','_', $technic->name).'_'
         );
         $this->saveCompleteMessage();
         return redirect(route('admin.technics',['id' => $image->technic_id, 'parent_id' => $image->technic->technic_type_id]));

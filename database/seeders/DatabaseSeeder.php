@@ -30,10 +30,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PartnersSeeder::class);
         $this->call(RequisitesSeeder::class);
         $this->call(TechnicSeeder::class);
-        $this->call(TechnicFilesSeeder::class);
-        ConstructiveFeature::factory(400)->create();
+//        $this->call(TechnicFilesSeeder::class);
+//        ConstructiveFeature::factory(400)->create();
 //        TechnicImage::factory(300)->create();
-        TechnicVideo::factory(100)->create();
+//        TechnicVideo::factory(100)->create();
 //        Event::factory(30)->create();
         $this->call(EventsSeeder::class);
         EventPerson::factory(200)->create();

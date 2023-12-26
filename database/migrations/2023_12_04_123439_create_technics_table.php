@@ -16,8 +16,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('weight');
-            $table->integer('power');
-            $table->string('engine_model');
+            $table->double('power', 4, 1);
+            $table->string('engine_model')->nullable();
+            $table->smallInteger('load_capacity')->nullable();
+            $table->smallInteger('traction_force')->nullable();
+            $table->smallInteger('drum_static_pressure')->nullable();
             $table->boolean('komrex')->nullable();
             $table->text('characteristics')->nullable();
             $table->text('description')->nullable();

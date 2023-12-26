@@ -32,7 +32,7 @@
             <div class="panel-body">
                 <x-atitle>{{ trans('admin_menu.technics') }}</x-atitle>
                 @include('admin.blocks.data_table_block', [
-                    'columns' => ['name','weight','power','engine_model','komrex','active'],
+                    'columns' => ['name','weight','power','komrex','active','created_at'],
                     'items' => $technic_type->technics,
                     'route' => 'technics',
                     'parent_id' => $technic_type->id,
