@@ -20,14 +20,17 @@ class TechnicController extends BaseController
             $this->data['relation'] = 'technicsCurrentOffer';
         } else abort(404);
         $this->data['technic_types'] = $technicType->select('id','name')->where('active',1)->with($this->data['relation'])->get();
-        $this->data['current_id'] = request('id') ? request('id') : 0;
+        $this->data['current_id'] = request('id') ? (int)request('id') : 0;
 
-        do {
-            $this->data['current_id']++;
-            if (!$this->data['technics'] = $technicType->where('id',$this->data['current_id'])->where('active',1)->with($this->data['relation'])->first()) abort(404);
-            $this->data['current_type'] = $technicType->select('name')->where('id',$this->data['current_id'])->first();
-        } while (!$this->data['technics'][$this->data['relation']]->count());
-
+        if (!request('id')) {
+            do {
+                $this->data['current_id']++;
+                $this->getTechnics($technicType);
+            } while (!$this->data['technics'][$this->data['relation']]->count());
+        } else {
+            $this->getTechnics($technicType);
+            if (!$this->data['technics']) abort(404);
+        }
         return $this->showView('technics');
     }
 
@@ -37,5 +40,11 @@ class TechnicController extends BaseController
         if (!request('id') || !$this->data['technic'] = Technic::where('id',request('id'))->where('active',1)->first()) abort(404);
         $this->data['buttons'] = ['design_features','characteristics','video','files_for_download'];
         return $this->showView('technic');
+    }
+
+    private function getTechnics(TechnicType $technicType): void
+    {
+        $this->data['technics'] = $technicType->where('id',$this->data['current_id'])->where('active',1)->with($this->data['relation'])->first();
+        $this->data['current_type'] = $technicType->select('name')->where('id',$this->data['current_id'])->first();
     }
 }

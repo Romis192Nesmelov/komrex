@@ -11,6 +11,7 @@ use App\Models\TechnicVideo;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class AdminTechnicController extends AdminBaseController
@@ -179,7 +180,7 @@ class AdminTechnicController extends AdminBaseController
                 'technic_id' => 'required|integer|exists:projects,id'
             ],
             'images/technics/',
-            'technic_'.str_replace(' ','_', $technic->name).'_'
+            'technic_'.Str::slug($technic->name).'_'
         );
         $this->saveCompleteMessage();
         return redirect(route('admin.technics',['id' => $image->technic_id, 'parent_id' => $image->technic->technic_type_id]));

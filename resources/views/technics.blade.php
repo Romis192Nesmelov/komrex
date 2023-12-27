@@ -9,7 +9,7 @@
             <div class="buttons row mb-4 justify-content-center justify-content-lg-between">
                 <div class="row col-lg-4 col-md-12 wow animate__animated animate__slideInLeft" data-wow-offset="10">
                     <div class="col-lg-6 col-md-12 ps-1 pe-1 mb-2 mb-lg-0">
-                        <a href="{{ route('technics',['slug' => 'komrex', 'id' => request('id')]) }}">
+                        <a href="{{ route('technics',['slug' => 'komrex']) }}">
                             @include('blocks.button_block',[
                                 'addClass' => 'white w-100'.($slug == 'komrex' ? ' active' : ''),
                                 'primary' => false,
@@ -18,7 +18,7 @@
                         </a>
                     </div>
                     <div class="col-lg-6 col-md-12 ps-1 pe-1">
-                        <a href="{{ route('technics',['slug' => 'current-offer', 'id' => request('id')]) }}">
+                        <a href="{{ route('technics',['slug' => 'current-offer']) }}">
                             @include('blocks.button_block',[
                                 'addClass' => 'white w-100'.($slug == 'current-offer' ? ' active' : ''),
                                 'primary' => false,
