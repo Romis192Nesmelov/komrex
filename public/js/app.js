@@ -145,7 +145,7 @@ $(document).ready(function () {
 
             smallImages.html('');
             $.each(data.images, function (k, image) {
-                smallImages.append($('<img>').attr('src','/' + image.image).addClass('image' + image.id));
+                smallImages.append($('<img>').attr('src','/' + image.image).addClass('small-image').addClass('image' + image.id));
             });
 
             smallImages.trigger('destroy.owl.carousel');
@@ -389,7 +389,7 @@ const gotoScroll = (scroll) => {
 }
 
 const bingSmallImagesCarouselClick = () => {
-    $('#small-images img').click(function () {
+    $('#small-images img.small-image').click(function () {
         if (!$(this).hasClass('active')) {
             const bigTechnicImage = $('#big-image > img');
             $('img.active').removeClass('active');

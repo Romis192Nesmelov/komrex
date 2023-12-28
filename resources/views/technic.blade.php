@@ -16,7 +16,7 @@
                     <img src="{{ asset($technic->images[0]->image) }}"/>
                     <div id="small-images" class="owl-carousel w-100 mt-3">
                         @foreach ($technic->images as $k => $image)
-                            <img class="image{{ $image->id }} {{ $loop->first ? 'active' : '' }} wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * .2 }}s" src="{{ asset($image->image) }}" />
+                            <img class="small-image image{{ $image->id }} {{ $loop->first ? 'active' : '' }} wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * .2 }}s" src="{{ asset($image->image) }}" />
                         @endforeach
                     </div>
                 </div>

@@ -704,6 +704,11 @@ input.error {
     margin-bottom: 20px;
 }
 
+.consulting-block .plate ul li {
+    margin-bottom: 7px;
+    font-weight: bolder;
+}
+
 .consulting-block .plate {
     width: 100%;
     color: white;
