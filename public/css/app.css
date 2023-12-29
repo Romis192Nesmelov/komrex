@@ -1395,7 +1395,8 @@ input.error {
         display: none;
     }
 
-    p, p.small {
+    p,
+    ul li {
         font-size: 14px;
     }
 
@@ -1448,7 +1449,8 @@ input.error {
         font-size: 20px;
     }
 
-    p {
+    p,
+    ul li {
         font-size: 13px;
     }
 
