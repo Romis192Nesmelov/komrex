@@ -30,11 +30,11 @@
                     'hrefText' => trans('content.current_offer')
                 ])
             </x-offer>
-            <x-offer head="{{ trans('menu.units_and_components') }}" href="{{ route('units_and_components') }}" text="{{ trans('content.supply_of_individual_units') }}" delay="1.5">
-                <a href="{{ route('units_and_components') }}">
-                    @include('blocks.offer_image_block',['image' => 'images/offers/offer3.jpg'])
-                </a>
-            </x-offer>
+{{--            <x-offer head="{{ trans('menu.units_and_components') }}" href="{{ route('units_and_components') }}" text="{{ trans('content.supply_of_individual_units') }}" delay="1.5">--}}
+{{--                <a href="{{ route('units_and_components') }}">--}}
+{{--                    @include('blocks.offer_image_block',['image' => 'images/offers/offer3.jpg'])--}}
+{{--                </a>--}}
+{{--            </x-offer>--}}
         </div>
     </div>
     @include('blocks.feedback_form_block', [
