@@ -83,6 +83,7 @@ $(document).ready(function () {
 
     // Click to project type button
     $('button.project-type').click(function () {
+        bindClickToProject();
         if (!$(this).hasClass('active')) {
             let projectsId = $(this).attr('id').replace('button-project-type-',''),
                 allProjects = $('#projects');
@@ -105,59 +106,7 @@ $(document).ready(function () {
     });
 
     // Click to project
-    $('.project').click(function () {
-        let id = parseInt($(this).attr('id').replace('project',''));
-        $.get(getProjectUrl, {
-            'id': id
-        },(data) => {
-            let modal = $('#project-modal'),
-                head = modal.find('h2'),
-                date = $('#date-presentation'),
-                bigImage = $('#big-image'),
-                smallImages = $('#small-images'),
-                description = $('#description'),
-                downloadBlock = modal.find('.download-block'),
-                downloadHref = downloadBlock.find('a'),
-                downloadSize = downloadBlock.find('span'),
-                activeId = null;
-
-            head.html(data.head);
-            if (data.date) {
-                head.removeClass('mb-2').addClass('mb-0');
-                date.html(data.date);
-                date.show();
-            } else {
-                head.removeClass('mb-0').addClass('mb-2');
-                date.hide();
-            }
-
-            bigImage.html('');
-            bigImage.append($('<img>').attr('src',data.images[0].image));
-            description.html(data.text);
-
-            if (data.pdf) {
-                downloadHref.attr('href', data.pdf);
-                downloadSize.html(data.size);
-                downloadBlock.show();
-            } else {
-                downloadBlock.hide();
-            }
-
-            smallImages.html('');
-            $.each(data.images, function (k, image) {
-                smallImages.append($('<img>').attr('src','/' + image.image).addClass('small-image').addClass('image' + image.id));
-            });
-
-            smallImages.trigger('destroy.owl.carousel');
-            owlCarouselSmallImages(smallImages);
-            smallImages.find('.image' + activeId).addClass('active');
-
-            setTimeout(() => {
-                bingSmallImagesCarouselClick();
-            },500);
-            modal.modal('show');
-        });
-    });
+    bindClickToProject();
 
     // Callback modal
     $('.phone-icon, .pair-buttons button, .consulting-button, .consulting-button-1, .consulting-button-2, .units-button, .footer-button').click(function () {
@@ -312,6 +261,66 @@ $(document).ready(function () {
     bigTablesScroll();
     windowScroll();
 });
+
+const bindClickToProject = () => {
+    setTimeout(() => {
+        let project = $('.project');
+        project.unbind();
+        project.click(function () {
+            let id = parseInt($(this).attr('id').replace('project',''));
+            $.get(getProjectUrl, {
+                'id': id
+            },(data) => {
+                let modal = $('#project-modal'),
+                    head = modal.find('h2'),
+                    date = $('#date-presentation'),
+                    bigImage = $('#big-image'),
+                    smallImages = $('#small-images'),
+                    description = $('#description'),
+                    downloadBlock = modal.find('.download-block'),
+                    downloadHref = downloadBlock.find('a'),
+                    downloadSize = downloadBlock.find('span'),
+                    activeId = null;
+
+                head.html(data.head);
+                if (data.date) {
+                    head.removeClass('mb-2').addClass('mb-0');
+                    date.html(data.date);
+                    date.show();
+                } else {
+                    head.removeClass('mb-0').addClass('mb-2');
+                    date.hide();
+                }
+
+                bigImage.html('');
+                bigImage.append($('<img>').attr('src',data.images[0].image));
+                description.html(data.text);
+
+                if (data.pdf) {
+                    downloadHref.attr('href', data.pdf);
+                    downloadSize.html(data.size);
+                    downloadBlock.show();
+                } else {
+                    downloadBlock.hide();
+                }
+
+                smallImages.html('');
+                $.each(data.images, function (k, image) {
+                    smallImages.append($('<img>').attr('src','/' + image.image).addClass('small-image').addClass('image' + image.id));
+                });
+
+                smallImages.trigger('destroy.owl.carousel');
+                owlCarouselSmallImages(smallImages);
+                smallImages.find('.image' + activeId).addClass('active');
+
+                setTimeout(() => {
+                    bingSmallImagesCarouselClick();
+                },500);
+                modal.modal('show');
+            });
+        });
+    }, 1000);
+}
 
 const activatingProjectBlock = (prevActiveBlock, projectsId, callBack) => {
     prevActiveBlock.removeClass('active').addClass('d-none').css('opacity',1);

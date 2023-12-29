@@ -55,6 +55,13 @@ class ProjectsSeeder extends Seeder
                 'project_type_id' => 4,
                 'active' => 1
             ],
+            [
+                'head' => 'Подключение АКТИВ-М на LiuGong CLG 777A',
+                'date' => 1685620800,
+                'text' => '<p>В рамках комплексного технического обслуживания (ТО, инспекции, анализы масла) на экскаватор-погрузчик LiuGong CLG 777A была подключена услуга АКТИВ-М и установлено следующее оборудование:<p><ul><li>блоки телеметрии</li><li>камеры вперед и назад с онлайн-регистратором</li><li>датчик температуры гидравлики</li><li>ДУТ</li><li>датчики угла наклона на стрелу погрузчика и экскаватора для отслеживания работы машины в том и другом режиме</li><li>датчик на гидромолот для отслеживания его наработки для своевременного обслуживания</li></ul>',
+                'project_type_id' => 1,
+                'active' => 1
+            ],
         ];
 
         $projectsImages = [
@@ -96,13 +103,24 @@ class ProjectsSeeder extends Seeder
                 'images/projects/project_type3/project4_29.jpg',
             ],
             [
-                'images/projects/project_type4/project4_30.jpg',
-                'images/projects/project_type4/project4_31.jpg',
-                'images/projects/project_type4/project4_32.jpg',
-                'images/projects/project_type4/project4_33.jpg',
-                'images/projects/project_type4/project4_34.jpg',
-                'images/projects/project_type4/project4_35.jpg',
-                'images/projects/project_type4/project4_36.jpg',
+                'images/projects/project_type4/project5_30.jpg',
+                'images/projects/project_type4/project5_31.jpg',
+                'images/projects/project_type4/project5_32.jpg',
+                'images/projects/project_type4/project5_33.jpg',
+                'images/projects/project_type4/project5_34.jpg',
+                'images/projects/project_type4/project5_35.jpg',
+                'images/projects/project_type4/project5_36.jpg',
+                'images/projects/project_type4/project5_37.jpg',
+            ],
+            [
+                'images/projects/project_type1/project6_38.jpg',
+                'images/projects/project_type1/project6_39.jpg',
+                'images/projects/project_type1/project6_40.jpg',
+                'images/projects/project_type1/project6_41.jpg',
+                'images/projects/project_type1/project6_42.jpg',
+                'images/projects/project_type1/project6_43.jpg',
+                'images/projects/project_type1/project6_44.jpg',
+                'images/projects/project_type1/project6_45.jpg',
             ],
         ];
 
