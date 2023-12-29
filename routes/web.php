@@ -49,7 +49,7 @@ Route::controller(TechnicController::class)->group(function () {
     Route::get('/technic', 'technic')->name('technic');
 });
 
-Route::get('/units-and-components', UnitController::class)->name('units_and_components');
+//Route::get('/units-and-components', UnitController::class)->name('units_and_components');
 
 Route::get('/active-monitoring', ActiveMonitoringController::class)->name('active_monitoring');
 
