@@ -15,7 +15,7 @@ class ActiveMonitoringProvidesSeeder extends Seeder
         $data = [
             ['text' => 'Снижение себестоимости владения', 'active' => 1],
             ['text' => 'Предупреждение катастрофических поломок', 'active' => 1],
-            ['text' => 'Высокую эффективность эксплуатации', 'active' => 1],
+            ['text' => 'Повышение эффективности эксплуатации', 'active' => 1],
         ];
 
         foreach ($data as $item) {
