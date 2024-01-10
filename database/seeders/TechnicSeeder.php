@@ -314,7 +314,7 @@ class TechnicSeeder extends Seeder
                 'active' => true,
                 'technic_type_id' => 5,
                 'images' => [
-                    'images/technics/technic_KOMREX_KX200N_92.jpg',
+                    'images/technics/technic_KOMREX_KX200N_92.png',
                     'images/technics/technic_KOMREX_KX200N_93.jpg',
                     'images/technics/technic_KOMREX_KX200N_94.jpg',
                     'images/technics/technic_KOMREX_KX200N_95.jpg',
@@ -339,7 +339,7 @@ class TechnicSeeder extends Seeder
                 'active' => true,
                 'technic_type_id' => 5,
                 'images' => [
-                    'images/technics/technic_KOMREX_KX230_75.jpg',
+                    'images/technics/technic_KOMREX_KX230_75.png',
                     'images/technics/technic_KOMREX_KX230_76.jpg',
                     'images/technics/technic_KOMREX_KX230_77.jpg',
                     'images/technics/technic_KOMREX_KX230_78.jpg',
