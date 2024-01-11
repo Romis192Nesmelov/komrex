@@ -7,7 +7,6 @@ use App\Models\Technic;
 use App\Models\TechnicImage;
 use App\Models\TechnicType;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class TechnicSeeder extends Seeder
 {
