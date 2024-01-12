@@ -672,18 +672,6 @@ input.error {
     color: white;
 }
 
-.consulting-block .plate {
-    width: 100%;
-    height: 100%;
-    top: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    padding: 38px;
-    background-color: #121524;
-}
-
 /*.consulting-block:hover .plate {*/
 /*    animation-duration: 3s;*/
 /*    animation-name: slideIn;*/
@@ -712,8 +700,16 @@ input.error {
 
 .consulting-block .plate {
     width: 100%;
+    height: 100%;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     color: white;
     font-weight: lighter;
+    position: relative;
+    padding: 38px;
+    background-color: #121524;
 }
 
 #about-company-block {
