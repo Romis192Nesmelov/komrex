@@ -190,12 +190,12 @@
         <div id="big-image"></div>
         <div id="small-images" class="owl-carousel w-100 mt-3 mb-3"></div>
         <div id="description"></div>
-        @include('blocks.download_block',[
-            'href' => '#',
-            'icon' => 'download_yellow_icon.svg',
-            'description' => trans('content.presentation_of_the_project'),
-            'kb' => 1
-        ])
+{{--        @include('blocks.download_block',[--}}
+{{--            'href' => '#',--}}
+{{--            'icon' => 'download_yellow_icon.svg',--}}
+{{--            'description' => trans('content.presentation_of_the_project'),--}}
+{{--            'kb' => 1--}}
+{{--        ])--}}
     </x-modal>
     <x-smodal id="event-modal" head="{{ trans('content.upcoming_events') }}">
         @foreach ($events as $event)

@@ -26,11 +26,9 @@
                     <h2 class="mt-3 mt-lg-5">{!! trans('content.specifications') !!}</h2>
                     <p>{{ ($technic->technic_type_id == 4 ? trans('content.weight_in_basic_configuration') : trans('content.operating_weight')).': '.$technic->weight.trans('content.kg') }}</p>
                     <p>{{ trans('content.net_power').': '.$technic->power.trans('content.kilowatt').' ('.(round($technic->power * 1.3596)).trans('content.horse_power').')' }}</p>
-                    @foreach (['engine_model','load_capacity','traction_force','drum_static_pressure'] as $param)
-                        @if ($technic[$param])
-                            <p>{{ trans('content.'.$param).': '.$technic[$param] }}</p>
-                        @endif
-                    @endforeach
+
+                    @include('blocks.technic_params_block',['technic' => $technic])
+
                     <div class="w-100 d-flex justify-content-center justify-content-lg-start">
                         @include('blocks.button_block',[
                             'id' => 'technic-button',
