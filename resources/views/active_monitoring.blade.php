@@ -40,11 +40,6 @@
             </div>
         </div>
     </div>
-{{--    @include('blocks.feedback_form_block',[--}}
-{{--        'addClass' => 'border-bottom border-white',--}}
-{{--        'hiddenInputName' => 'from',--}}
-{{--        'hiddenId' => 'active-monitoring-form',--}}
-{{--    ])--}}
     <div class="content-container bg-white pt-3 pb-3">
         <div class="content">
             <p class="w-60 mb-5">{{ $content[3]->text }}</p>
@@ -55,6 +50,11 @@
             ])
         </div>
     </div>
+    @include('blocks.feedback_form_block',[
+        'addClass' => 'border-bottom border-white',
+        'hiddenInputName' => 'from',
+        'hiddenId' => 'active-monitoring-form',
+    ])
     <div class="content-container">
         <div class="content">
             <h2>{{ trans('content.what_can_we_track') }}</h2>

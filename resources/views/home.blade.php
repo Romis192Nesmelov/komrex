@@ -57,6 +57,10 @@
             @endforeach
         </div>
     </div>
+{{--    @include('blocks.feedback_form_block',[--}}
+{{--        'hiddenInputName' => 'from',--}}
+{{--        'hiddenId' => 'page-second-form',--}}
+{{--    ])--}}
     <div class="content-container">
         @include('blocks.quotes_block',['text' => $contents[3]->text, 'use_quotes' => true])
         <div class="content">
@@ -120,10 +124,6 @@
             @include('blocks.icons_block',['items' => $values, 'col' => 3])
         </div>
     </div>
-    @include('blocks.feedback_form_block',[
-        'hiddenInputName' => 'from',
-        'hiddenId' => 'page-second-form',
-    ])
     <div class="content-container pt-0 bg-white" data-scroll-destination="team">
         <div class="content">
             <h2 class="mb-4 pb-3 wow animate__animated animate__slideInLeft" data-wow-offset="10">{{ trans('content.our_team') }}</h2>
