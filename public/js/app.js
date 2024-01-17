@@ -37,19 +37,19 @@ $(document).ready(function () {
     });
 
     // Team carousel
-    $('#our-team').owlCarousel(owlSettings(
-        20,
-        5000,
-        {
-            0: {
-                items: 1
-            },
-            992: {
-                items: 3
-            }
-        },
-        true
-    ));
+    // $('#our-team').owlCarousel(owlSettings(
+    //     20,
+    //     5000,
+    //     {
+    //         0: {
+    //             items: 1
+    //         },
+    //         992: {
+    //             items: 3
+    //         }
+    //     },
+    //     true
+    // ));
 
     // Projects carousel
     $('.projects').owlCarousel(owlSettings(

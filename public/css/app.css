@@ -117,6 +117,11 @@ button.btn {
     border-radius: 50px;
 }
 
+#event-modal button.btn,
+.plate button.btn {
+    min-width: auto;
+}
+
 button.btn.withArrow {
     position: relative;
 }

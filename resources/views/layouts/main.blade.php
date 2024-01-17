@@ -139,6 +139,7 @@
                ])
                 @include('blocks.button_block',[
                     'id' => 'agree_all',
+                    'dataDismiss' => true,
                     'primary' => true,
                     'buttonType' => 'button',
                     'buttonText' => trans('content.agree_all'),

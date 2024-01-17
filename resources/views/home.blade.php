@@ -43,7 +43,7 @@
     ])
     <div class="content-container" data-scroll-destination="service_solutions">
         <div class="content pt-4">
-            <h2 class="content wow animate__animated animate__slideInLeft" data-wow-offset="10">{{ trans('menu.service_solutions') }}</h2>
+            <h2 class="wow animate__animated animate__slideInLeft" data-wow-offset="10">{{ trans('menu.service_solutions') }}</h2>
             @foreach($solutions as $k => $solution)
                 <div class="row {{ !$loop->last ? 'mb-lg-5 mb-sm-1' : '' }} wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.3 }}s">
                     <div class="col-lg-4 col-sm-12 mb-4">
@@ -64,8 +64,8 @@
     <div class="content-container">
         @include('blocks.quotes_block',['text' => $contents[3]->text, 'use_quotes' => true])
         <div class="content">
-            <h2 class="mb-3 content wow animate__animated animate__slideInLeft" data-wow-offset="10">{{ $contents[4]->head }}</h2>
-            <div class="row mb-3 content wow animate__animated animate__slideInRight" data-wow-offset="10">
+            <h2 class="mb-3 wow animate__animated animate__slideInLeft" data-wow-offset="10">{{ $contents[4]->head }}</h2>
+            <div class="row mb-3 wow animate__animated animate__slideInRight" data-wow-offset="10">
                 <div class="col-lg-6 col-sm-12">
                     <p>{{ $contents[4]->text }}</p>
                 </div>
@@ -127,9 +127,9 @@
     <div class="content-container pt-0 bg-white" data-scroll-destination="team">
         <div class="content">
             <h2 class="mb-4 pb-3 wow animate__animated animate__slideInLeft" data-wow-offset="10">{{ trans('content.our_team') }}</h2>
-            <div id="our-team" class="owl-carousel">
+            <div id="our-team" class="row">
                 @foreach($team as $k => $person)
-                    <div class="team-person wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.3 }}s">
+                    <div class="team-person col-lg-4 col-sm-12 wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.3 }}s">
                         <img src="{{ asset($person->image) }}" />
                         <div class="name">{{ $person->name }}</div>
                     </div>

@@ -65,7 +65,7 @@ class BaseController extends Controller
                 ],
                 'secondMenu' => [
                     'active_monitoring'                 => ['href' => true],
-                    'technics'                          => ['href' => true],
+                    'technics'                          => ['href' => true, 'slug' => 'komrex'],
                     'units_and_components'              => ['href' => false],
                     'service_solutions_and_consulting'  => ['href' => false],
                 ],

@@ -17,7 +17,7 @@
                 'buttonText' => trans('menu.'.$menuKey)
             ])
         @else
-            <a href="{{ route($menuKey) }}">
+            <a href="{{ isset($itemMenu['slug']) ? route($menuKey,['slug' => $itemMenu['slug']]) : route($menuKey) }}">
                 @include('blocks.button_block',[
                     'addClass' => $activeSecondMenu == $menuKey ? 'active' : '',
                     'primary' => false,

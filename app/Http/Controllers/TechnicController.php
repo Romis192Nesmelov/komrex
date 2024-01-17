@@ -3,22 +3,20 @@
 namespace App\Http\Controllers;
 use App\Models\Technic;
 use App\Models\TechnicType;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class TechnicController extends BaseController
 {
     use HelperTrait;
 
-    public function technics(TechnicType $technicType, $slug=null): View
+    public function technics(TechnicType $technicType, $slug): View
     {
         $this->activeSecondMenu = 'technics';
-        if (!$slug || $slug == 'komrex') {
-            $this->data['slug'] = 'komrex';
-            $this->data['relation'] = 'technicsKomrex';
-        } else if ($slug == 'current-offer') {
-            $this->data['slug'] = 'current-offer';
-            $this->data['relation'] = 'technicsCurrentOffer';
-        } else abort(404);
+
+        $this->data['slug'] = $slug;
+        $this->data['relation'] = Str::camel('technics-'.$slug);
+
         $this->data['technic_types'] = $technicType->select('id','name')->where('active',1)->with($this->data['relation'])->get();
         $this->data['current_id'] = request('id') ? (int)request('id') : 0;
 

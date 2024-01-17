@@ -45,7 +45,7 @@ Route::controller(LoginController::class)->group(function () {
 Route::get('/get-project', ProjectsController::class)->name('get_project');
 
 Route::controller(TechnicController::class)->group(function () {
-    Route::get('/technics/{slug?}', 'technics')->name('technics');
+    Route::get('/technics/{slug}', 'technics')->name('technics');
     Route::get('/technic', 'technic')->name('technic');
 });
 
