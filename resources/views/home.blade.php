@@ -18,7 +18,7 @@
                     @include('blocks.offer_image_block',['image' => 'images/offers/offer1.jpg'])
                 </a>
             </x-offer>
-            <x-offer head="{{ trans('menu.technics') }}" href="{{ route('technics') }}" delay="1">
+            <x-offer head="{{ trans('menu.technics') }}" href="{{ route('technics',['slug' => 'komrex']) }}" delay="1">
                 @include('blocks.offer_image_block',[
                     'image' => 'images/offers/offer2_1.jpg',
                     'href' => route('technics',['slug' => 'komrex']),
