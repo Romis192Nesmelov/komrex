@@ -139,6 +139,11 @@ class AdminBaseController extends Controller
                 'key' => 'reviews',
                 'hidden' => true,
             ],
+            'tags' => [
+                'key' => 'tags',
+                'icon' => 'icon-price-tags',
+                'hidden' => false,
+            ],
         ];
         $this->breadcrumbs[] = $this->menu['home'];
     }

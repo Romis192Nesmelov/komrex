@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminSeoController;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LoginController;
@@ -189,5 +190,10 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
         Route::post('/edit-unit', 'editUnit')->name('edit_unit');
         Route::post('/delete-unit', 'deleteUnit')->name('delete_unit');
 //        Route::post('/edit-unit-image', 'editUnitImage')->name('edit_unit_image');
+    });
+
+    Route::controller(AdminSeoController::class)->group(function () {
+        Route::get('/tags', 'tags')->name('tags');
+        Route::post('/edit-tag', 'editTag')->name('edit_tag');
     });
 });

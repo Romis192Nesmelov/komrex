@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('requisites', function (Blueprint $table) {
-            $table->id();
-            $table->string('name',30)->nullable();
-            $table->string('value');
-            $table->boolean('active');
-            $table->timestamps();
-        });
+//        Schema::create('requisites', function (Blueprint $table) {
+//            $table->id();
+//            $table->string('name',30)->nullable();
+//            $table->string('value');
+//            $table->boolean('active');
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('requisites');
+//        Schema::dropIfExists('requisites');
     }
 };

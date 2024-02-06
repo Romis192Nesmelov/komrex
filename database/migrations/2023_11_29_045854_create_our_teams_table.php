@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('our_teams', function (Blueprint $table) {
-            $table->id();
-            $table->string('image',50)->nullable();
-            $table->string('name',100);
-            $table->boolean('active');
-            $table->timestamps();
-        });
+//        Schema::create('our_teams', function (Blueprint $table) {
+//            $table->id();
+//            $table->string('image',50)->nullable();
+//            $table->string('name',100);
+//            $table->boolean('active');
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('our_teams');
+//        Schema::dropIfExists('our_teams');
     }
 };

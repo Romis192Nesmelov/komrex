@@ -12,13 +12,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('event_persons', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('phone',16);
-            $table->foreignIdFor(Event::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->timestamps();
-        });
+//        Schema::create('event_persons', function (Blueprint $table) {
+//            $table->id();
+//            $table->string('name');
+//            $table->string('phone',16);
+//            $table->foreignIdFor(Event::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('event_persons');
+//        Schema::dropIfExists('event_persons');
     }
 };

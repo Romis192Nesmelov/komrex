@@ -12,14 +12,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('technic_videos', function (Blueprint $table) {
-            $table->id();
-            $table->string('video');
-            $table->string('head');
-            $table->foreignIdFor(Technic::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->boolean('active');
-            $table->timestamps();
-        });
+//        Schema::create('technic_videos', function (Blueprint $table) {
+//            $table->id();
+//            $table->string('video');
+//            $table->string('head');
+//            $table->foreignIdFor(Technic::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+//            $table->boolean('active');
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('technic_videos');
+//        Schema::dropIfExists('technic_videos');
     }
 };

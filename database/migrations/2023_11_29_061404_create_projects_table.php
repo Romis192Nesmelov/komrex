@@ -12,16 +12,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projects', function (Blueprint $table) {
-            $table->id();
-            $table->string('head');
-            $table->integer('date')->nullable();
-            $table->text('text');
-            $table->string('pdf')->nullable();
-            $table->foreignIdFor(ProjectType::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->boolean('active');
-            $table->timestamps();
-        });
+//        Schema::create('projects', function (Blueprint $table) {
+//            $table->id();
+//            $table->string('head');
+//            $table->integer('date')->nullable();
+//            $table->text('text');
+//            $table->string('pdf')->nullable();
+//            $table->foreignIdFor(ProjectType::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+//            $table->boolean('active');
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projects');
+//        Schema::dropIfExists('projects');
     }
 };

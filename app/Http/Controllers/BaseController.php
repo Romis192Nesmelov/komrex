@@ -11,6 +11,7 @@ use App\Models\Project;
 use App\Models\ProjectType;
 use App\Models\Requisite;
 use App\Models\ServiceSolution;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
@@ -22,10 +23,12 @@ class BaseController extends Controller
     protected array $data = [];
     protected string $activeMainMenu = '';
     protected string $activeSecondMenu = '';
+    protected Tag|null $tags = null;
 
     public function index(): View
     {
         $this->activeMainMenu = 'home';
+        $this->tags = Tag::find(1);
         $this->data['scroll'] = request('scroll');
         $this->data['contents'] = Home::all();
         $this->getItem('solutions', new ServiceSolution());
@@ -69,13 +72,13 @@ class BaseController extends Controller
                     'units_and_components'              => ['href' => false],
                     'service_solutions_and_consulting'  => ['href' => false],
                 ],
-                'metas' => $this->metas,
                 'activeMainMenu' => $this->activeMainMenu,
                 'activeSecondMenu' => $this->activeSecondMenu,
                 'mainPhone' => Requisite::find(1),
                 'mainEmail' => Requisite::find(2),
                 'requisites' => Requisite::where('id','>',2)->where('active',1)->get(),
-                'cookieInfo' => $cookieInfo
+                'cookieInfo' => $cookieInfo,
+                'tags' => $this->tags
             ]
         ));
     }

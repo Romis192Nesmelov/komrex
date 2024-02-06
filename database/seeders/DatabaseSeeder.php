@@ -20,30 +20,33 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(UsersSeeder::class);
-        $this->call(HomesSeeder::class);
-        $this->call(ServiceSolutionsSeeder::class);
-        $this->call(ConsultingsSeeder::class);
-        $this->call(OurValuesSeeder::class);
-        $this->call(OurTeamsSeeder::class);
-        $this->call(ProjectsSeeder::class);
-        $this->call(PartnersSeeder::class);
-        $this->call(RequisitesSeeder::class);
-        $this->call(TechnicSeeder::class);
+//        $this->call(UsersSeeder::class);
+//        $this->call(HomesSeeder::class);
+//        $this->call(ServiceSolutionsSeeder::class);
+//        $this->call(ConsultingsSeeder::class);
+//        $this->call(OurValuesSeeder::class);
+//        $this->call(OurTeamsSeeder::class);
+//        $this->call(ProjectsSeeder::class);
+//        $this->call(PartnersSeeder::class);
+//        $this->call(RequisitesSeeder::class);
+//        $this->call(TechnicSeeder::class);
+
 //        $this->call(TechnicFilesSeeder::class);
 //        ConstructiveFeature::factory(400)->create();
 //        TechnicImage::factory(300)->create();
 //        TechnicVideo::factory(100)->create();
 //        Event::factory(30)->create();
-        $this->call(EventsSeeder::class);
-        EventPerson::factory(200)->create();
-        $this->call(ActiveMonitoringSeeder::class);
-        $this->call(ActiveMonitoringProvidesSeeder::class);
-        $this->call(ActiveMonitoringIconsSeeder::class);
-        $this->call(ActiveMonitoringStepsSeeder::class);
-//        ActiveMonitoringStep::factory(4)->create();
-        $this->call(ReviewsSeeder::class);
-        $this->call(UnitSeeder::class);
-        $this->call(TrackingsSeeder::class);
+
+//        $this->call(EventsSeeder::class);
+//        EventPerson::factory(200)->create();
+//        $this->call(ActiveMonitoringSeeder::class);
+//        $this->call(ActiveMonitoringProvidesSeeder::class);
+//        $this->call(ActiveMonitoringIconsSeeder::class);
+//        $this->call(ActiveMonitoringStepsSeeder::class);
+//        $this->call(ReviewsSeeder::class);
+//        $this->call(UnitSeeder::class);
+//        $this->call(TrackingsSeeder::class);
+
+        $this->call(TagsSeeder::class);
     }
 }

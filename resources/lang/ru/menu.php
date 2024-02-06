@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'home' => 'Главная страница',
     'service_solutions' => 'Сервисные решения',
     'about_company' => 'О компании',
     'team' => 'Команда',

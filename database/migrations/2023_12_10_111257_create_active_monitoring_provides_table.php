@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('active_monitoring_provides', function (Blueprint $table) {
-            $table->id();
-            $table->string('text');
-            $table->boolean('active');
-            $table->timestamps();
-        });
+//        Schema::create('active_monitoring_provides', function (Blueprint $table) {
+//            $table->id();
+//            $table->string('text');
+//            $table->boolean('active');
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('active_monitoring_provides');
+//        Schema::dropIfExists('active_monitoring_provides');
     }
 };

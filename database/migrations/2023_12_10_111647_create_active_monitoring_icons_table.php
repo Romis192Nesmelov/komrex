@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('active_monitoring_icons', function (Blueprint $table) {
-            $table->id();
-            $table->string('image',50)->nullable();
-            $table->string('head');
-            $table->boolean('active');
-            $table->timestamps();
-        });
+//        Schema::create('active_monitoring_icons', function (Blueprint $table) {
+//            $table->id();
+//            $table->string('image',50)->nullable();
+//            $table->string('head');
+//            $table->boolean('active');
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('active_monitoring_icons');
+//        Schema::dropIfExists('active_monitoring_icons');
     }
 };

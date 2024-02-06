@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Tag;
 use App\Models\Technic;
 use App\Models\TechnicType;
 use Illuminate\Support\Str;
@@ -16,6 +17,7 @@ class TechnicController extends BaseController
 
         $this->data['slug'] = $slug;
         $this->data['relation'] = Str::camel('technics-'.$slug);
+        $this->tags = Tag::where('sub_page',$slug)->first();
 
         $this->data['technic_types'] = $technicType->select('id','name')->where('active',1)->with($this->data['relation'])->get();
         $this->data['current_id'] = request('id') ? (int)request('id') : 0;

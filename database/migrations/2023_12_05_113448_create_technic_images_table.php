@@ -12,11 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('technic_images', function (Blueprint $table) {
-            $table->id();
-            $table->string('image',50);
-            $table->foreignIdFor(Technic::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-        });
+//        Schema::create('technic_images', function (Blueprint $table) {
+//            $table->id();
+//            $table->string('image',50);
+//            $table->foreignIdFor(Technic::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+//        });
     }
 
     /**
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('technic_images');
+//        Schema::dropIfExists('technic_images');
     }
 };

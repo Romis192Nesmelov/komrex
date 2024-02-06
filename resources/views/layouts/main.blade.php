@@ -9,9 +9,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <title>Обеспечиваем минимальную стоимость эксплуатации спецтехники в Москве.</title>
-	<meta name="description" content="Консалтинговые услуги, мониторинг параметров эксплуатации оборудования и техническое обслуживание. Поставка техники, запчастей и агрегатов. Надежное снабжение.">
-	<meta property="og:description" content="Консалтинговые услуги, мониторинг параметров эксплуатации оборудования и техническое обслуживание. Поставка техники, запчастей и агрегатов. Надежное снабжение.">
+    <title>{{ $tags ? $tags->title : 'Обеспечиваем минимальную стоимость эксплуатации спецтехники в Москве.' }}</title>
+	<meta name="description" content="{{ $tags ? $tags->description : 'Консалтинговые услуги, мониторинг параметров эксплуатации оборудования и техническое обслуживание. Поставка техники, запчастей и агрегатов. Надежное снабжение.' }}">
+	<meta property="og:description" content="{{ $tags ? $tags->description : 'Консалтинговые услуги, мониторинг параметров эксплуатации оборудования и техническое обслуживание. Поставка техники, запчастей и агрегатов. Надежное снабжение.' }}">
 	<meta property="og:image" content="https://komrex.ru/images/logo_square.jpg">
 
     @include('blocks.favicon_block')

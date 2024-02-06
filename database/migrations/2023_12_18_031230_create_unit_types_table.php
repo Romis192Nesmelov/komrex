@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('unit_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->boolean('active');
-            $table->timestamps();
-        });
+//        Schema::create('unit_types', function (Blueprint $table) {
+//            $table->id();
+//            $table->string('name');
+//            $table->boolean('active');
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('unit_types');
+//        Schema::dropIfExists('unit_types');
     }
 };

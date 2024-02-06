@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('our_values', function (Blueprint $table) {
-            $table->id();
-            $table->string('image',50)->nullable();
-            $table->string('head',20);
-            $table->string('text');
-            $table->boolean('active');
-            $table->timestamps();
-        });
+//        Schema::create('our_values', function (Blueprint $table) {
+//            $table->id();
+//            $table->string('image',50)->nullable();
+//            $table->string('head',20);
+//            $table->string('text');
+//            $table->boolean('active');
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('our_values');
+//        Schema::dropIfExists('our_values');
     }
 };
