@@ -220,14 +220,27 @@ $(document).ready(function () {
     });
 
     // Cookie modal
-    const cookieInfoModal = $('#cookie-info-modal');
-    cookieInfoModal.find('button#agree_all').click(() => {
-        cookieInfoModal.find('input[name=cookie1]').prop('checked', true);
-        cookieInfoModal.find('input[name=cookie2]').prop('checked', true);
-    });
+    // const cookieInfoModal = $('#cookie-info-modal');
+    // cookieInfoModal.find('button#agree_all').click(() => {
+    //     cookieInfoModal.find('input[name=cookie1]').prop('checked', true);
+    //     cookieInfoModal.find('input[name=cookie2]').prop('checked', true);
+    // });
+    // if (window.showCookieInfo) {
+    //     setTimeout(() => {
+    //         cookieInfoModal.modal('show');
+    //     }, 1000);
+    // }
+
+    const cookieInfoBar = $('#cookie-info');
     if (window.showCookieInfo) {
         setTimeout(() => {
-            cookieInfoModal.modal('show');
+            cookieInfoBar.animate({'bottom':0},'slow',function () {
+                cookieInfoBar.find('button.btn').click(function () {
+                    cookieInfoBar.animate({'bottom':-320},'slow',function () {
+                        cookieInfoBar.remove();
+                    });
+                });
+            });
         }, 1000);
     }
 

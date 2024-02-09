@@ -1270,17 +1270,32 @@ input.error {
     margin-top: 20px;
 }
 
-#cookie-info-modal img.logo {
-    width: 250px;
-    margin-bottom: 15px;
+#cookie-info {
+    width: 100%;
+    background: white;
+    opacity: 0.9;
+    filter: opacity(90%);
+    position: fixed;
+    bottom: -320px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    z-index: 999;
 }
 
-#cookie-info-modal button {
-    width: 250px !important;
-    font-size: 12px !important;
-    float: right;
-    margin-right: 5px;
+#cookie-info button.btn {
+    min-width: 100%;
 }
+
+/*#cookie-info-modal img.logo {*/
+/*    width: 250px;*/
+/*    margin-bottom: 15px;*/
+/*}*/
+
+/*#cookie-info-modal button {*/
+/*    width: 250px !important;*/
+/*    font-size: 12px !important;*/
+/*    float: right;*/
+/*    margin-right: 5px;*/
+/*}*/
 
 @media (max-width: 1649px) {
     .step {
