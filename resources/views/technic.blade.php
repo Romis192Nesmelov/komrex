@@ -6,7 +6,7 @@
     <div class="content-container pt-0">
         <div class="content">
             <div class="back-line-href mb-4 wow animate__animated animate__slideInLeft" data-wow-offset="2">
-                <a href="{{ route('technics') }}">
+                <a href="{{ route('technics',['slug' => ($technic->komrex ? 'komrex' : 'current-offer')]) }}">
                     <img src="{{ asset('images/arrow_left_simple_dark.svg') }}" />
                     {{ trans('content.all_technics') }}
                 </a>
