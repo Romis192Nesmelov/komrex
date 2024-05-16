@@ -127,9 +127,9 @@
     <div class="content-container pt-0 bg-white" data-scroll-destination="team">
         <div class="content">
             <h2 class="mb-4 pb-3 wow animate__animated animate__slideInLeft" data-wow-offset="10">{{ trans('content.our_team') }}</h2>
-            <div id="our-team" class="row">
+            <div id="our-team" class="owl-carousel row">
                 @foreach($team as $k => $person)
-                    <div class="team-person col-lg-4 col-sm-12 wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.3 }}s">
+                    <div class="team-person wow animate__animated animate__fadeInUp" data-wow-offset="10" data-wow-delay="{{ ($k + 1) * 0.3 }}s">
                         <img src="{{ asset($person->image) }}" />
                         <div class="name">{{ $person->name }}</div>
                     </div>

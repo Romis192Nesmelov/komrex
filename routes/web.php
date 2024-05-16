@@ -6,7 +6,6 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LoginController;
 use \App\Http\Controllers\ProjectsController;
 use \App\Http\Controllers\TechnicController;
-use \App\Http\Controllers\UnitController;
 use App\Http\Controllers\ActiveMonitoringController;
 use App\Http\Controllers\Admin\AdminBaseController;
 use App\Http\Controllers\Admin\AdminUsersController;
@@ -62,7 +61,7 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::controller(AdminUsersController::class)->group(function () {
         Route::get('/users/{slug?}', 'users')->name('users');
         Route::post('/edit-user', 'editUser')->name('edit_user');
-        Route::get('/delete-user', 'deleteUser')->name('delete_user');
+        Route::post('/delete-user', 'deleteUser')->name('delete_user');
     });
 
     Route::controller(AdminQuotesController::class)->group(function () {
